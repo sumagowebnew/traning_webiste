@@ -8,8 +8,6 @@ import { AboutComponent } from './about/about.component';
 const routes: Routes = [
   {path:'',component:CommonmainComponent,children:[
     {path:'dashboard',component:DashboardComponent},
-   
-   
     {path:'course',component:CourseComponent},
     {path:'about',component:AboutComponent},
     {path:'',redirectTo:'/main/dashboard',pathMatch:'full'},
