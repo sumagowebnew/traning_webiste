@@ -4,18 +4,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
-import { SignUpComponent } from './pages/sign-up/sign-up.component';
+
 import { CommonmainComponent } from './components/main/commonmain/commonmain.component';
 import { DashboardComponent } from './components/main/dashboard/dashboard.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
-    SignUpComponent,
+   
     CommonmainComponent,
-    DashboardComponent
+    DashboardComponent,
+  
+   
+   
+  
   ],
   imports: [
     BrowserModule,
