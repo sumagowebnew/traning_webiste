@@ -4,12 +4,16 @@ import { CommonmainComponent } from 'src/app/components/main/commonmain/commonma
 import { DashboardComponent } from 'src/app/components/main/dashboard/dashboard.component';
 import { CourseComponent } from './course/course.component';
 import { AboutComponent } from './about/about.component';
+import { AddEventComponent } from 'src/app/Event/add-event/add-event.component';
+import { DiplomaProgramCategoryComponent } from './Our_Program/diploma-program-category/diploma-program-category.component';
 
 const routes: Routes = [
   {path:'',component:CommonmainComponent,children:[
     {path:'dashboard',component:DashboardComponent},
     {path:'course',component:CourseComponent},
     {path:'about',component:AboutComponent},
+    {path:'event',component:AddEventComponent},
+    {path:'diploma_program_category',component:DiplomaProgramCategoryComponent},
     {path:'',redirectTo:'/main/dashboard',pathMatch:'full'},
 
 

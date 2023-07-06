@@ -8,14 +8,9 @@ import { AwardComponent } from './Event/award/award.component';
 import { BirthdayComponent } from './Event/birthday/birthday.component';
 import { MouComponent } from './Event/mou/mou.component';
 import { CerticateComponent } from './certicate/certicate.component';
-import { FullStackComponent } from './Our_Program/full-stack/full-stack.component';
-import { MEANStackComponent } from './Our_Program/mean-stack/mean-stack.component';
-import { MernStackComponent } from './Our_Program/mern-stack/mern-stack.component';
-import { PythonComponent } from './Our_Program/python/python.component';
-import { UiUxComponent } from './Our_Program/ui-ux/ui-ux.component';
-import { SoftwareTestingComponent } from './Our_Program/software-testing/software-testing.component';
-import { DataScienceComponent } from './Our_Program/data-science/data-science.component';
+
 import { AboutComponent } from './about/about.component';
+import { DiplomaProgramCategoryComponent } from './Our_Program/diploma-program-category/diploma-program-category.component';
 
 
 
@@ -28,14 +23,9 @@ import { AboutComponent } from './about/about.component';
     BirthdayComponent,
     MouComponent,
     CerticateComponent,
-    FullStackComponent,
-    MEANStackComponent,
-    MernStackComponent,
-    PythonComponent,
-    UiUxComponent,
-    SoftwareTestingComponent,
-    DataScienceComponent,
-    AboutComponent
+  
+    AboutComponent,
+    DiplomaProgramCategoryComponent
   ],
   imports: [
     CommonModule,

@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UiUxComponent } from './ui-ux.component';
+import { AddEventComponent } from './add-event.component';
 
-describe('UiUxComponent', () => {
-  let component: UiUxComponent;
-  let fixture: ComponentFixture<UiUxComponent>;
+describe('AddEventComponent', () => {
+  let component: AddEventComponent;
+  let fixture: ComponentFixture<AddEventComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [UiUxComponent]
+      declarations: [AddEventComponent]
     });
-    fixture = TestBed.createComponent(UiUxComponent);
+    fixture = TestBed.createComponent(AddEventComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

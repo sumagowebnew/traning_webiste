@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MernStackComponent } from './mern-stack.component';
+import { EventDataComponent } from './event-data.component';
 
-describe('MernStackComponent', () => {
-  let component: MernStackComponent;
-  let fixture: ComponentFixture<MernStackComponent>;
+describe('EventDataComponent', () => {
+  let component: EventDataComponent;
+  let fixture: ComponentFixture<EventDataComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MernStackComponent]
+      declarations: [EventDataComponent]
     });
-    fixture = TestBed.createComponent(MernStackComponent);
+    fixture = TestBed.createComponent(EventDataComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

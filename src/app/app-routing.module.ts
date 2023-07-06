@@ -7,12 +7,12 @@ import { authGuard } from './guard/auth.guard';
 
 const routes: Routes = [
  
-  // {path:'',redirectTo:'sign-in',pathMatch:'full'},
+  // {path:'',redirectTo:'login',pathMatch:'full'},
   {path:'login',component:SignInComponent},
 
   {
     path:'main',
-    // canActivate:[authGuard],
+    canActivate:[authGuard],
     loadChildren:()=>import('./components/main/main.module').then((m)=>m.MainModule)
     },
 

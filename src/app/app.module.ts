@@ -9,6 +9,8 @@ import { CommonmainComponent } from './components/main/commonmain/commonmain.com
 import { DashboardComponent } from './components/main/dashboard/dashboard.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { AddEventComponent } from './Event/add-event/add-event.component';
+import { EventDataComponent } from './Event/event-data/event-data.component';
 
 
 
@@ -19,6 +21,8 @@ import {HttpClientModule} from '@angular/common/http';
    
     CommonmainComponent,
     DashboardComponent,
+    AddEventComponent,
+    EventDataComponent,
   
    
    
