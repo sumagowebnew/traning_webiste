@@ -1,13 +1,13 @@
-<!-- Category -->
+<!-- counter -->
 <div class="container">
     <div class="row">
         <div class="div">
             <a class="btn btn-info text-white font-weight-normal text-xs" data-bs-toggle="modal"
-            data-bs-target="#eventcategory">
-            Event Data
+            data-bs-target="#aboutcounter">
+           About Counter
         </a>
          <!-- Modal -->
-         <div class="modal fade" id="eventcategory" tabindex="-1" role="dialog"
+         <div class="modal fade" id="aboutcounter" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalLabel" aria-hidden="true">
          <div class="modal-dialog modal-dialog-centered" role="document">
              <div class="modal-content">
@@ -20,21 +20,18 @@
                  </div>
                  <div class="modal-body">
                      <form>
-
-                        <div class="input-group input-group-outline mb-3">
-
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>Event Category</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
+                       
                         <div class="input-group input-group-outline my-3">
-
-                            <input type="file" class="form-control" placeholder="Cover_letter">
+                            <label class="form-label">Name</label>
+                                <input type="text" class="form-control">
                         </div>
+
+                         <div class="input-group input-group-outline my-3">
+                             <label class="form-label">Count</label>
+                                 <input type="text" class="form-control">
+                         </div>
+                        
+                      
                        
                      </form>
 
@@ -59,10 +56,10 @@
                 <thead>
                     
                     <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category
-                        </th>
-                      
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                       
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            Count</th>
                         <th class="text-secondary opacity-7"></th>
                        
                     </tr>
@@ -72,32 +69,29 @@
                     <tr>
                         <td>
                             <div class="d-flex px-2 py-1">
-                                <div>
-                                    <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/team-4.jpg"
-                                        class="avatar avatar-sm me-3">
-                                </div>
-                                <!-- <div class="d-flex flex-column justify-content-center">
+                               
+                                <div class="d-flex flex-column justify-content-center">
                                     <h6 class="mb-0 text-xs">Miriam Eric</h6>
-                                    <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p>
-                                </div> -->
+                                    <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
+                                </div>
                             </div>
                         </td>
                         <td>
-                            <p class="text-xs font-weight-bold mb-0">cat</p>
-                            <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
+                            <!-- <p class="text-xs font-weight-bold mb-0">Programtor</p> -->
+                            <p class="text-xs text-secondary mb-0">400</p>
                         </td>
-                       
+                      
                         <td class="align-middle">
                            
                            
 
                             <a class="btn btn-warning ms-2 text-white font-weight-normal text-xs" data-bs-toggle="modal"
-                            data-bs-target="#editeventdata2">
+                            data-bs-target="#aboutcounter2">
                             Edit
                         </a>
 
                           <!-- Modal -->
-                          <div class="modal fade" id="editeventdata2" tabindex="-1" role="dialog"
+                          <div class="modal fade" id="aboutcounter2" tabindex="-1" role="dialog"
                           aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
                               <div class="modal-content">
@@ -110,21 +104,18 @@
                                   </div>
                                   <div class="modal-body">
                                     <form>
-
-                                        <div class="input-group input-group-outline mb-3">
-                
-                                            <select class="form-control" id="exampleFormControlSelect1">
-                                                <option>Event Category</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
+                       
                                         <div class="input-group input-group-outline my-3">
-                
-                                            <input type="file" class="form-control" placeholder="Cover_letter">
+                                            <label class="form-label">Name</label>
+                                                <input type="text" class="form-control">
                                         </div>
+                
+                                         <div class="input-group input-group-outline my-3">
+                                             <label class="form-label">Count</label>
+                                                 <input type="text" class="form-control">
+                                         </div>
+                                        
+                                      
                                        
                                      </form>
 
