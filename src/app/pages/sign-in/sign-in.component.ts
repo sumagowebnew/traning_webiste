@@ -25,6 +25,9 @@ ngOnInit(): void {
   }
   
 }
+
+token:string =''
+
 onSubmit():void{
   console.log(this.SignInForm.valid);
   const { email, password } = this.SignInForm.value;
@@ -32,6 +35,10 @@ onSubmit():void{
 
     this.auth.login(email,password).subscribe((result)=>{
         console.log("Success")
+        // console.log(result.access_token);
+        localStorage.setItem(result.access_token,this.token)
+        console.log(this.token);
+        
     },
     (err:Error)=>{
       console.log(err);

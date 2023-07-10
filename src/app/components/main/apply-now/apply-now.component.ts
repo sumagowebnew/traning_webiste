@@ -7,11 +7,20 @@ import { CounterService } from 'src/app/services/counter.service';
   styleUrls: ['./apply-now.component.css']
 })
 export class ApplyNowComponent implements OnInit {
+  applynowlist: any;
 
   constructor(private counter:CounterService){}
 
 ngOnInit(): void {
+  this.getapplynow();
   
+}
+getapplynow(){
+  this.counter.getapply_now().subscribe((res:any)=>{
+    this.applynowlist=res.data;
+    console.log(this.applynowlist);
+    
+  })
 }
 
 }

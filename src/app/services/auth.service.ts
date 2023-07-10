@@ -9,8 +9,9 @@ import { BehaviorSubject,  Observable,  of, tap, throwError } from 'rxjs';
 export class AuthService {
   
   private apiUrl = 'http://localhost:8000/api/';                                  // Your API URL here
-  private token ="12312";
+  private token ="";
   private loggedIn = new BehaviorSubject<boolean>(false);
+  access_token: string;
 
 
   constructor(private router:Router,private http:HttpClient) { }
@@ -25,18 +26,19 @@ export class AuthService {
   // }
   
   setToken(token:string):void{
-    localStorage.setItem('token',token)
+    localStorage.setItem('access_token',token);
   }
 
-  getToken():string |null {
-    return localStorage.getItem('token')
+  getToken():string {
+    return this.token;
   }
+ 
 
   isLoggedIn(){
      return this.getToken()!==null
   }
   logout() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('access_token');
     this.router.navigate(['sign-in']);
   }
   login(email: string, password: string): Observable<any> {
@@ -45,7 +47,7 @@ export class AuthService {
       tap((response: any) => {
         this.setToken(response.token);
         // this.setUser(response.id,response.username,response.email)
-        localStorage.setItem('token', response.token);
+        localStorage.setItem('access_token', response.token);
         localStorage.setItem('email',response.email)
         localStorage.setItem('id',response.id)
         return response;
