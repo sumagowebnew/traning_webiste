@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,7 @@ export class CounterService {
 
   private apiUrl = 'http://localhost:8000/api/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private auth:AuthService) { }
 
 
   addcounter(counterdata: any) {
@@ -22,14 +24,33 @@ export class CounterService {
     return this.http.get(`${this.apiUrl}get_applyNow`)
   }
 
-  addteacher(teacherdata:any){
-    return this.http.post(`${this.apiUrl}add_teacher`,teacherdata)
-  }
+
 
   getapply_now(){
     return this.http.get(`${this.apiUrl}get_applyNow`)
   }
-  
+  addpopularcourse(popularcourse:any){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.post(`${this.apiUrl}add_popularCourses`,popularcourse,{headers})
+  }
+
+
+  getpopularcourse(){
+    return this.http.get(`${this.apiUrl}get_popularCourses`)
+  }
+
+  addcertificate(certificate:any){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.post(`${this.apiUrl}add_certificate`,certificate,{headers})
+  }
+  getcertificate(){
+    return this.http.get(`${this.apiUrl}get_certificate`)
+  }
+
 
 
 }

@@ -18,11 +18,11 @@
                      </button>
                  </div>
                  <div class="modal-body">
-                     <form>
+                     <form [formGroup]="eventform" (ngSubmit)="onSubmit()">
                        
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Name</label>
-                                <input type="text" class="form-control">
+                            <!-- <label class="form-label">Name</label> -->
+                                <input type="text" class="form-control" formControlName="name">
                         </div>
                        
                      </form>
@@ -32,7 +32,7 @@
                  <div class="modal-footer">
                      <button type="button" class="btn bg-gradient-secondary"
                          data-bs-dismiss="modal">Close</button>
-                     <button type="button" class="btn bg-gradient-primary">Save changes</button>
+                     <button type="submit" class="btn bg-gradient-primary">Save changes</button>
                  </div>
              </div>
          </div>
@@ -48,7 +48,7 @@
                 <thead>
                     
                     <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
                       
                         <th class="text-secondary opacity-7"></th>
                        
@@ -56,15 +56,15 @@
                 </thead>
                 <tbody>
 
-                    <tr>
+                    <tr *ngFor="let item of eventlist">
                         <td>
                             <div class="d-flex px-2 py-1">
-                                <div>
+                                <!-- <div>
                                     <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/team-4.jpg"
                                         class="avatar avatar-sm me-3">
-                                </div>
+                                </div> -->
                                 <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="mb-0 text-xs">Miriam Eric</h6>
+                                    <h6 class="mb-0 text-xs">{{item.name}}</h6>
                                     <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
                                 </div>
                             </div>
@@ -92,10 +92,10 @@
                                       </button>
                                   </div>
                                   <div class="modal-body">
-                                      <form>
+                                      <form [formGroup]="eventform" (ngSubmit)="onSubmit()">
                                         <div class="input-group input-group-outline my-3">
                                             <label class="form-label">Name</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" formControlName="name">
                                         </div>
                                        
                                       </form>
@@ -105,7 +105,7 @@
                                   <div class="modal-footer">
                                       <button type="button" class="btn bg-gradient-secondary"
                                           data-bs-dismiss="modal">Close</button>
-                                      <button type="button" class="btn bg-gradient-primary">Save changes</button>
+                                      <button type="submit" class="btn bg-gradient-primary">Save changes</button>
                                   </div>
                               </div>
                           </div>

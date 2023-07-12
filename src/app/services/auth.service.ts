@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject,  Observable,  of, tap, throwError } from 'rxjs';
@@ -9,7 +9,7 @@ import { BehaviorSubject,  Observable,  of, tap, throwError } from 'rxjs';
 export class AuthService {
   
   private apiUrl = 'http://localhost:8000/api/';                                  // Your API URL here
-  private token ="";
+   token;
   private loggedIn = new BehaviorSubject<boolean>(false);
   access_token: string;
 
@@ -25,32 +25,54 @@ export class AuthService {
   //   return throwError("Failed")
   // }
   
-  setToken(token:string):void{
-    localStorage.setItem('access_token',token);
+  setToken(token):void{
+   this.token = localStorage.setItem('access_token',token);
   }
 
-  getToken():string {
-    return this.token;
+  getToken():string | null {
+  return  localStorage.getItem('access_token')
   }
  
 
   isLoggedIn(){
      return this.getToken()!==null
   }
-  logout() {
-    localStorage.removeItem('access_token');
-    this.router.navigate(['sign-in']);
+  logout(): Observable<any> {
+    const url = `${this.apiUrl}logout`;
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('access_token')}`);
+  
+    return this.http.post(url, null, { headers }).pipe(
+      tap(() => {
+        this.clearToken();
+        // this.clearUser();
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('email');
+        localStorage.removeItem('id');
+        this.router.navigate(['login']);
+        console.log("login here");
+        
+      })
+    );
   }
+  clearToken() {
+    this.token = null;
+  }
+  
+  // logout() {
+    
+  //   localStorage.removeItem('access_token');
+  //   this.router.navigate(['login']);
+  // }
   login(email: string, password: string): Observable<any> {
     const url = `${this.apiUrl}login`;
     return this.http.post(url, { email, password }).pipe(
       tap((response: any) => {
-        this.setToken(response.token);
+        this.setToken(response.access_token);
         // this.setUser(response.id,response.username,response.email)
-        localStorage.setItem('access_token', response.token);
+        // localStorage.setItem('access_token', response.token);
         localStorage.setItem('email',response.email)
         localStorage.setItem('id',response.id)
-        return response;
+        return response.access_token;
       })
     );
   }

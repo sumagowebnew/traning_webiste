@@ -18,31 +18,27 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form [formGroup]="popularform" >
                                 <div class="input-group input-group-outline my-3">
                                     <label class="form-label">Name</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" formControlName="name">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
                                     <label class="form-label">Price</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control"  formControlName="price">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">enrolled_students</label>
-                                    <input type="text" class="form-control">
+                                    <label class="form-label">Enrolled_students</label>
+                                    <input type="text" class="form-control"  formControlName="enrolled_students">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
                                     <label class="form-label">Info</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control"  formControlName="info">
                                 </div>
-
-
-
-                               
 
                                 <div class="input-group input-group-outline my-3">
 
-                                    <input type="file" class="form-control" placeholder="image">
+                                    <input type="file" class="form-control" placeholder="image" (change)="onFileSelected($event)">
                                 </div>
               
 
@@ -53,7 +49,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn bg-gradient-secondary"
                                 data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn bg-gradient-primary">Save changes</button>
+                            <button type="submit" (click)="onSubmit()"  class="btn bg-gradient-primary">Save changes</button>
                         </div>
                     </div>
                 </div>
@@ -69,41 +65,42 @@
                 <thead>
 
                     <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price
                         </th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                            Technology</th>
+                            enrolled_students</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                            Employed</th>
+                            Info</th>
                         <th class="text-secondary opacity-7"></th>
 
                     </tr>
                 </thead>
                 <tbody>
 
-                    <tr>
+                    <tr *ngFor="let item of popularlist">
                         <td>
                             <div class="d-flex px-2 py-1">
                                 <div>
-                                    <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/team-4.jpg"
-                                        class="avatar avatar-sm me-3">
+                                    <img [src]="item.image" class="avatar avatar-sm me-3">
+                                    <!-- <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/team-4.jpg"
+                                        class="avatar avatar-sm me-3"> -->
                                 </div>
                                 <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="mb-0 text-xs">Miriam Eric</h6>
-                                    <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p>
+                                    <h6 class="mb-0 text-xs">{{item.name}}</h6>
+                                    <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
                                 </div>
                             </div>
                         </td>
                         <td>
-                            <p class="text-xs font-weight-bold mb-0">Programtor</p>
-                            <p class="text-xs text-secondary mb-0">Developer</p>
+                            <p class="text-xs font-weight-bold mb-0">{{item.price}}</p>
+                            <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
                         </td>
                         <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-normal">Offline</span>
+                            <span class="text-secondary text-xs font-weight-normal">{{item.enrolled_students}}</span>
                         </td>
                         <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-normal">14/09/20</span>
+                            <span class="text-secondary text-xs font-weight-normal">{{item.info}}</span>
                         </td>
 
                         <td>

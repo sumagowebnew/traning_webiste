@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 
-import { authGuard } from './guard/auth.guard';
+import { AuthGuard } from './guard/auth.guard';
 
 
 const routes: Routes = [
@@ -10,9 +10,10 @@ const routes: Routes = [
   // {path:'',redirectTo:'login',pathMatch:'full'},
   {path:'login',component:SignInComponent},
 
+
   {
     path:'main',
-    // canActivate:[authGuard],
+    canActivate:[AuthGuard],
     loadChildren:()=>import('./components/main/main.module').then((m)=>m.MainModule)
     },
 

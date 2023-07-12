@@ -17,7 +17,8 @@ ngOnInit(): void {
 }
 getapplynow(){
   this.counter.getapply_now().subscribe((res:any)=>{
-    this.applynowlist=res.data;
+    console.log(res);
+    this.applynowlist=res.applicants;
     console.log(this.applynowlist);
     
   })

@@ -34,6 +34,7 @@ const routes: Routes = [
 
     {path:'certificate',component:CerticateComponent},
     {path:'contact',component:ContactComponent},
+
     {path:'',redirectTo:'/main/dashboard',pathMatch:'full'},
 
 

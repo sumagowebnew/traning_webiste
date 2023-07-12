@@ -18,16 +18,16 @@
                      </button>
                  </div>
                  <div class="modal-body">
-                     <form>
+                     <form [formGroup]="certificate"  (ngSubmit)="onSubmit()" >
                        
                           
                         <div class="input-group input-group-outline my-3">
                             
-                                <input type="file" class="form-control">
+                                <input type="file" class="form-control" (change)="onFileSelected($event)">
                         </div>
                         <div class="input-group input-group-outline my-3">
                             <label class="form-label">Title</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" formControlName="title">
                         </div>
 
                          
@@ -38,7 +38,7 @@
                  <div class="modal-footer">
                      <button type="button" class="btn bg-gradient-secondary"
                          data-bs-dismiss="modal">Close</button>
-                     <button type="button" class="btn bg-gradient-primary">Save changes</button>
+                     <button type="submit" class="btn bg-gradient-primary">Save changes</button>
                  </div>
              </div>
          </div>
@@ -65,11 +65,11 @@
                 </thead>
                 <tbody>
 
-                    <tr>
+                    <tr *ngFor="let item of certificatelist ">
                         <td>
                             <div class="d-flex px-2 py-1">
                                 <div>
-                                    <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/team-4.jpg"
+                                <img [src]="item.image"
                                         class="avatar avatar-sm me-3">
                                 </div>
                                 <div class="d-flex flex-column justify-content-center">
@@ -79,7 +79,7 @@
                             </div>
                         </td>
                         <td>
-                            <p class="text-xs font-weight-bold mb-0">Programmer</p>
+                            <p class="text-xs font-weight-bold mb-0">{{item.title}}</p>
                             <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
                         </td>
                       

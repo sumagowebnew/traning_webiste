@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CounterService } from 'src/app/services/counter.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { AboutService } from 'src/app/services/about.service';
 
 @Component({
   selector: 'app-about',
@@ -12,15 +13,17 @@ export class AboutComponent implements OnInit {
   aboutForm: FormGroup;
   teachers: any;
   base64Image: string | null = null;
+  teacherlist: any;
 
   constructor(
-    private counter: CounterService,
+    private about:AboutService,
     private auth: AuthService,
     private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.aboutTeacher();
+    this.getteacherlist();
   }
 
   aboutTeacher(): void {
@@ -52,7 +55,7 @@ export class AboutComponent implements OnInit {
     formData.append('designation', this.aboutForm.value.designation);
     formData.append('image', this.base64Image);
 
-    this.counter.addteacher(formData).subscribe(
+    this.about.addteacher(formData).subscribe(
       (response: any) => {
         console.log('Data added successfully:', response);
         this.teachers = response;
@@ -61,5 +64,13 @@ export class AboutComponent implements OnInit {
         console.error('Failed to add course:', error);
       }
     );
+  }
+  getteacherlist(){
+    this.about.getteacher().subscribe((res:any)=>{
+      console.log(res);
+      
+      this.teacherlist=res;
+
+    })
   }
 }

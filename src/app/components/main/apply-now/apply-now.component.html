@@ -7,6 +7,7 @@
             <table class="table align-items-center mb-0">
                 <thead>
 
+                    
                     <tr>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
                         <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email -->
@@ -55,10 +56,11 @@
                             <span class="text-secondary text-xs font-weight-normal">{{item.technology}}</span>
                         </td>
                         <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-normal">{{item.cv}}</span>
+                            
+                          <a [href]="item.cv.download_url" class="text-secondary text-xs font-weight-normal">Download</a>  
                         </td>
                         <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-normal">{{item.cover_letter}}</span>
+                            <a [href]="item.cover_letter.download_url" class="text-secondary text-xs font-weight-normal">Download</a>  
                         </td>
                         <td class="align-middle text-center">
                             <span class="text-secondary text-xs font-weight-normal">{{item.duration}}</span>

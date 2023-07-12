@@ -23,31 +23,31 @@
                 </thead>
                 <tbody>
 
-                    <tr>
+                    <tr *ngFor="let item of contactlist">
                         <td>
                             <div class="d-flex px-2 py-1">
-                                <div>
+                                <!-- <div>
                                     <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/team-4.jpg"
                                         class="avatar avatar-sm me-3">
-                                </div>
+                                </div> -->
                                 <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="mb-0 text-xs">Miriam Eric</h6>
-                                    <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p>
+                                    <h6 class="mb-0 text-xs">{{item.name}}</h6>
+                                    <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
                                 </div>
                             </div>
                         </td>
                         <td>
-                            <p class="text-xs font-weight-bold mb-0">Programtor</p>
-                            <p class="text-xs text-secondary mb-0">Developer</p>
+                            <p class="text-xs font-weight-bold mb-0">{{item.subject}}</p>
+                            <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
                         </td>
                         <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-normal">Offline</span>
+                            <span class="text-secondary text-xs font-weight-normal">{{item.email}}</span>
                         </td>
                         <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-normal">14/09/20</span>
+                            <span class="text-secondary text-xs font-weight-normal">{{item.phone}}</span>
                         </td>
                         <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-normal">ghjk</span>
+                            <span class="text-secondary text-xs font-weight-normal">{{item.message}}</span>
                         </td>
                         <td class="align-middle">
                            

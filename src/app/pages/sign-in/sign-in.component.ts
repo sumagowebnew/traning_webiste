@@ -20,9 +20,7 @@ SignInForm= new FormGroup({
 constructor(private auth:AuthService,private router:Router){}
 
 ngOnInit(): void {
-  if(this.auth.isLoggedIn()){
-    this.router.navigate(['main']);
-  }
+
   
 }
 
@@ -36,9 +34,14 @@ onSubmit():void{
     this.auth.login(email,password).subscribe((result)=>{
         console.log("Success")
         // console.log(result.access_token);
-        localStorage.setItem(result.access_token,this.token)
-        console.log(this.token);
+        console.log(result);   
         
+        this.auth.setToken(result.access_token)
+       console.log( this.auth.getToken());
+        this.router.navigate(['main']);
+
+    
+       
     },
     (err:Error)=>{
       console.log(err);
