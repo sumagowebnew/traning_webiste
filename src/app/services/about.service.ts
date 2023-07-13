@@ -31,4 +31,14 @@ export class AboutService {
       return this.http.get(`${this.apiUrl}get_teacher`)
     }
 
+    addgooglereview(review:any){
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${this.auth.getToken()}`
+      });
+      return this.http.post(`${this.apiUrl}add_googleReview`,review,{headers})
+    }
+    getgooglereview(){
+      return this.http.get(`${this.apiUrl}get_googleReview`)
+    }
+
 }

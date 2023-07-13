@@ -15,6 +15,10 @@ import { ProgramsDetailsComponent } from './programs-details/programs-details.co
 import { ArchievementComponent } from './archievement/archievement.component';
 import { ApplyNowComponent } from './apply-now/apply-now.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ExpertReviewComponent } from './expert-review/expert-review.component';
+import { GoogleReviewComponent } from './google-review/google-review.component';
+import { ConsultingComponent } from './consulting/consulting.component';
+import { BrochuerComponent } from './brochuer/brochuer.component';
 
 
 @NgModule({
@@ -32,6 +36,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProgramsDetailsComponent,
     ArchievementComponent,
     ApplyNowComponent,
+    ExpertReviewComponent,
+    GoogleReviewComponent,
+    ConsultingComponent,
+    BrochuerComponent,
     
   ],
   imports: [

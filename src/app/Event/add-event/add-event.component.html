@@ -18,7 +18,7 @@
                      </button>
                  </div>
                  <div class="modal-body">
-                     <form [formGroup]="eventform" (ngSubmit)="onSubmit()">
+                     <form [formGroup]="eventform">
                        
                         <div class="input-group input-group-outline my-3">
                             <!-- <label class="form-label">Name</label> -->
@@ -32,7 +32,7 @@
                  <div class="modal-footer">
                      <button type="button" class="btn bg-gradient-secondary"
                          data-bs-dismiss="modal">Close</button>
-                     <button type="submit" class="btn bg-gradient-primary">Save changes</button>
+                     <button type="submit" (click)="onSubmit()" class="btn bg-gradient-primary">Save changes</button>
                  </div>
              </div>
          </div>

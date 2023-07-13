@@ -20,6 +20,21 @@ export class EventService {
   getevent(){
     return this.http.get(`${this.apiUrl}get_events`)
   }
+
+  addeventdetail(eventdata:any){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.post(`${this.apiUrl}add_eventDetails`,eventdata,{headers})
+  }
+  geteventdetail(){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.get(`${this.apiUrl}get_eventDetails`,{headers})
+  }
+  
+ 
     
   }
 

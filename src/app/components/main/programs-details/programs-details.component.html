@@ -19,71 +19,75 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form [formGroup]="programform">
+                                <div class="input-group input-group-outline my-3">
+                                    <label class="form-label">Id</label>
+                                    <input type="text" class="form-control" formControlName="program_id">
+                                </div>
+                                <div class="input-group input-group-outline my-3">
+
+                                    <input type="file" class="form-control" (change)="onFileSelected($event)">
+                                </div>
                                 <div class="input-group input-group-outline mb-3">
 
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <option>Select Category</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
+                                    <select name="name" class="nav-link dropdown-toggle form-control" style="margin-top:5px"   (change)="getBySort($event)">
+                                        <option value=""> Course Name</option> <!-- Add an "All" option to show all courses -->
+                                        <option *ngFor="let course_Name of programlist" [value]="course_Name.name">{{ course_Name.name }}</option>
+                                      </select> 
                                 </div>
-
-                                <div class="input-group input-group-outline my-3">
-
-                                    <input type="file" class="form-control">
-                                </div>
-                                <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Course Level</label>
-                                    <input type="text" class="form-control">
-                                </div>
-
                                 <div class="input-group input-group-outline my-3">
                                     <label class="form-label">Duration</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" formControlName="duration">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
                                     <label class="form-label">Training Period</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" formControlName="training_period">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Language</label>
-                                    <input type="text" class="form-control">
+                                    <label class="form-label">Batch</label>
+                                    <input type="text" class="form-control" formControlName="batch">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Learning Outcome</label>
-                                    <input type="text" class="form-control">
+                                    <label class="form-label">Project</label>
+                                    <input type="text" class="form-control" formControlName="project">
+                                </div>
+                                <div class="input-group input-group-outline my-3">
+                                    <label class="form-label">Course Level</label>
+                                    <input type="text" class="form-control" formControlName="course_level">
+                                </div>
+                                <div class="input-group input-group-outline my-3">
+                                    <label class="form-label">Average Salary</label>
+                                    <input type="text" class="form-control" formControlName="average_salary">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
                                     <label class="form-label">Introduction</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" formControlName="introduction">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
                                     <label class="form-label">Course Overview</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" formControlName="course_overview">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
                                     <label class="form-label">Learning Outcome</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" formControlName="learning_outcome">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
                                     <label class="form-label">Pre-requisite</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" formControlName="prerequisite">
+                                </div>
+                                <div class="input-group input-group-outline my-3">
+                                    <label class="form-label">Career Opportunities</label>
+                                    <input type="text" class="form-control" formControlName="career_opportunity">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
                                     <label class="form-label">Why Sumago For Full Stack Web Development Diploma
                                         ?</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" formControlName="why_sumago">
                                 </div>
+                              
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Career Opportunities</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Who will bo trainee ?</label>
-                                    <input type="text" class="form-control">
+                                    <label class="form-label">Who will be trainee ?</label>
+                                    <input type="text" class="form-control" formControlName="trainee">
                                 </div>
 
                             </form>
@@ -93,7 +97,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn bg-gradient-secondary"
                                 data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn bg-gradient-primary">Save changes</button>
+                            <button type="submit" (click)="onSubmit()" class="btn bg-gradient-primary">Save changes</button>
                         </div>
                     </div>
                 </div>
@@ -110,7 +114,7 @@
 
                     <tr>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Course Name
                         </th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Duration</th>
@@ -121,44 +125,86 @@
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Project</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            Course Level</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Average Salary</th>
+
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                           Introduction</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            Course Overview</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            Learning Outcome</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            Pre-requisite</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                           Career Opportunity</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                           Why Sumago For Web Dev Diploma ?</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            Who will be Trainee ?</th>
                         <th class="text-secondary opacity-7"></th>
 
                     </tr>
                 </thead>
                 <tbody>
 
-                    <tr>
+                    <tr *ngFor="let item of programlist ">
                         <td>
                             <div class="d-flex px-2 py-1">
+                                 <div class="d-flex flex-column justify-content-center">
+                                    <h6 class="mb-0 text-xs">{{item.program_id}}</h6>
+                                    <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
+                                </div>
                                 <div>
-                                    <img src="https://demos.creative-tim.com/test/material-dashboard-pro/assets/img/team-4.jpg"
+                                    <img [src]="item.image"
                                         class="avatar avatar-sm me-3">
                                 </div>
-                                <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="mb-0 text-xs">Miriam Eric</h6>
-                                    <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p>
-                                </div>
+                               
                             </div>
                         </td>
                         <td>
-                            <p class="text-xs font-weight-bold mb-0">Programtor</p>
-                            <p class="text-xs text-secondary mb-0">Developer</p>
+                            <p class="text-xs font-weight-bold mb-0">{{item.course_Name}}</p>
+                            <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
                         </td>
                         <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-normal">Offline</span>
+                            <span class="text-secondary text-xs font-weight-normal">{{item.duration}}</span>
                         </td>
                         <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-normal">14/09/20</span>
+                            <span class="text-secondary text-xs font-weight-normal">{{item.training_period}}</span>
                         </td>
                         <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-normal">14/09/20</span>
+                            <span class="text-secondary text-xs font-weight-normal">{{item.batch}}</span>
                         </td>
                         <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-normal">14/09/20</span>
+                            <span class="text-secondary text-xs font-weight-normal">{{item.project}}</span>
                         </td>
                         <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-normal">14/09/20</span>
+                            <span class="text-secondary text-xs font-weight-normal">{{item.course_level}}</span>
+                        </td>
+                        <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-normal">{{item.average_salary}}</span>
+                        </td>
+                        <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-normal">{{item.introduction}}</span>
+                        </td>
+                        <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-normal">{{item.course_overview}}</span>
+                        </td>
+                        <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-normal">{{item.learning_outcome}}</span>
+                        </td>
+                        <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-normal">{{item.prerequisite}}</span>
+                        </td>
+                        <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-normal">{{item.career_opportunity}}</span>
+                        </td>
+                        <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-normal">{{item.why_sumago}}</span>
+                        </td>
+                        <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-normal">{{item.trainee}}</span>
                         </td>
                         <td class="align-middle">
 

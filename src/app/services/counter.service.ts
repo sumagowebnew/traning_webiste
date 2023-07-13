@@ -50,6 +50,29 @@ export class CounterService {
   getcertificate(){
     return this.http.get(`${this.apiUrl}get_certificate`)
   }
+  addexpertreview(expert:any){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.post(`${this.apiUrl}add_expertReview`,expert,{headers})
+  }
+  getexpertreview(){
+    return this.http.get(`${this.apiUrl}get_expertReview`)
+  }
+
+  addconsulting(consult:any){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.post(`${this.apiUrl}add_consulting`,consult,{headers})
+  }
+  getconsulting(){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.get(`${this.apiUrl}get_consulting`,{headers})
+  }
+  
 
 
 

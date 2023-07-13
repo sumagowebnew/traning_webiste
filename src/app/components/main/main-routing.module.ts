@@ -14,22 +14,31 @@ import { AboutCounterComponent } from './about-counter/about-counter.component';
 import { EventDataComponent } from 'src/app/Event/event-data/event-data.component';
 import { ProgramsDetailsComponent } from './programs-details/programs-details.component';
 import { ApplyNowComponent } from './apply-now/apply-now.component';
+import { ExpertReviewComponent } from './expert-review/expert-review.component';
+import { ConsultingComponent } from './consulting/consulting.component';
+import { GoogleReviewComponent } from './google-review/google-review.component';
+import { BrochuerComponent } from './brochuer/brochuer.component';
 
 const routes: Routes = [
   {path:'',component:CommonmainComponent,children:[
     {path:'dashboard',component:DashboardComponent},
+
     {path:'apply_now',component:ApplyNowComponent},
     {path:'popular_course',component:AddPopularCourseComponent},
     {path:'archievement',component:ArchievementComponent},
+    {path:'expert_review',component:ExpertReviewComponent},
+    {path:'consulting',component:ConsultingComponent},
 
     {path:'about',component:AboutComponent},
     {path:'about_counter',component:AboutCounterComponent},
+    {path:'google_review',component:GoogleReviewComponent},
 
     {path:'event',component:AddEventComponent},
     {path:'eventdata',component:EventDataComponent},
 
     {path:'diploma_program_category',component:DiplomaProgramCategoryComponent},
     {path:'program_details',component:ProgramsDetailsComponent},
+    {path:'broucher',component:BrochuerComponent},
 
 
     {path:'certificate',component:CerticateComponent},
