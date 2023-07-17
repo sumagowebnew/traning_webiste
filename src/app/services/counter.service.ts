@@ -20,9 +20,7 @@ export class CounterService {
   getcounter() {
     return this.http.get(`${this.apiUrl}get_home_counter`)
   }
-  getapplynow() {
-    return this.http.get(`${this.apiUrl}get_applyNow`)
-  }
+  
 
 
 
@@ -67,10 +65,8 @@ export class CounterService {
     return this.http.post(`${this.apiUrl}add_consulting`,consult,{headers})
   }
   getconsulting(){
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.auth.getToken()}`
-    });
-    return this.http.get(`${this.apiUrl}get_consulting`,{headers})
+   
+    return this.http.get(`${this.apiUrl}get_consulting`)
   }
   
 

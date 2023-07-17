@@ -13,11 +13,11 @@ export class DiplomaProgramCategoryComponent  implements OnInit{
   program: any;
   programlist: any;
 
-  constructor(private our_pro:OurProgramService,private auth:AuthService,private formBuilder:FormBuilder){}
+  constructor(private our_pro:OurProgramService,private formBuilder:FormBuilder){}
 
   ngOnInit(): void {
     this.Createprogram();
-    this.auth.getToken();
+    // this.auth.getToken();
     this.getprogram();
   }
 
@@ -46,7 +46,7 @@ export class DiplomaProgramCategoryComponent  implements OnInit{
 
     getprogram(){
       this.our_pro.getourprogram().subscribe((res:any)=>{
-        this.programlist=res.data;
+        this.programlist=res;
         console.log(this.programlist);
         
       })

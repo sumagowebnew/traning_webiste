@@ -65,10 +65,10 @@ export class AboutComponent implements OnInit {
       }
     );
   }
+
   getteacherlist(){
     this.about.getteacher().subscribe((res:any)=>{
       console.log(res);
-      
       this.teacherlist=res;
 
     })

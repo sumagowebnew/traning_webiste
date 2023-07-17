@@ -18,6 +18,11 @@ import { ExpertReviewComponent } from './expert-review/expert-review.component';
 import { ConsultingComponent } from './consulting/consulting.component';
 import { GoogleReviewComponent } from './google-review/google-review.component';
 import { BrochuerComponent } from './brochuer/brochuer.component';
+import { BannerComponent } from './banner/banner.component';
+import { AluminiComponent } from './alumini/alumini.component';
+import { FaqComponent } from './faq/faq.component';
+import { HireComponent } from './hire/hire.component';
+import { MentorComponent } from './mentor/mentor.component';
 
 const routes: Routes = [
   {path:'',component:CommonmainComponent,children:[
@@ -43,6 +48,12 @@ const routes: Routes = [
 
     {path:'certificate',component:CerticateComponent},
     {path:'contact',component:ContactComponent},
+
+    {path:'banner',component:BannerComponent},
+    {path:'alumini',component:AluminiComponent},
+    {path:'faq',component:FaqComponent},
+    {path:'hire',component:HireComponent},
+    {path:'mentor',component:MentorComponent},
 
     {path:'',redirectTo:'/main/dashboard',pathMatch:'full'},
 

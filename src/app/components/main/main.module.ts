@@ -19,6 +19,11 @@ import { ExpertReviewComponent } from './expert-review/expert-review.component';
 import { GoogleReviewComponent } from './google-review/google-review.component';
 import { ConsultingComponent } from './consulting/consulting.component';
 import { BrochuerComponent } from './brochuer/brochuer.component';
+import { BannerComponent } from './banner/banner.component';
+import { HireComponent } from './hire/hire.component';
+import { MentorComponent } from './mentor/mentor.component';
+import { FaqComponent } from './faq/faq.component';
+import { AluminiComponent } from './alumini/alumini.component';
 
 
 @NgModule({
@@ -40,6 +45,11 @@ import { BrochuerComponent } from './brochuer/brochuer.component';
     GoogleReviewComponent,
     ConsultingComponent,
     BrochuerComponent,
+    BannerComponent,
+    HireComponent,
+    MentorComponent,
+    FaqComponent,
+    AluminiComponent,
     
   ],
   imports: [

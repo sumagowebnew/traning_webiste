@@ -2,15 +2,14 @@
     <div class="row">
         <div class="div">
             <a class="btn btn-info text-white font-weight-normal text-xs" data-bs-toggle="modal"
-            data-bs-target="#addexpert">
-           Add Expert_Review
-        </a>
+            data-bs-target="#addhired">
+            Hire</a>
          <!-- Modal -->
-         <div class="modal fade" id="addexpert" tabindex="-1" role="dialog"
+         <div class="modal fade" id="addhired" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalLabel" aria-hidden="true">
          <div class="modal-dialog modal-dialog-centered" role="document">
              <div class="modal-content">
-                 <div class="modal-header">
+                <div class="modal-header">
                      <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Add Details</h5>
                      <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
                          aria-label="Close">
@@ -18,34 +17,25 @@
                      </button>
                  </div>
                  <div class="modal-body">
-                     <form [formGroup]="expertform">
-                       
-
-                        <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Review</label>
-                                <input type="text" id="designation" class="form-control" formControlName="review">
-                        </div>
+                     <form [formGroup]="hireform" (ngSubmit)="onSubmit()"  >
                        
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Name</label>
-                                <input type="text" id="name" class="form-control" formControlName="name">
+                            <label class="form-label">Title</label>
+                                <input type="text" id="name" class="form-control" formControlName="title">
                         </div>
 
-                        <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Company_position</label>
-                                <input type="text" id="designation" class="form-control" formControlName="company_position">
-                        </div>
-                       
-
+                         <div class="input-group input-group-outline my-3">
+                             <label class="form-label">description</label>
+                                 <input type="text" id="designation" class="form-control" formControlName="description">
+                         </div>
                         
                         <div class="input-group input-group-outline my-3">
                             
                                 <input type="file" id="selectedFile" class="form-control" (change)="onFileSelected($event)" >
                         </div>
-
                          <button type="button" class="btn bg-gradient-secondary"
                          data-bs-dismiss="modal">Close</button>
-                     <button type="submit" (click)="onSubmit()"  class="btn bg-gradient-primary">Save changes</button>
+                     <button type="submit"  class="btn bg-gradient-primary">Save changes</button>
                      </form>
                  </div>
                  <div class="modal-footer">
@@ -65,23 +55,19 @@
                 <thead>
                     
                     <tr>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                            Review</th>
                         
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
                        
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                            Company_position</th>
+                            description</th>
                       
                         <th class="text-secondary opacity-7"></th>
-
-                        
                        
                     </tr>
                 </thead>
                 <tbody>
 
-                    <tr *ngFor="let item of expertlist ">
+                    <tr *ngFor="let item of hirelist ">
                         <td>
                             <div class="d-flex px-2 py-1">
                                 <div>
@@ -89,17 +75,13 @@
                                         class="avatar avatar-sm me-3">
                                 </div>
                                 <div class="d-flex flex-column justify-content-center">
-                                    <p class="text-xs font-weight-bold mb-0">{{item.review}}</p>
+                                    <h6 class="mb-0 text-xs">{{item.title}}</h6>
                                     <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
                                 </div>
                             </div>
                         </td>
                         <td>
-                            <p class="text-xs font-weight-bold mb-0">{{item.name}}</p>
-                            <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
-                        </td>
-                        <td>
-                            <p class="text-xs font-weight-bold mb-0">{{item.company_position}}</p>
+                            <p class="text-xs font-weight-bold mb-0">{{item.description}}</p>
                             <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
                         </td>
                         <td class="align-middle">
@@ -107,12 +89,12 @@
                            
 
                             <a class="btn btn-warning ms-2 text-white font-weight-normal text-xs" data-bs-toggle="modal"
-                            data-bs-target="#editexpert">
+                            data-bs-target="#edithire">
                             Edit
                         </a>
 
                           <!-- Modal -->
-                          <div class="modal fade" id="editexpert" tabindex="-1" role="dialog"
+                          <div class="modal fade" id="edithire" tabindex="-1" role="dialog"
                           aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
                               <div class="modal-content">
@@ -124,39 +106,30 @@
                                       </button>
                                   </div>
                                   <div class="modal-body">
-                                    <form [formGroup]="expertform">
-                       
-
+                                    <form [formGroup]="hireform">
                                         <div class="input-group input-group-outline my-3">
-                                            <label class="form-label">Review</label>
-                                                <input type="text" id="designation" class="form-control" formControlName="review">
-                                        </div>
-                                       
-                                        <div class="input-group input-group-outline my-3">
-                                            <label class="form-label">Name</label>
-                                                <input type="text" id="name" class="form-control" formControlName="name">
+                                            <label class="form-label">Title</label>
+                                                <input type="text" id="name" class="form-control" formControlName="title">
                                         </div>
                 
-                                        <div class="input-group input-group-outline my-3">
-                                            <label class="form-label">Company_position</label>
-                                                <input type="text" id="designation" class="form-control" formControlName="company_position">
-                                        </div>
-                                       
-                
+                                         <div class="input-group input-group-outline my-3">
+                                             <label class="form-label">description</label>
+                                                 <input type="text" id="designation" class="form-control" formControlName="description">
+                                         </div>
                                         
                                         <div class="input-group input-group-outline my-3">
                                             
                                                 <input type="file" id="selectedFile" class="form-control" (change)="onFileSelected($event)" >
                                         </div>
-                
-                                        
-                                     </form>
+        
+                                    </form>
+
 
                                   </div>
                                   <div class="modal-footer">
                                       <button type="button" class="btn bg-gradient-secondary"
                                           data-bs-dismiss="modal">Close</button>
-                                      <button type="submit" (click)="onSubmit()" class="btn bg-gradient-primary">Save changes</button>
+                                      <button type="submit" class="btn bg-gradient-primary">Save changes</button>
                                   </div>
                               </div>
                           </div>
