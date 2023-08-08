@@ -20,6 +20,13 @@ export class EventService {
   getevent(){
     return this.http.get(`${this.apiUrl}get_events`)
   }
+  deleteevent(id: number) {
+    const url = `${this.apiUrl}delete_events/${id}`;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.delete(`${url}`,{headers});
+  }
 
   addeventdetail(eventdata:any){
     const headers = new HttpHeaders({
@@ -33,7 +40,13 @@ export class EventService {
     });
     return this.http.get(`${this.apiUrl}get_eventDetails`,{headers})
   }
-  
+  deleteeventdetail(id: number) {
+    const url = `${this.apiUrl}delete_eventDetails/${id}`;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.delete(`${url}`,{headers});
+  }
  
     
   }

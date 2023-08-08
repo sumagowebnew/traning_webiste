@@ -92,5 +92,17 @@ geteventdetail(){
       
     })
   }
+  deleteeventdetail(id: number) {
+    this.event.deleteeventdetail(id).subscribe(
+      () => {
+        console.log('Event  deleted successfully');
+        // Optionally, update the local list by removing the deleted expert review or fetch the updated list again
+        this.geteventdetail();
+      },
+      (error) => {
+        console.error('Failed to delete event details:', error);
+      }
+    );
+  }
 
 }

@@ -71,5 +71,17 @@ export class MentorComponent implements OnInit{
       this.mentorlist=res.data;
     })
   }
+  deletementor(id: number) {
+    this.newweb.deletementor(id).subscribe(
+      () => {
+        console.log('Archievement deleted successfully');
+        // Optionally, update the local list by removing the deleted counter or fetch the updated list again
+        this.getmentors();
+      },
+      (error) => {
+        console.error('Failed to delete archivement:', error);
+      }
+    );
+  }
 
 }

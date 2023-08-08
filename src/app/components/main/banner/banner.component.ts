@@ -67,4 +67,16 @@ export class BannerComponent implements OnInit {
       this.bannerlist=res;
     })
   }
+  deletebanner(id: number) {
+    this.banner.deletebanner(id).subscribe(
+      () => {
+        console.log('consulting  deleted successfully');
+        // Optionally, update the local list by removing the deleted expert review or fetch the updated list again
+        this.getbanner();
+      },
+      (error) => {
+        console.error('Failed to delete consulting:', error);
+      }
+    );
+  }
 }

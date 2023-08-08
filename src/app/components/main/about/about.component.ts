@@ -70,7 +70,6 @@ export class AboutComponent implements OnInit {
     this.about.getteacher().subscribe((res:any)=>{
       console.log(res);
       this.teacherlist=res;
-
     })
   }
 }

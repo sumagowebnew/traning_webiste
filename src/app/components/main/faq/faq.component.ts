@@ -50,7 +50,19 @@ export class FaqComponent implements OnInit {
         
       })
     }
-
+    
+    deletefaq(id: number) {
+      this.newweb.deletebfaq(id).subscribe(
+        () => {
+          console.log('Archievement deleted successfully');
+          // Optionally, update the local list by removing the deleted counter or fetch the updated list again
+          this.getfaqs();
+        },
+        (error) => {
+          console.error('Failed to delete archivement:', error);
+        }
+      );
+    }
 
 
 

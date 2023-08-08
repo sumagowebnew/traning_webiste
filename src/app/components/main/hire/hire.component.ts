@@ -68,6 +68,18 @@ export class HireComponent  implements OnInit{
       this.hirelist=res;
     })
   }
+  deletehired(id: number) {
+    this.newweb.deletehire(id).subscribe(
+      () => {
+        console.log('Archievement deleted successfully');
+        // Optionally, update the local list by removing the deleted counter or fetch the updated list again
+        this.gethired();
+      },
+      (error) => {
+        console.error('Failed to delete archivement:', error);
+      }
+    );
+  }
 }
 
 

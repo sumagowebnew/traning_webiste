@@ -58,5 +58,17 @@ export class BrochuerComponent implements OnInit{
 
     })
   }
+  deletebrochuer(id: number) {
+    this.our.deletebroucher(id).subscribe(
+      () => {
+        console.log('consulting  deleted successfully');
+        // Optionally, update the local list by removing the deleted expert review or fetch the updated list again
+        this.getbroucher();
+      },
+      (error) => {
+        console.error('Failed to delete consulting:', error);
+      }
+    );
+  }
 
 }

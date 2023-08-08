@@ -22,6 +22,10 @@
                             <!-- <label class="form-label">Name</label> -->
                                 <input type="text" class="form-control" formControlName="name">
                         </div>
+                        <div class="input-group input-group-outline my-3">
+
+                            <input type="file" class="form-control"  (change)="onFileSelected($event)">
+                        </div>
                        
                      </form>
 
@@ -48,7 +52,8 @@
                     <tr>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
                       
-                        <th class="text-secondary opacity-7"></th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                        
                     </tr>
 
@@ -64,6 +69,10 @@
                                 </div> -->
                                 <div class="d-flex flex-column justify-content-center">
                                     <h6 class="mb-0 text-xs">{{item.name}}</h6>
+                                    <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
+                                </div>
+                                <div class="d-flex flex-column justify-content-center">
+                                    <h6 class="mb-0 text-xs">{{item.image}}</h6>
                                     <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
                                 </div>
                             </div>
@@ -96,7 +105,10 @@
                                             <label class="form-label">Name</label>
                                                 <input type="text" class="form-control" formControlName="name">
                                         </div>
-                                       
+                                        <div class="input-group input-group-outline my-3">
+
+                                            <input type="file" class="form-control"  (change)="onFileSelected($event)">
+                                        </div>
                                       </form>
 
 

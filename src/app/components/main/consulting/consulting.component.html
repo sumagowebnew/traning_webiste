@@ -36,6 +36,10 @@
                                 <input type="text"  class="form-control" formControlName="email">
                         </div>
                         <div class="input-group input-group-outline my-3">
+                            <label class="form-label">Contact</label>
+                                <input type="text"  class="form-control" formControlName="contact">
+                        </div>
+                        <div class="input-group input-group-outline my-3">
                             <label class="form-label">Company_name</label>
                                 <input type="text"  class="form-control" formControlName="company_name">
                         </div>
@@ -71,10 +75,11 @@
                         
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
                        
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Contact</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Company_name</th>
                       
-                        <th class="text-secondary opacity-7"></th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 left" >Action</th>
 
                         
                        
@@ -97,6 +102,10 @@
                         </td>
                         <td>
                             <p class="text-xs font-weight-bold mb-0">{{item.email}}</p>
+                            <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">{{item.contact}}</p>
                             <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
                         </td>
                         <td>
@@ -143,6 +152,10 @@
                                                 <input type="text"  class="form-control" formControlName="email">
                                         </div>
                                         <div class="input-group input-group-outline my-3">
+                                            <label class="form-label">Conatct</label>
+                                                <input type="text"  class="form-control" formControlName="contact">
+                                        </div>
+                                        <div class="input-group input-group-outline my-3">
                                             <label class="form-label">Company_name</label>
                                                 <input type="text"  class="form-control" formControlName="company_name">
                                         </div>
@@ -165,7 +178,7 @@
                         <td>
 
 
-                            <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs">
+                            <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs" (click)="deleteconsulting(item.id)">
                                 delete
                             </a>
 

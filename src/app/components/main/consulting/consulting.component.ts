@@ -25,6 +25,7 @@ export class ConsultingComponent implements OnInit {
       fname:['',Validators.required],
       lname: ['', Validators.required],
       email: ['', Validators.required],
+      contact:['',Validators.required],
       company_name: ['', Validators.required],
     });
   }
@@ -37,6 +38,7 @@ export class ConsultingComponent implements OnInit {
     formData.append('fname',this.consultform.value.fname),
     formData.append('lname', this.consultform.value.lname);
     formData.append('email', this.consultform.value.email);
+    formData.append('contact', this.consultform.value.contact);
     formData.append('company_name', this.consultform.value.company_name);
     
 
@@ -57,5 +59,17 @@ export class ConsultingComponent implements OnInit {
       this.consultlist=res.data;
 
     })
+  }
+  deleteconsulting(id: number) {
+    this.count.deleteconsulting(id).subscribe(
+      () => {
+        console.log('consulting  deleted successfully');
+        // Optionally, update the local list by removing the deleted expert review or fetch the updated list again
+        this.getconsult();
+      },
+      (error) => {
+        console.error('Failed to delete consulting:', error);
+      }
+    );
   }
 }

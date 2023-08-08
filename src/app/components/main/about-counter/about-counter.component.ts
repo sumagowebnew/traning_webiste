@@ -53,7 +53,18 @@ export class AboutCounterComponent implements OnInit {
         
       })
     }
-
+    deletecounter(id: number) {
+      this.about.deletecounter(id).subscribe(
+        () => {
+          console.log('Counter deleted successfully');
+          // Optionally, update the local list by removing the deleted counter or fetch the updated list again
+          this.getcounterdata();
+        },
+        (error) => {
+          console.error('Failed to delete counter:', error);
+        }
+      );
+    }
 
 
 }

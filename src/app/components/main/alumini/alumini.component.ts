@@ -71,5 +71,39 @@ export class AluminiComponent implements OnInit {
       this.aluminilist=res.data;
     })
   }
+  updateAlumini(alumini: any): void {
 
+  const updateData = new FormData();
+  updateData.append('name', alumini.name);
+  updateData.append('designation', alumini.designation);
+  updateData.append('company', alumini.company);
+  updateData.append('image', this.base64Image);
+
+  this.newweb.updateAlumni(alumini.id, updateData).subscribe(
+    (res: any) => {
+      console.log('Data updated successfully:', res);
+      // Optionally, update the alumini in the local list or fetch the updated list again
+      this.getalumini();
+    },
+    (error) => {
+      console.error('Failed to update alumini data:', error);
+    }
+  );
 }
+deletealuminies(id: number) {
+  this.newweb.deletealumini(id)
+    .subscribe(
+      () => {
+        console.log('Alumini deleted successfully');
+        window.location.reload();
+        // Perform any additional actions or display success message
+      },
+      (error) => {
+        console.error('Failed to delete alumini', error);
+        // Handle error, display error message, or perform alternative actions
+      }
+    );
+}
+}
+
+

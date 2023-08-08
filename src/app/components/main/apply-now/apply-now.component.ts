@@ -23,5 +23,19 @@ getapplynow(){
     
   })
 }
+deleteapplynow(id: number) {
+  this.counter.deleteapply_now(id)
+    .subscribe(
+      () => {
+        console.log('Apply now deleted successfully');
+        window.location.reload();
+        // Perform any additional actions or display success message
+      },
+      (error) => {
+        console.error('Failed to deleted', error);
+        // Handle error, display error message, or perform alternative actions
+      }
+    );
+}
 
 }

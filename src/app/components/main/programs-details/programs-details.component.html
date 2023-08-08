@@ -31,7 +31,7 @@
                                 <div class="input-group input-group-outline mb-3">
 
                                     <select name="name" class="nav-link dropdown-toggle form-control" style="margin-top:5px"   (change)="getBySort($event)">
-                                        <option value=""> Course Name</option> <!-- Add an "All" option to show all courses -->
+                                        <option value=""> Course Name</option> 
                                         <option *ngFor="let course_Name of programlist" [value]="course_Name.name">{{ course_Name.name }}</option>
                                       </select> 
                                 </div>
@@ -311,7 +311,7 @@
                             <!-- Modal End -->
 
 
-                            <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs">
+                            <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs" (click)="deleteprogramdetail(item.id)">
                                 delete
                             </a>
 

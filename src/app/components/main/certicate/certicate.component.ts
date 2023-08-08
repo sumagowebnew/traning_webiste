@@ -24,7 +24,7 @@ export class CerticateComponent implements OnInit{
   addcerticate(): void {
     this.certificate = this.formBuilder.group({
       title: ['', Validators.required],
-     
+      description: ['', Validators.required],
       selectedFile: [null, Validators.required]
     });
   }
@@ -47,7 +47,7 @@ export class CerticateComponent implements OnInit{
 
     const formData = new FormData();
     formData.append('title', this.certificate.value.title);
-
+    formData.append('description',this.certificate.value.description),
     formData.append('image', this.base64Image);
 
     this.counter.addcertificate(formData).subscribe(
@@ -67,6 +67,18 @@ export class CerticateComponent implements OnInit{
       this.certificatelist=res;
 
     })
+  }
+  deletecertificate(id: number) {
+    this.counter.deletecertificate(id).subscribe(
+      () => {
+        console.log('consulting  deleted successfully');
+        // Optionally, update the local list by removing the deleted expert review or fetch the updated list again
+        this.getcertificate();
+      },
+      (error) => {
+        console.error('Failed to delete consulting:', error);
+      }
+    );
   }
 
 }

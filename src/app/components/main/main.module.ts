@@ -24,6 +24,7 @@ import { HireComponent } from './hire/hire.component';
 import { MentorComponent } from './mentor/mentor.component';
 import { FaqComponent } from './faq/faq.component';
 import { AluminiComponent } from './alumini/alumini.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { AluminiComponent } from './alumini/alumini.component';
   imports: [
     CommonModule,
     MainRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
     
 
   ]

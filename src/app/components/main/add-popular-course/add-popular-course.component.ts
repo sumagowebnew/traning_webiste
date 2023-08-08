@@ -84,6 +84,21 @@ export class AddPopularCourseComponent implements OnInit {
       
     })
   }
+  deletepopularcourse(id: number) {
+    this.counter.deletepopular(id)
+      .subscribe(
+        () => {
+          console.log('Popular Course deleted successfully');
+          window.location.reload();
+          // Perform any additional actions or display success message
+        },
+        (error) => {
+          console.error('Failed to delete course', error);
+          // Handle error, display error message, or perform alternative actions
+        }
+      );
+  }
+
 
 
 }

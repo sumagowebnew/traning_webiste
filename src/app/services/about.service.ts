@@ -21,6 +21,15 @@ export class AboutService {
     getaboutcounter() {
       return this.http.get(`${this.apiUrl}get_about_counter`)
     }
+
+    deletecounter(id:number){
+      const url = `${this.apiUrl}delete_about_counter/${id}`;
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${this.auth.getToken()}`
+      });
+      return this.http.delete(`${url}`,{headers});
+    }
+
     addteacher(teacherdata:any){
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${this.auth.getToken()}`
@@ -39,6 +48,13 @@ export class AboutService {
     }
     getgooglereview(){
       return this.http.get(`${this.apiUrl}get_googleReview`)
+    }
+    deletebgooglereview(id: number) {
+      const url = `${this.apiUrl}delete_googleReview/${id}`;
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${this.auth.getToken()}`
+      });
+      return this.http.delete(`${url}`,{headers});
     }
 
 }

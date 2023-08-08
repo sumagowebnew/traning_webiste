@@ -107,7 +107,7 @@
                            
 
                             <a class="btn btn-warning ms-2 text-white font-weight-normal text-xs" data-bs-toggle="modal"
-                            data-bs-target="#editexpert">
+                            (click)="openEditModal(item)" data-bs-target="#editexpert" >
                             Edit
                         </a>
 
@@ -124,7 +124,7 @@
                                       </button>
                                   </div>
                                   <div class="modal-body">
-                                    <form [formGroup]="expertform">
+                                    <form [formGroup]="editForm1">
                        
 
                                         <div class="input-group input-group-outline my-3">
@@ -156,7 +156,7 @@
                                   <div class="modal-footer">
                                       <button type="button" class="btn bg-gradient-secondary"
                                           data-bs-dismiss="modal">Close</button>
-                                      <button type="submit" (click)="onSubmit()" class="btn bg-gradient-primary">Save changes</button>
+                                      <button type="submit" (click)="updateexpert(item)" class="btn bg-gradient-primary">Save changes</button>
                                   </div>
                               </div>
                           </div>
@@ -167,7 +167,7 @@
                         <td>
 
 
-                            <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs">
+                            <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs" (click)="deletereview(item.id)" >
                                 delete
                             </a>
 
