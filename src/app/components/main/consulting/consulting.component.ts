@@ -11,6 +11,7 @@ export class ConsultingComponent implements OnInit {
   consultform: any;
   consult: any;
   consultlist: any;
+  editForm: any;
 
   constructor(private count:CounterService,private formBuilder:FormBuilder){
 
@@ -18,6 +19,7 @@ export class ConsultingComponent implements OnInit {
   ngOnInit(): void {
     this.addconsulting();
     this.getconsult();
+    this.createEditForm();
     
   }
   addconsulting(): void {
@@ -60,6 +62,42 @@ export class ConsultingComponent implements OnInit {
 
     })
   }
+  createEditForm() {
+    this.editForm = this.formBuilder.group({
+      fname: ['', Validators.required],
+      lname: ['', Validators.required],
+      email:['', Validators.required],
+      contact:['', Validators.required],
+      company_name:['', Validators.required],
+    });
+  }
+  // Function to open the edit modal and populate form fields with the selected counter data
+  openEditModal(consult: any) {
+    this.editForm.setValue({
+      fname: consult.fname,
+      lname: consult.lname,
+      email: consult.email,
+      contact: consult.contact,
+      company_name: consult.company_name,
+     
+    });
+  }
+
+  // Function to handle the update operation in the edit modal
+  updateconsult(archive: any): void {
+    const updatedData = this.editForm.value;
+    this.count.updateconsulting(archive.id, updatedData).subscribe(
+      (res: any) => {
+        console.log('Data updated successfully:', res);
+        // Optionally, update the local list with the updated counter or fetch the updated list again
+        this.getconsult();
+      },
+      (error) => {
+        console.error('Failed to update archivement data:', error);
+      }
+    );
+  }
+
   deleteconsulting(id: number) {
     this.count.deleteconsulting(id).subscribe(
       () => {

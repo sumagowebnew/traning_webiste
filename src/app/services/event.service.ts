@@ -11,6 +11,8 @@ export class EventService {
 
   constructor(private http:HttpClient,private auth:AuthService) { }
 
+
+  //Event 
   addevent(event:any){
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.auth.getToken()}`
@@ -20,6 +22,15 @@ export class EventService {
   getevent(){
     return this.http.get(`${this.apiUrl}get_events`)
   }
+  updateevent(id: number, event: any) {
+
+    const headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.auth.getToken()}`
+      });
+      
+      const url = `${this.apiUrl}update_events/${id}`;
+      return this.http.post(url, event, { headers });
+    }
   deleteevent(id: number) {
     const url = `${this.apiUrl}delete_events/${id}`;
     const headers = new HttpHeaders({
@@ -28,6 +39,8 @@ export class EventService {
     return this.http.delete(`${url}`,{headers});
   }
 
+  //Event Details
+  
   addeventdetail(eventdata:any){
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.auth.getToken()}`

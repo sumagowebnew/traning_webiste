@@ -12,6 +12,7 @@ export class AddEventComponent implements OnInit {
   eventdata: any;
   eventlist: any;
   base64Images: any;
+  editForm: any;
 
   constructor(private event:EventService,private fb:FormBuilder){}
 
@@ -65,6 +66,35 @@ export class AddEventComponent implements OnInit {
         console.log(this.eventlist);
         
       })
+    }
+    createEditForm() {
+      this.editForm = this.fb.group({
+        name: ['', Validators.required],
+        selectedFiles: [null, Validators.required]
+      });
+    }
+    // Function to open the edit modal and populate form fields with the selected counter data
+    openEditModal(consult: any) {
+      this.editForm.setValue({
+        name: consult.name,
+       selectedFiles:consult.base64Images
+       
+      });
+    }
+  
+    // Function to handle the update operation in the edit modal
+    updateevent(event: any): void {
+      const updatedData = this.editForm.value;
+      this.event.updateevent(event.id, updatedData).subscribe(
+        (res: any) => {
+          console.log('Data updated successfully:', res);
+          // Optionally, update the local list with the updated counter or fetch the updated list again
+          this.getevent();
+        },
+        (error) => {
+          console.error('Failed to update archivement data:', error);
+        }
+      );
     }
     deleteevent(id: number) {
       this.event.deleteevent(id).subscribe(

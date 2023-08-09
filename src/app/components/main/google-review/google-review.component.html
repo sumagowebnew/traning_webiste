@@ -52,7 +52,7 @@
                        
                         
                       
-                        <th class="text-secondary opacity-7"></th>
+                        <th class="text-secondary opacity-7">Action</th>
                        
                     </tr>
                 </thead>
@@ -73,7 +73,7 @@
                            
 
                             <a class="btn btn-warning ms-2 text-white font-weight-normal text-xs" data-bs-toggle="modal"
-                            data-bs-target="#editreview">
+                            data-bs-target="#editreview" (click)="openEditModal(item)">
                             Edit
                         </a>
 
@@ -90,15 +90,12 @@
                                       </button>
                                   </div>
                                   <div class="modal-body">
-                                    <form [formGroup]="googleForm">
+                                    <form [formGroup]="editForm1">
                                         <div class="input-group input-group-outline my-3">
                             
                                             <input type="file" id="selectedFile" class="form-control" (change)="onFileSelected($event)" >
                                     </div>
-                                     <button type="button" class="btn bg-gradient-secondary"
-                                     data-bs-dismiss="modal">Close</button>
-                                 <button type="submit" (click)="onSubmit()"  class="btn bg-gradient-primary">Save changes</button>
-                                 
+                                  
         
                                     </form>
 
@@ -107,7 +104,7 @@
                                   <div class="modal-footer">
                                       <button type="button" class="btn bg-gradient-secondary"
                                           data-bs-dismiss="modal">Close</button>
-                                      <button type="submit" (click)="onSubmit()" class="btn bg-gradient-primary">Save changes</button>
+                                      <button type="submit" (click)="updategooglereview(item)" class="btn bg-gradient-primary">Save changes</button>
                                   </div>
                               </div>
                           </div>

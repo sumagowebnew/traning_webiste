@@ -12,6 +12,7 @@ export class MentorComponent implements OnInit{
   base64Image: string;
   mentors: any;
   mentorlist: any;
+  editForm: any;
   
   constructor(private newweb:NewWebService,private formBuilder:FormBuilder){}
   hireform: any;
@@ -80,6 +81,39 @@ export class MentorComponent implements OnInit{
       },
       (error) => {
         console.error('Failed to delete archivement:', error);
+      }
+    );
+  }
+  createEditForm() {
+    this.editForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      designation: ['', Validators.required],
+      company:['',Validators.required],
+      selectedFile: [null, Validators.required]
+    });
+  }
+  
+  // Function to open the edit modal and populate form fields with the selected counter data
+  openEditModal(counter: any) {
+    this.editForm.setValue({
+      name: counter.name,
+      designation: counter.designation,
+      company:counter.company,
+      image:counter.base64Image
+    });
+  }
+
+  // Function to handle the update operation in the edit modal
+  updatementor(mentor: any): void {
+    const updatedData = this.editForm.value;
+    this.newweb.updatementor(mentor.id, updatedData).subscribe(
+      (res: any) => {
+        console.log('Data updated successfully:', res);
+        // Optionally, update the local list with the updated counter or fetch the updated list again
+        this.getmentors();
+      },
+      (error) => {
+        console.error('Failed to update archivement data:', error);
       }
     );
   }

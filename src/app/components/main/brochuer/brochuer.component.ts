@@ -11,12 +11,14 @@ export class BrochuerComponent implements OnInit{
   broucherform: any;
   broucher: any;
   broucherlist: any;
+  editForm: any;
 
   constructor(private our:OurProgramService,private formBuilder:FormBuilder){}
 
   ngOnInit(): void {
     this.addbroucher();
     this.getbroucher();
+    this.createEditForm();
     
   }
 
@@ -67,6 +69,37 @@ export class BrochuerComponent implements OnInit{
       },
       (error) => {
         console.error('Failed to delete consulting:', error);
+      }
+    );
+  }
+  createEditForm() {
+    this.editForm = this.formBuilder.group({
+      name:['',Validators.required],
+      
+      email: ['', Validators.required],
+      contact: ['', Validators.required],
+    });
+  }
+  // Function to open the edit modal and populate form fields with the selected counter data
+  openEditModal(counter: any) {
+    this.editForm.setValue({
+      name: counter.name,
+      email: counter.email,
+      contact:counter.contact
+    });
+  }
+
+  // Function to handle the update operation in the edit modal
+  updatebrocher(archive: any): void {
+    const updatedData = this.editForm.value;
+    this.our.updatebrochuer(archive.id, updatedData).subscribe(
+      (res: any) => {
+        console.log('Data updated successfully:', res);
+        // Optionally, update the local list with the updated counter or fetch the updated list again
+        this.getbroucher();
+      },
+      (error) => {
+        console.error('Failed to update archivement data:', error);
       }
     );
   }

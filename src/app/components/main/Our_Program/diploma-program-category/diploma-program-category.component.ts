@@ -12,6 +12,7 @@ export class DiplomaProgramCategoryComponent  implements OnInit{
   programform: any;
   program: any;
   programlist: any;
+  editForm1: any;
 
   constructor(private our_pro:OurProgramService,private formBuilder:FormBuilder){}
 
@@ -19,6 +20,7 @@ export class DiplomaProgramCategoryComponent  implements OnInit{
     this.Createprogram();
     // this.auth.getToken();
     this.getprogram();
+    this.createEditForm();
   }
 
   Createprogram() {
@@ -51,6 +53,38 @@ export class DiplomaProgramCategoryComponent  implements OnInit{
         
       })
     }
+    createEditForm() {
+      this.editForm1 = this.formBuilder.group({
+       
+        name: ['', Validators.required],
+       
+      });
+    }
+  
+    // Function to open the edit modal and populate form fields with the selected expert review data
+    openEditModal(program: any) {
+      this.editForm1.setValue({
+       
+        name: program.name,
+        
+      });
+    }
+  
+    // Function to handle the update operation in the edit modal
+    updateprogram(program: any): void {
+      const updatedData = this.editForm1.value;
+      this.our_pro.updateprogram(program.id, updatedData).subscribe(
+        (res: any) => {
+          console.log('Data updated successfully:', res);
+          // Optionally, update the local list with the updated expert review or fetch the updated list again
+          this.getprogram();
+        },
+        (error) => {
+          console.error('Failed to update expert review data:', error);
+        }
+      );
+    }
+  
     deleteprogram(id:number){
 
       this.our_pro.deleteourpgm(id).subscribe((res:any)=>{

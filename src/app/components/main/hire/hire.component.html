@@ -89,7 +89,7 @@
                            
 
                             <a class="btn btn-warning ms-2 text-white font-weight-normal text-xs" data-bs-toggle="modal"
-                            data-bs-target="#edithire">
+                            data-bs-target="#edithire" (click)="openEditModal(item)">
                             Edit
                         </a>
 
@@ -106,7 +106,7 @@
                                       </button>
                                   </div>
                                   <div class="modal-body">
-                                    <form [formGroup]="hireform">
+                                    <form [formGroup]="editForm">
                                         <div class="input-group input-group-outline my-3">
                                             <label class="form-label">Title</label>
                                                 <input type="text" id="name" class="form-control" formControlName="title">
@@ -129,7 +129,7 @@
                                   <div class="modal-footer">
                                       <button type="button" class="btn bg-gradient-secondary"
                                           data-bs-dismiss="modal">Close</button>
-                                      <button type="submit" class="btn bg-gradient-primary">Save changes</button>
+                                      <button type="submit" class="btn bg-gradient-primary" (click)="updatehired(item)">Save changes</button>
                                   </div>
                               </div>
                           </div>

@@ -85,7 +85,7 @@
                            
 
                             <a class="btn btn-warning ms-2 text-white font-weight-normal text-xs" data-bs-toggle="modal"
-                            data-bs-target="#editfaq">
+                            data-bs-target="#editfaq" (click)="openEditModal(counter)">
                             Edit
                         </a>
 
@@ -102,7 +102,7 @@
                                       </button>
                                   </div>
                                   <div class="modal-body">
-                                    <form [formGroup]="FaqForm">
+                                    <form [formGroup]="editForm">
                                         <div class="input-group input-group-outline my-3">
                                             <label class="form-label">Question</label>
                                             <input type="text" id="name" class="form-control" formControlName="question">
@@ -120,7 +120,7 @@
                                   <div class="modal-footer">
                                       <button type="button" class="btn bg-gradient-secondary"
                                           data-bs-dismiss="modal">Close</button>
-                                      <button type="submit"(click)="onSubmit()" class="btn bg-gradient-primary">Save changes</button>
+                                      <button type="submit"(click)="updatefaq(counter)" class="btn bg-gradient-primary">Save changes</button>
                                   </div>
                               </div>
                           </div>

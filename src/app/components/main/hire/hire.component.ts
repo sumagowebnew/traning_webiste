@@ -11,6 +11,7 @@ export class HireComponent  implements OnInit{
   base64Image: string;
   hired: any;
   hirelist: any;
+  editForm:any;
 
   constructor(private newweb:NewWebService,private formBuilder:FormBuilder){}
   hireform: any;
@@ -80,6 +81,39 @@ export class HireComponent  implements OnInit{
       }
     );
   }
+  createEditForm() {
+    this.editForm = this.formBuilder.group({
+      title:['',Validators.required],
+      
+      description: ['', Validators.required],
+      selectedFile: [null, Validators.required]
+    });
+  }
+  
+  // Function to open the edit modal and populate form fields with the selected counter data
+  openEditModal(counter: any) {
+    this.editForm.setValue({
+      title: counter.title,
+      description: counter.description,
+      selectedFile:counter.base64Image
+    });
+  }
+
+  // Function to handle the update operation in the edit modal
+  updatehired(hire: any): void {
+    const updatedData = this.editForm.value;
+    this.newweb.updatehire(hire.id, updatedData).subscribe(
+      (res: any) => {
+        console.log('Data updated successfully:', res);
+        // Optionally, update the local list with the updated counter or fetch the updated list again
+        this.gethired();
+      },
+      (error) => {
+        console.error('Failed to update archivement data:', error);
+      }
+    );
+  }
+
 }
 
 

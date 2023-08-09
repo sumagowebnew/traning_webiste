@@ -143,7 +143,7 @@
                            Why Sumago For Web Dev Diploma ?</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Who will be Trainee ?</th>
-                        <th class="text-secondary opacity-7"></th>
+                        <th class="text-secondary opacity-7">Action</th>
 
                     </tr>
                 </thead>
@@ -211,7 +211,7 @@
 
 
                             <a class="btn btn-warning ms-2 text-white font-weight-normal text-xs" data-bs-toggle="modal"
-                                data-bs-target="#editprgramdetail">
+                                data-bs-target="#editprgramdetail" (click)="openEditModal(item)">
                                 Edit
                             </a>
 
@@ -229,7 +229,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
+                                            <form [formGroup]="editForm1">
                                                 <div class="input-group input-group-outline mb-3">
 
                                                     <select class="form-control" id="exampleFormControlSelect1">
@@ -303,7 +303,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn bg-gradient-secondary"
                                                 data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn bg-gradient-primary">Save changes</button>
+                                            <button type="button" class="btn bg-gradient-primary" (click)="updateprogram(item)">Save changes</button>
                                         </div>
                                     </div>
                                 </div>

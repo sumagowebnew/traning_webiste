@@ -13,12 +13,14 @@ export class ProgramsDetailsComponent implements OnInit{
   programdata: any;
   programlist: any;
   name: string;
+  editForm1: any;
 
   constructor(private program:OurProgramService,private formBuilder:FormBuilder){}
 
   ngOnInit(): void {
     this.addprogramdetail();
     this.getprogramdetail();
+    this.createEditForm();
     // this.getprogram();
     
   }
@@ -125,5 +127,69 @@ export class ProgramsDetailsComponent implements OnInit{
     }
   );
     }
+
+    createEditForm() {
+      this.editForm1 = this.formBuilder.group({
+       
+        program_id:['', Validators.required],
+        introduction: ['', Validators.required],
+        course_overview: ['', Validators.required],
+        selectedFile: [null, Validators.required],
+        learning_outcome: ['', Validators.required],
+        prerequisite: ['', Validators.required],
+        duration: ['', Validators.required],
+        training_period: ['', Validators.required],
+        batch: ['', Validators.required],
+        project: ['', Validators.required],
+        average_salary: ['', Validators.required],
+        course_Name: ['', Validators.required],
+        career_opportunity: ['', Validators.required],
+        why_sumago: ['', Validators.required],
+        trainee: ['', Validators.required],
+        course_level: ['', Validators.required],
+       
+      });
+    }
+  
+    // Function to open the edit modal and populate form fields with the selected expert review data
+    openEditModal(program: any) {
+      this.editForm1.setValue({
+       
+      
+        program_id:program.program_id,
+        introduction:program.introduction,
+        course_overview:program.course_overview ,
+        selectedFile:program.selectedFile ,
+        learning_outcome:program.learning_outcome ,
+        prerequisite: program.prerequisite,
+        duration:program.duration ,
+        training_period:program.training_period ,
+        batch: program.batch,
+        project:program.project,
+        average_salary:program.average_salary ,
+        course_Name: program.course_Name,
+        career_opportunity:program.career_opportunity ,
+        why_sumago:program.why_sumago ,
+        trainee:program.trainee,
+        course_level:program.course_level,
+        
+      });
+    }
+  
+    // Function to handle the update operation in the edit modal
+    updateprogram(program: any): void {
+      const updatedData = this.editForm1.value;
+      this.program.updateprogramdetails(program.id, updatedData).subscribe(
+        (res: any) => {
+          console.log('Data updated successfully:', res);
+          // Optionally, update the local list with the updated expert review or fetch the updated list again
+          this.getprogram();
+        },
+        (error) => {
+          console.error('Failed to update expert review data:', error);
+        }
+      );
+    }
+  
 
 }

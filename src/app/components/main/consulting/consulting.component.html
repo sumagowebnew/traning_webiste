@@ -117,7 +117,7 @@
                            
 
                             <a class="btn btn-warning ms-2 text-white font-weight-normal text-xs" data-bs-toggle="modal"
-                            data-bs-target="#editconsult">
+                            data-bs-target="#editconsult"  (click)="openEditModal(item)">
                             Edit
                         </a>
 
@@ -134,7 +134,7 @@
                                       </button>
                                   </div>
                                   <div class="modal-body">
-                                    <form [formGroup]="consultform">
+                                    <form [formGroup]="editForm">
                        
 
                                         <div class="input-group input-group-outline my-3">
@@ -167,7 +167,7 @@
                                   <div class="modal-footer">
                                       <button type="button" class="btn bg-gradient-secondary"
                                           data-bs-dismiss="modal">Close</button>
-                                      <button type="submit" (click)="onSubmit()" class="btn bg-gradient-primary">Save changes</button>
+                                      <button type="submit" (click)="updateconsult(item)" class="btn bg-gradient-primary">Save changes</button>
                                   </div>
                               </div>
                           </div>

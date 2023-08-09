@@ -10,6 +10,8 @@ export class OurProgramService {
 
   constructor(private http:HttpClient,private auth:AuthService) { }
 
+  //Our program
+
   addourprogram(program:any){
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.auth.getToken()}`
@@ -28,6 +30,17 @@ export class OurProgramService {
     });
     return this.http.delete(`${url}`,{headers});
   }
+  updateprogram(id: number, program: any) {
+
+    const headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.auth.getToken()}`
+      });
+      
+      const url = `${this.apiUrl}update_coursecategory/${id}`;
+      return this.http.post(url, program, { headers });
+    }
+
+    //Our Program Details
 
   addprogramdetail(eventdata:any){
     const headers = new HttpHeaders({
@@ -46,7 +59,17 @@ export class OurProgramService {
     });
     return this.http.delete(`${url}`,{headers});
   }
+  updateprogramdetails(id: number, program: any) {
+
+    const headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.auth.getToken()}`
+      });
+      
+      const url = `${this.apiUrl}update_programdetails/${id}`;
+      return this.http.post(url, program, { headers });
+    }
   
+  //Broucher
   
   addbroucher(data:any){
     const headers = new HttpHeaders({
@@ -61,6 +84,15 @@ export class OurProgramService {
    
     return this.http.get(`${this.apiUrl}get_brochuer`,{headers})
   }
+  updatebrochuer(id: number, program: any) {
+
+    const headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.auth.getToken()}`
+      });
+      
+      const url = `${this.apiUrl}update_brochuer/${id}`;
+      return this.http.post(url, program, { headers });
+    }
   deletebroucher(id: number) {
     const url = `${this.apiUrl}delete_brochuer/${id}`;
     const headers = new HttpHeaders({

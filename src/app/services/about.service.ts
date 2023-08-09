@@ -39,6 +39,15 @@ export class AboutService {
     getteacher(){
       return this.http.get(`${this.apiUrl}get_teacher`)
     }
+    updateabout(id: number, teacherdata: any) {
+
+      const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+        });
+        
+        const url = `${this.apiUrl}update_expertReview/${id}`;
+        return this.http.post(url, teacherdata, { headers });
+      }
 
     addgooglereview(review:any){
       const headers = new HttpHeaders({
@@ -56,5 +65,14 @@ export class AboutService {
       });
       return this.http.delete(`${url}`,{headers});
     }
+    updategooglereview(id: number, google: any) {
+
+      const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+        });
+        
+        const url = `${this.apiUrl}update_googleReview/${id}`;
+        return this.http.post(url, google, { headers });
+      }
 
 }

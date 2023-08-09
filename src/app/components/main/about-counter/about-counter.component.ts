@@ -14,6 +14,7 @@ export class AboutCounterComponent implements OnInit {
   counterlist: any;
   counterForm: any;
   counter: any;
+  editForm: any;
 
   constructor(private about:AboutService, private fb:FormBuilder){}
 
@@ -21,6 +22,7 @@ export class AboutCounterComponent implements OnInit {
   ngOnInit(): void {
     this.createCounterForm();
     this.getcounterdata();
+    this.createEditForm();
   }
 
   createCounterForm() {
@@ -65,6 +67,34 @@ export class AboutCounterComponent implements OnInit {
         }
       );
     }
-
+    createEditForm() {
+      this.editForm = this.fb.group({
+        name: ['', Validators.required],
+        count:['',Validators.required]
+      });
+    }
+    // Function to open the edit modal and populate form fields with the selected counter data
+    openEditModal(consult: any) {
+      this.editForm.setValue({
+        name: consult.name,
+       count:consult.count
+       
+      });
+    }
+  
+    // Function to handle the update operation in the edit modal
+    updatecounter(about: any): void {
+      const updatedData = this.editForm.value;
+      this.about.updateabout(about.id, updatedData).subscribe(
+        (res: any) => {
+          console.log('Data updated successfully:', res);
+          // Optionally, update the local list with the updated counter or fetch the updated list again
+          this.getcounterdata();
+        },
+        (error) => {
+          console.error('Failed to update archivement data:', error);
+        }
+      );
+    }
 
 }

@@ -12,6 +12,7 @@ export class NewWebService {
 
   constructor(private http: HttpClient,private auth:AuthService) { }
   
+  //banner
   addbanner(banner:any){
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.auth.getToken()}`
@@ -29,6 +30,7 @@ export class NewWebService {
     return this.http.delete(`${url}`,{headers});
   }
 
+  //hire
   addhire(hired:any){
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.auth.getToken()}`
@@ -38,6 +40,15 @@ export class NewWebService {
   gethire(){
     return this.http.get(`${this.apiUrl}get_hired`)
   }
+  updatehire(id: number, hire: any) {
+
+    const url = `${this.apiUrl}update_hired/${id}`;
+    const headers = new HttpHeaders({
+      
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.post(`${url}`, hire, { headers });
+  }
   deletehire(id: number) {
     const url = `${this.apiUrl}delete_hired/${id}`;
     const headers = new HttpHeaders({
@@ -45,6 +56,9 @@ export class NewWebService {
     });
     return this.http.delete(`${url}`,{headers});
   }
+
+  //Mentor
+
   addmentor(mentor:any){
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.auth.getToken()}`
@@ -54,6 +68,15 @@ export class NewWebService {
   getmentor(){
     return this.http.get(`${this.apiUrl}get_mentor`)
   }
+  updatementor(id: number, mentor: any) {
+
+    const url = `${this.apiUrl}update_mentor/${id}`;
+    const headers = new HttpHeaders({
+      
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.post(`${url}`, mentor, { headers });
+  }
   deletementor(id: number) {
     const url = `${this.apiUrl}delete_mentor/${id}`;
     const headers = new HttpHeaders({
@@ -61,6 +84,9 @@ export class NewWebService {
     });
     return this.http.delete(`${url}`,{headers});
   }
+
+  //Faq
+
   addfaq(faq:any){
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.auth.getToken()}`
@@ -70,6 +96,15 @@ export class NewWebService {
   getfaq(){
     return this.http.get(`${this.apiUrl}get_faq`)
   }
+  updatefaq(id: number, faq: any) {
+
+    const url = `${this.apiUrl}update_faq/${id}`;
+    const headers = new HttpHeaders({
+      
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.post(`${url}`, faq, { headers });
+  }
   deletebfaq(id: number) {
     const url = `${this.apiUrl}delete_faq/${id}`;
     const headers = new HttpHeaders({
@@ -77,6 +112,9 @@ export class NewWebService {
     });
     return this.http.delete(`${url}`,{headers});
   }
+
+  //Alumini
+
   addalumini(alumini:any){
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.auth.getToken()}`
@@ -95,10 +133,7 @@ export class NewWebService {
     });
     return this.http.post(`${url}`, alumniData, { headers });
   }
-  // updateCheckboxValue(videoId: string, checkboxValue: boolean) {
-  //   const url = `${this.apiUrl}videoscheck/${videoId}`;
-  //   return this.http.put(url, { checkboxValue });
-  // }
+ 
 
   deletealumini(id: number): Observable<any> {
     const url = `${this.apiUrl}delete_alumini/${id}`;

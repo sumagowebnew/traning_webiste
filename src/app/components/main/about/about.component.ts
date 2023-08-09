@@ -14,6 +14,7 @@ export class AboutComponent implements OnInit {
   teachers: any;
   base64Image: string | null = null;
   teacherlist: any;
+  editForm: any;
 
   constructor(
     private about:AboutService,
@@ -24,6 +25,7 @@ export class AboutComponent implements OnInit {
   ngOnInit(): void {
     this.aboutTeacher();
     this.getteacherlist();
+    
   }
 
   aboutTeacher(): void {
@@ -72,4 +74,5 @@ export class AboutComponent implements OnInit {
       this.teacherlist=res;
     })
   }
+
 }

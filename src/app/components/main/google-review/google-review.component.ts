@@ -11,6 +11,7 @@ export class GoogleReviewComponent implements OnInit {
   googleForm: any;
   base64Image: string;
   googlereview: any;
+  editForm1: any;
  
   constructor(private about:AboutService,private formBuilder:FormBuilder){
 
@@ -19,6 +20,7 @@ export class GoogleReviewComponent implements OnInit {
   ngOnInit(): void {
     this.addgoogle();
     this.getgoogle();
+    this.createEditForm();
   }
 
 
@@ -79,5 +81,33 @@ export class GoogleReviewComponent implements OnInit {
       }
     );
   }
+  createEditForm() {
+    this.editForm1 = this.formBuilder.group({
+     
+      selectedFile: [null, Validators.required]
+    });
+  }
 
+  // Function to open the edit modal and populate form fields with the selected expert review data
+  openEditModal(expert: any) {
+    this.editForm1.setValue({
+     
+      selectedFile: expert.base64Image
+    });
+  }
+
+  // Function to handle the update operation in the edit modal
+  updategooglereview(google: any): void {
+    const updatedData = this.editForm1.value;
+    this.about.updategooglereview(google.id, updatedData).subscribe(
+      (res: any) => {
+        console.log('Data updated successfully:', res);
+        // Optionally, update the local list with the updated expert review or fetch the updated list again
+        this.getgoogle();
+      },
+      (error) => {
+        console.error('Failed to update expert review data:', error);
+      }
+    );
+  }
 }

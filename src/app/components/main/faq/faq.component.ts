@@ -11,6 +11,7 @@ export class FaqComponent implements OnInit {
   FaqForm: any;
   faqs: any;
   faqlist: any;
+  editForm: any;
 
   constructor(private newweb:NewWebService, private fb:FormBuilder){}
 
@@ -63,6 +64,36 @@ export class FaqComponent implements OnInit {
         }
       );
     }
+    createEditForm() {
+      this.editForm = this.fb.group({
+        question: ['', Validators.required],
+        answer: ['', Validators.required],
+      });
+    }
+    
+    // Function to open the edit modal and populate form fields with the selected counter data
+    openEditModal(counter: any) {
+      this.editForm.setValue({
+       question:counter.question,
+       answer:counter.answer,
+      });
+    }
+  
+    // Function to handle the update operation in the edit modal
+    updatefaq(faq: any): void {
+      const updatedData = this.editForm.value;
+      this.newweb.updatefaq(faq.id, updatedData).subscribe(
+        (res: any) => {
+          console.log('Data updated successfully:', res);
+          // Optionally, update the local list with the updated counter or fetch the updated list again
+          this.getfaqs();
+        },
+        (error) => {
+          console.error('Failed to update archivement data:', error);
+        }
+      );
+    }
+  
 
 
 
