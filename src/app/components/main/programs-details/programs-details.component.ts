@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { OurProgramService } from 'src/app/services/our-program.service';
+import { CounterService } from 'src/app/services/counter.service';
+
 
 @Component({
   selector: 'app-programs-details',
@@ -15,7 +16,7 @@ export class ProgramsDetailsComponent implements OnInit{
   name: string;
   editForm1: any;
 
-  constructor(private program:OurProgramService,private formBuilder:FormBuilder){}
+  constructor(private program:CounterService,private formBuilder:FormBuilder){}
 
   ngOnInit(): void {
     this.addprogramdetail();

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AboutService } from 'src/app/services/about.service';
+
+import { CounterService } from 'src/app/services/counter.service';
 
 @Component({
   selector: 'app-about-counter',
@@ -16,7 +17,7 @@ export class AboutCounterComponent implements OnInit {
   counter: any;
   editForm: any;
 
-  constructor(private about:AboutService, private fb:FormBuilder){}
+  constructor(private about:CounterService, private fb:FormBuilder){}
 
 
   ngOnInit(): void {

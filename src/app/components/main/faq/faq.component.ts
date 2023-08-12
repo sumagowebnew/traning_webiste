@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { NewWebService } from 'src/app/services/new-web.service';
+import { CounterService } from 'src/app/services/counter.service';
+
 
 @Component({
   selector: 'app-faq',
@@ -13,7 +14,7 @@ export class FaqComponent implements OnInit {
   faqlist: any;
   editForm: any;
 
-  constructor(private newweb:NewWebService, private fb:FormBuilder){}
+  constructor(private newweb:CounterService, private fb:FormBuilder){}
 
 
   ngOnInit(): void {

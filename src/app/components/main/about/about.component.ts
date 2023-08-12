@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CounterService } from 'src/app/services/counter.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { AboutService } from 'src/app/services/about.service';
+
 
 @Component({
   selector: 'app-about',
@@ -17,7 +17,7 @@ export class AboutComponent implements OnInit {
   editForm: any;
 
   constructor(
-    private about:AboutService,
+    private about:CounterService,
     private auth: AuthService,
     private formBuilder: FormBuilder
   ) {}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { EventService } from 'src/app/services/event.service';
+import { CounterService } from 'src/app/services/counter.service';
+
 
 @Component({
   selector: 'app-event-data',
@@ -15,7 +16,7 @@ export class EventDataComponent  implements OnInit{
   eventdata: any;
   details: any;
 
-  constructor(private event:EventService,private formBuilder:FormBuilder){}
+  constructor(private event:CounterService,private formBuilder:FormBuilder){}
 
 ngOnInit(): void {
   this.eventdetail();

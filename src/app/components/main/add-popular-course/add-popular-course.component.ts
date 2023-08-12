@@ -85,7 +85,7 @@ export class AddPopularCourseComponent implements OnInit {
     })
   }
   deletepopularcourse(id: number) {
-    this.counter.deletepopular(id)
+    this.counter.deletepopular1(id)
       .subscribe(
         () => {
           console.log('Popular Course deleted successfully');

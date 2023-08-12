@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { EventService } from 'src/app/services/event.service';
+import { CounterService } from 'src/app/services/counter.service';
+
 
 @Component({
   selector: 'app-add-event',
@@ -14,7 +15,7 @@ export class AddEventComponent implements OnInit {
   base64Images: any;
   editForm: any;
 
-  constructor(private event:EventService,private fb:FormBuilder){}
+  constructor(private event:CounterService,private fb:FormBuilder){}
 
   ngOnInit(): void {
     this.CreateEvent();

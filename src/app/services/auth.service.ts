@@ -8,7 +8,7 @@ import { BehaviorSubject,  Observable,  of, tap, throwError } from 'rxjs';
 })
 export class AuthService {
   
-  private apiUrl = 'http://localhost:8000/api/';                                  // Your API URL here
+  private apiUrl = 'https://trainingapi.sumagotest.in/public/api/';                                  // Your API URL here
    token;
   private loggedIn = new BehaviorSubject<boolean>(false);
   access_token: string;
@@ -77,8 +77,4 @@ export class AuthService {
     );
   }
  
-
-
-
-
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AboutService } from 'src/app/services/about.service';
+
+import { CounterService } from 'src/app/services/counter.service';
 
 @Component({
   selector: 'app-google-review',
@@ -13,7 +14,7 @@ export class GoogleReviewComponent implements OnInit {
   googlereview: any;
   editForm1: any;
  
-  constructor(private about:AboutService,private formBuilder:FormBuilder){
+  constructor(private about:CounterService,private formBuilder:FormBuilder){
 
   }
 

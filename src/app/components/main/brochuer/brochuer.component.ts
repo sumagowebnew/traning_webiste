@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { OurProgramService } from 'src/app/services/our-program.service';
+import { CounterService } from 'src/app/services/counter.service';
+
 
 @Component({
   selector: 'app-brochuer',
@@ -13,7 +14,7 @@ export class BrochuerComponent implements OnInit{
   broucherlist: any;
   editForm: any;
 
-  constructor(private our:OurProgramService,private formBuilder:FormBuilder){}
+  constructor(private our:CounterService,private formBuilder:FormBuilder){}
 
   ngOnInit(): void {
     this.addbroucher();
@@ -80,6 +81,7 @@ export class BrochuerComponent implements OnInit{
       contact: ['', Validators.required],
     });
   }
+  
   // Function to open the edit modal and populate form fields with the selected counter data
   openEditModal(counter: any) {
     this.editForm.setValue({

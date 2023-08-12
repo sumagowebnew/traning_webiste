@@ -9,7 +9,7 @@ import { AboutComponent } from './about/about.component';
 import { DiplomaProgramCategoryComponent } from './Our_Program/diploma-program-category/diploma-program-category.component';
 import { ContactComponent } from './contact/contact.component';
 import { AddPopularCourseComponent } from './add-popular-course/add-popular-course.component';
-import { HomeCounterComponent } from './home-counter/home-counter.component';
+
 import { AboutCounterComponent } from './about-counter/about-counter.component';
 import { ProgramsDetailsComponent } from './programs-details/programs-details.component';
 import { ArchievementComponent } from './archievement/archievement.component';
@@ -25,6 +25,13 @@ import { MentorComponent } from './mentor/mentor.component';
 import { FaqComponent } from './faq/faq.component';
 import { AluminiComponent } from './alumini/alumini.component';
 import { FormsModule } from '@angular/forms';
+import { AddOurofficeComponent } from './add-ouroffice/add-ouroffice.component';
+import { CompanyDetailsComponent } from './company-details/company-details.component';
+import { AddLogoComponent } from './add-logo/add-logo.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { AddSubcourseComponent } from './add-subcourse/add-subcourse.component';
+import { SubcourseComponent } from './subcourse/subcourse.component';
+import { CourseComponent } from './course/course.component';
 
 
 @NgModule({
@@ -37,7 +44,7 @@ import { FormsModule } from '@angular/forms';
     DiplomaProgramCategoryComponent,
     ContactComponent,
     AddPopularCourseComponent,
-    HomeCounterComponent,
+  
     AboutCounterComponent,
     ProgramsDetailsComponent,
     ArchievementComponent,
@@ -51,6 +58,13 @@ import { FormsModule } from '@angular/forms';
     MentorComponent,
     FaqComponent,
     AluminiComponent,
+    AddOurofficeComponent,
+    CompanyDetailsComponent,
+    AddLogoComponent,
+    AddProductComponent,
+    AddSubcourseComponent,
+    SubcourseComponent,
+    CourseComponent
     
   ],
   imports: [

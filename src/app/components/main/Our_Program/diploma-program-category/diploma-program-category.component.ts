@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { OurProgramService } from 'src/app/services/our-program.service';
+import { CounterService } from 'src/app/services/counter.service';
+
 
 @Component({
   selector: 'app-diploma-program-category',
@@ -14,7 +15,7 @@ export class DiplomaProgramCategoryComponent  implements OnInit{
   programlist: any;
   editForm1: any;
 
-  constructor(private our_pro:OurProgramService,private formBuilder:FormBuilder){}
+  constructor(private our_pro:CounterService,private formBuilder:FormBuilder){}
 
   ngOnInit(): void {
     this.Createprogram();

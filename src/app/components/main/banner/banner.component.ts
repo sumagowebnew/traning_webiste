@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { NewWebService } from 'src/app/services/new-web.service';
+import { CounterService } from 'src/app/services/counter.service';
+
 
 @Component({
   selector: 'app-banner',
@@ -13,7 +14,7 @@ export class BannerComponent implements OnInit {
   ban: any;
   bannerlist: any;
 
-  constructor(private banner:NewWebService,private formBuilder:FormBuilder){}
+  constructor(private banner:CounterService,private formBuilder:FormBuilder){}
 
   ngOnInit(): void {
     this.addbanner();

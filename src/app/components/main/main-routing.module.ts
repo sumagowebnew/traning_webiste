@@ -23,6 +23,11 @@ import { AluminiComponent } from './alumini/alumini.component';
 import { FaqComponent } from './faq/faq.component';
 import { HireComponent } from './hire/hire.component';
 import { MentorComponent } from './mentor/mentor.component';
+import { CompanyDetailsComponent } from './company-details/company-details.component';
+import { AddOurofficeComponent } from './add-ouroffice/add-ouroffice.component';
+import { AddLogoComponent } from './add-logo/add-logo.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { AddSubcourseComponent } from './add-subcourse/add-subcourse.component';
 
 const routes: Routes = [
   {path:'',component:CommonmainComponent,children:[
@@ -33,6 +38,8 @@ const routes: Routes = [
     {path:'archievement',component:ArchievementComponent},
     {path:'expert_review',component:ExpertReviewComponent},
     {path:'consulting',component:ConsultingComponent},
+    {path:'add_logo',component:AddLogoComponent},
+    {path:'add_product',component:AddProductComponent},
 
     {path:'about',component:AboutComponent},
     {path:'about_counter',component:AboutCounterComponent},
@@ -44,10 +51,13 @@ const routes: Routes = [
     {path:'diploma_program_category',component:DiplomaProgramCategoryComponent},
     {path:'program_details',component:ProgramsDetailsComponent},
     {path:'broucher',component:BrochuerComponent},
+    {path:'add_subcourse',component:AddSubcourseComponent},
 
 
     {path:'certificate',component:CerticateComponent},
     {path:'contact',component:ContactComponent},
+    {path:'Company_detail',component:CompanyDetailsComponent},
+    {path:'Office',component:AddOurofficeComponent},
 
     {path:'banner',component:BannerComponent},
     {path:'alumini',component:AluminiComponent},

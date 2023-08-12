@@ -13,7 +13,6 @@ import { AddEventComponent } from './Event/add-event/add-event.component';
 import { EventDataComponent } from './Event/event-data/event-data.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +22,8 @@ import { EventDataComponent } from './Event/event-data/event-data.component';
     DashboardComponent,
     AddEventComponent,
     EventDataComponent,
+   
+
   
    
    
