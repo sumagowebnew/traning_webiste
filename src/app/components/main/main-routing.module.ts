@@ -28,6 +28,7 @@ import { AddOurofficeComponent } from './add-ouroffice/add-ouroffice.component';
 import { AddLogoComponent } from './add-logo/add-logo.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AddSubcourseComponent } from './add-subcourse/add-subcourse.component';
+import { CourseComponent } from './course/course.component';
 
 const routes: Routes = [
   {path:'',component:CommonmainComponent,children:[
@@ -40,6 +41,8 @@ const routes: Routes = [
     {path:'consulting',component:ConsultingComponent},
     {path:'add_logo',component:AddLogoComponent},
     {path:'add_product',component:AddProductComponent},
+    {path:'add_course',component:CourseComponent},
+    {path:'add_subcourse',component:AddSubcourseComponent},
 
     {path:'about',component:AboutComponent},
     {path:'about_counter',component:AboutCounterComponent},
@@ -51,7 +54,7 @@ const routes: Routes = [
     {path:'diploma_program_category',component:DiplomaProgramCategoryComponent},
     {path:'program_details',component:ProgramsDetailsComponent},
     {path:'broucher',component:BrochuerComponent},
-    {path:'add_subcourse',component:AddSubcourseComponent},
+   
 
 
     {path:'certificate',component:CerticateComponent},
