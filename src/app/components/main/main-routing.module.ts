@@ -28,6 +28,7 @@ import { AddOurofficeComponent } from './add-ouroffice/add-ouroffice.component';
 import { AddLogoComponent } from './add-logo/add-logo.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AddSubcourseComponent } from './add-subcourse/add-subcourse.component';
+import { ProgramFeesListComponent } from 'src/app/components/main/program-fees-list/program-fees-list.component';
 
 const routes: Routes = [
   {path:'',component:CommonmainComponent,children:[
@@ -64,6 +65,7 @@ const routes: Routes = [
     {path:'faq',component:FaqComponent},
     {path:'hire',component:HireComponent},
     {path:'mentor',component:MentorComponent},
+    {path:'program-fees-list',component:ProgramFeesListComponent},
 
     {path:'',redirectTo:'/main/dashboard',pathMatch:'full'},
 

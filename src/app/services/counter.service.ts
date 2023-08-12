@@ -725,6 +725,37 @@ export class CounterService {
     return this.http.delete(url,{headers});
   }
 
+
+  //Program Fees
+  
+  addProgramFees(alumini:any){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.post(`${this.apiUrl}add_course_fee_details`,alumini,{headers})
+  }
+  getProgramFees(){
+    return this.http.get(`${this.apiUrl}get_course_fee_details_list`)
+  }
+  updateProgramFees(id: number, alumniData: any) {
+
+    const url = `${this.apiUrl}update_course_fee_details/${id}`;
+    const headers = new HttpHeaders({
+      
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.post(`${url}`, alumniData, { headers });
+  }
+ 
+
+  deleteProgramFees(id: number): Observable<any> {
+    const url = `${this.apiUrl}delete_course_fee_details/${id}`;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.delete(url,{headers});
+  }
+
 }
 
 
