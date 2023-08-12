@@ -32,6 +32,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { AddSubcourseComponent } from './add-subcourse/add-subcourse.component';
 import { SubcourseComponent } from './subcourse/subcourse.component';
 import { CourseComponent } from './course/course.component';
+import { SubcourseDetailsComponent } from './subcourse-details/subcourse-details.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { CourseComponent } from './course/course.component';
     AddProductComponent,
     AddSubcourseComponent,
     SubcourseComponent,
-    CourseComponent
+    CourseComponent,
+    SubcourseDetailsComponent
     
   ],
   imports: [

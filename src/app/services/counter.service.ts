@@ -199,6 +199,29 @@ export class CounterService {
     });
     return this.http.delete(`${url}`,{headers});
   }
+  //Subcourse details
+  addSubscoursesdetail(subcourses:any){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.post(`${this.apiUrl}add_subcourse_details`,subcourses,{headers})
+  }
+  getSubcoursesdetail(){
+    return this.http.get(`${this.apiUrl}get_subcourse_details_list`)
+  }
+
+  getSubcoursesbyId(Id:number){
+    return this.http.get(`${this.apiUrl}get_subcourse_details/${Id}`)
+  }
+
+  
+  deleteSubcoursedetail(id: number): Observable<any> {
+    const url = `${this.apiUrl}delete_alu mini/${id}`;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.delete(url,{headers});
+  }
   //Popular details
 
   deletepopular(id: number) {
