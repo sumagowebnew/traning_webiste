@@ -1,0 +1,178 @@
+<!-- Category -->
+<div class="container">
+    <div class="row">
+        <div class="div">
+            <a class="btn btn-info text-white font-weight-normal text-xs" data-bs-toggle="modal"
+                data-bs-target="#eventcategory">
+                ADD handson Category Data
+            </a>
+            <!-- Modal -->
+            <div class="modal fade" id="eventcategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Add Details</h5>
+                            <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form [formGroup]="handsonProject">
+
+                                <div class="input-group input-group-outline mb-3">
+                                    <div class="input-group input-group-outline my-3">
+                                        <label for="handsonCategory">Handson Category:</label>
+                                        <select formControlName="handsonCategory">
+                                            <option *ngFor="let category of handsonCategoryDetails"
+                                                [value]="category.id">{{ category.title }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="input-group input-group-outline mb-3">
+                                    <div class="input-group input-group-outline my-3">
+                                        <label for="subCourse">Sub Course:</label>
+                                        <select formControlName="sub_course_id">
+                                            <option *ngFor="let subCourse of subcourses" [value]="subCourse.id">{{
+                                                subCourse.title }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="input-group input-group-outline mb-3">
+                                    <div class="input-group input-group-outline my-3">
+                                        <label class="form-label">title</label>
+                                        <input type="text" class="form-control" formControlName="title">
+                                    </div>
+                                </div>
+                                <div class="input-group input-group-outline mb-3">
+                                    <div class="input-group input-group-outline my-3">
+                                        <label for="description">Description:</label>
+                                        <textarea formControlName="description"></textarea>                                    
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn bg-gradient-secondary"
+                                data-bs-dismiss="modal">Close</button>
+                            <button type="button" (click)="addProjects()" class="btn bg-gradient-primary">Save
+                                changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal End -->
+        </div>
+    </div>
+    <div class="card">
+        <div class="div"></div>
+        <div class="table-responsive">
+
+            <table class="table align-items-center mb-0">
+                <thead>
+
+                    <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Title</th>
+                        <th class="text-secondary opacity-7">Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let item of handsonProjectDetails">
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">{{item.id}}</p>
+                            <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">{{item.title}}</p>
+                            <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
+                        </td>
+
+
+                        <td class="align-middle">
+                            <a class="btn btn-warning ms-2 text-white font-weight-normal text-xs" data-bs-toggle="modal"
+                                data-bs-target="#editeventdata2">
+                                Edit
+                            </a>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="editeventdata2" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Edit
+                                                Course</h5>
+                                            <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form [formGroup]="handsonProjectUpdateForm">
+
+                                                <div class="input-group input-group-outline mb-3">
+                                                    <div class="input-group input-group-outline my-3">
+                                                        <label for="handsonCategory">Handson Category:</label>
+                                                        <select formControlName="handsonCategory">
+                                                            <option *ngFor="let category of handsonCategoryDetails"
+                                                                [value]="category.id">{{ category.title }}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                
+                                                <div class="input-group input-group-outline mb-3">
+                                                    <div class="input-group input-group-outline my-3">
+                                                        <label for="subCourse">Sub Course:</label>
+                                                        <select formControlName="sub_course_id">
+                                                            <option *ngFor="let subCourse of subcourses" [value]="subCourse.id">{{
+                                                                subCourse.title }}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="input-group input-group-outline mb-3">
+                                                    <div class="input-group input-group-outline my-3">
+                                                        <label class="form-label">title</label>
+                                                        <input type="text" class="form-control" formControlName="title">
+                                                    </div>
+                                                </div>
+                                                <div class="input-group input-group-outline mb-3">
+                                                    <div class="input-group input-group-outline my-3">
+                                                        <label for="description">Description:</label>
+                                                        <textarea formControlName="description"></textarea>                                    
+                                                    </div>
+                                                </div>
+                
+                                            </form>
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn bg-gradient-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn bg-gradient-primary"
+                                                (click)="updateProject(item.id) ">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal End -->
+
+
+                            <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs"
+                                (click)="deleteProjects(item.id)">
+                                delete
+                            </a>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -24,7 +24,7 @@ import { ProgramFeesListComponent } from './components/main/program-fees-list/pr
     AddEventComponent,
     EventDataComponent,
     ProgramFeesListComponent,
-   
+
 
   
    

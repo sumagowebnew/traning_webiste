@@ -66,7 +66,7 @@ export class CourseComponent {
   getcompany(){
     this.company.getcourse().subscribe((res:any)=>{
       console.log(res);
-      this.bannerlist=res;
+      this.bannerlist=res.data;
     })
   }
   deletecompany(id: number) {

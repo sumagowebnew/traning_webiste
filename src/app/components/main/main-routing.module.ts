@@ -30,6 +30,9 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { AddSubcourseComponent } from './add-subcourse/add-subcourse.component';
 import { CourseComponent } from './course/course.component';
 import { ProgramFeesListComponent } from 'src/app/components/main/program-fees-list/program-fees-list.component';
+import { CohortsComponent } from './cohorts/cohorts.component';
+import { HandsonCategoryComponent } from './handson-category/handson-category.component';
+import { HandsonProjectComponent } from './handson-project/handson-project.component';
 
 const routes: Routes = [
   {path:'',component:CommonmainComponent,children:[
@@ -69,6 +72,9 @@ const routes: Routes = [
     {path:'hire',component:HireComponent},
     {path:'mentor',component:MentorComponent},
     {path:'program-fees-list',component:ProgramFeesListComponent},
+    {path:'cohorts',component:CohortsComponent},
+    {path:'handsonCategory',component:HandsonCategoryComponent},
+    {path:'handsonProject',component:HandsonProjectComponent},
 
     {path:'',redirectTo:'/main/dashboard',pathMatch:'full'},
 

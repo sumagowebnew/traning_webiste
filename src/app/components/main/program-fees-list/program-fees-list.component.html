@@ -1,1 +1,255 @@
-<p>program-fees-list works!</p>
+<div class="container">
+    <div class="row">
+        <div class="div">
+            <a class="btn btn-info text-white font-weight-normal text-xs" data-bs-toggle="modal"
+            data-bs-target="#addconsult">
+           Add Course Fees
+        </a>
+         <!-- Modal -->
+         <div class="modal fade" id="addconsult" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered" role="document">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Add Details</h5>
+                     <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
+                         aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                     </button>
+                 </div>
+                 <div class="modal-body">
+                    <form [formGroup]="ProgramFeesFormData" (ngSubmit)="onSubmit()">
+                      <div class="input-group input-group-outline my-3">
+                        <label class="form-label">Program ID</label>
+                        <input type="text" class="form-control" formControlName="pro_max_id">
+                      </div>
+
+                      <div class="input-group input-group-outline my-3">
+                        <label for="course">Course</label>
+                        <select id="course" formControlName="course_id" class="form-control" required>
+                          <option value="" disabled selected>Select Course</option>
+                          <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}</option>
+                        </select>
+                        <div class="invalid-feedback">Course is required</div>
+                      </div>
+                      
+                      <div class="input-group input-group-outline my-3">
+                        <label for="course">Subcourse</label>
+                        <select id="course" formControlName="sub_course_id" class="form-control" required>
+                          <option value="" disabled selected>Select Subcourse</option>
+                          <option [value]="sub.id" *ngFor="let sub of subcourseDetails" style="color: black;">{{ sub.title }}</option>
+                        </select>
+                        <div class="invalid-feedback">Sub Course is required</div>
+                      </div>
+                      
+                  
+                      <div class="input-group input-group-outline my-3">
+                        <label class="form-label">Job Assistance</label>
+                        <input type="text" class="form-control" formControlName="job_assistance">
+                      </div>
+                  
+                      <div class="input-group input-group-outline my-3">
+                        <label class="form-label">Live Class Subscription</label>
+                        <input type="text" class="form-control" formControlName="live_class_subscription">
+                      </div>
+
+                      <div class="input-group input-group-outline my-3">
+                        <label class="form-label">LMS Subscription</label>
+                        <input type="text" class="form-control" formControlName="lms_subscription">
+                      </div>
+
+                      <div class="input-group input-group-outline my-3">
+                        <label class="form-label">Job Referrals</label>
+                        <input type="text" class="form-control" formControlName="job_referrals">
+                      </div>
+                      
+                      <div class="input-group input-group-outline my-3">
+                        <label class="form-label">Industry Projects</label>
+                        <input type="text" class="form-control" formControlName="industry_projects">
+                      </div>
+                      
+                      <div class="input-group input-group-outline my-3">
+                        <label class="form-label">Domain Training</label>
+                        <input type="text" class="form-control" formControlName="domain_training">
+                      </div>
+                      
+                      
+                      <div class="input-group input-group-outline my-3">
+                        <label class="form-label">Project Certification From Companies</label>
+                        <input type="text" class="form-control" formControlName="project_certification_from_companies">
+                      </div>
+
+                      <div class="input-group input-group-outline my-3">
+                        <label class="form-label">Advance AI DSA</label>
+                        <input type="text" class="form-control" formControlName="adv_ai_dsa">
+                      </div>
+                      
+                      
+                      <div class="input-group input-group-outline my-3">
+                        <label class="form-label">Microsoft Certification</label>
+                        <input type="text" class="form-control" formControlName="microsoft_certification">
+                      </div>
+                      
+                      
+
+                  
+                      <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn bg-gradient-primary">Save changes</button>
+                    </form>
+                  </div>
+                  <div class="modal-footer"></div>
+             </div>
+         </div>
+     </div>
+     <!-- Modal End -->
+        </div>
+    </div>
+    <div class="card">
+        <div class="div"></div>
+        <div class="table-responsive">
+            
+            <table class="table align-items-center mb-0">
+                <thead>
+                    
+                    <tr>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                           Job Assistance</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            LCS</th>      
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">lms_subscription</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">job_referrals</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">industry_projects</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">capstone_projects</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">domain_training</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">project_certification_from_companies</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">adv_ai_dsa</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">microsoft_certification</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 left" >Update</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 left" >Delete</th>
+
+                        
+                       
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let item of ProgramFeesData ">
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0 align-middle">{{item.job_assistance}}</p>
+                           
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">{{item.live_class_subscription}}</p>
+                       
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">{{item.lms_subscription}}</p>
+                     
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">{{item.job_referrals}}</p>
+                        
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">{{item.industry_projects}}</p>
+                        
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">{{item.capstone_projects}}</p>
+                        
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">{{item.domain_training}}</p>
+                        
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">{{item.project_certification_from_companies}}</p>
+                        
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">{{item.adv_ai_dsa}}</p>
+                        
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0 align-middle">{{item.microsoft_certification}}</p>
+                        
+                        </td>
+                        <td class="align-middle">
+                            <a class="btn btn-warning ms-2 text-white font-weight-normal text-xs" data-bs-toggle="modal"
+                            data-bs-target="#editconsult" >
+                            Edit
+                        </a>
+
+                            <div class="modal fade" id="editconsult" tabindex="-1" role="dialog"
+                          aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Edit Course</h5>
+                                      <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
+                                          aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form [formGroup]="ProgramFeesFormData">
+                       
+
+                                        <div class="input-group input-group-outline my-3">
+                                            <label class="form-label">First name</label>
+                                                <input type="text"  class="form-control" formControlName="fname">
+                                        </div>
+                                       
+                                        <div class="input-group input-group-outline my-3">
+                                            <label class="form-label">Last Name</label>
+                                                <input type="text" id="name" class="form-control" formControlName="lname">
+                                        </div>
+                
+                                        <div class="input-group input-group-outline my-3">
+                                            <label class="form-label">Email</label>
+                                                <input type="text"  class="form-control" formControlName="email">
+                                        </div>
+                                        <div class="input-group input-group-outline my-3">
+                                            <label class="form-label">Conatct</label>
+                                                <input type="text"  class="form-control" formControlName="contact">
+                                        </div>
+                                        <div class="input-group input-group-outline my-3">
+                                            <label class="form-label">Company_name</label>
+                                                <input type="text"  class="form-control" formControlName="company_name">
+                                        </div>
+                
+                                        
+                                     </form>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn bg-gradient-secondary"
+                                          data-bs-dismiss="modal">Close</button>
+                                      <button type="submit" (click)="updateProgramFeesData(item.id)" class="btn bg-gradient-primary">Save changes</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                
+                       
+
+                        <td>
+
+
+                            <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs" (click)="deleteProgramFeesData(item.id)">
+                                delete
+                            </a>
+
+                        </td>
+                      
+                        
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+

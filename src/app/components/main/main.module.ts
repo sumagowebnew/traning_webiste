@@ -33,6 +33,9 @@ import { AddSubcourseComponent } from './add-subcourse/add-subcourse.component';
 import { SubcourseComponent } from './subcourse/subcourse.component';
 import { CourseComponent } from './course/course.component';
 import { SubcourseDetailsComponent } from './subcourse-details/subcourse-details.component';
+import { CohortsComponent } from './cohorts/cohorts.component';
+import { HandsonCategoryComponent } from './handson-category/handson-category.component';
+import { HandsonProjectComponent } from './handson-project/handson-project.component';
 
 
 @NgModule({
@@ -66,7 +69,10 @@ import { SubcourseDetailsComponent } from './subcourse-details/subcourse-details
     AddSubcourseComponent,
     SubcourseComponent,
     CourseComponent,
-    SubcourseDetailsComponent
+    SubcourseDetailsComponent,
+    CohortsComponent,
+    HandsonCategoryComponent,
+    HandsonProjectComponent
     
   ],
   imports: [

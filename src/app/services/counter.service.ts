@@ -181,7 +181,10 @@ export class CounterService {
     return this.http.post(`${this.apiUrl}add_subcourse`,logo,{headers})
   }
   getsubcourse(){
-    return this.http.get(`${this.apiUrl}get_subcourse`)
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.get(`${this.apiUrl}get_subcourse_details_list`,{headers})
   }
   updatesubcourse(id: number, logo: any) {
 
@@ -751,14 +754,17 @@ export class CounterService {
 
   //Program Fees
   
-  addProgramFees(alumini:any){
+  addProgramFees(data:any){
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.auth.getToken()}`
     });
-    return this.http.post(`${this.apiUrl}add_course_fee_details`,alumini,{headers})
+    return this.http.post(`${this.apiUrl}add_course_fee_details`,data,{headers})
   }
   getProgramFees(){
-    return this.http.get(`${this.apiUrl}get_course_fee_details_list`)
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.get(`${this.apiUrl}get_course_fee_details_list`,{headers})
   }
   updateProgramFees(id: number, alumniData: any) {
 
@@ -779,6 +785,96 @@ export class CounterService {
     return this.http.delete(url,{headers});
   }
 
+
+  //Cohorts Date
+
+ // POST: Create a new batch
+ addBatch(batchData: any): Observable<any> {
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.auth.getToken()}`
+  });
+  return this.http.post(`${this.apiUrl}add_next_cohorts_dates`, batchData, { headers });
+}
+
+// GET: Get list of batches
+getBatches(): Observable<any[]> {
+
+  return this.http.get<any[]>(`${this.apiUrl}get_next_cohorts_dates`);
+}
+
+// DELETE: Delete a batch by ID
+deleteBatch(id: number): Observable<any> {
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.auth.getToken()}`
+  });
+  return this.http.delete(`${this.apiUrl}delete_next_cohorts_dates/${id}`, { headers });
+}
+
+//Handson Category
+addHandosnCategory(data: any): Observable<any> {
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.auth.getToken()}`
+  });
+  return this.http.post(`${this.apiUrl}add_handson_category`, data, { headers });
+}
+
+
+getHandsonCategory(): Observable<any[]> {
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.auth.getToken()}`
+  });
+  return this.http.get<any[]>(`${this.apiUrl}get_category`, { headers });
+}
+
+deleteHandsonCategory(id: number): Observable<any> {
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.auth.getToken()}`
+  });
+  return this.http.delete(`${this.apiUrl}delete_handson_category/${id}`, { headers });
+}
+
+updateHandsonCategory(id: number, data: any) {
+
+  const url = `${this.apiUrl}update_handson_category/${id}`;
+  const headers = new HttpHeaders({
+    
+    'Authorization': `Bearer ${this.auth.getToken()}`
+  });
+  return this.http.post(`${url}`, data, { headers });
+}
+
+// Handson Project Details
+addHandosnProject(data: any): Observable<any> {
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.auth.getToken()}`
+  });
+  return this.http.post(`${this.apiUrl}add_handson_project_details`, data, { headers });
+}
+
+
+getHandsonProject(): Observable<any[]> {
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.auth.getToken()}`
+  });
+  return this.http.get<any[]>(`${this.apiUrl}get_handson_project_details`, { headers });
+}
+
+deleteHandsonProject(id: number): Observable<any> {
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.auth.getToken()}`
+  });
+  return this.http.delete(`${this.apiUrl}delete_handson_project_details/${id}`, { headers });
+}
+
+updateHandsonProject(id: number, data: any) {
+
+  const url = `${this.apiUrl}update_handson_project_details/${id}`;
+  const headers = new HttpHeaders({
+    
+    'Authorization': `Bearer ${this.auth.getToken()}`
+  });
+  return this.http.post(`${url}`, data, { headers });
+}
 }
 
 
