@@ -11,6 +11,7 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { AddEventComponent } from './Event/add-event/add-event.component';
 import { EventDataComponent } from './Event/event-data/event-data.component';
+import { ProgramFeesListComponent } from './components/main/program-fees-list/program-fees-list.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { EventDataComponent } from './Event/event-data/event-data.component';
     DashboardComponent,
     AddEventComponent,
     EventDataComponent,
-   
+    ProgramFeesListComponent,
+
 
   
    

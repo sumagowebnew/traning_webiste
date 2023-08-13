@@ -33,14 +33,9 @@ import { AddSubcourseComponent } from './add-subcourse/add-subcourse.component';
 
 import { CourseComponent } from './course/course.component';
 import { SubcourseDetailsComponent } from './subcourse-details/subcourse-details.component';
-import { TrainedStudentComponent } from './trained-student/trained-student.component';
-import { ModuleComponent } from './module/module.component';
-import { SyllabusModuleComponent } from './syllabus-module/syllabus-module.component';
-import { LearnerReviewComponent } from './learner-review/learner-review.component';
-import { ProgramCityComponent } from './program-city/program-city.component';
-import { HighlightsComponent } from './highlights/highlights.component';
-import { CounsellingComponent } from './counselling/counselling.component';
-import { CourseHighlightComponent } from './course-highlight/course-highlight.component';
+import { CohortsComponent } from './cohorts/cohorts.component';
+import { HandsonCategoryComponent } from './handson-category/handson-category.component';
+import { HandsonProjectComponent } from './handson-project/handson-project.component';
 
 
 @NgModule({
@@ -72,17 +67,11 @@ import { CourseHighlightComponent } from './course-highlight/course-highlight.co
     AddLogoComponent,
     AddProductComponent,
     AddSubcourseComponent,
-  
+    CohortsComponent,
+    HandsonCategoryComponent,
+    HandsonProjectComponent,
     CourseComponent,
-    SubcourseDetailsComponent,
-    TrainedStudentComponent,
-    ModuleComponent,
-    SyllabusModuleComponent,
-    LearnerReviewComponent,
-    ProgramCityComponent,
-    HighlightsComponent,
-    CounsellingComponent,
-    CourseHighlightComponent
+    SubcourseDetailsComponent
     
   ],
   imports: [

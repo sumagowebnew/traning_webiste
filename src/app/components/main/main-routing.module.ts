@@ -29,6 +29,10 @@ import { AddLogoComponent } from './add-logo/add-logo.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AddSubcourseComponent } from './add-subcourse/add-subcourse.component';
 import { CourseComponent } from './course/course.component';
+import { ProgramFeesListComponent } from 'src/app/components/main/program-fees-list/program-fees-list.component';
+import { CohortsComponent } from './cohorts/cohorts.component';
+import { HandsonCategoryComponent } from './handson-category/handson-category.component';
+import { HandsonProjectComponent } from './handson-project/handson-project.component';
 import { SubcourseDetailsComponent } from './subcourse-details/subcourse-details.component';
 
 const routes: Routes = [
@@ -44,11 +48,12 @@ const routes: Routes = [
     {path:'add_product',component:AddProductComponent},
     {path:'add_course',component:CourseComponent},
     {path:'add_subcourse',component:AddSubcourseComponent},
+    {path:'subcourse_detail',component:SubcourseDetailsComponent},
 
     {path:'about',component:AboutComponent},
     {path:'about_counter',component:AboutCounterComponent},
     {path:'google_review',component:GoogleReviewComponent},
-    {path:'subcourse_detail',component:SubcourseDetailsComponent},
+  
 
     {path:'event',component:AddEventComponent},
     {path:'eventdata',component:EventDataComponent},
@@ -69,6 +74,10 @@ const routes: Routes = [
     {path:'faq',component:FaqComponent},
     {path:'hire',component:HireComponent},
     {path:'mentor',component:MentorComponent},
+    {path:'program-fees-list',component:ProgramFeesListComponent},
+    {path:'cohorts',component:CohortsComponent},
+    {path:'handsonCategory',component:HandsonCategoryComponent},
+    {path:'handsonProject',component:HandsonProjectComponent},
 
     {path:'',redirectTo:'/main/dashboard',pathMatch:'full'},
 
