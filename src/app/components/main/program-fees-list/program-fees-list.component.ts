@@ -18,7 +18,7 @@ export class ProgramFeesListComponent implements OnInit {
       pro_max_id: [''], // Initialize with default values if needed
       course_id: [''],
       sub_course_id: [''],
-      job_assistance: ['required'],
+      job_assistance: ['',Validators.required],
       live_class_subscription: ['required'],
       lms_subscription: ['required'],
       job_referrals: ['required'],

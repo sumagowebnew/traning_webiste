@@ -36,6 +36,14 @@ import { SubcourseDetailsComponent } from './subcourse-details/subcourse-details
 import { CohortsComponent } from './cohorts/cohorts.component';
 import { HandsonCategoryComponent } from './handson-category/handson-category.component';
 import { HandsonProjectComponent } from './handson-project/handson-project.component';
+import {TrainedStudentComponent} from './trained-student/trained-student.component';
+import { ModuleComponent } from './module/module.component';
+import { LearnerReviewComponent } from './learner-review/learner-review.component';
+import { HighlightsComponent } from './highlights/highlights.component';
+import { CourseHighlightComponent } from './course-highlight/course-highlight.component';
+import { CounsellingComponent } from './counselling/counselling.component';
+import { SyllabusModuleComponent } from './syllabus-module/syllabus-module.component';
+import { ProgramCityComponent } from './program-city/program-city.component';
 
 
 @NgModule({
@@ -71,7 +79,16 @@ import { HandsonProjectComponent } from './handson-project/handson-project.compo
     HandsonCategoryComponent,
     HandsonProjectComponent,
     CourseComponent,
-    SubcourseDetailsComponent
+    SubcourseDetailsComponent,
+    TrainedStudentComponent,
+    ModuleComponent,
+    LearnerReviewComponent,
+    HighlightsComponent,
+    CourseHighlightComponent,
+    CounsellingComponent,
+    SyllabusModuleComponent,
+    ProgramCityComponent,
+    
     
   ],
   imports: [

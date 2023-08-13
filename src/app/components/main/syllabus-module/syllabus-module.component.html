@@ -1,1 +1,163 @@
-<p>syllabus-module works!</p>
+<div class="container">
+    <div class="row">
+        <div class="div">
+            <a class="btn btn-info text-white font-weight-normal text-xs" data-bs-toggle="modal"
+            data-bs-target="#addsyllabus">
+           Add Syllabus
+        </a>
+         <!-- Modal -->
+         <div class="modal fade" id="addsyllabus" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered" role="document">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Add Details</h5>
+                     <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
+                         aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                     </button>
+                 </div>
+                 <div class="modal-body">
+                    <form [formGroup]="ProgramFeesFormData">
+                     
+
+                      <div class="input-group input-group-outline my-3">
+                        <label for="course">Course</label>
+                        <select id="course" formControlName="course_id" class="form-control" required>
+                          <option value="" disabled selected>Select Course</option>
+                          <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}</option>
+                        </select>
+                        <div class="invalid-feedback">Course is required</div>
+                      </div>
+                      
+                      <div class="input-group input-group-outline my-3">
+                        <label for="course">Module</label>
+                        <select id="course" formControlName="sub_course_id" class="form-control" required>
+                          <option value="" disabled selected>Select Module</option>
+                          <option [value]="sub.id" *ngFor="let sub of subcourseDetails" style="color: black;">{{ sub.title }}</option>
+                        </select>
+                        
+                      </div>
+                      
+                  
+                      <div class="input-group input-group-outline my-3">
+                        <label class="form-label">title</label>
+                        <input type="text" class="form-control" formControlName="title">
+                      </div>
+                  
+                      <div class="input-group input-group-outline my-3">
+                        <label class="form-label">Description</label>
+                        <input type="text" class="form-control" formControlName="description">
+                      </div>
+
+                       
+
+                  
+                      <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn bg-gradient-primary" (click)="onSubmit()">Save changes</button>
+                    </form>
+                  </div>
+                  <div class="modal-footer"></div>
+             </div>
+         </div>
+     </div>
+     <!-- Modal End -->
+        </div>
+    </div>
+    <div class="card">
+        <div class="div"></div>
+        <div class="table-responsive">
+            
+            <table class="table align-items-center mb-0">
+                <thead>
+                    
+                    <tr>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                           Title</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            Description</th>      
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+   
+                        
+                       
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let item of ProgramFeesData ">
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0 align-middle">{{item.title}}</p>
+                           
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">{{item.description}}</p>
+                       
+                        </td>
+                  <td>
+                        <!-- <td class="align-middle">
+                            <a class="btn btn-warning ms-2 text-white font-weight-normal text-xs" data-bs-toggle="modal"
+                            data-bs-target="#editconsult" >
+                            Edit
+                        </a>
+
+                            <div class="modal fade" id="editconsult" tabindex="-1" role="dialog"
+                          aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Edit Course</h5>
+                                      <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
+                                          aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form [formGroup]="ProgramFeesFormData">
+                       
+
+                                        <div class="input-group input-group-outline my-3">
+                                            <label class="form-label">title</label>
+                                                <input type="text"  class="form-control" formControlName="title">
+                                        </div>
+                                       
+                                        <div class="input-group input-group-outline my-3">
+                                            <label class="form-label">description</label>
+                                                <input type="text"  class="form-control" formControlName="description">
+                                        </div>
+                
+                                       
+                                        
+                                     </form>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn bg-gradient-secondary"
+                                          data-bs-dismiss="modal">Close</button>
+                                      <button type="submit" (click)="updateProgramFeesData(item.id)" class="btn bg-gradient-primary">Save changes</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+             
+                       
+
+                        <td> -->
+
+
+                            <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs" (click)="deleteProgramFeesData(item.id)">
+                                delete
+                            </a>
+
+                        </td>
+                      
+                        
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+

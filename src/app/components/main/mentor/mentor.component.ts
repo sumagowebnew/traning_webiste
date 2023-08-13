@@ -14,6 +14,7 @@ export class MentorComponent implements OnInit{
   mentors: any;
   mentorlist: any;
   editForm: any;
+  courseDetails: any;
   
   constructor(private newweb:CounterService,private formBuilder:FormBuilder){}
   hireform: any;
@@ -23,7 +24,16 @@ export class MentorComponent implements OnInit{
   ngOnInit(): void {
     this.addmentors();
     this.getmentors();
+    this.getCourse();
     
+  }
+
+  getCourse(){
+    this.newweb.getcourse().subscribe((res: any) => {
+      this.courseDetails = res.data; // Assign directly, assuming the data is an array
+      console.log(this.courseDetails);
+    });
+
   }
   addmentors(): void {
     this.mentorform = this.formBuilder.group({

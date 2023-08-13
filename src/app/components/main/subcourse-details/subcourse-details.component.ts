@@ -30,11 +30,15 @@ ngOnInit(): void {
     banner: [null, Validators.required]
   });
   }
+  
 getSubcoursesdetail(){
   this.service.getSubcoursesdetail().subscribe((res)=>{
     this.subcourses = res;
   })
 }
+
+
+
 deleteSubcourseDetails(id:number){
   this.service.deleteSubcoursedetail(id).subscribe((res)=>{
     alert('Success Deleting the Record')

@@ -11,6 +11,7 @@ export class CerticateComponent implements OnInit{
   certificate: any;
   base64Image: string;
   certificatelist: any;
+  courseDetails: any;
 
 
   constructor( private counter:CounterService,private formBuilder:FormBuilder){}
@@ -18,7 +19,16 @@ export class CerticateComponent implements OnInit{
   ngOnInit(): void {
     this.addcerticate();
     this.getcertificate();
+    this.getCourse();
     
+  }
+
+  getCourse(){
+    this.counter.getcourse().subscribe((res: any) => {
+      this.courseDetails = res.data; // Assign directly, assuming the data is an array
+      console.log(this.courseDetails);
+    });
+
   }
 
   addcerticate(): void {
