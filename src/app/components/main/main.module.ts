@@ -30,9 +30,17 @@ import { CompanyDetailsComponent } from './company-details/company-details.compo
 import { AddLogoComponent } from './add-logo/add-logo.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AddSubcourseComponent } from './add-subcourse/add-subcourse.component';
-import { SubcourseComponent } from './subcourse/subcourse.component';
+
 import { CourseComponent } from './course/course.component';
 import { SubcourseDetailsComponent } from './subcourse-details/subcourse-details.component';
+import { TrainedStudentComponent } from './trained-student/trained-student.component';
+import { ModuleComponent } from './module/module.component';
+import { SyllabusModuleComponent } from './syllabus-module/syllabus-module.component';
+import { LearnerReviewComponent } from './learner-review/learner-review.component';
+import { ProgramCityComponent } from './program-city/program-city.component';
+import { HighlightsComponent } from './highlights/highlights.component';
+import { CounsellingComponent } from './counselling/counselling.component';
+import { CourseHighlightComponent } from './course-highlight/course-highlight.component';
 
 
 @NgModule({
@@ -64,9 +72,17 @@ import { SubcourseDetailsComponent } from './subcourse-details/subcourse-details
     AddLogoComponent,
     AddProductComponent,
     AddSubcourseComponent,
-    SubcourseComponent,
+  
     CourseComponent,
-    SubcourseDetailsComponent
+    SubcourseDetailsComponent,
+    TrainedStudentComponent,
+    ModuleComponent,
+    SyllabusModuleComponent,
+    LearnerReviewComponent,
+    ProgramCityComponent,
+    HighlightsComponent,
+    CounsellingComponent,
+    CourseHighlightComponent
     
   ],
   imports: [

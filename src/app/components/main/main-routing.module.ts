@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonmainComponent } from 'src/app/components/main/commonmain/commonmain.component';
 import { DashboardComponent } from 'src/app/components/main/dashboard/dashboard.component';
@@ -29,6 +29,7 @@ import { AddLogoComponent } from './add-logo/add-logo.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AddSubcourseComponent } from './add-subcourse/add-subcourse.component';
 import { CourseComponent } from './course/course.component';
+import { SubcourseDetailsComponent } from './subcourse-details/subcourse-details.component';
 
 const routes: Routes = [
   {path:'',component:CommonmainComponent,children:[
@@ -47,6 +48,7 @@ const routes: Routes = [
     {path:'about',component:AboutComponent},
     {path:'about_counter',component:AboutCounterComponent},
     {path:'google_review',component:GoogleReviewComponent},
+    {path:'subcourse_detail',component:SubcourseDetailsComponent},
 
     {path:'event',component:AddEventComponent},
     {path:'eventdata',component:EventDataComponent},
