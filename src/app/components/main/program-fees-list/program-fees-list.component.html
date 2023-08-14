@@ -44,50 +44,50 @@
                       
                   
                       <div class="input-group input-group-outline my-3">
-                        <label class="form-label">Job Assistance</label>
-                        <input type="text" class="form-control" formControlName="job_assistance">
+                        <!-- <label class="form-label">Job Assistance</label> -->
+                        <input type="text" class="form-control" formControlName="job_assistance" placeholder="Job_assistance">
                       </div>
                   
                       <div class="input-group input-group-outline my-3">
-                        <label class="form-label">Live Class Subscription</label>
-                        <input type="text" class="form-control" formControlName="live_class_subscription">
+                        <!-- <label class="form-label">Live Class Subscription</label> -->
+                        <input type="text" class="form-control" formControlName="live_class_subscription" placeholder="Live_class_subscription">
                       </div>
 
                       <div class="input-group input-group-outline my-3">
-                        <label class="form-label">LMS Subscription</label>
-                        <input type="text" class="form-control" formControlName="lms_subscription">
+                        <!-- <label class="form-label">LMS Subscription</label> -->
+                        <input type="text" class="form-control" formControlName="lms_subscription" placeholder="LMS Subscription">
                       </div>
 
                       <div class="input-group input-group-outline my-3">
-                        <label class="form-label">Job Referrals</label>
-                        <input type="text" class="form-control" formControlName="job_referrals">
+                        <!-- <label class="form-label">Job Referrals</label> -->
+                        <input type="text" class="form-control" formControlName="job_referrals" placeholder="Job_referrals">
                       </div>
                       
                       <div class="input-group input-group-outline my-3">
-                        <label class="form-label">Industry Projects</label>
-                        <input type="text" class="form-control" formControlName="industry_projects">
+                        <!-- <label class="form-label">Industry Projects</label> -->
+                        <input type="text" class="form-control" formControlName="industry_projects" placeholder="Industry_projects">
                       </div>
                       
                       <div class="input-group input-group-outline my-3">
-                        <label class="form-label">Domain Training</label>
-                        <input type="text" class="form-control" formControlName="domain_training">
+                        <!-- <label class="form-label">Domain Training</label> -->
+                        <input type="text" class="form-control" formControlName="domain_training" placeholder="Domain_training">
                       </div>
                       
                       
                       <div class="input-group input-group-outline my-3">
-                        <label class="form-label">Project Certification From Companies</label>
-                        <input type="text" class="form-control" formControlName="project_certification_from_companies">
+                        <!-- <label class="form-label">Project Certification From Companies</label> -->
+                        <input type="text" class="form-control" formControlName="project_certification_from_companies" placeholder="project_certification_from_companies">
                       </div>
 
                       <div class="input-group input-group-outline my-3">
-                        <label class="form-label">Advance AI DSA</label>
-                        <input type="text" class="form-control" formControlName="adv_ai_dsa">
+                        <!-- <label class="form-label">Advance AI DSA</label> -->
+                        <input type="text" class="form-control" formControlName="adv_ai_dsa" placeholder="adv_ai_dsa">
                       </div>
                       
                       
                       <div class="input-group input-group-outline my-3">
-                        <label class="form-label">Microsoft Certification</label>
-                        <input type="text" class="form-control" formControlName="microsoft_certification">
+                        <!-- <label class="form-label">Microsoft Certification</label> -->
+                        <input type="text" class="form-control" formControlName="microsoft_certification" placeholder="microsoft_certification">
                       </div>
                       
                       
@@ -196,27 +196,76 @@
                        
 
                                         <div class="input-group input-group-outline my-3">
-                                            <label class="form-label">First name</label>
-                                                <input type="text"  class="form-control" formControlName="fname">
-                                        </div>
-                                       
-                                        <div class="input-group input-group-outline my-3">
-                                            <label class="form-label">Last Name</label>
-                                                <input type="text" id="name" class="form-control" formControlName="lname">
-                                        </div>
-                
-                                        <div class="input-group input-group-outline my-3">
-                                            <label class="form-label">Email</label>
-                                                <input type="text"  class="form-control" formControlName="email">
-                                        </div>
-                                        <div class="input-group input-group-outline my-3">
-                                            <label class="form-label">Conatct</label>
-                                                <input type="text"  class="form-control" formControlName="contact">
-                                        </div>
-                                        <div class="input-group input-group-outline my-3">
-                                            <label class="form-label">Company_name</label>
-                                                <input type="text"  class="form-control" formControlName="company_name">
-                                        </div>
+                                            <!-- <label class="form-label">Program ID</label> -->
+                                            <input type="text" class="form-control" formControlName="pro_max_id" placeholder="pro_max_id">
+                                          </div>
+                    
+                                          <div class="input-group input-group-outline my-3">
+                                            <label for="course">Course</label>
+                                            <select id="course" formControlName="course_id" class="form-control" required>
+                                              <option value="" disabled selected>Select Course</option>
+                                              <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}</option>
+                                            </select>
+                                            <div class="invalid-feedback">Course is required</div>
+                                          </div>
+                                          
+                                          <div class="input-group input-group-outline my-3">
+                                            <label for="course">Subcourse</label>
+                                            <select id="course" formControlName="sub_course_id" class="form-control" required>
+                                              <option value="" disabled selected>Select Subcourse</option>
+                                              <option [value]="sub.id" *ngFor="let sub of subcourseDetails" style="color: black;">{{ sub.title }}</option>
+                                            </select>
+                                            <div class="invalid-feedback">Sub Course is required</div>
+                                          </div>
+                                          
+                                      
+                                          <div class="input-group input-group-outline my-3">
+                                            <!-- <label class="form-label">Job Assistance</label> -->
+                                            <input type="text" class="form-control" formControlName="job_assistance" placeholder="Job_assistance">
+                                          </div>
+                                      
+                                          <div class="input-group input-group-outline my-3">
+                                            <!-- <label class="form-label">Live Class Subscription</label> -->
+                                            <input type="text" class="form-control" formControlName="live_class_subscription" placeholder="Live_class_subscription">
+                                          </div>
+                    
+                                          <div class="input-group input-group-outline my-3">
+                                            <!-- <label class="form-label">LMS Subscription</label> -->
+                                            <input type="text" class="form-control" formControlName="lms_subscription" placeholder="LMS Subscription">
+                                          </div>
+                    
+                                          <div class="input-group input-group-outline my-3">
+                                            <!-- <label class="form-label">Job Referrals</label> -->
+                                            <input type="text" class="form-control" formControlName="job_referrals" placeholder="Job_referrals">
+                                          </div>
+                                          
+                                          <div class="input-group input-group-outline my-3">
+                                            <!-- <label class="form-label">Industry Projects</label> -->
+                                            <input type="text" class="form-control" formControlName="industry_projects" placeholder="Industry_projects">
+                                          </div>
+                                          
+                                          <div class="input-group input-group-outline my-3">
+                                            <!-- <label class="form-label">Domain Training</label> -->
+                                            <input type="text" class="form-control" formControlName="domain_training" placeholder="Domain_training">
+                                          </div>
+                                          
+                                          
+                                          <div class="input-group input-group-outline my-3">
+                                            <!-- <label class="form-label">Project Certification From Companies</label> -->
+                                            <input type="text" class="form-control" formControlName="project_certification_from_companies" placeholder="project_certification_from_companies">
+                                          </div>
+                    
+                                          <div class="input-group input-group-outline my-3">
+                                            <!-- <label class="form-label">Advance AI DSA</label> -->
+                                            <input type="text" class="form-control" formControlName="adv_ai_dsa" placeholder="adv_ai_dsa">
+                                          </div>
+                                          
+                                          
+                                          <div class="input-group input-group-outline my-3">
+                                            <!-- <label class="form-label">Microsoft Certification</label> -->
+                                            <input type="text" class="form-control" formControlName="microsoft_certification" placeholder="microsoft_certification">
+                                          </div>
+                                          
                 
                                         
                                      </form>

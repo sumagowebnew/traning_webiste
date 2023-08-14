@@ -46,7 +46,7 @@ export class ProgramFeesListComponent implements OnInit {
       this.courseDetails = res.data; // Assign directly, assuming the data is an array
       console.log(this.courseDetails);
     });
-    
+
 
   }
 
@@ -86,6 +86,7 @@ export class ProgramFeesListComponent implements OnInit {
         () => {
           console.log('Data deleted successfully');
           // You can also refresh the data or perform other actions here
+        this.getProgramFeesData()
         },
         error => {
           console.error('Failed to delete data:', error);
