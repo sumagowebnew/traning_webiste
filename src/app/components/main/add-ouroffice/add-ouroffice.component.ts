@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CounterService } from 'src/app/services/counter.service';
 
@@ -7,7 +7,7 @@ import { CounterService } from 'src/app/services/counter.service';
   templateUrl: './add-ouroffice.component.html',
   styleUrls: ['./add-ouroffice.component.css']
 })
-export class AddOurofficeComponent {
+export class AddOurofficeComponent implements OnInit {
   bannerForm: any;
   base64Image: string;
   ban: any;
