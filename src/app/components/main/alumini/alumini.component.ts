@@ -68,6 +68,7 @@ export class AluminiComponent implements OnInit {
       (response: any) => {
         console.log('Data added successfully:', response);
         this.aluminies = response;
+        alert(`Data Added Successfully:${response}`)
       },
       (error) => {
         console.error('Failed to add course:', error);
@@ -101,18 +102,19 @@ export class AluminiComponent implements OnInit {
   );
 }
 deletealuminies(id: number) {
-  this.newweb.deletealumini(id)
-    .subscribe(
-      () => {
-        console.log('Alumini deleted successfully');
-        window.location.reload();
-        // Perform any additional actions or display success message
+  const confirmation = confirm('Are you sure you want to delete this category?');
+  if (confirmation) {
+    this.newweb.deletealumini(id).subscribe(
+      (response) => {
+        console.log('logo deleted:', response);
+        // You might want to refresh the categories list after deletion
+        this.getalumini();
       },
       (error) => {
-        console.error('Failed to delete alumini', error);
-        // Handle error, display error message, or perform alternative actions
+        console.error('Error deleting Project:', error);
       }
     );
+  }
 }
 }
 

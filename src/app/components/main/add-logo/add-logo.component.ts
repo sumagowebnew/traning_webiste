@@ -21,6 +21,8 @@ export class AddLogoComponent {
     this.getLogo();
   }
   addLogo(): void {
+ 
+
     this.bannerForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
@@ -47,12 +49,14 @@ export class AddLogoComponent {
     formData.append('title', this.bannerForm.value.title);
     formData.append('description', this.bannerForm.value.description);
     
-    formData.append('images', this.base64Image);
+    formData.append('image', this.base64Image);
 
     this.banner.addlogo(formData).subscribe(
       (response: any) => {
         console.log('Data added successfully:', response);
         this.ban = response; // Not sure what this line is for, you might need to adjust it
+        alert(`Data added successfully:${response}`);
+        this.getLogo();
       },
       (error) => {
         console.error('Failed to add data:', error);
@@ -67,17 +71,21 @@ export class AddLogoComponent {
     })
   }
   deleteLogo(id: number) {
-    this.banner.deletelogo(id).subscribe(
-      () => {
-        console.log('consulting  deleted successfully');
-        // Optionally, update the local list by removing the deleted expert review or fetch the updated list again
-        this.getLogo();
-      },
-      (error) => {
-        console.error('Failed to delete consulting:', error);
-      }
-    );
+    const confirmation = confirm('Are you sure you want to delete this category?');
+    if (confirmation) {
+      this.banner.deletelogo(id).subscribe(
+        (response) => {
+          console.log('logo deleted:', response);
+          // You might want to refresh the categories list after deletion
+          this.getLogo();
+        },
+        (error) => {
+          console.error('Error deleting Project:', error);
+        }
+      );
+    }
   }
+    
   createEditForm() {
     this.editForm = this.formBuilder.group({
       title: ['', Validators.required],

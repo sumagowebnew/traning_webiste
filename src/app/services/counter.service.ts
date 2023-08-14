@@ -181,10 +181,10 @@ export class CounterService {
     return this.http.post(`${this.apiUrl}add_subcourse`,logo,{headers})
   }
   getsubcourse(){
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.auth.getToken()}`
-    });
-    return this.http.get(`${this.apiUrl}get_subcourse`,{headers})
+    // const headers = new HttpHeaders({
+    //   'Authorization': `Bearer ${this.auth.getToken()}`
+    // });
+    return this.http.get(`${this.apiUrl}get_all_subcourses`)
   }
   updatesubcourse(id: number, logo: any) {
 
@@ -859,6 +859,8 @@ export class CounterService {
   getbanner(){
     return this.http.get(`${this.apiUrl}get_bannerImages`)
   }
+  
+  
   deletebanner(id: number) {
     const url = `${this.apiUrl}delete_bannerImages/${id}`;
     const headers = new HttpHeaders({

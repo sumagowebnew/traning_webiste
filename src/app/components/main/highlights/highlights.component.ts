@@ -102,16 +102,19 @@ export class HighlightsComponent implements OnInit {
   }
 
   deletereview(id: number) {
-    this.count.deletehigh(id).subscribe(
-      () => {
-        console.log('Review deleted successfully');
-        // Optionally, update the local list by removing the deleted expert review or fetch the updated list again
-        this.getExpertReviews();
-      },
-      (error) => {
-        console.error('Failed to delete expert review:', error);
-      }
-    );
+    const confirmation = confirm('Are you sure you want to delete this category?');
+    if (confirmation) {
+      this.count.deletehigh(id).subscribe(
+        (response) => {
+          console.log('Project deleted:', response);
+          // You might want to refresh the categories list after deletion
+          this.getExpertReviews();
+        },
+        (error) => {
+          console.error('Error deleting Project:', error);
+        }
+      );
+    }
   }
 
   // Function to reset the form after successful submission

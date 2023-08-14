@@ -67,8 +67,8 @@ export class AddPopularCourseComponent implements OnInit {
       (response: any) => {
         console.log('Data  successfully:', response);
         this.popular = response;
-        this.auth
-        
+        alert(`Data added successfully:${response}`);
+        this.getpopulardata();
       },
       (error) => {
         console.error('Failed to add course:', error);
@@ -81,22 +81,24 @@ export class AddPopularCourseComponent implements OnInit {
       
       this.popularlist=res
       console.log(this.popularlist);
+
       
     })
   }
   deletepopularcourse(id: number) {
-    this.counter.deletepopular1(id)
-      .subscribe(
-        () => {
-          console.log('Popular Course deleted successfully');
-          window.location.reload();
-          // Perform any additional actions or display success message
+    const confirmation = confirm('Are you sure you want to delete this category?');
+    if (confirmation) {
+      this.counter.deletepopular1(id).subscribe(
+        (response) => {
+          console.log('logo deleted:', response);
+          // You might want to refresh the categories list after deletion
+          this.getpopulardata();
         },
         (error) => {
-          console.error('Failed to delete course', error);
-          // Handle error, display error message, or perform alternative actions
+          console.error('Error deleting Project:', error);
         }
       );
+    }
   }
 
 

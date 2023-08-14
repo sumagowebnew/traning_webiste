@@ -47,10 +47,21 @@ getSubcoursesdetail(){
 
 
 deleteSubcourseDetails(id:number){
-  this.service.deletecoursehigh(id).subscribe((res)=>{
-    alert('Success Deleting the Record')
-  })
-}
+  const confirmation = confirm('Are you sure you want to delete this category?');
+    if (confirmation) {
+      this.service.deletecoursehigh(id).subscribe(
+        (response) => {
+          console.log('Course Highlight deleted:', response);
+          alert(`Course Highlight Deleted:${response}`)
+          // You might want to refresh the categories list after deletion
+          this.getSubcoursesdetail();
+        },
+        (error) => {
+          console.error('Error deleting Project:', error);
+        }
+      );
+    }
+  }
 
 addSubcoursesDetails(){
   

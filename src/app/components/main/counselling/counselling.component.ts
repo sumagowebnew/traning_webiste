@@ -63,16 +63,20 @@ export class CounsellingComponent implements OnInit {
     })
   }
   deleteoffice(id: number) {
-    this.banner.deletecouns(id).subscribe(
-      () => {
-        console.log('consulting  deleted successfully');
-        // Optionally, update the local list by removing the deleted expert review or fetch the updated list again
-        this.getoffice();
-      },
-      (error) => {
-        console.error('Failed to delete consulting:', error);
-      }
-    );
+    const confirmation = confirm('Are you sure you want to delete this category?');
+    if (confirmation) {
+      this.banner.deletecouns(id).subscribe(
+        (response) => {
+          console.log('Counselling deleted:', response);
+          alert(`Counselling Deleted:${response}`)
+          // You might want to refresh the categories list after deletion
+          this.getoffice();
+        },
+        (error) => {
+          console.error('Error deleting Project:', error);
+        }
+      );
+    }
   }
   createEditForm() {
     this.editForm = this.formBuilder.group({

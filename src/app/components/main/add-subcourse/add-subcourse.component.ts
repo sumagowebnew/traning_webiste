@@ -59,20 +59,23 @@ export class AddSubcourseComponent {
   getSubCourse(){
     this.banner.getsubcourse().subscribe((res:any)=>{
       console.log(res);
-      this.bannerlist=res;
+      this.bannerlist=res.data;
     })
   }
   deleteSubCourse(id: number) {
-    this.banner.deletesubcourse(id).subscribe(
-      () => {
-        console.log('consulting  deleted successfully');
-        // Optionally, update the local list by removing the deleted expert review or fetch the updated list again
-        this.getSubCourse();
-      },
-      (error) => {
-        console.error('Failed to delete consulting:', error);
-      }
-    );
+    const confirmation = confirm('Are you sure you want to delete this category?');
+    if (confirmation) {
+      this.banner.deletesubcourse(id).subscribe(
+        (response) => {
+          console.log('logo deleted:', response);
+          // You might want to refresh the categories list after deletion
+          this.getSubCourse();
+        },
+        (error) => {
+          console.error('Error deleting Project:', error);
+        }
+      );
+    }
   }
 
 }

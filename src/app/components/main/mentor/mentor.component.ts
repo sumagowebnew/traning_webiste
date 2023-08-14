@@ -84,16 +84,19 @@ export class MentorComponent implements OnInit{
     })
   }
   deletementor(id: number) {
-    this.newweb.deletementor(id).subscribe(
-      () => {
-        console.log('Archievement deleted successfully');
-        // Optionally, update the local list by removing the deleted counter or fetch the updated list again
-        this.getmentors();
-      },
-      (error) => {
-        console.error('Failed to delete archivement:', error);
-      }
-    );
+    const confirmation = confirm('Are you sure you want to delete this category?');
+    if (confirmation) {
+      this.newweb.deletementor(id).subscribe(
+        (response) => {
+          console.log('Project deleted:', response);
+          // You might want to refresh the categories list after deletion
+          this.getmentors();
+        },
+        (error) => {
+          console.error('Error deleting Project:', error);
+        }
+      );
+    }
   }
   createEditForm() {
     this.editForm = this.formBuilder.group({

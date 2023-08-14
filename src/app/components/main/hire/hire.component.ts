@@ -71,16 +71,19 @@ export class HireComponent  implements OnInit{
     })
   }
   deletehired(id: number) {
-    this.newweb.deletehire(id).subscribe(
-      () => {
-        console.log('Archievement deleted successfully');
-        // Optionally, update the local list by removing the deleted counter or fetch the updated list again
-        this.gethired();
-      },
-      (error) => {
-        console.error('Failed to delete archivement:', error);
-      }
-    );
+    const confirmation = confirm('Are you sure you want to delete this category?');
+    if (confirmation) {
+      this.newweb.deletehire(id).subscribe(
+        (response) => {
+          console.log('Project deleted:', response);
+          // You might want to refresh the categories list after deletion
+          this.gethired();
+        },
+        (error) => {
+          console.error('Error deleting Project:', error);
+        }
+      );
+    }
   }
   createEditForm() {
     this.editForm = this.formBuilder.group({

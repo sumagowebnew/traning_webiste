@@ -46,6 +46,7 @@ export class ProgramFeesListComponent implements OnInit {
       this.courseDetails = res.data; // Assign directly, assuming the data is an array
       console.log(this.courseDetails);
     });
+    
 
   }
 

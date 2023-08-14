@@ -88,16 +88,20 @@ export class DiplomaProgramCategoryComponent  implements OnInit{
   
     deleteprogram(id:number){
 
-      this.our_pro.deleteourpgm(id).subscribe((res:any)=>{
-        console.log('Program deleted successfully');
-        // Optionally, update the local list by removing the deleted expert review or fetch the updated list again
-        this.getprogram();
-      },
-      (error) => {
-        console.error('Failed to delete Program :', error);
+      const confirmation = confirm('Are you sure you want to delete this category?');
+      if (confirmation) {
+        this.our_pro.deleteourpgm(id).subscribe(
+          (response) => {
+            console.log('Project deleted:', response);
+            // You might want to refresh the categories list after deletion
+            this.getprogram();
+          },
+          (error) => {
+            console.error('Error deleting Project:', error);
+          }
+        );
       }
-    );
-      }
+    }
     }
 
 

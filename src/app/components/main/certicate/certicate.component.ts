@@ -79,16 +79,19 @@ export class CerticateComponent implements OnInit{
     })
   }
   deletecertificate(id: number) {
-    this.counter.deletecertificate(id).subscribe(
-      () => {
-        console.log('consulting  deleted successfully');
-        // Optionally, update the local list by removing the deleted expert review or fetch the updated list again
-        this.getcertificate();
-      },
-      (error) => {
-        console.error('Failed to delete consulting:', error);
-      }
-    );
+    const confirmation = confirm('Are you sure you want to delete this category?');
+    if (confirmation) {
+      this.counter.deletecertificate(id).subscribe(
+        (response) => {
+          console.log('Certificate deleted:', response);
+          alert(`Certificate Deleted:${response}`)
+          // You might want to refresh the categories list after deletion
+          this.getcertificate();
+        },
+        (error) => {
+          console.error('Error deleting Project:', error);
+        }
+      );
+    }
   }
-
 }

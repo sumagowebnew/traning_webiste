@@ -65,16 +65,20 @@ export class FaqComponent implements OnInit {
     }
     
     deletefaq(id: number) {
-      this.newweb.deletebfaq(id).subscribe(
-        () => {
-          console.log('Archievement deleted successfully');
-          // Optionally, update the local list by removing the deleted counter or fetch the updated list again
-          this.getfaqs();
-        },
-        (error) => {
-          console.error('Failed to delete archivement:', error);
-        }
-      );
+      const confirmation = confirm('Are you sure you want to delete this category?');
+      if (confirmation) {
+        this.newweb.deletebfaq(id).subscribe(
+          (response) => {
+            console.log('Faq  deleted:', response);
+            alert(`Faq Deleted:${response}`)
+            // You might want to refresh the categories list after deletion
+            this.getfaqs();
+          },
+          (error) => {
+            console.error('Error deleting Project:', error);
+          }
+        );
+      }
     }
     createEditForm() {
       this.editForm = this.fb.group({

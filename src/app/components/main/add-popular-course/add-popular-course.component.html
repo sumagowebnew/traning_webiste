@@ -20,20 +20,22 @@
                         <div class="modal-body">
                             <form [formGroup]="popularform" >
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Name</label>
-                                    <input type="text" class="form-control" formControlName="name">
+                                    <!-- <label class="form-label">Name</label> -->
+                                    <input type="text" class="form-control" formControlName="name" placeholder="Name">
+                                </div>
+                                <div class="invalid-feedback">Name is required</div>
+
+                                <div class="input-group input-group-outline my-3">
+                                    <!-- <label class="form-label">Price</label> -->
+                                    <input type="text" class="form-control"  formControlName="price" placeholder="Price">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Price</label>
-                                    <input type="text" class="form-control"  formControlName="price">
+                                    <!-- <label class="form-label">Enrolled_students</label> -->
+                                    <input type="text" class="form-control"  formControlName="enrolled_students" placeholder="Enrolled_students">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Enrolled_students</label>
-                                    <input type="text" class="form-control"  formControlName="enrolled_students">
-                                </div>
-                                <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Info</label>
-                                    <input type="text" class="form-control"  formControlName="info">
+                                    <!-- <label class="form-label">Info</label> -->
+                                    <input type="text" class="form-control"  formControlName="info" placeholder="Info">
                                 </div>
 
                                 <div class="input-group input-group-outline my-3">

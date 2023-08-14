@@ -52,16 +52,19 @@ export class ModuleComponent implements OnInit{
       })
     }
     deletecounter(id: number) {
-      this.about.deletemodule(id).subscribe(
-        () => {
-          console.log('Counter deleted successfully');
-          // Optionally, update the local list by removing the deleted counter or fetch the updated list again
-          this.getcounterdata();
-        },
-        (error) => {
-          console.error('Failed to delete counter:', error);
-        }
-      );
+      const confirmation = confirm('Are you sure you want to delete this category?');
+      if (confirmation) {
+        this.about.deletemodule(id).subscribe(
+          (response) => {
+            console.log('Project deleted:', response);
+            // You might want to refresh the categories list after deletion
+            this.getcounterdata();
+          },
+          (error) => {
+            console.error('Error deleting Project:', error);
+          }
+        );
+      }
     }
     createEditForm() {
       this.editForm = this.fb.group({

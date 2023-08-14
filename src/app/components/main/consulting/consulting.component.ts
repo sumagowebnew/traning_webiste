@@ -99,15 +99,19 @@ export class ConsultingComponent implements OnInit {
   }
 
   deleteconsulting(id: number) {
-    this.count.deleteconsulting(id).subscribe(
-      () => {
-        console.log('consulting  deleted successfully');
-        // Optionally, update the local list by removing the deleted expert review or fetch the updated list again
-        this.getconsult();
-      },
-      (error) => {
-        console.error('Failed to delete consulting:', error);
-      }
-    );
+    const confirmation = confirm('Are you sure you want to delete this category?');
+    if (confirmation) {
+      this.count.deleteconsulting(id).subscribe(
+        (response) => {
+          console.log('Consulting deleted:', response);
+          alert(`Consulting Deleted:${response}`)
+          // You might want to refresh the categories list after deletion
+          this.getconsult();
+        },
+        (error) => {
+          console.error('Error deleting Project:', error);
+        }
+      );
+    }
   }
 }
