@@ -59,8 +59,8 @@ export class ProgramFeesListComponent implements OnInit {
 
   this.service.addProgramFees(formData).subscribe(
     (response: any) => {
-      console.log('Data added successfully:', response);
-      // Optionally reset the form after submission
+      alert(`Data added successfully:${response}`);
+      this.getProgramFeesData();
       this.ProgramFeesFormData.reset();
     },
     (error) => {
@@ -84,7 +84,7 @@ export class ProgramFeesListComponent implements OnInit {
       this.service.deleteProgramFees(id).subscribe(
         () => {
           console.log('Data deleted successfully');
-          // You can also refresh the data or perform other actions here
+          this.getProgramFeesData()
         },
         error => {
           console.error('Failed to delete data:', error);

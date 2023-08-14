@@ -21,6 +21,7 @@ export class ProgramsDetailsComponent implements OnInit{
   ngOnInit(): void {
     this.addprogramdetail();
     this.getprogramdetail();
+    this.getprogram()
     this.createEditForm();
     // this.getprogram();
     
@@ -92,10 +93,10 @@ export class ProgramsDetailsComponent implements OnInit{
     );
   }
   getprogramdetail(){
-    this.program.getprogramdetail().subscribe((res:any)=>{
+    this.program.getcourse().subscribe((res:any)=>{
       console.log(res);
       
-      this.programlist=res;
+      this.programlist=res.data;
 
     })
   }
@@ -111,7 +112,7 @@ export class ProgramsDetailsComponent implements OnInit{
   }
   getprogram(){
     this.program.getourprogram().subscribe((res:any)=>{
-      this.programlist=res.data;
+      this.programlist=res;
       console.log(this.programlist);
       
     })

@@ -6,43 +6,48 @@
                 Add Course
             </a>
             <!-- Modal -->
-            <div class="modal fade" id="course" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Add Details</h5>
-                            <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
-                                aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form [formGroup]="bannerForm" >
-                                <div class="input-group input-group-outline my-3">
-                                    <!-- <label class="form-label">Name</label> -->
-                                    <input type="text" class="form-control" formControlName="review" placeholder=" Review">
-                                </div>
-                                <div class="input-group input-group-outline my-3">
-                                    <!-- <label class="form-label">Price</label> -->
-                                    <input type="text" class="form-control"  formControlName="name" placeholder="Name">
-                                </div>
-                                <div class="input-group input-group-outline my-3">
-                                    <!-- <label class="form-label">Enrolled_students</label> -->
-                                    <input type="text" class="form-control"  formControlName="company_position" placeholder="company_position">
-                                </div>
-                               
-
-                                <div class="input-group input-group-outline my-3">
-
-                                    <input type="file" class="form-control" placeholder="image" (change)="onFileSelected($event)">
-                                </div>
-              
-
-                            </form>
-
-
-                        </div>
+    <!-- Modal -->
+<div class="modal fade" id="course" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Add Details</h5>
+            <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="bannerForm" (ngSubmit)="onSubmit()">
+                <div class="input-group input-group-outline my-3">
+                    <input type="text" class="form-control" formControlName="review" placeholder="Review">
+                    <div *ngIf="bannerForm.get('review').invalid && (bannerForm.get('review').dirty || bannerForm.get('review').touched)"
+                        class="text-danger">
+                        Review is required.
+                    </div>
+                </div>
+                <div class="input-group input-group-outline my-3">
+                    <input type="text" class="form-control" formControlName="name" placeholder="Name">
+                    <div *ngIf="bannerForm.get('name').invalid && (bannerForm.get('name').dirty || bannerForm.get('name').touched)"
+                        class="text-danger">
+                        Name is required.
+                    </div>
+                </div>
+                <div class="input-group input-group-outline my-3">
+                    <input type="text" class="form-control" formControlName="company_position"
+                        placeholder="Company Position">
+                    <div *ngIf="bannerForm.get('company_position').invalid && (bannerForm.get('company_position').dirty || bannerForm.get('company_position').touched)"
+                        class="text-danger">
+                        Company Position is required.
+                    </div>
+                </div>
+                <div class="input-group input-group-outline my-3">
+                    <input type="file" class="form-control" (change)="onFileSelected($event)">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn bg-gradient-secondary"
                                 data-bs-dismiss="modal">Close</button>

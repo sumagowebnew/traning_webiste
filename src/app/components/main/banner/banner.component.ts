@@ -10,7 +10,8 @@ import { CounterService } from 'src/app/services/counter.service';
 })
 export class BannerComponent implements OnInit {
   bannerForm: any;
-  base64Image: string;
+  selectedFile: File | null = null;
+  base64Image: string | null = null;
   ban: any;
   bannerlist: any;
 
@@ -26,30 +27,33 @@ export class BannerComponent implements OnInit {
     this.bannerForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      selectedFile: [null, Validators.required]
+      images: [null, Validators.required]
     });
   }
 
   onFileSelected(event: any): void {
-    const file = event.target.files[0];
-    this.convertToBase64(file);
+    this.selectedFile = event.target.files[0];
+    this.convertToBase64();
   }
 
-  convertToBase64(file: File): void {
+  convertToBase64(): void {
     const reader = new FileReader();
     reader.onload = () => {
       this.base64Image = reader.result as string;
+      console.log(this.base64Image); 
     };
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(this.selectedFile);
+
   }
 
   onSubmit(): void {
    
 
     const formData = new FormData();
+    formData.append('images', this.base64Image);
     formData.append('title', this.bannerForm.value.title);
     formData.append('description', this.bannerForm.value.description);
-    formData.append('images', this.base64Image);
+  
 
     this.banner.addbanner(formData).subscribe(
       (response: any) => {

@@ -536,7 +536,7 @@ export class CounterService {
   }
 
   getourprogram(){
-    return this.http.get(`${this.apiUrl}get_coursecategory`)
+    return this.http.get(`${this.apiUrl}get_programdetails`)
   }
   deleteourpgm(id: number) {
     const url = `${this.apiUrl}delete_coursecategory/${id}`;
