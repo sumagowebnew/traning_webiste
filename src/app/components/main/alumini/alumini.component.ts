@@ -13,6 +13,7 @@ export class AluminiComponent implements OnInit {
   base64Image: string;
   aluminies: any;
   aluminilist: any;
+  courseDetails: any;
 
   constructor(private newweb:CounterService,private formBuilder:FormBuilder){}
 
@@ -22,7 +23,15 @@ export class AluminiComponent implements OnInit {
   ngOnInit(): void {
     this.addalumini();
     this.getalumini();
+    this.getCourse();
     
+  }
+  getCourse(){
+    this.newweb.getcourse().subscribe((res: any) => {
+      this.courseDetails = res.data; // Assign directly, assuming the data is an array
+      console.log(this.courseDetails);
+    });
+
   }
   addalumini(): void {
     this.aluminiform = this.formBuilder.group({

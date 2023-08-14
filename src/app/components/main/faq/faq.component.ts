@@ -13,6 +13,7 @@ export class FaqComponent implements OnInit {
   faqs: any;
   faqlist: any;
   editForm: any;
+  courseDetails: any;
 
   constructor(private newweb:CounterService, private fb:FormBuilder){}
 
@@ -20,10 +21,20 @@ export class FaqComponent implements OnInit {
   ngOnInit(): void {
     this.createFaqForm();
     this.getfaqs();
+    this.getCourse();
+  }
+
+  getCourse(){
+    this.newweb.getcourse().subscribe((res: any) => {
+      this.courseDetails = res.data; // Assign directly, assuming the data is an array
+      console.log(this.courseDetails);
+    });
+
   }
 
   createFaqForm() {
     this.FaqForm = this.fb.group({
+      course_id:['',Validators.required],
       question: ['', Validators.required],
       answer: ['', Validators.required],
     });

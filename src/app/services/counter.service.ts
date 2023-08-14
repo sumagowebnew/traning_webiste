@@ -184,7 +184,7 @@ export class CounterService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.auth.getToken()}`
     });
-    return this.http.get(`${this.apiUrl}get_subcourse_details_list`,{headers})
+    return this.http.get(`${this.apiUrl}get_subcourse`,{headers})
   }
   updatesubcourse(id: number, logo: any) {
 
@@ -210,7 +210,7 @@ export class CounterService {
     return this.http.post(`${this.apiUrl}add_subcourse_details`,subcourses,{headers})
   }
   getSubcoursesdetail(){
-    return this.http.get(`${this.apiUrl}get_subcourse_details_list`)
+    return this.http.get(`${this.apiUrl}get_subcourse_details`)
   }
 
   getSubcoursesbyId(Id:number){
@@ -219,7 +219,7 @@ export class CounterService {
 
   
   deleteSubcoursedetail(id: number): Observable<any> {
-    const url = `${this.apiUrl}delete_alu mini/${id}`;
+    const url = `${this.apiUrl}delete_subcourse_details/${id}`;
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.auth.getToken()}`
     });
@@ -369,7 +369,236 @@ export class CounterService {
         const url = `${this.apiUrl}update_about_counter/${id}`;
         return this.http.post(url, teacherdata, { headers });
       }
+      //add module
+      addmodule(counterdata: any) {
+        const headers = new HttpHeaders({
+          'Authorization': `Bearer ${this.auth.getToken()}`
+        });
+        return this.http.post(`${this.apiUrl}add_module`, counterdata,{headers});
+        }
+      
+        getmodule() {
+          return this.http.get(`${this.apiUrl}get_module`)
+        }
+    
+        deletemodule(id:number){
+          const url = `${this.apiUrl}delete_module/${id}`;
+          const headers = new HttpHeaders({
+            'Authorization': `Bearer ${this.auth.getToken()}`
+          });
+          return this.http.delete(`${url}`,{headers});
+        }
+        updatemodule(id: number, teacherdata: any) {
+    
+          const headers = new HttpHeaders({
+          'Authorization': `Bearer ${this.auth.getToken()}`
+            });
+            
+            const url = `${this.apiUrl}update_module/${id}`;
+            return this.http.post(url, teacherdata, { headers });
+          }
+    
+          //syllabus details
+          addsyllabus(counterdata: any) {
+            const headers = new HttpHeaders({
+              'Authorization': `Bearer ${this.auth.getToken()}`
+            });
+            return this.http.post(`${this.apiUrl}add_syllabus`, counterdata,{headers});
+            }
+          
+            getsyllabus() {
+              return this.http.get(`${this.apiUrl}get_syllabus`)
+            }
+        
+            deletesyllabus(id:number){
+              const url = `${this.apiUrl}delete_syllabus/${id}`;
+              const headers = new HttpHeaders({
+                'Authorization': `Bearer ${this.auth.getToken()}`
+              });
+              return this.http.delete(`${url}`,{headers});
+            }
+            updatesyllabus(id: number, teacherdata: any) {
+        
+              const headers = new HttpHeaders({
+              'Authorization': `Bearer ${this.auth.getToken()}`
+                });
+                
+                const url = `${this.apiUrl}update_syllabus/${id}`;
+                return this.http.post(url, teacherdata, { headers });
+              }
+        //learner review
 
+              addlearner(counterdata: any) {
+                const headers = new HttpHeaders({
+                  'Authorization': `Bearer ${this.auth.getToken()}`
+                });
+                return this.http.post(`${this.apiUrl}add_learner_review`, counterdata,{headers});
+                }
+              
+                getlearner() {
+                  return this.http.get(`${this.apiUrl}get_learner_review`)
+                }
+            
+                deletelearner(id:number){
+                  const url = `${this.apiUrl}delete_learner_review/${id}`;
+                  const headers = new HttpHeaders({
+                    'Authorization': `Bearer ${this.auth.getToken()}`
+                  });
+                  return this.http.delete(`${url}`,{headers});
+                }
+                updatelearner(id: number, teacherdata: any) {
+            
+                  const headers = new HttpHeaders({
+                  'Authorization': `Bearer ${this.auth.getToken()}`
+                    });
+                    
+                    const url = `${this.apiUrl}update_learner_review/${id}`;
+                    return this.http.post(url, teacherdata, { headers });
+                  }
+            
+    //program city
+    
+    addcity(counterdata: any) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${this.auth.getToken()}`
+      });
+      return this.http.post(`${this.apiUrl}add_our_program_cities`, counterdata,{headers});
+      }
+    
+      getcity() {
+        return this.http.get(`${this.apiUrl}get_our_program_cities`)
+      }
+  
+      deletecity(id:number){
+        const url = `${this.apiUrl}delete_our_program_cities/${id}`;
+        const headers = new HttpHeaders({
+          'Authorization': `Bearer ${this.auth.getToken()}`
+        });
+        return this.http.delete(`${url}`,{headers});
+      }
+      updatecity(id: number, teacherdata: any) {
+  
+        const headers = new HttpHeaders({
+        'Authorization': `Bearer ${this.auth.getToken()}`
+          });
+          
+          const url = `${this.apiUrl}update_our_program_cities/${id}`;
+          return this.http.post(url, teacherdata, { headers });
+        }
+        //add_counselling
+        addcouns(counterdata: any) {
+          const headers = new HttpHeaders({
+            'Authorization': `Bearer ${this.auth.getToken()}`
+          });
+          return this.http.post(`${this.apiUrl}add_counselling`, counterdata,{headers});
+          }
+        
+          getcouns() {
+            return this.http.get(`${this.apiUrl}get_counselling`)
+          }
+      
+          deletecouns(id:number){
+            const url = `${this.apiUrl}delete_counselling/${id}`;
+            const headers = new HttpHeaders({
+              'Authorization': `Bearer ${this.auth.getToken()}`
+            });
+            return this.http.delete(`${url}`,{headers});
+          }
+          updatecouns(id: number, teacherdata: any) {
+      
+            const headers = new HttpHeaders({
+            'Authorization': `Bearer ${this.auth.getToken()}`
+              });
+              
+              const url = `${this.apiUrl}update_counselling/${id}`;
+              return this.http.post(url, teacherdata, { headers });
+            }
+            //course highlight
+            addcoursehigh(counterdata: any) {
+              const headers = new HttpHeaders({
+                'Authorization': `Bearer ${this.auth.getToken()}`
+              });
+              return this.http.post(`${this.apiUrl}add_highlightDetails`, counterdata,{headers});
+              }
+            
+              getcoursehigh() {
+                return this.http.get(`${this.apiUrl}get_highlightDetails`)
+              }
+          
+              deletecoursehigh(id:number){
+                const url = `${this.apiUrl}delete_highlightDetails/${id}`;
+                const headers = new HttpHeaders({
+                  'Authorization': `Bearer ${this.auth.getToken()}`
+                });
+                return this.http.delete(`${url}`,{headers});
+              }
+              updatecoursehigh(id: number, teacherdata: any) {
+          
+                const headers = new HttpHeaders({
+                'Authorization': `Bearer ${this.auth.getToken()}`
+                  });
+                  
+                  const url = `${this.apiUrl}update_highlightDetails/${id}`;
+                  return this.http.post(url, teacherdata, { headers });
+                }
+            //highlights
+            addhigh(counterdata: any) {
+              const headers = new HttpHeaders({
+                'Authorization': `Bearer ${this.auth.getToken()}`
+              });
+              return this.http.post(`${this.apiUrl}add_highlight`, counterdata,{headers});
+              }
+            
+              gethigh() {
+                return this.http.get(`${this.apiUrl}get_highlight`)
+              }
+          
+              deletehigh(id:number){
+                const url = `${this.apiUrl}delete_highlight/${id}`;
+                const headers = new HttpHeaders({
+                  'Authorization': `Bearer ${this.auth.getToken()}`
+                });
+                return this.http.delete(`${url}`,{headers});
+              }
+              updatehigh(id: number, teacherdata: any) {
+          
+                const headers = new HttpHeaders({
+                'Authorization': `Bearer ${this.auth.getToken()}`
+                  });
+                  
+                  const url = `${this.apiUrl}update_highlight/${id}`;
+                  return this.http.post(url, teacherdata, { headers });
+                }
+      //training_student
+      addstudent(counterdata: any) {
+        const headers = new HttpHeaders({
+          'Authorization': `Bearer ${this.auth.getToken()}`
+        });
+        return this.http.post(`${this.apiUrl}add_trainedStudentsCount`, counterdata,{headers});
+        }
+      
+        getstudent() {
+          return this.http.get(`${this.apiUrl}add_trainedStudentsCount`)
+        }
+    
+        deletestudent(id:number){
+          const url = `${this.apiUrl}delete_trainedStudentsCount/${id}`;
+          const headers = new HttpHeaders({
+            'Authorization': `Bearer ${this.auth.getToken()}`
+          });
+          return this.http.delete(`${url}`,{headers});
+        }
+        updatestudent(id: number, teacherdata: any) {
+    
+          const headers = new HttpHeaders({
+          'Authorization': `Bearer ${this.auth.getToken()}`
+            });
+            
+            const url = `${this.apiUrl}update_trainedStudentsCount/${id}`;
+            return this.http.post(url, teacherdata, { headers });
+          }
+
+      //add teacher
 
     addteacher(teacherdata:any){
       const headers = new HttpHeaders({

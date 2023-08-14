@@ -1,0 +1,136 @@
+<div class="container">
+    <div class="row">
+        <div class="div">
+            <a class="btn btn-info text-white font-weight-normal text-xs" data-bs-toggle="modal"
+            data-bs-target="#coursehighlight">
+            Add Course Highlight
+        </a>
+         <!-- Modal -->
+         <div class="modal fade" id="coursehighlight" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered" role="document">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Add Details</h5>
+                     <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
+                         aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                     </button>
+                 </div>
+                 <div class="modal-body">
+                     <form [formGroup]="subCourseDetails">
+                        <div class="form-group input-group input-group-outline my-3">
+                            <label for="designation">Course</label>
+                            <select id="course" formControlName="course_id" class="form-control" required>
+                                <option value="" disabled selected>Select Course</option>
+                                <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}</option>
+                              </select>     
+                            <div class="invalid-feedback">Course is required</div>
+                          </div>   
+                        <div class="input-group input-group-outline my-3">
+                            <label class="form-label">highlights</label>
+                            <input type="text" class="form-control" formControlName="highlights">
+                        </div>
+                        
+                     </form>
+
+
+                 </div>
+                 <div class="modal-footer">
+                     <button type="button" class="btn bg-gradient-secondary"
+                         data-bs-dismiss="modal">Close</button>
+                     <button type="submit" (click)="addSubcoursesDetails()" class="btn bg-gradient-primary">Save changes</button>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <!-- Modal End -->
+        </div>
+    </div>
+    <div class="card">
+        <div class="div"></div>
+        <div class="table-responsive">
+            
+            <table class="table align-items-center mb-0">
+                <thead>
+                    <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Course Name</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Highlights</th>
+   
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let item of subcourses">
+                        <td>
+                            <div class="d-flex px-2 py-1">
+                                <div class="d-flex flex-column justify-content-center">
+                                    <h6 class="mb-0 text-xs">{{item.course_id}}</h6>
+                                    <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">{{item.highlights}}</p>
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">{{item.name}}</p>
+                            <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
+                        </td>
+                      
+                        <td class="align-middle">
+                           
+                           
+
+                            <!-- <a class="btn btn-warning ms-2 text-white font-weight-normal text-xs" data-bs-toggle="modal"
+                            data-bs-target="#editourprogram" (click)="openEditModal(item)">
+                            Edit
+                        </a> -->
+
+                          <!-- Modal -->
+                          <div class="modal fade" id="editourprogram" tabindex="-1" role="dialog"
+                          aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Edit Course</h5>
+                                      <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
+                                          aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <form [formGroup]="subCourseDetails">
+                                        <div class="input-group input-group-outline my-3">
+                                            <label class="form-label">Name</label>
+                                                <input type="text" class="form-control">
+                                        </div>
+                                       
+                                      </form>
+
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn bg-gradient-secondary"
+                                          data-bs-dismiss="modal">Close</button>
+                                      <!-- <button type="button" class="btn bg-gradient-primary" (click)="updateprogram(item)">Save changes</button> -->
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- Modal End -->
+
+
+                      <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs" (click)="deleteSubcourseDetails(item.id)" >
+                      delete
+                  </a>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<br>

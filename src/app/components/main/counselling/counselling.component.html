@@ -1,0 +1,196 @@
+<div class="container">
+    <div class="row">
+        <div class="div">
+            <a class="btn btn-info text-white font-weight-normal text-xs" data-bs-toggle="modal"
+                data-bs-target="#counselling">
+                Add Counselling
+            </a>
+            <!-- Modal -->
+            <div class="modal fade" id="counselling" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Add Details</h5>
+                            <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form [formGroup]="bannerForm" >
+                                <div class="input-group input-group-outline my-3">
+                                    <!-- <label class="form-label">Name</label> -->
+                                    <input type="text" class="form-control" id="title" formControlName="title" placeholder=" Title">
+                                </div>
+                                <div class="input-group input-group-outline my-3">
+                                    <!-- <label class="form-label">Price</label> -->
+                                    <input type="text" class="form-control" id="email" formControlName="description" placeholder="email">
+                                </div>
+                                <div class="input-group input-group-outline my-3">
+                                    <!-- <label class="form-label">Enrolled_students</label> -->
+                                    <input type="text" class="form-control" id="contact" formControlName="link" placeholder="contact">
+                                </div>
+                                <div class="input-group input-group-outline my-3">
+                                    <!-- <label class="form-label">Enrolled_students</label> -->
+                                    <input type="text" class="form-control" id="work_experience" formControlName="link" placeholder="work_experience">
+                                </div>
+                               
+                                <div class="input-group input-group-outline my-3">
+                                    <!-- <label class="form-label">Enrolled_students</label> -->
+                                    <input type="text" class="form-control" id="schedule_datetime" formControlName="link" placeholder="schedule_datetime">
+                                </div>
+                               
+                                <div class="input-group input-group-outline my-3">
+                                    <!-- <label class="form-label">Enrolled_students</label> -->
+                                    <input type="text" class="form-control" id="interest" formControlName="link" placeholder="interest">
+                                </div>
+                               
+                               
+
+              
+
+                            </form>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn bg-gradient-secondary"
+                                data-bs-dismiss="modal">Close</button>
+                            <button type="submit" (click)="onSubmit()"  class="btn bg-gradient-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal End -->
+        </div>
+    </div>
+    <div class="card">
+        <div class="div"></div>
+        <div class="table-responsive">
+
+            <table class="table align-items-center mb-0">
+                <thead>
+
+                    <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email
+                        </th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            Contact</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                work_experience</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    schedule_datetime</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        interest</th>
+                                      
+                        
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let item of bannerlist">
+                        <td>
+                            <div class="d-flex px-2 py-1">
+                               
+                                <div class="d-flex flex-column justify-content-center">
+                                    <h6 class="mb-0 text-xs">{{item.title}}</h6>
+                                    <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">{{item.email}}</p>
+                            <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
+                        </td>
+                        <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-normal">{{item.contact}}</span>
+                        </td>
+                        <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-normal">{{item.work_experience}}</span>
+                        </td>
+
+                        <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-normal">{{item.schedule_datetime}}</span>
+                        </td>
+
+                        <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-normal">{{item.interest}}</span>
+                        </td>
+
+
+
+                        
+
+                        <td class="align-middle">
+                           
+                            <a class="btn btn-warning ms-2 text-white font-weight-normal text-xs" data-bs-toggle="modal"
+                             data-bs-target="#editoffice" (click)="openEditModal(item)">
+                             Edit
+                             </a>
+ 
+                           <!-- Modal -->
+                           <div class="modal fade" id="editoffice" tabindex="-1" role="dialog"
+                           aria-labelledby="exampleModalLabel" aria-hidden="true">
+                           <div class="modal-dialog modal-dialog-centered" role="document">
+                               <div class="modal-content">
+                                   <div class="modal-header">
+                                       <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Edit Course</h5>
+                                       <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
+                                           aria-label="Close">
+                                           <span aria-hidden="true">&times;</span>
+                                       </button>
+                                   </div>
+                                   <div class="modal-body">
+                                     <form [formGroup]="editForm">
+                        
+ 
+                                        <div class="input-group input-group-outline my-3">
+                                            <!-- <label class="form-label">Name</label> -->
+                                            <input type="text" class="form-control" formControlName="title" placeholder="Title">
+                                        </div>
+                                        <div class="input-group input-group-outline my-3">
+                                            <!-- <label class="form-label">Price</label> -->
+                                            <input type="text" class="form-control"  formControlName="description" placeholder="Description">
+                                        </div>
+                                        <div class="input-group input-group-outline my-3">
+                                            <!-- <label class="form-label">Enrolled_students</label> -->
+                                            <input type="text" class="form-control"  formControlName="link" placeholder="Link">
+                                        </div>
+                                       
+        
+            
+                                         
+                                      </form>
+ 
+                                   </div>
+                                   <div class="modal-footer">
+                                       <button type="button" class="btn bg-gradient-secondary"
+                                           data-bs-dismiss="modal">Close</button>
+                                       <button type="submit" (click)="updateoffice(item)" class="btn bg-gradient-primary">Save changes</button>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+ 
+                       <!-- Modal End -->
+                        </td>
+                       
+
+                        <td>
+
+
+                            <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs"(click)="deleteoffice(item.id)">
+                                delete
+                            </a>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

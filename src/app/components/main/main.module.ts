@@ -30,12 +30,20 @@ import { CompanyDetailsComponent } from './company-details/company-details.compo
 import { AddLogoComponent } from './add-logo/add-logo.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AddSubcourseComponent } from './add-subcourse/add-subcourse.component';
-import { SubcourseComponent } from './subcourse/subcourse.component';
+
 import { CourseComponent } from './course/course.component';
 import { SubcourseDetailsComponent } from './subcourse-details/subcourse-details.component';
 import { CohortsComponent } from './cohorts/cohorts.component';
 import { HandsonCategoryComponent } from './handson-category/handson-category.component';
 import { HandsonProjectComponent } from './handson-project/handson-project.component';
+import {TrainedStudentComponent} from './trained-student/trained-student.component';
+import { ModuleComponent } from './module/module.component';
+import { LearnerReviewComponent } from './learner-review/learner-review.component';
+import { HighlightsComponent } from './highlights/highlights.component';
+import { CourseHighlightComponent } from './course-highlight/course-highlight.component';
+import { CounsellingComponent } from './counselling/counselling.component';
+import { SyllabusModuleComponent } from './syllabus-module/syllabus-module.component';
+import { ProgramCityComponent } from './program-city/program-city.component';
 
 
 @NgModule({
@@ -67,12 +75,20 @@ import { HandsonProjectComponent } from './handson-project/handson-project.compo
     AddLogoComponent,
     AddProductComponent,
     AddSubcourseComponent,
-    SubcourseComponent,
-    CourseComponent,
-    SubcourseDetailsComponent,
     CohortsComponent,
     HandsonCategoryComponent,
-    HandsonProjectComponent
+    HandsonProjectComponent,
+    CourseComponent,
+    SubcourseDetailsComponent,
+    TrainedStudentComponent,
+    ModuleComponent,
+    LearnerReviewComponent,
+    HighlightsComponent,
+    CourseHighlightComponent,
+    CounsellingComponent,
+    SyllabusModuleComponent,
+    ProgramCityComponent,
+    
     
   ],
   imports: [

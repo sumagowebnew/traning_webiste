@@ -13,12 +13,14 @@ export class AddSubcourseComponent {
   ban: any;
   bannerlist: any;
   editForm: any;
+  courseDetails: any;
 
   constructor(private banner:CounterService,private formBuilder:FormBuilder ){}
 
   ngOnInit(){
     this.addSubCourse();
     this.getSubCourse();
+    this.getCourse();
   }
   addSubCourse(): void {
     this.bannerForm = this.formBuilder.group({
@@ -28,7 +30,13 @@ export class AddSubcourseComponent {
     });
   }
 
- 
+  getCourse(){
+    this.banner.getcourse().subscribe((res: any) => {
+      this.courseDetails = res.data; // Assign directly, assuming the data is an array
+      console.log(this.courseDetails);
+    });
+
+  }
 
   onSubmit(): void {
     const formData = new FormData();

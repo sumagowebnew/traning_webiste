@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonmainComponent } from 'src/app/components/main/commonmain/commonmain.component';
 import { DashboardComponent } from 'src/app/components/main/dashboard/dashboard.component';
@@ -33,6 +33,15 @@ import { ProgramFeesListComponent } from 'src/app/components/main/program-fees-l
 import { CohortsComponent } from './cohorts/cohorts.component';
 import { HandsonCategoryComponent } from './handson-category/handson-category.component';
 import { HandsonProjectComponent } from './handson-project/handson-project.component';
+import { SubcourseDetailsComponent } from './subcourse-details/subcourse-details.component';
+import { TrainedStudentComponent } from './trained-student/trained-student.component';
+import { ModuleComponent } from './module/module.component';
+import { SyllabusModuleComponent } from './syllabus-module/syllabus-module.component';
+import { LearnerReviewComponent } from './learner-review/learner-review.component';
+import { ProgramCityComponent } from './program-city/program-city.component';
+import { HighlightsComponent } from './highlights/highlights.component';
+import { CounsellingComponent } from './counselling/counselling.component';
+import { CourseHighlightComponent } from './course-highlight/course-highlight.component';
 
 const routes: Routes = [
   {path:'',component:CommonmainComponent,children:[
@@ -47,17 +56,29 @@ const routes: Routes = [
     {path:'add_product',component:AddProductComponent},
     {path:'add_course',component:CourseComponent},
     {path:'add_subcourse',component:AddSubcourseComponent},
+    {path:'subcourse_detail',component:SubcourseDetailsComponent},
 
     {path:'about',component:AboutComponent},
     {path:'about_counter',component:AboutCounterComponent},
     {path:'google_review',component:GoogleReviewComponent},
+  
 
     {path:'event',component:AddEventComponent},
     {path:'eventdata',component:EventDataComponent},
+    {path:'training_student',component:TrainedStudentComponent},
+    {path:'add_module',component:ModuleComponent},
+    {path:'add_syllabus',component:SyllabusModuleComponent},
+    {path:'learner_review',component:LearnerReviewComponent},
+
 
     {path:'diploma_program_category',component:DiplomaProgramCategoryComponent},
     {path:'program_details',component:ProgramsDetailsComponent},
     {path:'broucher',component:BrochuerComponent},
+    {path:'program_city',component:ProgramCityComponent},
+    {path:'highlights',component:HighlightsComponent},
+    {path:'apply_counselling',component:CounsellingComponent},
+    {path:'course_highlights',component:CourseHighlightComponent},
+
    
 
 

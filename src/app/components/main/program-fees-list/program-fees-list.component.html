@@ -18,7 +18,7 @@
                      </button>
                  </div>
                  <div class="modal-body">
-                    <form [formGroup]="ProgramFeesFormData" (ngSubmit)="onSubmit()">
+                    <form [formGroup]="ProgramFeesFormData">
                       <div class="input-group input-group-outline my-3">
                         <label class="form-label">Program ID</label>
                         <input type="text" class="form-control" formControlName="pro_max_id">
@@ -94,7 +94,7 @@
 
                   
                       <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="submit" class="btn bg-gradient-primary">Save changes</button>
+                      <button type="submit" class="btn bg-gradient-primary" (click)="onSubmit()">Save changes</button>
                     </form>
                   </div>
                   <div class="modal-footer"></div>

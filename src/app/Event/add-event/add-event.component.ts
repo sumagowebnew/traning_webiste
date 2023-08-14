@@ -14,6 +14,7 @@ export class AddEventComponent implements OnInit {
   eventlist: any;
   base64Images: any;
   editForm: any;
+  courseDetails: any;
 
   constructor(private event:CounterService,private fb:FormBuilder){}
 
@@ -21,8 +22,16 @@ export class AddEventComponent implements OnInit {
     this.CreateEvent();
 
     this.getevent();
+    this.getCourse();
   }
 
+  getCourse(){
+    this.event.getcourse().subscribe((res: any) => {
+      this.courseDetails = res.data; // Assign directly, assuming the data is an array
+      console.log(this.courseDetails);
+    });
+
+  }
   CreateEvent() {
     this.eventform = this.fb.group({
       name: ['', Validators.required],
