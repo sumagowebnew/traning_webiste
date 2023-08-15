@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CounterService } from 'src/app/services/counter.service';
+import { Router } from "@angular/router"
+
 
 @Component({
   selector: 'app-banner',
@@ -13,7 +15,7 @@ export class BannerComponent implements OnInit {
   ban: any;
   bannerlist: any;
 
-  constructor(private banner: CounterService, private formBuilder: FormBuilder) {}
+  constructor(private banner: CounterService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.addbanner();
@@ -47,10 +49,10 @@ export class BannerComponent implements OnInit {
     const formData = new FormData();
     formData.append('title', this.bannerForm.value.title);
     formData.append('description', this.bannerForm.value.description);
-    
+
     // Append all images
     for (const image of this.base64Images) {
-      formData.append('images[]', image);
+      formData.append('images', image);
     }
 
     this.banner.addbanner(formData).subscribe(
@@ -58,6 +60,14 @@ export class BannerComponent implements OnInit {
         console.log('Data added successfully:', response);
         this.ban = response;
         this.clearForm(); // Optionally, clear the form after submission
+        if(response.StatusCode == '200') {
+          // this.router.navigate(['/main/banner'])
+          alert("Data added successfully");
+          location.reload();
+
+        } else {
+          alert("Something went wrong");
+        }
       },
       (error) => {
         console.error('Failed to add banner:', error);

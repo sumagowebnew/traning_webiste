@@ -7,17 +7,17 @@ import { CounterService } from 'src/app/services/counter.service';
   templateUrl: './handson-project.component.html',
   styleUrls: ['./handson-project.component.css']
 })
-export class HandsonProjectComponent implements OnInit  {
+export class HandsonProjectComponent implements OnInit {
   handsonProjectDetails: any[];
   handsonProject: FormGroup;
   handsonProjectUpdateForm: FormGroup;
-  subcourses:any
-  handsonCategoryDetails:any[]
+  subcourses: any
+  handsonCategoryDetails: any[]
   ngOnInit(): void {
     this.getHandsonProject()
     this.getCategories()
-    this.service.getSubcoursesdetail().subscribe((res)=>{
-      this.subcourses = res
+    this.service.getsubcourse().subscribe((res) => {
+      this.subcourses = res['data']
     })
   }
   getCategories() {
@@ -31,25 +31,25 @@ export class HandsonProjectComponent implements OnInit  {
       }
     );
   }
-  constructor(private service:CounterService, private fb:FormBuilder){
+  constructor(private service: CounterService, private fb: FormBuilder) {
     this.handsonProject = this.fb.group({
       handson_category_id: [],
-          sub_course_id: [1],
-          title: [''],
-          desc: [''],
+      sub_course_id: [1],
+      title: [''],
+      desc: [''],
     });
 
-        // Initialize the update form
-        this.handsonProjectUpdateForm = this.fb.group({
-          handson_category_id: [''],
-          sub_course_id: [''],
-          title: [''],
-          desc: [''],
+    // Initialize the update form
+    this.handsonProjectUpdateForm = this.fb.group({
+      handson_category_id: [''],
+      sub_course_id: [''],
+      title: [''],
+      desc: [''],
 
-        });
+    });
   }
 
-  getHandsonProject(){
+  getHandsonProject() {
     this.service.getHandsonProject().subscribe(
       (response) => {
         this.handsonProjectDetails = response;
@@ -61,27 +61,42 @@ export class HandsonProjectComponent implements OnInit  {
     );
   }
 
-  addProjects(){
+  // getCourse() {
+  //   this.service.getsubcourse().subscribe((allsubcourse: any) => {
+  //     this.subcourse = allsubcourse['data'];
+  //   });
+  // }
+
+
+  addProjects() {
     if (this.handsonProject.valid) {
-      const data = { handson_category_id: this.handsonProject.value.handson_category_id,
-        sub_course_id:this.handsonProject.value.sub_course_id,
-        title:this.handsonProject.value.title,
-        desc:this.handsonProject.value.desc,
+      const data = {
+        handson_category_id: this.handsonProject.value.handson_category_id,
+        sub_course_id: this.handsonProject.value.sub_course_id,
+        title: this.handsonProject.value.title,
+        desc: this.handsonProject.value.desc,
       };
       this.service.addHandosnProject(data).subscribe(
-        (response) => {
-          console.log('Category added:', response);
+        (response: any) => {
+
           this.handsonProject.reset();
+          if (response.statusCode == '200') {
+            // this.router.navigate(['/main/banner'])
+            alert("Data added successfully");
+            location.reload();
+
+          } else {
+            alert("Something went wrong");
+          }
         },
         (error) => {
           console.error('Error adding category:', error);
         }
       );
-  }
+    }
   }
 
-  deleteProjects(id:number)
-  {
+  deleteProjects(id: number) {
     const confirmation = confirm('Are you sure you want to delete this category?');
     if (confirmation) {
       this.service.deleteHandsonProject(id).subscribe(
@@ -97,14 +112,16 @@ export class HandsonProjectComponent implements OnInit  {
     }
   }
 
-  updateProject(id:number){
+  updateProject(id: number) {
     if (this.handsonProjectUpdateForm.valid) {
-      const updatedTitle = this.handsonProjectUpdateForm.value.title;  
-      const updateData = { handson_category_id: this.handsonProject.value.handson_category_id,
-        sub_course_id:this.handsonProject.value.sub_course_id,
-        title:this.handsonProject.value.title,
-        desc:this.handsonProject.value.desc, }; // Construct the data object for update
-      
+      const updatedTitle = this.handsonProjectUpdateForm.value.title;
+      const updateData = {
+        handson_category_id: this.handsonProject.value.handson_category_id,
+        sub_course_id: this.handsonProject.value.sub_course_id,
+        title: this.handsonProject.value.title,
+        desc: this.handsonProject.value.desc,
+      }; // Construct the data object for update
+
       this.service.updateHandsonProject(id, updateData).subscribe(
         (response) => {
           console.log('Project updated:', response);
@@ -117,5 +134,5 @@ export class HandsonProjectComponent implements OnInit  {
     }
   }
 
-  
+
 }

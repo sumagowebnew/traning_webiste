@@ -15,9 +15,9 @@ export class AddSubcourseComponent {
   editForm: any;
   courseDetails: any;
 
-  constructor(private banner:CounterService,private formBuilder:FormBuilder ){}
+  constructor(private banner: CounterService, private formBuilder: FormBuilder) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.addSubCourse();
     this.getSubCourse();
     this.getCourse();
@@ -26,11 +26,11 @@ export class AddSubcourseComponent {
     this.bannerForm = this.formBuilder.group({
       course_id: ['', Validators.required],
       name: ['', Validators.required],
-     
+
     });
   }
 
-  getCourse(){
+  getCourse() {
     this.banner.getcourse().subscribe((res: any) => {
       this.courseDetails = res.data; // Assign directly, assuming the data is an array
       console.log(this.courseDetails);
@@ -42,13 +42,19 @@ export class AddSubcourseComponent {
     const formData = new FormData();
     formData.append('course_id', this.bannerForm.value.course_id);
     formData.append('name', this.bannerForm.value.name);
-    
-   
+
+
 
     this.banner.addsubcourse(formData).subscribe(
       (response: any) => {
-        console.log('Data added successfully:', response);
-        this.ban = response; // Not sure what this line is for, you might need to adjust it
+        if (response.StatusCode == '200') {
+          // this.router.navigate(['/main/banner'])
+          alert("Data added successfully");
+          location.reload();
+  
+        } else {
+          alert("Something went wrong");
+        }
       },
       (error) => {
         console.error('Failed to add data:', error);
@@ -56,10 +62,10 @@ export class AddSubcourseComponent {
     );
   }
 
-  getSubCourse(){
-    this.banner.getsubcourse().subscribe((res:any)=>{
+  getSubCourse() {
+    this.banner.getsubcourse().subscribe((res: any) => {
       console.log(res);
-      this.bannerlist=res.data;
+      this.bannerlist = res.data;
     })
   }
   deleteSubCourse(id: number) {

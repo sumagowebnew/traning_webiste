@@ -13,8 +13,8 @@ export class GoogleReviewComponent implements OnInit {
   base64Image: string;
   googlereview: any;
   editForm1: any;
- 
-  constructor(private about:CounterService,private formBuilder:FormBuilder){
+
+  constructor(private about: CounterService, private formBuilder: FormBuilder) {
 
   }
 
@@ -27,7 +27,7 @@ export class GoogleReviewComponent implements OnInit {
 
   addgoogle(): void {
     this.googleForm = this.formBuilder.group({
-     
+
       selectedFile: [null, Validators.required]
     });
   }
@@ -46,27 +46,33 @@ export class GoogleReviewComponent implements OnInit {
   }
 
   onSubmit(): void {
-   
+
 
     const formData = new FormData();
-   
+
     formData.append('image', this.base64Image);
 
     this.about.addgooglereview(formData).subscribe(
       (response: any) => {
-        console.log('Data added successfully:', response);
-        this.googlereview = response;
+        if (response.statusCode == '200') {
+          // this.router.navigate(['/main/banner'])
+          alert("Data added successfully");
+          location.reload();
+
+        } else {
+          alert("Something went wrong");
+        }
       },
       (error) => {
         console.error('Failed to add course:', error);
       }
     );
   }
-  getgoogle(){
-    this.about.getgooglereview().subscribe((res:any)=>{
+  getgoogle() {
+    this.about.getgooglereview().subscribe((res: any) => {
       console.log(res);
-      
-      this.googlereview=res;
+
+      this.googlereview = res;
 
     })
   }
@@ -88,7 +94,7 @@ export class GoogleReviewComponent implements OnInit {
   }
   createEditForm() {
     this.editForm1 = this.formBuilder.group({
-     
+
       selectedFile: [null, Validators.required]
     });
   }
@@ -96,7 +102,7 @@ export class GoogleReviewComponent implements OnInit {
   // Function to open the edit modal and populate form fields with the selected expert review data
   openEditModal(expert: any) {
     this.editForm1.setValue({
-     
+
       selectedFile: expert.base64Image
     });
   }

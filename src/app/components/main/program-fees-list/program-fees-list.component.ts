@@ -8,26 +8,29 @@ import { CounterService } from 'src/app/services/counter.service';
   styleUrls: ['./program-fees-list.component.css']
 })
 export class ProgramFeesListComponent implements OnInit {
-  ProgramFeesFormData:FormGroup
-  ProgramFeesData:any[]
+  ProgramFeesFormData: FormGroup
+  ProgramFeesData: any[]
   courseDetails: any[] = [];
   subcourseDetails
-  editData:any
-  constructor(private service:CounterService,private formBuilder:FormBuilder){
+  editData: any
+  constructor(private service: CounterService, private formBuilder: FormBuilder) {
     this.ProgramFeesFormData = this.formBuilder.group({
-      pro_max_id: [''], // Initialize with default values if needed
+      pro_max_id: ['1'], // Initialize with default values if needed
       course_id: [''],
       sub_course_id: [''],
-      job_assistance: ['',Validators.required],
-      live_class_subscription: ['required'],
-      lms_subscription: ['required'],
-      job_referrals: ['required'],
-      industry_projects: ['required'],
-      capstone_projects: ['required'],
-      domain_training: ['required'],
-      project_certification_from_companies: ['required'],
-      adv_ai_dsa: ['required'],
-      microsoft_certification: ['required']
+      sub_course_fee: ['', Validators.required], 
+      sub_course_duration: ['', Validators.required], 
+      job_assistance: ['Yes', Validators.required],
+      
+      live_class_subscription: ['Yes'],
+      lms_subscription: ['Yes'],
+      job_referrals: ['Yes'],
+      industry_projects: ['Yes'],
+      capstone_projects: ['Yes'],
+      domain_training: ['Yes'],
+      project_certification_from_companies: ['Yes'],
+      adv_ai_dsa: ['Yes'],
+      microsoft_certification: ['Yes']
     });
   }
 
@@ -41,52 +44,58 @@ export class ProgramFeesListComponent implements OnInit {
     });
   }
 
-  getCourse(){
+  getCourse() {
     this.service.getcourse().subscribe((res: any) => {
       this.courseDetails = res.data; // Assign directly, assuming the data is an array
       console.log(this.courseDetails);
     });
-
-
   }
 
-  onSubmit(){
+  onSubmit() {
     const formData = new FormData();
-  const formValue = this.ProgramFeesFormData.value;
-  
-  Object.keys(formValue).forEach(key => {
-    formData.append(key, formValue[key]);
-  });
+    const formValue = this.ProgramFeesFormData.value;
 
-  this.service.addProgramFees(formData).subscribe(
-    (response: any) => {
-      console.log('Data added successfully:', response);
-      // Optionally reset the form after submission
-      this.ProgramFeesFormData.reset();
-    },
-    (error) => {
-      console.error('Failed to add data:', error);
-    }
-  );
+    Object.keys(formValue).forEach(key => {
+      formData.append(key, formValue[key]);
+    });
+
+  
+
+    this.service.addProgramFees(formData).subscribe(
+      (response: any) => {
+        this.ProgramFeesFormData.reset();
+        if (response.StatusCode == '200') {
+          // this.router.navigate(['/main/banner'])
+          alert("Data added successfully");
+          location.reload();
+        } else {
+          alert("Something went wrong");
+        }
+      },
+      (error) => {
+        console.error('Failed to add data:', error);
+      }
+    );
   }
 
 
-  getProgramFeesData(){
-    this.service.getProgramFees().subscribe((res:[])=>{
+  getProgramFeesData() {
+    this.service.getProgramFees().subscribe((res: []) => {
       this.ProgramFeesData = res
       console.log(res);
-      
+
     })
   }
-  deleteProgramFeesData(id:number){
+  deleteProgramFeesData(id: number) {
+    alert(id);
     const confirmDelete = confirm('Are you sure you want to delete this record?');
-    
+
     if (confirmDelete) {
       this.service.deleteProgramFees(id).subscribe(
         () => {
           console.log('Data deleted successfully');
           // You can also refresh the data or perform other actions here
-        this.getProgramFeesData()
+          this.getProgramFeesData()
         },
         error => {
           console.error('Failed to delete data:', error);
@@ -94,6 +103,16 @@ export class ProgramFeesListComponent implements OnInit {
       );
     }
   }
-  updateProgramFeesData(id:number){}
+  updateProgramFeesData(id: number) { }
+
+  getSubCourseFromCourse(event) {
+    var obj = {
+      course_id: event.target.value
+    };
+
+    this.service.getSubCourse(obj).subscribe(alldist => {
+      this.subcourseDetails = alldist['data'];
+    });
+  }
 
 }

@@ -12,20 +12,20 @@ export class CourseComponent {
   base64Image: string;
   ban: any;
   bannerlist: any;
-  constructor(private company:CounterService,private formBuilder:FormBuilder ){}
-  
+  constructor(private company: CounterService, private formBuilder: FormBuilder) { }
+
   ngOnInit(): void {
     this.addcompany();
     this.getcompany();
-    
-    
+
+
   }
 
   addcompany(): void {
     this.bannerForm = this.formBuilder.group({
-    
+
       name: ['', Validators.required],
-    
+
     });
   }
 
@@ -43,17 +43,23 @@ export class CourseComponent {
   }
 
   onSubmit(): void {
-   
+
 
     const formData = new FormData();
-    
-    formData.append('name',this.bannerForm.value.name);
-   
+
+    formData.append('name', this.bannerForm.value.name);
+
 
     this.company.addcourse(formData).subscribe(
       (response: any) => {
-        console.log('Data added successfully:', response);
-        this.ban = response;
+        if (response.StatusCode == '200') {
+          // this.router.navigate(['/main/banner'])
+          alert("Data added successfully");
+          location.reload();
+
+        } else {
+          alert("Something went wrong");
+        }
       },
       (error) => {
         console.error('Failed to add course:', error);
@@ -61,10 +67,10 @@ export class CourseComponent {
     );
   }
 
-  getcompany(){
-    this.company.getcourse().subscribe((res:any)=>{
+  getcompany() {
+    this.company.getcourse().subscribe((res: any) => {
       console.log(res);
-      this.bannerlist=res.data;
+      this.bannerlist = res.data;
     })
   }
   deletecompany(id: number) {

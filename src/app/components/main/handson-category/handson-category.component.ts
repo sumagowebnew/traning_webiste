@@ -8,23 +8,23 @@ import { CounterService } from 'src/app/services/counter.service';
   styleUrls: ['./handson-category.component.css']
 })
 export class HandsonCategoryComponent implements OnInit {
-  handsonCategory:FormGroup;
-  handsonCategoryDetails:any[]
+  handsonCategory: FormGroup;
+  handsonCategoryDetails: any[]
   handsonCategoryUpdateForm: FormGroup; // Add this form for update
-  
+
 
   ngOnInit(): void {
     this.getCategories()
   }
-  constructor(private service:CounterService, private fb:FormBuilder){
+  constructor(private service: CounterService, private fb: FormBuilder) {
     this.handsonCategory = this.fb.group({
       title: [''],
     });
-        // Initialize the update form
-        this.handsonCategoryUpdateForm = this.fb.group({
-          title: [''],
-        });
-    
+    // Initialize the update form
+    this.handsonCategoryUpdateForm = this.fb.group({
+      title: [''],
+    });
+
   }
 
   openUpdateModal(category: any): void {
@@ -35,9 +35,8 @@ export class HandsonCategoryComponent implements OnInit {
 
   getCategories() {
     this.service.getHandsonCategory().subscribe(
-      (response) => {
+      (response: any) => {
         this.handsonCategoryDetails = response;
-        console.log('Categories retrieved:', response);
       },
       (error) => {
         console.error('Error getting categories:', error);
@@ -49,9 +48,17 @@ export class HandsonCategoryComponent implements OnInit {
     if (this.handsonCategory.valid) {
       const data = { title: this.handsonCategory.value.title };
       this.service.addHandosnCategory(data).subscribe(
-        (response) => {
-          console.log('Category added:', response);
+        (response:any) => {
+
           this.handsonCategory.reset();
+          if (response.StatusCode == '200') {
+            // this.router.navigate(['/main/banner'])
+            alert("Data added successfully");
+            location.reload();
+
+          } else {
+            alert("Something went wrong");
+          }
         },
         (error) => {
           console.error('Error adding category:', error);
@@ -75,11 +82,11 @@ export class HandsonCategoryComponent implements OnInit {
       );
     }
   }
-  updateCategory(id:number) {
+  updateCategory(id: number) {
     if (this.handsonCategoryUpdateForm.valid) {
-      const updatedTitle = this.handsonCategoryUpdateForm.value.title;  
+      const updatedTitle = this.handsonCategoryUpdateForm.value.title;
       const updateData = { title: updatedTitle }; // Construct the data object for update
-      
+
       this.service.updateHandsonCategory(id, updateData).subscribe(
         (response) => {
           console.log('Category updated:', response);
