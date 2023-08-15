@@ -23,10 +23,9 @@ export class CourseComponent {
 
   addcompany(): void {
     this.bannerForm = this.formBuilder.group({
-      review: ['', Validators.required],
+    
       name: ['', Validators.required],
-      company_position: ['', Validators.required],
-      selectedFile: [null, Validators.required]
+    
     });
   }
 
@@ -47,10 +46,9 @@ export class CourseComponent {
    
 
     const formData = new FormData();
-    formData.append('review', this.bannerForm.value.review);
+    
     formData.append('name',this.bannerForm.value.name);
-    formData.append('company_position', this.bannerForm.value.company_position);
-    formData.append('images', this.base64Image);
+   
 
     this.company.addcourse(formData).subscribe(
       (response: any) => {
@@ -70,16 +68,20 @@ export class CourseComponent {
     })
   }
   deletecompany(id: number) {
-    this.company.deletecontact(id).subscribe(
-      () => {
-        console.log('consulting  deleted successfully');
-        // Optionally, update the local list by removing the deleted expert review or fetch the updated list again
-        this.getcompany();
-      },
-      (error) => {
-        console.error('Failed to delete consulting:', error);
-      }
-    );
+    const confirmation = confirm('Are you sure you want to delete this category?');
+    if (confirmation) {
+      this.company.deletecourse(id).subscribe(
+        (response) => {
+          console.log('Course deleted:', response);
+          alert(`Course Deleted:${response}`)
+          // You might want to refresh the categories list after deletion
+          this.getcompany();
+        },
+        (error) => {
+          console.error('Error deleting Project:', error);
+        }
+      );
+    }
   }
 
 

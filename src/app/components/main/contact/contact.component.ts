@@ -27,16 +27,20 @@ export class ContactComponent implements OnInit {
   }
 
     deletecontact(id: number) {
-      this.contact.deletecontact(id).subscribe(
-        () => {
-          console.log('Conatct deleted successfully');
-          // Optionally, update the local list by removing the deleted counter or fetch the updated list again
-          this.getcontact();
-        },
-        (error) => {
-          console.error('Failed to delete Contact:', error);
-        }
-      );
+      const confirmation = confirm('Are you sure you want to delete this category?');
+      if (confirmation) {
+        this.contact.deletecontact(id).subscribe(
+          (response) => {
+            console.log('Contact deleted:', response);
+            alert(`Contact Deleted:${response}`)
+            // You might want to refresh the categories list after deletion
+            this.getcontact();
+          },
+          (error) => {
+            console.error('Error deleting Project:', error);
+          }
+        );
+      }
     }
     
   }

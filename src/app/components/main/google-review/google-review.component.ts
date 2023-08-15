@@ -71,16 +71,20 @@ export class GoogleReviewComponent implements OnInit {
     })
   }
   deletegoogle(id: number) {
-    this.about.deletebgooglereview(id).subscribe(
-      () => {
-        console.log('consulting  deleted successfully');
-        // Optionally, update the local list by removing the deleted expert review or fetch the updated list again
-        this.getgoogle();
-      },
-      (error) => {
-        console.error('Failed to delete consulting:', error);
-      }
-    );
+    const confirmation = confirm('Are you sure you want to delete this category?');
+    if (confirmation) {
+      this.about.deletebgooglereview(id).subscribe(
+        (response) => {
+          console.log('Google Review deleted:', response);
+          alert(`Google Review Deleted:${response}`)
+          // You might want to refresh the categories list after deletion
+          this.getgoogle();
+        },
+        (error) => {
+          console.error('Error deleting Project:', error);
+        }
+      );
+    }
   }
   createEditForm() {
     this.editForm1 = this.formBuilder.group({

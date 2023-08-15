@@ -47,6 +47,7 @@ export class ProgramFeesListComponent implements OnInit {
       console.log(this.courseDetails);
     });
 
+
   }
 
   onSubmit(){
@@ -84,7 +85,12 @@ export class ProgramFeesListComponent implements OnInit {
       this.service.deleteProgramFees(id).subscribe(
         () => {
           console.log('Data deleted successfully');
+<<<<<<< HEAD
           this.getProgramFeesData()
+=======
+          // You can also refresh the data or perform other actions here
+        this.getProgramFeesData()
+>>>>>>> 76ca88fa8432c418c88dbaf535017cb4efcbf07f
         },
         error => {
           console.error('Failed to delete data:', error);

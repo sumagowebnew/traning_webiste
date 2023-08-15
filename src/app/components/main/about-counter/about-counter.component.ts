@@ -42,7 +42,9 @@ export class AboutCounterComponent implements OnInit {
     this.about.addaboutcounter(formData).subscribe(
     (response: any)=>{
       console.log('Created Successfully:', response);
-            this.counter = response;    
+            this.counter = response;   
+            alert(`Data added successfully:${response}`); 
+            this.getcounterdata();
             
           },
           (error)=>console.error('failed to add course')
@@ -57,17 +59,32 @@ export class AboutCounterComponent implements OnInit {
       })
     }
     deletecounter(id: number) {
+    //   this.about.deletecounter(id).subscribe(
+    //     () => {
+    //       console.log('Counter deleted successfully');
+    //       // Optionally, update the local list by removing the deleted counter or fetch the updated list again
+    //       this.getcounterdata();
+    //     },
+    //     (error) => {
+    //       console.error('Failed to delete counter:', error);
+    //     }
+    //   );
+    // }
+    const confirmDelete = confirm('Are you sure you want to delete this record?');
+    
+    if (confirmDelete) {
       this.about.deletecounter(id).subscribe(
         () => {
-          console.log('Counter deleted successfully');
-          // Optionally, update the local list by removing the deleted counter or fetch the updated list again
+          console.log('Data deleted successfully');
+          // You can also refresh the data or perform other actions here
           this.getcounterdata();
         },
-        (error) => {
-          console.error('Failed to delete counter:', error);
+        error => {
+          console.error('Failed to delete data:', error);
         }
       );
     }
+  }
     createEditForm() {
       this.editForm = this.fb.group({
         name: ['', Validators.required],

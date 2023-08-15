@@ -24,18 +24,19 @@ getapplynow(){
   })
 }
 deleteapplynow(id: number) {
-  this.counter.deleteapply_now(id)
-    .subscribe(
-      () => {
-        console.log('Apply now deleted successfully');
-        window.location.reload();
-        // Perform any additional actions or display success message
+  const confirmation = confirm('Are you sure you want to delete this category?');
+  if (confirmation) {
+    this.counter.deleteapply_now(id).subscribe(
+      (response) => {
+        console.log('logo deleted:', response);
+        // You might want to refresh the categories list after deletion
+        this.getapplynow();
       },
       (error) => {
-        console.error('Failed to deleted', error);
-        // Handle error, display error message, or perform alternative actions
+        console.error('Error deleting Project:', error);
       }
     );
+  }
 }
 
 }

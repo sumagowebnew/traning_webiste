@@ -34,6 +34,7 @@ export class ArchievementComponent implements OnInit {
     this.counter.addcounter(this.counterForm.value).subscribe(
       (response: any) => {
         console.log('Created Successfully:', response);
+
         // Optionally, update the local list with the newly added counter or fetch the updated list again
         this.getcounterdata();
       },
@@ -79,15 +80,18 @@ export class ArchievementComponent implements OnInit {
   }
 
   deletearchived(id: number) {
+   const confirmation = confirm('Are you sure you want to delete this category?');
+  if (confirmation) {
     this.counter.deletearchivement(id).subscribe(
-      () => {
-        console.log('Archievement deleted successfully');
-        // Optionally, update the local list by removing the deleted counter or fetch the updated list again
+      (response) => {
+        console.log(' Home Counter deleted:', response);
+        // You might want to refresh the categories list after deletion
         this.getcounterdata();
       },
       (error) => {
-        console.error('Failed to delete archivement:', error);
+        console.error('Error deleting Project:', error);
       }
     );
   }
+}
 }

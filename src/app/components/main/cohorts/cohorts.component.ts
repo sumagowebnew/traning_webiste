@@ -52,15 +52,17 @@ export class CohortsComponent {
   }
 
   onDeleteBatch(id: number): void {
-    const confirmDelete = confirm('Are you sure you want to delete this batch?');
-    if (confirmDelete) {
+    const confirmation = confirm('Are you sure you want to delete this category?');
+    if (confirmation) {
       this.service.deleteBatch(id).subscribe(
-        () => {
-          console.log('Batch deleted successfully');
-          this.getBatches(); // Refresh the batch list
+        (response) => {
+          console.log('Batch deleted:', response);
+          alert(`Batch Deleted:${response}`)
+          // You might want to refresh the categories list after deletion
+          this.getBatches();
         },
         (error) => {
-          console.error('Failed to delete batch:', error);
+          console.error('Error deleting Project:', error);
         }
       );
     }

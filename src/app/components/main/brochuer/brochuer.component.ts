@@ -62,16 +62,20 @@ export class BrochuerComponent implements OnInit{
     })
   }
   deletebrochuer(id: number) {
-    this.our.deletebroucher(id).subscribe(
-      () => {
-        console.log('consulting  deleted successfully');
-        // Optionally, update the local list by removing the deleted expert review or fetch the updated list again
-        this.getbroucher();
-      },
-      (error) => {
-        console.error('Failed to delete consulting:', error);
-      }
-    );
+    const confirmation = confirm('Are you sure you want to delete this category?');
+    if (confirmation) {
+      this.our.deletebroucher(id).subscribe(
+        (response) => {
+          console.log('Banner deleted:', response);
+          alert(`Brochuer Deleted:${response}`)
+          // You might want to refresh the categories list after deletion
+          this.getbroucher();
+        },
+        (error) => {
+          console.error('Error deleting Project:', error);
+        }
+      );
+    }
   }
   createEditForm() {
     this.editForm = this.formBuilder.group({

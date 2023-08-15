@@ -72,16 +72,20 @@ export class CompanyDetailsComponent {
     })
   }
   deletecompany(id: number) {
-    this.company.deleteCompany(id).subscribe(
-      () => {
-        console.log('consulting  deleted successfully');
-        // Optionally, update the local list by removing the deleted expert review or fetch the updated list again
-        this.getcompany();
-      },
-      (error) => {
-        console.error('Failed to delete consulting:', error);
-      }
-    );
+    const confirmation = confirm('Are you sure you want to delete this category?');
+    if (confirmation) {
+      this.company.deleteCompany(id).subscribe(
+        (response) => {
+          console.log('Company deleted:', response);
+          alert(`Company Deleted:${response}`)
+          // You might want to refresh the categories list after deletion
+          this.getcompany();
+        },
+        (error) => {
+          console.error('Error deleting Project:', error);
+        }
+      );
+    }
   }
   createEditForm() {
     this.editForm = this.formBuilder.group({

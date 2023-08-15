@@ -95,7 +95,7 @@ export class ExpertReviewComponent implements OnInit {
     const updatedData = this.editForm1.value;
     this.count.updateExpert(expert.id, updatedData).subscribe(
       (res: any) => {
-        console.log('Data updated successfully:', res);
+        console.log('Expert review successfully:', res);
         // Optionally, update the local list with the updated expert review or fetch the updated list again
         this.getExpertReviews();
       },
@@ -106,16 +106,20 @@ export class ExpertReviewComponent implements OnInit {
   }
 
   deletereview(id: number) {
-    this.count.deleteexpert(id).subscribe(
-      () => {
-        console.log('Review deleted successfully');
-        // Optionally, update the local list by removing the deleted expert review or fetch the updated list again
-        this.getExpertReviews();
-      },
-      (error) => {
-        console.error('Failed to delete expert review:', error);
-      }
-    );
+    const confirmation = confirm('Are you sure you want to delete this category?');
+    if (confirmation) {
+      this.count.deleteexpert(id).subscribe(
+        (response) => {
+          console.log('Expert Review deleted:', response);
+          alert(`Expert Review Deleted:${response}`)
+          // You might want to refresh the categories list after deletion
+          this.getExpertReviews();
+        },
+        (error) => {
+          console.error('Error deleting Project:', error);
+        }
+      );
+    }
   }
 
   // Function to reset the form after successful submission
