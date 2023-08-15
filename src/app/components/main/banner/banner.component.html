@@ -2,7 +2,6 @@
     <div class="row">
         <div class="div">
             <a class="btn btn-info text-white font-weight-normal text-xs" data-bs-toggle="modal"
-<<<<<<< HEAD
                 data-bs-target="#addbanner">
                 Add Banner</a>
             <!-- Modal -->
@@ -20,7 +19,6 @@
                         <div class="modal-body">
                             <form [formGroup]="bannerForm" (ngSubmit)="onSubmit()">
 
-<<<<<<< HEAD
                                 <div class="input-group input-group-outline my-3">
                                     <label class="form-label">Title</label>
                                     <input type="text" id="name" class="form-control" formControlName="title">
@@ -49,31 +47,6 @@
                 </div>
             </div>
             <!-- Modal End -->
-=======
-                         <div class="input-group input-group-outline my-3">
-                             <label class="form-label">description</label>
-                                 <input type="text" id="designation" class="form-control" formControlName="description">
-                         </div>
-                        
-                        <div class="input-group input-group-outline my-3">
-                            
-                                <input type="file" id="selectedFile" class="form-control" multiple (change)="onFilesSelected($event)" >
-                        </div>
-                         
-                      
-                         <button type="button" class="btn bg-gradient-secondary"
-                         data-bs-dismiss="modal">Close</button>
-                     <button type="submit" (click)="onSubmit()"  class="btn bg-gradient-primary">Save changes</button>
-                     </form>
-                 </div>
-                 <div class="modal-footer">
-                    
-                 </div>
-             </div>
-         </div>
-     </div>
-     <!-- Modal End -->
->>>>>>> 76ca88fa8432c418c88dbaf535017cb4efcbf07f
         </div>
     </div>
     <div class="card">
@@ -91,20 +64,7 @@
                 <tbody>
                     <tr *ngFor="let item of bannerlist ">
                         <td>
-<<<<<<< HEAD
                             <img [src]="item.images" style="width:200px" class="me-3">
-=======
-                            <div class="d-flex px-2 py-1">
-                                <div>
-                                    <img [src]="item.images" class="avatar avatar-sm me-3">
-                                  </div>
-                                
-                                <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="mb-0 text-xs">{{item.title}}</h6>
-                                    <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
-                                </div>
-                            </div>
->>>>>>> 76ca88fa8432c418c88dbaf535017cb4efcbf07f
                         </td>
                         <td>
                             <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs"
@@ -117,6 +77,6 @@
             </table>
         </div>
     </div>
-</div>
+</div>s
 <br>
 <br>
