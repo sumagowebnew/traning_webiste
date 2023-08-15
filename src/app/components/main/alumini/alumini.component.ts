@@ -15,7 +15,7 @@ export class AluminiComponent implements OnInit {
   aluminilist: any;
   courseDetails: any;
 
-  constructor(private newweb:CounterService,private formBuilder:FormBuilder){}
+  constructor(private newweb: CounterService, private formBuilder: FormBuilder) { }
 
 
 
@@ -24,9 +24,9 @@ export class AluminiComponent implements OnInit {
     this.addalumini();
     this.getalumini();
     this.getCourse();
-    
+
   }
-  getCourse(){
+  getCourse() {
     this.newweb.getcourse().subscribe((res: any) => {
       this.courseDetails = res.data; // Assign directly, assuming the data is an array
       console.log(this.courseDetails);
@@ -35,9 +35,11 @@ export class AluminiComponent implements OnInit {
   }
   addalumini(): void {
     this.aluminiform = this.formBuilder.group({
+
+      course_id: ['', Validators.required],
       name: ['', Validators.required],
       designation: ['', Validators.required],
-      company:['',Validators.required],
+      company: ['', Validators.required],
       selectedFile: [null, Validators.required]
     });
   }
@@ -56,19 +58,23 @@ export class AluminiComponent implements OnInit {
   }
 
   onSubmit(): void {
-   
-
     const formData = new FormData();
+    formData.append('course_id', this.aluminiform.value.course_id);
     formData.append('name', this.aluminiform.value.name);
     formData.append('designation', this.aluminiform.value.designation);
-    formData.append('company',this.aluminiform.value.company);
+    formData.append('company', this.aluminiform.value.company);
     formData.append('image', this.base64Image);
 
     this.newweb.addalumini(formData).subscribe(
       (response: any) => {
-        console.log('Data added successfully:', response);
-        this.aluminies = response;
-        alert(`Data Added Successfully:${response}`)
+        if(response.statusCode == '200') {
+          // this.router.navigate(['/main/banner'])
+          alert("Data added successfully");
+          location.reload();
+
+        } else {
+          alert("Something went wrong");
+        }
       },
       (error) => {
         console.error('Failed to add course:', error);
@@ -76,46 +82,46 @@ export class AluminiComponent implements OnInit {
     );
   }
 
-  getalumini(){
-    this.newweb.getalumini().subscribe((res:any)=>{
+  getalumini() {
+    this.newweb.getalumini().subscribe((res: any) => {
       console.log(res);
-      this.aluminilist=res.data;
+      this.aluminilist = res.data;
     })
   }
   updateAlumini(alumini: any): void {
 
-  const updateData = new FormData();
-  updateData.append('name', alumini.name);
-  updateData.append('designation', alumini.designation);
-  updateData.append('company', alumini.company);
-  updateData.append('image', this.base64Image);
+    const updateData = new FormData();
+    updateData.append('name', alumini.name);
+    updateData.append('designation', alumini.designation);
+    updateData.append('company', alumini.company);
+    updateData.append('image', this.base64Image);
 
-  this.newweb.updateAlumni(alumini.id, updateData).subscribe(
-    (res: any) => {
-      console.log('Data updated successfully:', res);
-      // Optionally, update the alumini in the local list or fetch the updated list again
-      this.getalumini();
-    },
-    (error) => {
-      console.error('Failed to update alumini data:', error);
-    }
-  );
-}
-deletealuminies(id: number) {
-  const confirmation = confirm('Are you sure you want to delete this category?');
-  if (confirmation) {
-    this.newweb.deletealumini(id).subscribe(
-      (response) => {
-        console.log('logo deleted:', response);
-        // You might want to refresh the categories list after deletion
+    this.newweb.updateAlumni(alumini.id, updateData).subscribe(
+      (res: any) => {
+        console.log('Data updated successfully:', res);
+        // Optionally, update the alumini in the local list or fetch the updated list again
         this.getalumini();
       },
       (error) => {
-        console.error('Error deleting Project:', error);
+        console.error('Failed to update alumini data:', error);
       }
     );
   }
-}
+  deletealuminies(id: number) {
+    const confirmation = confirm('Are you sure you want to delete this category?');
+    if (confirmation) {
+      this.newweb.deletealumini(id).subscribe(
+        (response) => {
+          console.log('logo deleted:', response);
+          // You might want to refresh the categories list after deletion
+          this.getalumini();
+        },
+        (error) => {
+          console.error('Error deleting Project:', error);
+        }
+      );
+    }
+  }
 }
 
 
