@@ -56,12 +56,15 @@ export class CompanyDetailsComponent {
 
     this.company.addCompany(formData).subscribe(
       (response: any) => {
-        console.log('Data added successfully:', response);
-        this.ban = response;
+        if(response.statusCode == '200') {
+          // this.router.navigate(['/main/banner'])
+          alert("Data added successfully");
+          location.reload();
+
+        } else {
+          alert("Something went wrong");
+        }
       },
-      (error) => {
-        console.error('Failed to add course:', error);
-      }
     );
   }
 

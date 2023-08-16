@@ -54,7 +54,7 @@ export class GoogleReviewComponent implements OnInit {
 
     this.about.addgooglereview(formData).subscribe(
       (response: any) => {
-        if (response.statusCode == '200') {
+        if(response.statusCode == '200') {
           // this.router.navigate(['/main/banner'])
           alert("Data added successfully");
           location.reload();
@@ -63,9 +63,6 @@ export class GoogleReviewComponent implements OnInit {
           alert("Something went wrong");
         }
       },
-      (error) => {
-        console.error('Failed to add course:', error);
-      }
     );
   }
   getgoogle() {

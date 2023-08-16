@@ -51,14 +51,15 @@ export class HighlightsComponent implements OnInit {
 
     this.count.addhigh(formData).subscribe(
       (response: any) => {
-        console.log('Data added successfully:', response);
-        this.expert = response;
-        this.reset(); // Reset the form after successful submission
-        this.getExpertReviews(); // Optionally, you may want to refresh the list of expert reviews after adding a new one
+        if(response.statusCode == '200') {
+          // this.router.navigate(['/main/banner'])
+          alert("Data added successfully");
+          location.reload();
+
+        } else {
+          alert("Something went wrong");
+        }
       },
-      (error) => {
-        console.error('Failed to add expert review:', error);
-      }
     );
   }
 

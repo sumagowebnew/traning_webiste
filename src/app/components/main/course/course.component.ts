@@ -52,7 +52,7 @@ export class CourseComponent {
 
     this.company.addcourse(formData).subscribe(
       (response: any) => {
-        if (response.StatusCode == '200') {
+        if(response.statusCode == '200') {
           // this.router.navigate(['/main/banner'])
           alert("Data added successfully");
           location.reload();
@@ -61,9 +61,6 @@ export class CourseComponent {
           alert("Something went wrong");
         }
       },
-      (error) => {
-        console.error('Failed to add course:', error);
-      }
     );
   }
 

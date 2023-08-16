@@ -36,13 +36,17 @@ export class ProgramCityComponent implements OnInit{
     // Call your CourseService method to upload the course with the formData
     this.about.addcity(formData).subscribe(
     (response: any)=>{
-      console.log('Created Successfully:', response);
-            this.counter = response;    
-            
-          },
-          (error)=>console.error('failed to add course')
-        );
-    }
+      if(response.statusCode == '200') {
+        // this.router.navigate(['/main/banner'])
+        alert("Data added successfully");
+        location.reload();
+
+      } else {
+        alert("Something went wrong");
+      }
+    },
+  );
+}
 
     getcounterdata(){
       this.about.getcity().subscribe((res:any)=>{

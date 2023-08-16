@@ -889,7 +889,7 @@ export class CounterService {
   }
   updatehire(id: number, hire: any) {
 
-    const url = `${this.apiUrl}update_hired/${id}`;
+    const url = `${this.apiUrl}update_hired${id}`;
     const headers = new HttpHeaders({
 
       'Authorization': `Bearer ${this.auth.getToken()}`
@@ -913,7 +913,10 @@ export class CounterService {
     return this.http.post(`${this.apiUrl}add_mentor`, mentor, { headers })
   }
   getmentor() {
-    return this.http.get(`${this.apiUrl}get_mentor`)
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.get(`${this.apiUrl}get_all_mentors`,{headers})
   }
   updatementor(id: number, mentor: any) {
 

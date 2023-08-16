@@ -94,8 +94,9 @@ import { ProgramCityComponent } from './program-city/program-city.component';
   imports: [
     CommonModule,
     MainRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
-    FormsModule
+   
     
 
   ]

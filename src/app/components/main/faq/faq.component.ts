@@ -48,13 +48,17 @@ export class FaqComponent implements OnInit {
     // Call your CourseService method to upload the course with the formData
     this.newweb.addfaq(formData).subscribe(
     (response: any)=>{
-      console.log('Created Successfully:', response);
-            this.faqs = response;    
-            
-          },
-          (error)=>console.error('failed to add course')
-        );
-    }
+      if(response.statusCode == '200') {
+        // this.router.navigate(['/main/banner'])
+        alert("Data added successfully");
+        location.reload();
+
+      } else {
+        alert("Something went wrong");
+      }
+    },
+  );
+}
 
     getfaqs(){
       this.newweb.getfaq().subscribe((res:any)=>{

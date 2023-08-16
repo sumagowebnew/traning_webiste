@@ -63,18 +63,15 @@ export class ProgramFeesListComponent implements OnInit {
 
     this.service.addProgramFees(formData).subscribe(
       (response: any) => {
-        this.ProgramFeesFormData.reset();
-        if (response.StatusCode == '200') {
+        if(response.statusCode == '200') {
           // this.router.navigate(['/main/banner'])
           alert("Data added successfully");
           location.reload();
+
         } else {
           alert("Something went wrong");
         }
       },
-      (error) => {
-        console.error('Failed to add data:', error);
-      }
     );
   }
 

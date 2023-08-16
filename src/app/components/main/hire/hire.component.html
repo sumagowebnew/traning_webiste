@@ -91,8 +91,7 @@
                             <a class="btn btn-warning ms-2 text-white font-weight-normal text-xs" data-bs-toggle="modal"
                             data-bs-target="#edithire" (click)="openEditModal(item)">
                             Edit
-                        </a>
-
+                          </a>
                           <!-- Modal -->
                           <div class="modal fade" id="edithire" tabindex="-1" role="dialog"
                           aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -109,12 +108,12 @@
                                     <form [formGroup]="editForm">
                                         <div class="input-group input-group-outline my-3">
                                             <!-- <label class="form-label">Title</label> -->
-                                                <input type="text" id="title" class="form-control" formControlName="title" placeholder="Title">
+                                                <input type="text" id="title" class="form-control" formControlName="title" placeholder="title">
                                         </div>
                 
                                          <div class="input-group input-group-outline my-3">
                                              <!-- <label class="form-label">description</label> -->
-                                                 <input type="text" id="designation" class="form-control" formControlName="description" placeholder="Description">
+                                                 <input type="text" id="designation" class="form-control" formControlName="description" placeholder="escription">
                                          </div>
                                         
                                         <div class="input-group input-group-outline my-3">
@@ -129,7 +128,7 @@
                                   <div class="modal-footer">
                                       <button type="button" class="btn bg-gradient-secondary"
                                           data-bs-dismiss="modal">Close</button>
-                                      <button type="submit" class="btn bg-gradient-primary" (click)="updatehired(item)">Save changes</button>
+                                      <button type="submit" class="btn bg-gradient-primary" (click)="updateHired(item)">Save changes</button>
                                   </div>
                               </div>
                           </div>

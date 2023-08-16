@@ -59,15 +59,17 @@ export class SyllabusModuleComponent  implements OnInit{
 
   this.service.addsyllabus(formData).subscribe(
     (response: any) => {
-      console.log('Data added successfully:', response);
-      // Optionally reset the form after submission
-      this.ProgramFeesFormData.reset();
+      if(response.statusCode == '200') {
+        // this.router.navigate(['/main/banner'])
+        alert("Data added successfully");
+        location.reload();
+
+      } else {
+        alert("Something went wrong");
+      }
     },
-    (error) => {
-      console.error('Failed to add data:', error);
-    }
   );
-  }
+}
 
 
   getProgramFeesData(){

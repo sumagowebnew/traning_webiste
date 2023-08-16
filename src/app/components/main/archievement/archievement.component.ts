@@ -33,12 +33,15 @@ export class ArchievementComponent implements OnInit {
     // Submit the form data to add a new counter
     this.counter.addcounter(this.counterForm.value).subscribe(
       (response: any) => {
-        console.log('Created Successfully:', response);
+        if(response.statusCode == '200') {
+          // this.router.navigate(['/main/banner'])
+          alert("Data added successfully");
+          location.reload();
 
-        // Optionally, update the local list with the newly added counter or fetch the updated list again
-        this.getcounterdata();
+        } else {
+          alert("Something went wrong");
+        }
       },
-      (error) => console.error('Failed to add counter:', error)
     );
   }
 

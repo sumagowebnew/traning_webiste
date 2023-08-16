@@ -20,7 +20,7 @@
                      <form [formGroup]="mentorform" (ngSubmit)="onSubmit()"  >
                        
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label"> Course Name</label>
+                            <!-- <label class="form-label"> Course Name</label> -->
                             <select id="course" formControlName="course_id"  placeholder="Coures name" class="form-control" required  >
                               <option value="" disabled selected>Select Course</option>
                               <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}			</option>

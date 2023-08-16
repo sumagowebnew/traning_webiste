@@ -39,13 +39,15 @@ export class AddProductComponent {
 
     this.banner.addproduct(formData).subscribe(
       (response: any) => {
-        console.log('Data added successfully:', response);
-        this.ban = response; // Not sure what this line is for, you might need to adjust it
-        
+        if(response.statusCode == '200') {
+          // this.router.navigate(['/main/banner'])
+          alert("Data added successfully");
+          location.reload();
+
+        } else {
+          alert("Something went wrong");
+        }
       },
-      (error) => {
-        console.error('Failed to add data:', error);
-      }
     );
   }
 
