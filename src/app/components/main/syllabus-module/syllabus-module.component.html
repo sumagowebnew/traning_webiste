@@ -22,18 +22,18 @@
                      
 
                       <div class="input-group input-group-outline my-3">
-                        <label for="course">Course</label>
+                        <!-- <label for="course">Course</label> -->
                         <select id="course" formControlName="course_id" class="form-control" required>
-                          <option value="" disabled selected>Select Course</option>
+                          <option value="" disabled selected>select course</option>
                           <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}</option>
                         </select>
                         <div class="invalid-feedback">Course is required</div>
                       </div>
                       
                       <div class="input-group input-group-outline my-3">
-                        <label for="course">Module</label>
+                        <!-- <label for="course">Module</label> -->
                         <select id="course" formControlName="sub_course_id" class="form-control" required>
-                          <option value="" disabled selected>Select Module</option>
+                          <option value="" disabled selected>select module</option>
                           <option [value]="sub.id" *ngFor="let sub of subcourseDetails" style="color: black;">{{ sub.title }}</option>
                         </select>
                         
@@ -41,21 +41,23 @@
                       
                   
                       <div class="input-group input-group-outline my-3">
-                        <label class="form-label">title</label>
-                        <input type="text" class="form-control" formControlName="title">
+                        
+                        <input type="text" class="form-control" formControlName="title" placeholder="title">
                       </div>
                   
                       <div class="input-group input-group-outline my-3">
-                        <label class="form-label">Description</label>
-                        <input type="text" class="form-control" formControlName="description">
+
+                        <input type="text" class="form-control" formControlName="description" placeholder="description">
                       </div>
 
                        
 
-                  
-                      <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="submit" class="btn bg-gradient-primary" (click)="onSubmit()">Save changes</button>
-                    </form>
+                  <div align="right">
+                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>&nbsp;&nbsp;
+                    <button type="submit" class="btn bg-gradient-primary" (click)="onSubmit()">Save changes</button>
+                 
+                  </div>
+                      </form>
                   </div>
                   <div class="modal-footer"></div>
              </div>

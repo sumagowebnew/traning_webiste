@@ -20,7 +20,7 @@
                      <form [formGroup]="mentorform" (ngSubmit)="onSubmit()"  >
                        
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label"> Course Name</label>
+                            <label class="form-label"> course Name</label>
                             <select id="course" formControlName="course_id"  placeholder="Coures name" class="form-control" required  >
                               <option value="" disabled selected>Select Course</option>
                               <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}			</option>
@@ -29,12 +29,12 @@
                      </div>
                         <div class="input-group input-group-outline my-3">
                             <!-- <label class="form-label">Name</label> -->
-                                <input type="text" id="name" class="form-control" formControlName="name" placeholder="Name">
+                                <input type="text" id="name" class="form-control" formControlName="name" placeholder="name">
                         </div>
 
                          <div class="input-group input-group-outline my-3">
                              <!-- <label class="form-label">designation</label> -->
-                                 <input type="text" id="designation" class="form-control" formControlName="designation" placeholder="Designation">
+                                 <input type="text" id="designation" class="form-control" formControlName="designation" placeholder="designation">
                          </div>
                          <div class="input-group input-group-outline my-3">
                             <!-- <label class="form-label">Company</label> -->
@@ -46,9 +46,11 @@
                             
                                 <input type="file" id="selectedFile" class="form-control" (change)="onFileSelected($event)" >
                         </div>
+                        <div align="right">
                          <button type="button" class="btn bg-gradient-secondary"
-                         data-bs-dismiss="modal">Close</button>
+                         data-bs-dismiss="modal">Close</button>&nbsp;&nbsp;
                      <button type="submit"  class="btn bg-gradient-primary">Save changes</button>
+                    </div>
                      </form>
                  </div>
                  <div class="modal-footer">
@@ -135,7 +137,7 @@
                 
                                          <div class="input-group input-group-outline my-3">
                                              <!-- <label class="form-label">designation</label> -->
-                                                 <input type="text" id="designation" class="form-control" formControlName="designation" placeholder="Designation">
+                                                 <input type="text" id="designation" class="form-control" formControlName="designation" placeholder="designation">
                                          </div>
                                          <div class="input-group input-group-outline my-3">
                                             <!-- <label class="form-label">Company</label> -->
@@ -152,11 +154,11 @@
 
 
                                   </div>
-                                  <div class="modal-footer">
-                                      <button type="button" class="btn bg-gradient-secondary"
-                                          data-bs-dismiss="modal">Close</button>
-                                      <button type="submit" class="btn bg-gradient-primary" (click)="updatementor(item)">Save changes</button>
-                                  </div>
+                                  <div align="right">
+                                    <button type="button" class="btn bg-gradient-secondary"
+                                        data-bs-dismiss="modal">Close</button>&nbsp;&nbsp;
+                                    <button type="submit" class="btn bg-gradient-primary" (click)="updatementor(item)">Save changes</button>
+                               </div>
                               </div>
                           </div>
                       </div>

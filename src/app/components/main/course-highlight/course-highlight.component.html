@@ -20,7 +20,7 @@
                  <div class="modal-body">
                      <form [formGroup]="subCourseDetails">
                         <div class="form-group input-group input-group-outline my-3">
-                            <label for="designation">Course</label>
+                            <!-- <label for="designation" >select course</label> -->
                             <select id="course" formControlName="course_id" class="form-control" required>
                                 <option value="" disabled selected>Select Course</option>
                                 <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}</option>

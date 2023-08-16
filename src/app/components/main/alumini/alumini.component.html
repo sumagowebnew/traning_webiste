@@ -2,82 +2,90 @@
     <div class="row">
         <div class="div">
             <a class="btn btn-info text-white font-weight-normal text-xs" data-bs-toggle="modal"
-            data-bs-target="#addalumini">
-             Add Alumini</a>
-         <!-- Modal -->
-         <div class="modal fade" id="addalumini" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalLabel" aria-hidden="true">
-         <div class="modal-dialog modal-dialog-centered" role="document">
-             <div class="modal-content">
-                <div class="modal-header">
-                     <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Add Details</h5>
-                     <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
-                         aria-label="Close">
-                         <span aria-hidden="true">&times;</span>
-                     </button>
-                 </div>
-                 <div class="modal-body">
-                     <form [formGroup]="aluminiform"  >
-                       
-                        <div class="input-group input-group-outline my-3">
-                            <label class="form-label"> Course Name</label>
-                            <select id="course_id" formControlName="course_id"  placeholder="Coures name" class="form-control" required  >
-                              <option value="" disabled selected>Select Course</option>
-                              <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}			</option>
-                            </select>
-                            <div class="invalid-feedback">Course is required</div>
-                     </div>
-                        <div class="input-group input-group-outline my-3">
-                            <!-- <label class="form-label">Name</label> -->
-                                <input type="text" id="name" class="form-control" formControlName="name" placeholder="Name">
+                data-bs-target="#addalumini">
+                Add Alumini</a>
+            <!-- Modal -->
+            <div class="modal fade" id="addalumini" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Add Details</h5>
+                            <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
+                        <div class="modal-body">
+                            <form [formGroup]="aluminiform">
 
-                         <div class="input-group input-group-outline my-3">
-                             <!-- <label class="form-label">designation</label> -->
-                                 <input type="text" id="designation" class="form-control" formControlName="designation" placeholder="Designation">
-                         </div>
-                         <div class="input-group input-group-outline my-3">
-                            <!-- <label class="form-label">Company</label> -->
-                                <input type="text" id="designation" class="form-control" formControlName="company" placeholder="Company">
+                                <div class="input-group input-group-outline my-3">
+                                    <!-- <label class="form-label"> Course Name</label> -->
+                                    <select id="course_id" formControlName="course_id" placeholder="Coures name"
+                                        class="form-control" required>
+                                        <option value="" disabled selected>select Course</option>
+                                        <option [value]="course.id" *ngFor="let course of courseDetails"
+                                            style="color: black;">{{ course.name }} </option>
+                                    </select>
+                                    <div class="invalid-feedback">Course is required</div>
+                                </div>
+                                <div class="input-group input-group-outline my-3">
+                                    <!-- <label class="form-label">Name</label> -->
+                                    <input type="text" id="name" class="form-control" formControlName="name"
+                                        placeholder="name">
+                                </div>
+
+                                <div class="input-group input-group-outline my-3">
+                                    <!-- <label class="form-label">designation</label> -->
+                                    <input type="text" id="designation" class="form-control"
+                                        formControlName="designation" placeholder="designation">
+                                </div>
+                                <div class="input-group input-group-outline my-3">
+                                    <!-- <label class="form-label">Company</label> -->
+                                    <input type="text" id="designation" class="form-control" formControlName="company"
+                                        placeholder="company">
+                                </div>
+
+                                <div align="right">
+                                    <div class="input-group input-group-outline my-3">
+
+                                        <input type="file" id="selectedFile" class="form-control"
+                                            (change)="onFileSelected($event)">
+                                    </div>
+                                    <button type="button" class="btn bg-gradient-secondary"
+                                        data-bs-dismiss="modal">Close</button>&nbsp;&nbsp;
+                                    <button type="submit" (click)="onSubmit()" class="btn bg-gradient-primary">Save
+                                        changes</button>
+                                </div>
+                            </form>
                         </div>
-                       
-                        
-                        <div class="input-group input-group-outline my-3">
-                            
-                                <input type="file" id="selectedFile" class="form-control" (change)="onFileSelected($event)" >
+                        <div class="modal-footer">
+
                         </div>
-                         <button type="button" class="btn bg-gradient-secondary"
-                         data-bs-dismiss="modal">Close</button>
-                     <button type="submit" (click)="onSubmit()"  class="btn bg-gradient-primary">Save changes</button>
-                     </form>
-                 </div>
-                 <div class="modal-footer">
-                    
-                 </div>
-             </div>
-         </div>
-     </div>
-     <!-- Modal End -->
+                    </div>
+                </div>
+            </div>
+            <!-- Modal End -->
         </div>
     </div>
     <div class="card">
         <div class="div"></div>
         <div class="table-responsive">
-            
+
             <table class="table align-items-center mb-0">
                 <thead>
-                    
+
                     <tr>
-                        
+
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
-                       
+
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Designation</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                Company</th>
-                      
+                            Company</th>
+
                         <th class="text-secondary opacity-7">Action</th>
-                       
+
                     </tr>
                 </thead>
                 <tbody>
@@ -86,8 +94,7 @@
                         <td>
                             <div class="d-flex px-2 py-1">
                                 <div>
-                                    <img [src]="item.image"
-                                        class="avatar avatar-sm me-3">
+                                    <img [src]="item.image" class="avatar avatar-sm me-3">
                                 </div>
                                 <div class="d-flex flex-column justify-content-center">
                                     <h6 class="mb-0 text-xs">{{item.name}}</h6>
@@ -100,79 +107,89 @@
                             <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
                         </td>
                         <td>
-                        <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-xs">{{item.company}}</h6>
-                            <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
-                        </div>
-                    </td>
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="mb-0 text-xs">{{item.company}}</h6>
+                                <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
+                            </div>
+                        </td>
                         <td class="align-middle">
-                           
-                           
+
+
 
                             <a class="btn btn-warning ms-2 text-white font-weight-normal text-xs" data-bs-toggle="modal"
-                            data-bs-target="#editalumini">
-                            Edit
-                        </a>
+                                data-bs-target="#editalumini">
+                                Edit
+                            </a>
 
-                          <!-- Modal -->
-                          <div class="modal fade" id="editalumini" tabindex="-1" role="dialog"
-                          aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered" role="document">
-                              <div class="modal-content">
-                                  <div class="modal-header">
-                                      <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Edit Course</h5>
-                                      <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
-                                          aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                      </button>
-                                  </div>
-                                  <div class="modal-body">
-                                    <form [formGroup]="aluminiform">
-                                        <div class="input-group input-group-outline my-3">
-                                            <!-- <label class="form-label">Name</label> -->
-                                                <input type="text" id="name" class="form-control" formControlName="name" placeholder="Name">
+                            <!-- Modal -->
+                            <div class="modal fade" id="editalumini" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Edit
+                                                Course</h5>
+                                            <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
                                         </div>
-                
-                                         <div class="input-group input-group-outline my-3">
-                                             <!-- <label class="form-label">designation</label> -->
-                                                 <input type="text" id="designation" class="form-control" formControlName="designation" placeholder="designation">
-                                         </div>
-                                         <div class="input-group input-group-outline my-3">
-                                            <!-- <label class="form-label">Company</label> -->
-                                                <input type="text" id="designation" class="form-control" formControlName="company" placeholder="Company">
-                                        </div>
-                                       
-                                        
-                                        <div class="input-group input-group-outline my-3">
-                                            
-                                                <input type="file" id="selectedFile" class="form-control" (change)="onFileSelected($event)" >
-                                        </div>
-        
-                                    </form>
+                                        <div class="modal-body">
+                                            <form [formGroup]="aluminiform">
+                                                <div class="input-group input-group-outline my-3">
+                                                    <!-- <label class="form-label">Name</label> -->
+                                                    <input type="text" id="name" class="form-control"
+                                                        formControlName="name" placeholder="name">
+                                                </div>
+
+                                                <div class="input-group input-group-outline my-3">
+                                                    <!-- <label class="form-label">designation</label> -->
+                                                    <input type="text" id="designation" class="form-control"
+                                                        formControlName="designation" placeholder="designation">
+                                                </div>
+                                                <div class="input-group input-group-outline my-3">
+                                                    <!-- <label class="form-label">Company</label> -->
+                                                    <input type="text" id="designation" class="form-control"
+                                                        formControlName="company" placeholder="company">
+                                                </div>
 
 
-                                  </div>
-                                  <div class="modal-footer">
-                                      <button type="button" class="btn bg-gradient-secondary"
-                                          data-bs-dismiss="modal">Close</button>
-                                      <button type="submit" class="btn bg-gradient-primary">Save changes</button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <!-- Modal End -->
-                       
+                                                <div class="input-group input-group-outline my-3">
+
+                                                    <input type="file" id="selectedFile" class="form-control"
+                                                        (change)="onFileSelected($event)">
+                                                </div>
+
+                                            </form>
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div align="right">
+                                                <button type="button" class="btn bg-gradient-secondary"
+                                                    data-bs-dismiss="modal">Close</button>&nbsp;&nbsp;
+                                                <button type="submit" class="btn bg-gradient-primary">Save
+                                                    changes</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal End -->
+
 
                         <td>
 
 
-                            <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs" (click)="deletealuminies(item.id)">
+                            <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs"
+                                (click)="deletealuminies(item.id)">
                                 delete
                             </a>
 
                         </td>
-                      
-                        
+
+
                     </tr>
                 </tbody>
             </table>
@@ -181,5 +198,3 @@
 </div>
 <br>
 <br>
-
-
