@@ -65,14 +65,15 @@ export class AddPopularCourseComponent implements OnInit {
    
     this.counter.addpopularcourse(formData).subscribe(
       (response: any) => {
-        console.log('Data  successfully:', response);
-        this.popular = response;
-        alert(`Data added successfully:${response}`);
-        this.getpopulardata();
+        if(response.statusCode == '200') {
+          // this.router.navigate(['/main/banner'])
+          alert("Data added successfully");
+          location.reload();
+
+        } else {
+          alert("Something went wrong");
+        }
       },
-      (error) => {
-        console.error('Failed to add course:', error);
-      }
     );
   }
   getpopulardata(){

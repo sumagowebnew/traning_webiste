@@ -14,6 +14,7 @@ export class AluminiComponent implements OnInit {
   aluminies: any;
   aluminilist: any;
   courseDetails: any;
+  editForm:any;
 
   constructor(private newweb: CounterService, private formBuilder: FormBuilder) { }
 
@@ -87,6 +88,25 @@ export class AluminiComponent implements OnInit {
       console.log(res);
       this.aluminilist = res.data;
     })
+  }
+
+  createEditForm() {
+    this.editForm = this.formBuilder.group({
+      course_id: ['', Validators.required],
+      name: ['', Validators.required],
+      designation: ['', Validators.required],
+      company: ['', Validators.required],
+      selectedFile: [null, Validators.required]
+    });
+  }
+  // Function to open the edit modal and populate form fields with the selected counter data
+  openEditModal(consult: any) {
+    this.editForm.setValue({
+      name: consult.name,
+      designation: consult.designation,
+      company:consult.company
+      
+    });
   }
   updateAlumini(alumini: any): void {
 

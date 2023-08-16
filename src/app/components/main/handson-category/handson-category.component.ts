@@ -50,19 +50,15 @@ export class HandsonCategoryComponent implements OnInit {
       this.service.addHandosnCategory(data).subscribe(
         (response:any) => {
 
-          this.handsonCategory.reset();
-          if (response.StatusCode == '200') {
+          if(response.statusCode == '200') {
             // this.router.navigate(['/main/banner'])
             alert("Data added successfully");
             location.reload();
-
+  
           } else {
             alert("Something went wrong");
           }
         },
-        (error) => {
-          console.error('Error adding category:', error);
-        }
       );
     }
   }

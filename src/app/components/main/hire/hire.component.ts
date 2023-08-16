@@ -55,12 +55,15 @@ export class HireComponent  implements OnInit{
 
     this.newweb.addhire(formData).subscribe(
       (response: any) => {
-        console.log('Data added successfully:', response);
-        this.hired = response;
+        if(response.statusCode == '200') {
+          // this.router.navigate(['/main/banner'])
+          alert("Data added successfully");
+          location.reload();
+
+        } else {
+          alert("Something went wrong");
+        }
       },
-      (error) => {
-        console.error('Failed to add course:', error);
-      }
     );
   }
 
@@ -78,6 +81,7 @@ export class HireComponent  implements OnInit{
           console.log('Project deleted:', response);
           // You might want to refresh the categories list after deletion
           this.gethired();
+          location.reload();
         },
         (error) => {
           console.error('Error deleting Project:', error);
@@ -95,25 +99,31 @@ export class HireComponent  implements OnInit{
   }
   
   // Function to open the edit modal and populate form fields with the selected counter data
-  openEditModal(counter: any) {
+  openEditModal(hire: any) {
     this.editForm.setValue({
-      title: counter.title,
-      description: counter.description,
-      selectedFile:counter.base64Image
+      title: hire.title,
+      description: hire.description,
+      selectedFile: hire.image // Use the 'image' property from the hire object
     });
   }
-
+  
   // Function to handle the update operation in the edit modal
-  updatehired(hire: any): void {
+  updateHired(hire: any): void {
     const updatedData = this.editForm.value;
-    this.newweb.updatehire(hire.id, updatedData).subscribe(
+  
+    const formData = new FormData();
+    formData.append('title', updatedData.title);
+    formData.append('description', updatedData.description);
+    formData.append('image', updatedData.selectedFile);
+  
+    this.newweb.updatehire(hire.id, formData).subscribe(
       (res: any) => {
         console.log('Data updated successfully:', res);
-        // Optionally, update the local list with the updated counter or fetch the updated list again
+        // Optionally, update the local list with the updated hire data or fetch the updated list again
         this.gethired();
       },
       (error) => {
-        console.error('Failed to update archivement data:', error);
+        console.error('Failed to update hire data:', error);
       }
     );
   }

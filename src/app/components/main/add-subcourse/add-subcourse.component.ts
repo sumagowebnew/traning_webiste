@@ -47,18 +47,15 @@ export class AddSubcourseComponent {
 
     this.banner.addsubcourse(formData).subscribe(
       (response: any) => {
-        if (response.StatusCode == '200') {
+        if(response.statusCode == '200') {
           // this.router.navigate(['/main/banner'])
           alert("Data added successfully");
           location.reload();
-  
+
         } else {
           alert("Something went wrong");
         }
       },
-      (error) => {
-        console.error('Failed to add data:', error);
-      }
     );
   }
 

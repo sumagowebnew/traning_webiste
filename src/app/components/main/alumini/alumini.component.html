@@ -76,7 +76,7 @@
                 <thead>
 
                     <tr>
-
+                        
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
 
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -94,7 +94,8 @@
                         <td>
                             <div class="d-flex px-2 py-1">
                                 <div>
-                                    <img [src]="item.image" class="avatar avatar-sm me-3">
+                                    <img [src]="item.image"
+                                        class="avatar avatar-sm me-3">
                                 </div>
                                 <div class="d-flex flex-column justify-content-center">
                                     <h6 class="mb-0 text-xs">{{item.name}}</h6>
@@ -117,9 +118,9 @@
 
 
                             <a class="btn btn-warning ms-2 text-white font-weight-normal text-xs" data-bs-toggle="modal"
-                                data-bs-target="#editalumini">
-                                Edit
-                            </a>
+                            data-bs-target="#editalumini" (click)="openEditModal(item)" >
+                            Edit
+                        </a>
 
                             <!-- Modal -->
                             <div class="modal fade" id="editalumini" tabindex="-1" role="dialog"

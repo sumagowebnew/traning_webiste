@@ -39,13 +39,17 @@ export class DiplomaProgramCategoryComponent  implements OnInit{
     // Call your CourseService method to upload the course with the formData
     this.our_pro.addourprogram(formData).subscribe(
     (response: any)=>{
-      console.log('Created Successfully:', response);
-            this.program = response;    
-            
-          },
-          (error)=>console.error('failed to add course')
-        );
-    }
+      if(response.statusCode == '200') {
+        // this.router.navigate(['/main/banner'])
+        alert("Data added successfully");
+        location.reload();
+
+      } else {
+        alert("Something went wrong");
+      }
+    },
+  );
+}
 
     getprogram(){
       this.our_pro.getourprogram().subscribe((res:any)=>{

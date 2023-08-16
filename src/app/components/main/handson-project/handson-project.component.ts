@@ -80,18 +80,15 @@ export class HandsonProjectComponent implements OnInit {
         (response: any) => {
 
           this.handsonProject.reset();
-          if (response.statusCode == '200') {
+          if(response.statusCode == '200') {
             // this.router.navigate(['/main/banner'])
             alert("Data added successfully");
             location.reload();
-
+  
           } else {
             alert("Something went wrong");
           }
         },
-        (error) => {
-          console.error('Error adding category:', error);
-        }
       );
     }
   }

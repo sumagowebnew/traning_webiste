@@ -28,13 +28,15 @@ export class CohortsComponent {
     const batchData = this.batchForm.value;
     this.service.addBatch(batchData).subscribe(
       (response: any) => {
-        console.log('Batch added successfully:', response);
-        this.getBatches(); // Refresh the batch list
-        this.batchForm.reset(); // Optionally reset the form
+        if(response.statusCode == '200') {
+          // this.router.navigate(['/main/banner'])
+          alert("Data added successfully");
+          location.reload();
+
+        } else {
+          alert("Something went wrong");
+        }
       },
-      (error) => {
-        console.error('Failed to add batch:', error);
-      }
     );
   }
 
