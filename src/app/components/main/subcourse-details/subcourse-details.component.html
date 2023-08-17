@@ -5,11 +5,12 @@
             data-bs-target="#adddetail">
             Subcourse Details</a>
          <!-- Modal -->
-         <div class="modal fade" id="adddetail" tabindex="-1" role="dialog"
+         <!-- Modal -->
+         <div class="modal fade" id="diploma_program_category" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalLabel" aria-hidden="true">
          <div class="modal-dialog modal-dialog-centered" role="document">
              <div class="modal-content">
-                <div class="modal-header">
+                 <div class="modal-header">
                      <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Add Details</h5>
                      <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
                          aria-label="Close">
@@ -18,52 +19,49 @@
                  </div>
                  <div class="modal-body">
                      <form [formGroup]="subCourseDetails">
-                        <div class="form-group input-group input-group-outline my-3">
-                          
-                            <select id="designation" formControlName="course_id" class="form-control" required>
-                              <option value="" disabled selected>select course</option>
-                              <!-- <option [value]="designation.id" *ngFor="let designation of designations">{{designation.designation}}</option> -->
-                            </select>      
-                            <div class="invalid-feedback">Course is required</div>
-                          </div>   
-                     <form [formGroup]="subCourseDetails" (ngSubmit)="onSubmit()"  >
-                       
-                        <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Title</label>
-                            <input type="text" class="form-control" formControlName="title">
+                        <div class="input-group input-group-outline mb-3">
+
+                            <select name="name" class="nav-link dropdown-toggle form-control"
+                                style="margin-top:5px" >
+                                <option value=""> course name</option>
+                                <option *ngFor="let course_Name of courseDetails" [value]="course_Name.id">{{
+                                    course_Name.name }}</option>
+                            </select>
                         </div>
-                        <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Description</label>
-                            <input type="text" class="form-control"  formControlName="description">
+          
+                         <div class="input-group input-group-outline my-3">
+                             <!-- <label class="form-label">duration</label> -->
+                             <input type="text" class="form-control" formControlName="title" placeholder="title">
+                         </div>
+                         <div class="input-group input-group-outline my-3">
+                             <!-- <label class="form-label">training period</label> -->
+                             <input type="text" class="form-control" formControlName="description" placeholder="description">
+                         </div>
+                         <div class="input-group input-group-outline my-3">
+                             <!-- <label class="form-label">batch</label> -->
+                             <input type="text" class="form-control" formControlName="custome_text" placeholder="custome text">
+                         </div>
+                         <div class="input-group input-group-outline my-3">
+
+                            <input type="file" class="form-control" (change)="onFileSelected($event)">
                         </div>
-                        <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Custom Text</label>
-                            <input type="text" class="form-control"  formControlName="custome_text">
-                        </div>
-                        
-                         
-                        <div class="input-group input-group-outline my-3">
-                            
-                                <input type="file" id="selectedFile" class="form-control" (change)="onFileSelected($event)" >
-                        </div>
-                        <div align="right">
-                         <button type="button" class="btn bg-gradient-secondary"
-                         data-bs-dismiss="modal">Close</button>&nbsp;&nbsp;
-                     <button type="submit"  class="btn bg-gradient-primary">Save changes</button>
-                    </div>
+      
                      </form>
+
+
                  </div>
-                 <div class="modal-footer" align="right">
+                 <div class="modal-footer">
                      <button type="button" class="btn bg-gradient-secondary"
-                         data-bs-dismiss="modal">Close</button>&nbsp;&nbsp;
-                     <button type="submit" (click)="addSubcoursesDetails()" class="btn bg-gradient-primary">Save changes</button>
+                         data-bs-dismiss="modal">Close</button>
+                     <button type="submit" (click)="onSubmit()" class="btn bg-gradient-primary">Save
+                         changes</button>
                  </div>
              </div>
          </div>
      </div>
      <!-- Modal End -->
-        </div>
-    </div>
+ </div>
+</div>
     <div class="card">
         <div class="div"></div>
         <div class="table-responsive">
@@ -96,7 +94,7 @@
                                         class="avatar avatar-sm me-3">
                                 </div>
                                 <td>
-                                    <p class="text-xs font-weight-bold mb-0">{{courseDetails.name}}</p>
+                                    <p class="text-xs font-weight-bold mb-0">{{item.course_name}}</p>
                                     <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
                                 </td>
                                 <div class="d-flex flex-column justify-content-center">
