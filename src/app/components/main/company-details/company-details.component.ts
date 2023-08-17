@@ -52,7 +52,7 @@ export class CompanyDetailsComponent {
     formData.append('mobile_no', this.bannerForm.value.mobile_no);
     formData.append('address',this.bannerForm.value.address);
     formData.append('email_id', this.bannerForm.value.email_id);
-    formData.append('images', this.base64Image);
+    formData.append('image', this.base64Image);
 
     this.company.addCompany(formData).subscribe(
       (response: any) => {
@@ -105,13 +105,24 @@ export class CompanyDetailsComponent {
       mobile_no: counter.mobile_no,
       address: counter.address,
       email_id:counter.email_id,
-      selectedFile:counter.base64Image
+      selectedFile:null
     });
   }
 
   // Function to handle the update operation in the edit modal
   updatecompany(archive: any): void {
     const updatedData = this.editForm.value;
+    
+    const formData = new FormData();
+    formData.append('mobile_no', updatedData.mobile_no);
+    formData.append('address', updatedData.address);
+    formData.append('email_id', updatedData.email_id);
+    // formData.append('image', updatedData.selectedFile);
+    if (updatedData.selectedFile) {
+      formData.append('image', updatedData.selectedFile);
+    } else {
+      formData.append('image', this.base64Image);
+    }
     this.company.updateCompany(archive.id, updatedData).subscribe(
       (res: any) => {
         console.log('Data updated successfully:', res);

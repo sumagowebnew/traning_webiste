@@ -75,6 +75,10 @@
                     
                     <tr>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            Course Name</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                Module</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                            Title</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Description</th>      
@@ -87,6 +91,14 @@
                 <tbody>
 
                     <tr *ngFor="let item of ProgramFeesData ">
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0 align-middle">{{item.course_name}}</p>
+                           
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0 align-middle">{{item.sub_course_title}}</p>
+                           
+                        </td>
                         <td>
                             <p class="text-xs font-weight-bold mb-0 align-middle">{{item.title}}</p>
                            

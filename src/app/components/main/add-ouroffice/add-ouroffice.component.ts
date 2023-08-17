@@ -19,6 +19,7 @@ export class AddOurofficeComponent implements OnInit {
   ngOnInit(){
     this.addOffice();
     this.getoffice();
+    this.createEditForm();
   }
   addOffice(): void {
     this.bannerForm = this.formBuilder.group({
@@ -47,7 +48,7 @@ export class AddOurofficeComponent implements OnInit {
     formData.append('title', this.bannerForm.value.title);
     formData.append('description', this.bannerForm.value.description);
     formData.append('link', this.bannerForm.value.link);
-    formData.append('images', this.base64Image);
+    formData.append('image', this.base64Image);
 
     this.banner.addoffice(formData).subscribe(
       (response: any) => {
@@ -70,16 +71,19 @@ export class AddOurofficeComponent implements OnInit {
     })
   }
   deleteoffice(id: number) {
-    this.banner.deleteoffice(id).subscribe(
-      () => {
-        console.log('consulting  deleted successfully');
-        // Optionally, update the local list by removing the deleted expert review or fetch the updated list again
-        this.getoffice();
-      },
-      (error) => {
-        console.error('Failed to delete consulting:', error);
-      }
-    );
+    const confirmation = confirm('Are you sure you want to delete this category?');
+    if (confirmation) {
+      this.banner.deleteoffice(id).subscribe(
+        (response) => {
+          console.log('logo deleted:', response);
+          // You might want to refresh the categories list after deletion
+          this.getoffice();
+        },
+        (error) => {
+          console.error('Error deleting Project:', error);
+        }
+      );
+    }
   }
   createEditForm() {
     this.editForm = this.formBuilder.group({
@@ -96,13 +100,24 @@ export class AddOurofficeComponent implements OnInit {
       title: counter.title,
       description: counter.description,
       link:counter.link,
-      selectedFile:counter.base64Image
+      selectedFile:null
     });
   }
 
   // Function to handle the update operation in the edit modal
   updateoffice(archive: any): void {
     const updatedData = this.editForm.value;
+    
+    const formData = new FormData();
+    formData.append('title', updatedData.title);
+    formData.append('description', updatedData.description);
+    formData.append('link', updatedData.link);
+    // formData.append('image', updatedData.selectedFile);
+    if (updatedData.selectedFile) {
+      formData.append('image', updatedData.selectedFile);
+    } else {
+      formData.append('image', this.base64Image);
+    }
     this.banner.updateoffice(archive.id, updatedData).subscribe(
       (res: any) => {
         console.log('Data updated successfully:', res);
@@ -114,5 +129,4 @@ export class AddOurofficeComponent implements OnInit {
       }
     );
   }
-
 }
