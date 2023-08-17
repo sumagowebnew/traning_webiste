@@ -415,7 +415,10 @@ export class CounterService {
   }
 
   getsyllabus() {
-    return this.http.get(`${this.apiUrl}get_syllabus`)
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.get(`${this.apiUrl}get_all_syllabus`,{headers})
   }
 
   deletesyllabus(id: number) {
@@ -502,7 +505,10 @@ export class CounterService {
   }
 
   getcouns() {
-    return this.http.get(`${this.apiUrl}get_counselling`)
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.get(`${this.apiUrl}get_counselling`,{headers})
   }
 
   deletecouns(id: number) {
@@ -530,7 +536,7 @@ export class CounterService {
   }
 
   getcoursehigh() {
-    return this.http.get(`${this.apiUrl}get_highlightDetails`)
+    return this.http.get(`${this.apiUrl}get_all_highlightDetails`)
   }
 
   deletecoursehigh(id: number) {
@@ -586,7 +592,7 @@ export class CounterService {
   }
 
   getstudent() {
-    return this.http.get(`${this.apiUrl}add_trainedStudentsCount`)
+    return this.http.get(`${this.apiUrl}get_trainedStudentsCount`)
   }
 
   deletestudent(id: number) {
@@ -889,7 +895,7 @@ export class CounterService {
   }
   updatehire(id: number, hire: any) {
 
-    const url = `${this.apiUrl}update_hired${id}`;
+    const url = `${this.apiUrl}update_hired/${id}`;
     const headers = new HttpHeaders({
 
       'Authorization': `Bearer ${this.auth.getToken()}`
@@ -944,8 +950,12 @@ export class CounterService {
     return this.http.post(`${this.apiUrl}add_faq`, faq, { headers })
   }
   getfaq() {
+    return this.http.get(`${this.apiUrl}get_all_faq`)
+  }
+  getfaq1() {
     return this.http.get(`${this.apiUrl}get_faq`)
   }
+
   updatefaq(id: number, faq: any) {
 
     const url = `${this.apiUrl}update_faq/${id}`;

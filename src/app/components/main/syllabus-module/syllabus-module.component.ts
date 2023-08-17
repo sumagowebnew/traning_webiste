@@ -14,7 +14,9 @@ export class SyllabusModuleComponent  implements OnInit{
   courseDetails: any[] = [];
   subcourseDetails
   editData:any
+  counterlist: any;
   constructor(private service:CounterService,private formBuilder:FormBuilder){
+
     this.ProgramFeesFormData = this.formBuilder.group({
       
       course_id: [''],
@@ -29,18 +31,18 @@ export class SyllabusModuleComponent  implements OnInit{
 
   ngOnInit(): void {
     this.getProgramFeesData()
+
     this.getCourse();
-    this.getmodule();
+    this.getcounterdata();
    
   }
-  getmodule(){
-
-    this.service.getmodule().subscribe((res: any) => {
-      this.subcourseDetails = res
-      console.log(this.subcourseDetails);
-    });
+  getcounterdata(){
+    this.service.getmodule().subscribe((res:any)=>{
+      this.counterlist=res.data;
+      console.log(this.counterlist);
+      
+    })
   }
-
   getCourse(){
     this.service.getcourse().subscribe((res: any) => {
       this.courseDetails = res.data; // Assign directly, assuming the data is an array
@@ -74,7 +76,7 @@ export class SyllabusModuleComponent  implements OnInit{
 
   getProgramFeesData(){
     this.service.getsyllabus().subscribe((res:[])=>{
-      this.ProgramFeesData = res
+      this.ProgramFeesData =res;
       console.log(res);
       
     })

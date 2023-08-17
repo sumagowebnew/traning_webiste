@@ -8,75 +8,116 @@ import { CounterService } from 'src/app/services/counter.service';
   styleUrls: ['./course-highlight.component.css']
 })
 export class CourseHighlightComponent implements OnInit {
-  subCourseDetails:FormGroup
-subcourses
-base64Image: string;
+  subCourseDetails: FormGroup;
+  subcourses: any;
+  base64Image: string;
   courseDetails: any;
-constructor(private service: CounterService, private formBuilder: FormBuilder){}
-  
-ngOnInit(): void {
-  this.addSubcoursesDetails();
-   this.getSubcoursesdetail();
-   this.getCourse();
+  aluminilist: any;
+  editForm: FormGroup<{ course_id: FormControl<string>; name: FormControl<string>; designation: FormControl<string>; company: FormControl<string>; selectedFile: FormControl<null>; }>;
 
+  constructor(private service: CounterService, private formBuilder: FormBuilder) {}
 
+  ngOnInit(): void {
    
+    this.getCourse();
+    this.addalumini();
+    this.getalumini();
 
-   this.subCourseDetails = this.formBuilder.group({
+  }
+    getCourse() {
+      this.service.getcourse().subscribe((res: any) => {
+        this.courseDetails = res.data; // Assign directly, assuming the data is an array
+        console.log(this.courseDetails);
+      });
+  
+    }
+    addalumini(): void {
+      this.subCourseDetails = this.formBuilder.group({
+  
     
-    course_id: new FormControl('', Validators.required),
-    highlights: ['', Validators.required],
-   
-  });
-  }
-
-  getCourse(){
-    this.service.getcourse().subscribe((res: any) => {
-      this.courseDetails = res.data; // Assign directly, assuming the data is an array
-      console.log(this.courseDetails);
-    });
-
-  }
+        course_id: ['', Validators.required],
+        highlights: ['', Validators.required],
+       
+      });
+    }
   
-getSubcoursesdetail(){
-  this.service.getcoursehigh().subscribe((res)=>{
-    this.subcourses = res;
-  })
-}
-
-
-
-deleteSubcourseDetails(id:number){
-  const confirmation = confirm('Are you sure you want to delete this category?');
-    if (confirmation) {
-      this.service.deletecoursehigh(id).subscribe(
-        (response) => {
-          console.log('Course Highlight deleted:', response);
-          alert(`Course Highlight Deleted:${response}`)
-          // You might want to refresh the categories list after deletion
-          this.getSubcoursesdetail();
+   
+    onSubmit(): void {
+      const formData = new FormData();
+      formData.append('course_id', this.subCourseDetails.value.course_id);
+      formData.append('highlights', this.subCourseDetails.value.highlights);
+  
+  
+      this.service.addcoursehigh(formData).subscribe(
+        (response: any) => {
+          if(response.statusCode == '200') {
+            // this.router.navigate(['/main/banner'])
+            alert("Data added successfully");
+            location.reload();
+  
+          } else {
+            alert("Something went wrong");
+          }
         },
         (error) => {
-          console.error('Error deleting Project:', error);
+          console.error('Failed to add course:', error);
         }
       );
     }
-  }
-
-addSubcoursesDetails(){
   
-  const formData = new FormData();
- 
-  formData.append('course_id', this.subCourseDetails.value.course_id);
-  formData.append('highlights', this.subCourseDetails.value.highlights);
- 
-  this.service.addcoursehigh(formData).subscribe((res)=>{
-    alert('Added record Successfully')
-  },
-  (err)=>{
-    alert(`Error Occured ${err}`)
-  })
-}
-
-
-}
+    getalumini() {
+      this.service.getcoursehigh().subscribe((res: any) => {
+        console.log(res);
+        this.aluminilist = res.data;
+      })
+    }
+  
+    // createEditForm() {
+    //   this.editForm = this.formBuilder.group({
+    //     course_id: ['', Validators.required],
+    //     highlights: ['', Validators.required]
+       
+    //   });
+    // }
+    // // Function to open the edit modal and populate form fields with the selected counter data
+    // openEditModal(consult: any) {
+    //   this.editForm.setValue({
+    //     course_id:consult.course_id,
+    //     highlights: consult.highlights,
+       
+    //   });
+    // }
+    // updateAlumini(alumini: any): void {
+  
+    //   const updateData = new FormData();
+    //   updateData.append('course_id', alumini.course_id);
+    //   updateData.append('highlights', alumini.highlights);
+     
+  
+    //   this.service.updatecoursehigh(alumini.id, updateData).subscribe(
+    //     (res: any) => {
+    //       console.log('Data updated successfully:', res);
+    //       // Optionally, update the alumini in the local list or fetch the updated list again
+    //       this.getalumini();
+    //     },
+    //     (error) => {
+    //       console.error('Failed to update alumini data:', error);
+    //     }
+    //   );
+    // }
+    deletealuminies(id: number) {
+      const confirmation = confirm('Are you sure you want to delete this category?');
+      if (confirmation) {
+        this.service.deletecoursehigh(id).subscribe(
+          (response) => {
+            console.log('logo deleted:', response);
+            // You might want to refresh the categories list after deletion
+            this.getalumini();
+          },
+          (error) => {
+            console.error('Error deleting Project:', error);
+          }
+        );
+      }
+    }
+  }

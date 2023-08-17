@@ -25,6 +25,7 @@ export class MentorComponent implements OnInit{
     this.addmentors();
     this.getmentors();
     this.getCourse();
+    this.createEditForm();
     
   }
 
@@ -35,12 +36,17 @@ export class MentorComponent implements OnInit{
     });
 
   }
+  
+
+
   addmentors(): void {
     this.mentorform = this.formBuilder.group({
+     
       name: ['', Validators.required],
       designation: ['', Validators.required],
       company:['',Validators.required],
-      selectedFile: [null, Validators.required]
+      selectedFile: [null, Validators.required],
+      course_id: [null, Validators.required] 
     });
   }
 
@@ -56,16 +62,15 @@ export class MentorComponent implements OnInit{
     };
     reader.readAsDataURL(file);
   }
-
   onSubmit(): void {
-   
-
     const formData = new FormData();
+  
     formData.append('name', this.mentorform.value.name);
     formData.append('designation', this.mentorform.value.designation);
-    formData.append('company',this.mentorform.value.company);
+    formData.append('company', this.mentorform.value.company);
     formData.append('image', this.base64Image);
-
+    formData.append('course_id', this.mentorform.value.course_id); 
+  
     this.newweb.addmentor(formData).subscribe(
       (response: any) => {
         if(response.statusCode == '200') {
@@ -79,11 +84,13 @@ export class MentorComponent implements OnInit{
       },
     );
   }
+  
 
   getmentors(){
     this.newweb.getmentor().subscribe((res:any)=>{
-      console.log(res);
+      
       this.mentorlist=res.data;
+      console.log(this.mentorlist);
     })
   }
   deletementor(id: number) {
@@ -101,38 +108,56 @@ export class MentorComponent implements OnInit{
       );
     }
   }
+  openEditModal(hire: any) {
+    this.editForm.setValue({
+      name: hire.name,
+      designation: hire.designation,
+      company: hire.company,
+      selectedFile: null,
+      course_id: hire.course_id
+    });
+  }
+
   createEditForm() {
     this.editForm = this.formBuilder.group({
       name: ['', Validators.required],
       designation: ['', Validators.required],
-      company:['',Validators.required],
-      selectedFile: [null, Validators.required]
-    });
-  }
-  
-  // Function to open the edit modal and populate form fields with the selected counter data
-  openEditModal(counter: any) {
-    this.editForm.setValue({
-      name: counter.name,
-      designation: counter.designation,
-      company:counter.company,
-      image:counter.base64Image
+      company: ['', Validators.required],
+      selectedFile: [null, Validators.required],
+      course_id: [null, Validators.required]
     });
   }
 
-  // Function to handle the update operation in the edit modal
-  updatementor(mentor: any): void {
+  // ...
+
+  updatementor(hire: any): void {
     const updatedData = this.editForm.value;
-    this.newweb.updatementor(mentor.id, updatedData).subscribe(
+
+    const formData = new FormData();
+    formData.append('course_id', updatedData.course_id);
+    formData.append('name', updatedData.name);
+    formData.append('designation', updatedData.designation);
+    formData.append('company', updatedData.company);
+    
+    // formData.append('image', updatedData.selectedFile);
+    if (updatedData.selectedFile) {
+      formData.append('image', updatedData.selectedFile);
+    } else {
+      formData.append('image', this.base64Image);
+    }
+  
+    this.newweb.updatementor(hire.id, formData).subscribe(
       (res: any) => {
         console.log('Data updated successfully:', res);
-        // Optionally, update the local list with the updated counter or fetch the updated list again
+        // Optionally, update the local list with the updated hire data or fetch the updated list again
+        alert("Data Update successfully");
+          location.reload();
         this.getmentors();
+       
       },
       (error) => {
-        console.error('Failed to update archivement data:', error);
+        console.error('Failed to update hire data:', error);
       }
     );
   }
-
 }

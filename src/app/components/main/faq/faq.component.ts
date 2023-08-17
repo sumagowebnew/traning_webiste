@@ -42,6 +42,7 @@ export class FaqComponent implements OnInit {
   }
   onSubmit() {
     const formData = new FormData();
+    formData.append('course_id',this.FaqForm.value.course_id) 
     formData.append('question', this.FaqForm.value.question);
     formData.append('answer', this.FaqForm.value.answer);
    
@@ -86,34 +87,48 @@ export class FaqComponent implements OnInit {
     }
     createEditForm() {
       this.editForm = this.fb.group({
+        course_id:['',Validators.required],
         question: ['', Validators.required],
         answer: ['', Validators.required],
+        
       });
     }
     
     // Function to open the edit modal and populate form fields with the selected counter data
     openEditModal(counter: any) {
       this.editForm.setValue({
+        course_id:counter.course_id,
        question:counter.question,
        answer:counter.answer,
+       
       });
     }
   
     // Function to handle the update operation in the edit modal
     updatefaq(faq: any): void {
       const updatedData = this.editForm.value;
-      this.newweb.updatefaq(faq.id, updatedData).subscribe(
+  
+      const formData = new FormData();
+      formData.append('course_id', updatedData.course_id);
+      formData.append('question', updatedData.question);
+      formData.append('answer', updatedData.answer);
+      // formData.append('image', updatedData.selectedFile);
+     
+    
+      this.newweb.updatefaq(faq.id, formData).subscribe(
         (res: any) => {
           console.log('Data updated successfully:', res);
-          // Optionally, update the local list with the updated counter or fetch the updated list again
+          // Optionally, update the local list with the updated hire data or fetch the updated list again
+          alert("Data Update successfully");
+            location.reload();
           this.getfaqs();
+         
         },
         (error) => {
-          console.error('Failed to update archivement data:', error);
+          console.error('Failed to update hire data:', error);
         }
       );
     }
-  
 
 
 

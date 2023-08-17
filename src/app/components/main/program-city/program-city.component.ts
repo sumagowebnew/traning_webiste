@@ -50,7 +50,7 @@ export class ProgramCityComponent implements OnInit{
 
     getcounterdata(){
       this.about.getcity().subscribe((res:any)=>{
-        this.counterlist=res.data;
+        this.counterlist=res;
         console.log(this.counterlist);
         
       })

@@ -37,17 +37,21 @@ export class ProgramFeesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProgramFeesData()
-    this.getCourse()
-    this.service.getsubcourse().subscribe((res: any) => {
-      this.subcourseDetails = res
-      console.log(this.subcourseDetails);
-    });
+    this.getCourse();
+    this.getsubcourse();
+    
   }
 
   getCourse() {
     this.service.getcourse().subscribe((res: any) => {
       this.courseDetails = res.data; // Assign directly, assuming the data is an array
       console.log(this.courseDetails);
+    });
+  }
+  getsubcourse(){
+    this.service.getsubcourse().subscribe((res: any) => {
+      this.subcourseDetails = res.data;
+      console.log(this.subcourseDetails);
     });
   }
 

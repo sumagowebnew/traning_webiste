@@ -25,8 +25,8 @@ export class CounsellingComponent implements OnInit {
       fullname: ['', Validators.required],
       email: ['', Validators.required],
       contact: ['', Validators.required],
-      work_experience:['', Validators.required],
-      schedule_datetime:['', Validators.required],
+      course:['', Validators.required],
+      duration:['', Validators.required],
       interest:['', Validators.required],
      
     });
@@ -39,8 +39,8 @@ export class CounsellingComponent implements OnInit {
     formData.append('fullname', this.bannerForm.value.fullname);
     formData.append('email', this.bannerForm.value.email);
     formData.append('contact', this.bannerForm.value.contact);
-    formData.append('work_experience', this.bannerForm.value.work_experience);
-    formData.append('schedule_datetime', this.bannerForm.value.schedule_datetime);
+    formData.append('course', this.bannerForm.value.course);
+    formData.append('duration', this.bannerForm.value.duration);
     formData.append('interest', this.bannerForm.value.interest);
     
     
@@ -86,8 +86,8 @@ export class CounsellingComponent implements OnInit {
       fullname: ['', Validators.required],
       email: ['', Validators.required],
       contact: ['', Validators.required],
-      work_experience:['', Validators.required],
-      schedule_datetime:['', Validators.required],
+      course:['', Validators.required],
+      duration:['', Validators.required],
       interest:['', Validators.required],
     });
   }
@@ -98,8 +98,8 @@ export class CounsellingComponent implements OnInit {
       fullname: counter.fullname,
       email: counter.email,
       contact:counter.contact,
-      work_experience:counter.work_experience,
-      schedule_datetime:counter.schedule_datetime,
+      course:counter.course,
+      duration:counter.duration,
       interest:counter.interest,
     });
   }

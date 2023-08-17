@@ -21,10 +21,12 @@
                      <form [formGroup]="subCourseDetails">
                         <div class="form-group input-group input-group-outline my-3">
                             <!-- <label for="designation" >select course</label> -->
-                            <select id="course" formControlName="course_id" class="form-control" required>
-                                <option value="" disabled selected>select course</option>
-                                <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}</option>
-                              </select>     
+                            <select id="course_id" formControlName="course_id" placeholder="Coures name"
+                            class="form-control" required>
+                            <option value="" disabled selected>select Course</option>
+                            <option [value]="course.id" *ngFor="let course of courseDetails"
+                                style="color: black;">{{ course.name }} </option>
+                        </select>    
                             <div class="invalid-feedback">Course is required</div>
                           </div>   
                         <div class="input-group input-group-outline my-3">
@@ -39,7 +41,7 @@
                  <div class="modal-footer">
                      <button type="button" class="btn bg-gradient-secondary"
                          data-bs-dismiss="modal">Close</button>
-                     <button type="submit" (click)="addSubcoursesDetails()" class="btn bg-gradient-primary">Save changes</button>
+                     <button type="submit" (click)="onSubmit()" class="btn bg-gradient-primary">Save changes</button>
                  </div>
              </div>
          </div>
@@ -73,10 +75,7 @@
                         <td>
                             <p class="text-xs font-weight-bold mb-0">{{item.highlights}}</p>
                         </td>
-                        <td>
-                            <p class="text-xs font-weight-bold mb-0">{{item.name}}</p>
-                            <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
-                        </td>
+                       
                       
                         <td class="align-middle">
                            
@@ -121,7 +120,7 @@
                       <!-- Modal End -->
 
 
-                      <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs" (click)="deleteSubcourseDetails(item.id)" >
+                      <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs" (click)="deletealuminies(item.id)" >
                       delete
                   </a>
 

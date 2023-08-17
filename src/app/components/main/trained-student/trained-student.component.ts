@@ -32,25 +32,26 @@ export class TrainedStudentComponent implements OnInit {
 
   }
   onSubmit() {
-    const formData = new FormData();
-    formData.append('name', this.counterForm.value.name);
-    formData.append('count', this.counterForm.value.count);
    
-    // Call your CourseService method to upload the course with the formData
-    this.about.addstudent(formData).subscribe(
-    (response: any)=>{
-      console.log('Created Successfully:', response);
-      if(response.statusCode == '200') {
-        // this.router.navigate(['/main/banner'])
-        alert("Data added successfully");
-        location.reload();
 
-      } else {
-        alert("Something went wrong");
-      }
-    },
-  );
-}
+    const formData = new FormData();
+    formData.append('name', this.studentform.value.title);
+    formData.append('count', this.studentform.value.count);
+    // formData.append('image', this.base64Image);
+
+    this.about.addstudent(formData).subscribe(
+      (response: any) => {
+        if(response.statusCode == '200') {
+          // this.router.navigate(['/main/banner'])
+          alert("Data added successfully");
+          location.reload();
+
+        } else {
+          alert("Something went wrong");
+        }
+      },
+    );
+  }
     getcounterdata(){
       this.about.getstudent().subscribe((res:any)=>{
         this.counterlist=res.data;
