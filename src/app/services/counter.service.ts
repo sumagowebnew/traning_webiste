@@ -218,7 +218,10 @@ export class CounterService {
     return this.http.post(`${this.apiUrl}add_subcourse_details`, subcourses, { headers })
   }
   getSubcoursesdetail() {
-    return this.http.get(`${this.apiUrl}get_subcourse_details`)
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.get(`${this.apiUrl}get_subcourse_details_list`, {headers})
   }
 
   getSubcoursesbyId(Id: number) {
@@ -233,6 +236,17 @@ export class CounterService {
     });
     return this.http.delete(url, { headers });
   }
+
+  updatesubcoursedetail(id: number, logo: any) {
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+
+    const url = `${this.apiUrl}update_subcourse_details/${id}`;
+    return this.http.post(url, logo, { headers });
+  }
+  
   //Popular details
 
   deletepopular(id: number) {

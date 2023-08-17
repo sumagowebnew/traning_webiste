@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CounterService } from 'src/app/services/counter.service';
 
 @Component({
@@ -11,19 +11,15 @@ export class HandsonCategoryComponent implements OnInit {
   handsonCategory: FormGroup;
   handsonCategoryDetails: any[]
   handsonCategoryUpdateForm: FormGroup; // Add this form for update
+  bannerlist: any;
 
 
   ngOnInit(): void {
     this.getCategories()
+    this.addcompany();
   }
   constructor(private service: CounterService, private fb: FormBuilder) {
-    this.handsonCategory = this.fb.group({
-      title: [''],
-    });
-    // Initialize the update form
-    this.handsonCategoryUpdateForm = this.fb.group({
-      title: [''],
-    });
+  
 
   }
 
@@ -36,32 +32,51 @@ export class HandsonCategoryComponent implements OnInit {
   getCategories() {
     this.service.getHandsonCategory().subscribe(
       (response: any) => {
-        this.handsonCategoryDetails = response;
+        this.handsonCategoryDetails = response.data;
       },
       (error) => {
         console.error('Error getting categories:', error);
       }
     );
   }
+  addcompany(): void {
+    this.handsonCategory = this.fb.group({
 
-  addCategory() {
-    if (this.handsonCategory.valid) {
-      const data = { title: this.handsonCategory.value.title };
-      this.service.addHandosnCategory(data).subscribe(
-        (response:any) => {
+      title: ['', Validators.required],
 
-          if(response.statusCode == '200') {
-            // this.router.navigate(['/main/banner'])
-            alert("Data added successfully");
-            location.reload();
-  
-          } else {
-            alert("Something went wrong");
-          }
-        },
-      );
-    }
+    });
   }
+
+
+  onSubmit(): void {
+
+
+    const formData = new FormData();
+
+    formData.append('title', this.handsonCategory.value.title);
+
+
+    this.service.addHandosnCategory(formData).subscribe(
+      (response: any) => {
+        if(response.statusCode == '200') {
+
+          // this.router.navigate(['/main/banner'])
+          alert("Data added successfully");
+          location.reload();
+
+        } else {
+          alert("Something went wrong");
+        }
+      },
+    );
+  }
+
+  // getcompany() {
+  //   this.service.getHandsonCategory().subscribe((res: any) => {
+  //     console.log(res);
+  //     this.bannerlist = res.data;
+  //   })
+  // }
 
   deleteCategory(id: number) {
     const confirmation = confirm('Are you sure you want to delete this category?');
