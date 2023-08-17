@@ -20,23 +20,23 @@
                  <div class="modal-body">
                      <form [formGroup]="subCourseDetails">
                         <div class="form-group input-group input-group-outline my-3">
-                            <label for="designation">Course</label>
+                          
                             <select id="designation" formControlName="course_id" class="form-control" required>
-                              <option value="" disabled selected>Select Course</option>
+                              <option value="" disabled selected>select course</option>
                               <!-- <option [value]="designation.id" *ngFor="let designation of designations">{{designation.designation}}</option> -->
                             </select>      
                             <div class="invalid-feedback">Course is required</div>
                           </div>   
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Title</label>
+                            <label class="form-label">title</label>
                             <input type="text" class="form-control" formControlName="title">
                         </div>
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Description</label>
+                            <label class="form-label">description</label>
                             <input type="text" class="form-control"  formControlName="description">
                         </div>
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Custom Text</label>
+                            <label class="form-label">custom text</label>
                             <input type="text" class="form-control"  formControlName="custome_text">
                         </div>
                         <div class="input-group input-group-outline my-3">
@@ -46,9 +46,9 @@
 
 
                  </div>
-                 <div class="modal-footer">
+                 <div class="modal-footer" align="right">
                      <button type="button" class="btn bg-gradient-secondary"
-                         data-bs-dismiss="modal">Close</button>
+                         data-bs-dismiss="modal">Close</button>&nbsp;&nbsp;
                      <button type="submit" (click)="addSubcoursesDetails()" class="btn bg-gradient-primary">Save changes</button>
                  </div>
              </div>
@@ -115,7 +115,7 @@
                                   <div class="modal-body">
                                       <form [formGroup]="subCourseDetails">
                                         <div class="input-group input-group-outline my-3">
-                                            <label class="form-label">Name</label>
+                                            <label class="form-label">name</label>
                                                 <input type="text" class="form-control">
                                         </div>
                                        

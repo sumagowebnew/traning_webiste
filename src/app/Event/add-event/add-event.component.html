@@ -18,9 +18,9 @@
                  <div class="modal-body">
                      <form [formGroup]="eventform">
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label"> Course Name</label>
+                            <label class="form-label"> course name</label>
                             <select id="course" formControlName="course_id"  placeholder="Coures name" class="form-control" required  >
-                              <option value="" disabled selected>Select Course</option>
+                              <option value="" disabled selected>select course</option>
                               <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}			</option>
                             </select>
                             <div class="invalid-feedback">Course is required</div>
@@ -40,7 +40,7 @@
 
 
                  </div>
-                 <div class="modal-footer">
+                 <div class="modal-footer" align="right">
                      <button type="button" class="btn bg-gradient-secondary"
                          data-bs-dismiss="modal">Close</button>
                      <button type="submit" (click)="onSubmit()" class="btn bg-gradient-primary">Save changes</button>

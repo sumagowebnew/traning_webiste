@@ -20,9 +20,9 @@
                         <div class="modal-body">
                             <form [formGroup]="bannerForm" >
                                 <div class="input-group input-group-outline my-3">
-                                    <label for="course">Course</label>
+                                    <!-- <label for="course">Course</label> -->
                         <select id="course" formControlName="course_id" class="form-control" required>
-                          <option value="" disabled selected>Select Course</option>
+                          <option value="" disabled selected>select course</option>
                           <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}</option>
                         </select>
                                 </div>
@@ -65,7 +65,7 @@
                        
                             
                         
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> Action</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> Action</th>
 
                     </tr>
                 </thead>

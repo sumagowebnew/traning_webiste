@@ -22,14 +22,14 @@
                         <div class="form-group input-group input-group-outline my-3">
                             <!-- <label for="designation" >select course</label> -->
                             <select id="course" formControlName="course_id" class="form-control" required>
-                                <option value="" disabled selected>Select Course</option>
+                                <option value="" disabled selected>select course</option>
                                 <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}</option>
                               </select>     
                             <div class="invalid-feedback">Course is required</div>
                           </div>   
                         <div class="input-group input-group-outline my-3">
                             <!-- <label class="form-label">highlights</label> -->
-                            <input type="text" class="form-control" formControlName="highlights" placeholder="Highlight">
+                            <input type="text" class="form-control" formControlName="highlights" placeholder="highlight">
                         </div>
                         
                      </form>

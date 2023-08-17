@@ -20,12 +20,12 @@
                      <form [formGroup]="aboutForm" (ngSubmit)="onSubmit()"  >
                        
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label">Name</label>
+                            <label class="form-label">name</label>
                                 <input type="text" id="name" class="form-control" formControlName="name">
                         </div>
 
                          <div class="input-group input-group-outline my-3">
-                             <label class="form-label">Designation</label>
+                             <label class="form-label">designation</label>
                                  <input type="text" id="designation" class="form-control" formControlName="designation">
                          </div>
                         
@@ -33,10 +33,12 @@
                             
                                 <input type="file" id="selectedFile" class="form-control" (change)="onFileSelected($event)" >
                         </div>
+                        <div align="right">
                          <button type="button" class="btn bg-gradient-secondary"
-                         data-bs-dismiss="modal">Close</button>
+                         data-bs-dismiss="modal">Close</button>&nbsp;&nbsp;
                      <button type="submit"  class="btn bg-gradient-primary">Save changes</button>
-                     </form>
+                    </div> 
+                    </form>
                  </div>
                  <div class="modal-footer">
                     
@@ -58,10 +60,10 @@
                         
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
                        
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Destination</th>
                       
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                        
                     </tr>
                 </thead>
