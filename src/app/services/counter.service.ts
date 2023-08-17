@@ -536,7 +536,7 @@ export class CounterService {
   }
 
   getcoursehigh() {
-    return this.http.get(`${this.apiUrl}get_highlightDetails`)
+    return this.http.get(`${this.apiUrl}get_all_highlightDetails`)
   }
 
   deletecoursehigh(id: number) {
