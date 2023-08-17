@@ -23,7 +23,7 @@
                                     <!-- <label class="form-label"> Course Name</label> -->
                                     <select id="course_id" formControlName="course_id" placeholder="Coures name"
                                         class="form-control" required>
-                                        <option value="" disabled selected>select Course</option>
+                                        <option value="" disabled selected>select course</option>
                                         <option [value]="course.id" *ngFor="let course of courseDetails"
                                             style="color: black;">{{ course.name }} </option>
                                     </select>
@@ -79,9 +79,9 @@
                         
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
 
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Designation</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Company</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> Course Name</th>
 

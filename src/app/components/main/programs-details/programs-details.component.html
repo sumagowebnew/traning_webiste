@@ -21,7 +21,7 @@
                         <div class="modal-body">
                             <form [formGroup]="programform">
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Id</label>
+                                    <label class="form-label">id</label>
                                     <input type="text" class="form-control" formControlName="program_id">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
@@ -30,63 +30,65 @@
                                 </div>
                                 <div class="input-group input-group-outline mb-3">
 
-                                    <select name="name" class="nav-link dropdown-toggle form-control" style="margin-top:5px"   (change)="getBySort($event)">
-                                        <option value=""> Course Name</option> 
-                                        <option *ngFor="let course_Name of programlist" [value]="course_Name.name">{{ course_Name.name }}</option>
-                                      </select> 
+                                    <select name="name" class="nav-link dropdown-toggle form-control"
+                                        style="margin-top:5px" (change)="getBySort($event)">
+                                        <option value=""> course name</option>
+                                        <option *ngFor="let course_Name of programlist" [value]="course_Name.name">{{
+                                            course_Name.name }}</option>
+                                    </select>
                                 </div>
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Duration</label>
+                                    <label class="form-label">duration</label>
                                     <input type="text" class="form-control" formControlName="duration">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Training Period</label>
+                                    <label class="form-label">training period</label>
                                     <input type="text" class="form-control" formControlName="training_period">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Batch</label>
+                                    <label class="form-label">batch</label>
                                     <input type="text" class="form-control" formControlName="batch">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Project</label>
+                                    <label class="form-label">project</label>
                                     <input type="text" class="form-control" formControlName="project">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Course Level</label>
+                                    <label class="form-label">course level</label>
                                     <input type="text" class="form-control" formControlName="course_level">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Average Salary</label>
+                                    <label class="form-label">average salary</label>
                                     <input type="text" class="form-control" formControlName="average_salary">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Introduction</label>
+                                    <label class="form-label">introduction</label>
                                     <input type="text" class="form-control" formControlName="introduction">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Course Overview</label>
+                                    <label class="form-label">course overview</label>
                                     <input type="text" class="form-control" formControlName="course_overview">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Learning Outcome</label>
+                                    <label class="form-label">learning outcome</label>
                                     <input type="text" class="form-control" formControlName="learning_outcome">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Pre-requisite</label>
+                                    <label class="form-label">pre requisite</label>
                                     <input type="text" class="form-control" formControlName="prerequisite">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Career Opportunities</label>
+                                    <label class="form-label">career opportunities</label>
                                     <input type="text" class="form-control" formControlName="career_opportunity">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Why Sumago For Full Stack Web Development Diploma
+                                    <label class="form-label">why sumago for full stack web development diploma
                                         ?</label>
                                     <input type="text" class="form-control" formControlName="why_sumago">
                                 </div>
-                              
+
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">Who will be trainee ?</label>
+                                    <label class="form-label">who will be trainee ?</label>
                                     <input type="text" class="form-control" formControlName="trainee">
                                 </div>
 
@@ -97,7 +99,8 @@
                         <div class="modal-footer">
                             <button type="button" class="btn bg-gradient-secondary"
                                 data-bs-dismiss="modal">Close</button>
-                            <button type="submit" (click)="onSubmit()" class="btn bg-gradient-primary">Save changes</button>
+                            <button type="submit" (click)="onSubmit()" class="btn bg-gradient-primary">Save
+                                changes</button>
                         </div>
                     </div>
                 </div>
@@ -116,32 +119,32 @@
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Course Name
                         </th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Duration</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Training Period</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Batch </th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Project</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Course Level</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Average Salary</th>
 
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                           Introduction</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            Introduction</th>
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Course Overview</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Learning Outcome</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Pre-requisite</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                           Career Opportunity</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                           Why Sumago For Web Dev Diploma ?</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            Career Opportunity</th>
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            Why Sumago For Web Dev Diploma ?</th>
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Who will be Trainee ?</th>
                         <th class="text-secondary opacity-7">Action</th>
 
@@ -152,15 +155,14 @@
                     <tr *ngFor="let item of programlist ">
                         <td>
                             <div class="d-flex px-2 py-1">
-                                 <div class="d-flex flex-column justify-content-center">
+                                <div class="d-flex flex-column justify-content-center">
                                     <h6 class="mb-0 text-xs">{{item.program_id}}</h6>
                                     <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
                                 </div>
                                 <div>
-                                    <img [src]="item.image"
-                                        class="avatar avatar-sm me-3">
+                                    <img [src]="item.image" class="avatar avatar-sm me-3">
                                 </div>
-                               
+
                             </div>
                         </td>
                         <td>
@@ -246,53 +248,53 @@
                                                     <input type="file" class="form-control">
                                                 </div>
                                                 <div class="input-group input-group-outline my-3">
-                                                    <label class="form-label">Course Level</label>
+                                                    <label class="form-label">course level</label>
                                                     <input type="text" class="form-control">
                                                 </div>
 
                                                 <div class="input-group input-group-outline my-3">
-                                                    <label class="form-label">Duration</label>
+                                                    <label class="form-label">duration</label>
                                                     <input type="text" class="form-control">
                                                 </div>
                                                 <div class="input-group input-group-outline my-3">
-                                                    <label class="form-label">Training Period</label>
+                                                    <label class="form-label">training period</label>
                                                     <input type="text" class="form-control">
                                                 </div>
                                                 <div class="input-group input-group-outline my-3">
-                                                    <label class="form-label">Language</label>
+                                                    <label class="form-label">language</label>
                                                     <input type="text" class="form-control">
                                                 </div>
                                                 <div class="input-group input-group-outline my-3">
-                                                    <label class="form-label">Learning Outcome</label>
+                                                    <label class="form-label">learning outcome</label>
                                                     <input type="text" class="form-control">
                                                 </div>
                                                 <div class="input-group input-group-outline my-3">
-                                                    <label class="form-label">Introduction</label>
+                                                    <label class="form-label">introduction</label>
                                                     <input type="text" class="form-control">
                                                 </div>
                                                 <div class="input-group input-group-outline my-3">
-                                                    <label class="form-label">Course Overview</label>
+                                                    <label class="form-label">course overview</label>
                                                     <input type="text" class="form-control">
                                                 </div>
                                                 <div class="input-group input-group-outline my-3">
-                                                    <label class="form-label">Learning Outcome</label>
+                                                    <label class="form-label">learning outcome</label>
                                                     <input type="text" class="form-control">
                                                 </div>
                                                 <div class="input-group input-group-outline my-3">
-                                                    <label class="form-label">Pre-requisite</label>
+                                                    <label class="form-label">pre-requisite</label>
                                                     <input type="text" class="form-control">
                                                 </div>
                                                 <div class="input-group input-group-outline my-3">
-                                                    <label class="form-label">Why Sumago For Full Stack Web Development
-                                                        Diploma ?</label>
+                                                    <label class="form-label">why sumago for full stack web development
+                                                        diploma ?</label>
                                                     <input type="text" class="form-control">
                                                 </div>
                                                 <div class="input-group input-group-outline my-3">
-                                                    <label class="form-label">Career Opportunities</label>
+                                                    <label class="form-label">career opportunities</label>
                                                     <input type="text" class="form-control">
                                                 </div>
                                                 <div class="input-group input-group-outline my-3">
-                                                    <label class="form-label">Who will bo trainee ?</label>
+                                                    <label class="form-label">who will bo trainee ?</label>
                                                     <input type="text" class="form-control">
                                                 </div>
 
@@ -303,7 +305,8 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn bg-gradient-secondary"
                                                 data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn bg-gradient-primary" (click)="updateprogram(item)">Save changes</button>
+                                            <button type="button" class="btn bg-gradient-primary"
+                                                (click)="updateprogram(item)">Save changes</button>
                                         </div>
                                     </div>
                                 </div>
@@ -311,7 +314,8 @@
                             <!-- Modal End -->
 
 
-                            <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs" (click)="deleteprogramdetail(item.id)">
+                            <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs"
+                                (click)="deleteprogramdetail(item.id)">
                                 delete
                             </a>
 

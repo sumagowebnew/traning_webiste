@@ -23,9 +23,9 @@
 
                                 <div class="input-group input-group-outline mb-3">
                                     <div class="input-group input-group-outline my-3">
-                                        <label for="handsonCategory">Handson Category:</label>
-                                        <select formControlName="handsonCategory" formControlName="handson_category_id" >
-                                            <option value="">select</option>
+                                        <!-- <label for="handsonCategory">Handson Category:</label> -->
+                                        <select formControlName="handsonCategory" class="form-control" formControlName="handson_category_id" >
+                                            <option value="">select category</option>
                                             <option *ngFor="let category of handsonCategoryDetails"
                                                 [value]="category.id">{{ category.title }}</option>
                                         </select>
@@ -34,9 +34,9 @@
 
                                 <div class="input-group input-group-outline mb-3">
                                     <div class="input-group input-group-outline my-3">
-                                        <label for="subCourse">Sub Course:</label>
-                                        <select formControlName="sub_course_id" formControlName="sub_course_id" >
-                                            <option value="">select</option>
+                                        <!-- <label for="subCourse">Sub Course:</label> -->
+                                        <select  class="form-control" formControlName="sub_course_id" >
+                                            <option value="">select sub course</option>
                                             <option *ngFor="let subCourse of subcourses" [value]="subCourse.id">{{
                                                 subCourse.name }}</option>
                                         </select>
@@ -52,7 +52,7 @@
                                 <div class="input-group input-group-outline mb-3">
                                     <div class="input-group input-group-outline my-3">
                                         <!-- <label for="description">Description:</label> -->
-                                        <textarea formControlName="desc" placeholder="Description"></textarea>
+                                        <textarea formControlName="desc" placeholder="description" class="form-control"></textarea>
                                     </div>
                                 </div>
 

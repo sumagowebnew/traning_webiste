@@ -19,15 +19,15 @@
               <form [formGroup]="ProgramFeesFormData">
                 <div class="input-group input-group-outline my-3">
                   <!-- <label class="form-label">Program ID</label> -->
-                  <input type="text" class="form-control" formControlName="pro_max_id" placeholder="pro_max_id"
+                  <input type="text" class="form-control" formControlName="pro_max_id" placeholder="pro max id"
                     readonly>
                 </div>
 
                 <div class="input-group input-group-outline my-3">
-                  <label for="course">Course</label>
+                  <!-- <label for="course">Course</label> -->
                   <select id="course" formControlName="course_id" class="form-control" required
                     (change)="getSubCourseFromCourse($event)">
-                    <option value="" disabled selected>Select Course</option>
+                    <option value="" disabled selected>select course</option>
                     <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{
                       course.name }}</option>
                   </select>
@@ -35,9 +35,9 @@
                 </div>
 
                 <div class="input-group input-group-outline my-3">
-                  <label for="course">Subcourse</label>
+                  <!-- <label for="course">Subcourse</label> -->
                   <select id="course" formControlName="sub_course_id" class="form-control" required>
-                    <option value="" disabled selected>Select Subcourse</option>
+                    <option value="" disabled selected>select subcourse</option>
                     <option [value]="sub.id" *ngFor="let sub of subcourseDetails" style="color: black;">{{ sub.name }}
                     </option>
                   </select>
@@ -47,73 +47,75 @@
 
                 <div class="input-group input-group-outline my-3">
                   <!-- <label class="form-label">Job Assistance</label> -->
-                  <input type="text" class="form-control" formControlName="sub_course_fee" placeholder="Course Fee">
+                  <input type="text" class="form-control" formControlName="sub_course_fee" placeholder="course fee">
                 </div>
 
                 <div class="input-group input-group-outline my-3">
                   <!-- <label class="form-label">Job Assistance</label> -->
                   <input type="text" class="form-control" formControlName="sub_course_duration"
-                    placeholder="Course Duration in Month">
+                    placeholder="course duration in month">
                 </div>
 
                 <div class="input-group input-group-outline my-3">
                   <!-- <label class="form-label">Job Assistance</label> -->
-                  <input type="text" class="form-control" formControlName="job_assistance" placeholder="Job_assistance">
+                  <input type="text" class="form-control" formControlName="job_assistance" placeholder="job assistance">
                 </div>
 
                 <div class="input-group input-group-outline my-3">
                   <!-- <label class="form-label">Live Class Subscription</label> -->
                   <input type="text" class="form-control" formControlName="live_class_subscription"
-                    placeholder="Live_class_subscription">
+                    placeholder="live class subscription">
                 </div>
 
                 <div class="input-group input-group-outline my-3">
                   <!-- <label class="form-label">LMS Subscription</label> -->
                   <input type="text" class="form-control" formControlName="lms_subscription"
-                    placeholder="LMS Subscription">
+                    placeholder="lms subscription">
                 </div>
 
                 <div class="input-group input-group-outline my-3">
                   <!-- <label class="form-label">Job Referrals</label> -->
-                  <input type="text" class="form-control" formControlName="job_referrals" placeholder="Job_referrals">
+                  <input type="text" class="form-control" formControlName="job_referrals" placeholder="job referrals">
                 </div>
 
                 <div class="input-group input-group-outline my-3">
                   <!-- <label class="form-label">Industry Projects</label> -->
                   <input type="text" class="form-control" formControlName="industry_projects"
-                    placeholder="Industry_projects">
+                    placeholder="industry projects">
                 </div>
 
                 <div class="input-group input-group-outline my-3">
                   <!-- <label class="form-label">Domain Training</label> -->
                   <input type="text" class="form-control" formControlName="domain_training"
-                    placeholder="Domain_training">
+                    placeholder="domain training">
                 </div>
 
 
                 <div class="input-group input-group-outline my-3">
                   <!-- <label class="form-label">Project Certification From Companies</label> -->
                   <input type="text" class="form-control" formControlName="project_certification_from_companies"
-                    placeholder="project_certification_from_companies">
+                    placeholder="project certification from companies">
                 </div>
 
                 <div class="input-group input-group-outline my-3">
                   <!-- <label class="form-label">Advance AI DSA</label> -->
-                  <input type="text" class="form-control" formControlName="adv_ai_dsa" placeholder="adv_ai_dsa">
+                  <input type="text" class="form-control" formControlName="adv_ai_dsa" placeholder="adv ai dsa">
                 </div>
 
 
                 <div class="input-group input-group-outline my-3">
                   <!-- <label class="form-label">Microsoft Certification</label> -->
                   <input type="text" class="form-control" formControlName="microsoft_certification"
-                    placeholder="microsoft_certification">
+                    placeholder="microsoft certification">
                 </div>
 
 
 
+                <div align="right">
+                  <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>&nbsp;&nbsp;
+                  <button type="submit" class="btn bg-gradient-primary" (click)="onSubmit()">Save changes</button>
 
-                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn bg-gradient-primary" (click)="onSubmit()">Save changes</button>
+                </div>
               </form>
             </div>
             <div class="modal-footer"></div>
@@ -131,31 +133,31 @@
         <thead>
 
           <tr>
-            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+            <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
               Course Name</th>
-            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+            <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
               Sub Course Name</th>
-            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+            <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
               Fee</th>
-            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+            <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
               Job Assistance</th>
             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
               LCS</th>
             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">lms_subscription</th>
             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">job_referrals</th>
-            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+            <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
               industry_projects</th>
             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
               capstone_projects</th>
-            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">domain_training
+            <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">domain_training
             </th>
-            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+            <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
               project_certification_from_companies</th>
-            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">adv_ai_dsa</th>
-            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+            <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">adv_ai_dsa</th>
+            <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
               microsoft_certification</th>
-            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 left">Update</th>
-            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 left">Delete</th>
+            <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 left">Update</th>
+            <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 left">Delete</th>
 
 
 
@@ -241,13 +243,13 @@
 
                         <div class="input-group input-group-outline my-3">
                           <!-- <label class="form-label">Program ID</label> -->
-                          <input type="text" class="form-control" formControlName="pro_max_id" placeholder="pro_max_id">
+                          <input type="text" class="form-control" formControlName="pro_max_id" placeholder="pro max id">
                         </div>
 
                         <div class="input-group input-group-outline my-3">
-                          <label for="course">Course</label>
+                          <!-- <label for="course">Course</label> -->
                           <select id="course" formControlName="course_id" class="form-control" required>
-                            <option value="" disabled selected>Select Course</option>
+                            <option value="" disabled selected>select course</option>
                             <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{
                               course.name }}</option>
                           </select>
@@ -255,9 +257,9 @@
                         </div>
 
                         <div class="input-group input-group-outline my-3">
-                          <label for="course">Subcourse</label>
+                          <!-- <label for="course">Subcourse</label> -->
                           <select id="course" formControlName="sub_course_id" class="form-control" required>
-                            <option value="" disabled selected>Select Subcourse</option>
+                            <option value="" disabled selected>select subcourse</option>
                             <option [value]="sub.id" *ngFor="let sub of subcourseDetails" style="color: black;">{{
                               sub.title }}</option>
                           </select>
@@ -268,56 +270,56 @@
                         <div class="input-group input-group-outline my-3">
                           <!-- <label class="form-label">Job Assistance</label> -->
                           <input type="text" class="form-control" formControlName="job_assistance"
-                            placeholder="Job_assistance">
+                            placeholder="job assistance">
                         </div>
 
                         <div class="input-group input-group-outline my-3">
                           <!-- <label class="form-label">Live Class Subscription</label> -->
                           <input type="text" class="form-control" formControlName="live_class_subscription"
-                            placeholder="Live_class_subscription">
+                            placeholder="live class subscription">
                         </div>
 
                         <div class="input-group input-group-outline my-3">
                           <!-- <label class="form-label">LMS Subscription</label> -->
                           <input type="text" class="form-control" formControlName="lms_subscription"
-                            placeholder="LMS Subscription">
+                            placeholder="lms subscription">
                         </div>
 
                         <div class="input-group input-group-outline my-3">
                           <!-- <label class="form-label">Job Referrals</label> -->
                           <input type="text" class="form-control" formControlName="job_referrals"
-                            placeholder="Job_referrals">
+                            placeholder="job referrals">
                         </div>
 
                         <div class="input-group input-group-outline my-3">
                           <!-- <label class="form-label">Industry Projects</label> -->
                           <input type="text" class="form-control" formControlName="industry_projects"
-                            placeholder="Industry_projects">
+                            placeholder="industry projects">
                         </div>
 
                         <div class="input-group input-group-outline my-3">
                           <!-- <label class="form-label">Domain Training</label> -->
                           <input type="text" class="form-control" formControlName="domain_training"
-                            placeholder="Domain_training">
+                            placeholder="domain training">
                         </div>
 
 
                         <div class="input-group input-group-outline my-3">
                           <!-- <label class="form-label">Project Certification From Companies</label> -->
                           <input type="text" class="form-control" formControlName="project_certification_from_companies"
-                            placeholder="project_certification_from_companies">
+                            placeholder="project certification from companies">
                         </div>
 
                         <div class="input-group input-group-outline my-3">
                           <!-- <label class="form-label">Advance AI DSA</label> -->
-                          <input type="text" class="form-control" formControlName="adv_ai_dsa" placeholder="adv_ai_dsa">
+                          <input type="text" class="form-control" formControlName="adv_ai_dsa" placeholder="adv ai dsa">
                         </div>
 
 
                         <div class="input-group input-group-outline my-3">
                           <!-- <label class="form-label">Microsoft Certification</label> -->
                           <input type="text" class="form-control" formControlName="microsoft_certification"
-                            placeholder="microsoft_certification">
+                            placeholder="microsoft certification">
                         </div>
 
 

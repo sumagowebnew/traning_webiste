@@ -17,29 +17,28 @@
                      </button>
                  </div>
                  <div class="modal-body">
+                     <form [formGroup]="subCourseDetails">
+                        <div class="form-group input-group input-group-outline my-3">
+                          
+                            <select id="designation" formControlName="course_id" class="form-control" required>
+                              <option value="" disabled selected>select course</option>
+                              <!-- <option [value]="designation.id" *ngFor="let designation of designations">{{designation.designation}}</option> -->
+                            </select>      
+                            <div class="invalid-feedback">Course is required</div>
+                          </div>   
                      <form [formGroup]="subCourseDetails" (ngSubmit)="onSubmit()"  >
                        
                         <div class="input-group input-group-outline my-3">
-                            <select id="course_id" formControlName="course_id" placeholder="Coures name"
-                            class="form-control" required>
-                            <option value="" disabled selected>select Course</option>
-                            <option [value]="course.id" *ngFor="let course of courseDetails"
-                                style="color: black;">{{ course.name }} </option>
-                        </select>
-                            <!-- t type="text" id="title" class="form-control" formControlName="title" placeholder="title"> -->
+                            <label class="form-label">Title</label>
+                            <input type="text" class="form-control" formControlName="title">
                         </div>
                         <div class="input-group input-group-outline my-3">
-                            <!-- <label class="form-label">Title</label> -->
-                                <input type="text" id="title" class="form-control" formControlName="title" placeholder="title">
+                            <label class="form-label">Description</label>
+                            <input type="text" class="form-control"  formControlName="description">
                         </div>
-
-                         <div class="input-group input-group-outline my-3">
-                             <!-- <label class="form-label">description</label> -->
-                                 <input type="text" id="designation" class="form-control" formControlName="description" placeholder="description">
-                         </div>
-                         <div class="input-group input-group-outline my-3">
-                            <!-- <label class="form-label">description</label> -->
-                                <input type="text" id="custome_text" class="form-control" formControlName="custome_text" placeholder="custome text">
+                        <div class="input-group input-group-outline my-3">
+                            <label class="form-label">Custom Text</label>
+                            <input type="text" class="form-control"  formControlName="custome_text">
                         </div>
                         
                          
@@ -54,8 +53,10 @@
                     </div>
                      </form>
                  </div>
-                 <div class="modal-footer">
-                    
+                 <div class="modal-footer" align="right">
+                     <button type="button" class="btn bg-gradient-secondary"
+                         data-bs-dismiss="modal">Close</button>&nbsp;&nbsp;
+                     <button type="submit" (click)="addSubcoursesDetails()" class="btn bg-gradient-primary">Save changes</button>
                  </div>
              </div>
          </div>
@@ -160,8 +161,8 @@
                                         
                                          
                                         <div class="input-group input-group-outline my-3">
-                                            
-                                                <input type="file" id="selectedFile" class="form-control" (change)="onFileSelected($event)" >
+                                            <label class="form-label">Name</label>
+                                                <input type="text" class="form-control">
                                         </div>
         
                                     </form>

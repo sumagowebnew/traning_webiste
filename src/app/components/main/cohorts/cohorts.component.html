@@ -21,27 +21,28 @@
   <form [formGroup]="batchForm" (ngSubmit)="onSubmit()">
     <div class="input-group input-group-outline my-3">
       <!-- <label class="form-label">Start Date</label> -->
-      <input type="text" class="form-control" formControlName="start_date" placeholder="Start_date">
+      <input type="text" class="form-control" formControlName="start_date" placeholder="start date">
     </div>
 
     <div class="input-group input-group-outline my-3">
       <!-- <label class="form-label">Start Time</label> -->
-      <input type="text" class="form-control" formControlName="start_time" placeholder="Start_time">
+      <input type="text" class="form-control" formControlName="start_time" placeholder="start time">
     </div>
 
     <div class="input-group input-group-outline my-3">
       <!-- <label class="form-label">End Time</label> -->
-      <input type="text" class="form-control" formControlName="end_time" placeholder="End_Time">
+      <input type="text" class="form-control" formControlName="end_time" placeholder="end time">
     </div>
 
     <div class="input-group input-group-outline my-3">
       <!-- <label class="form-label">Batch Name</label> -->
-      <input type="text" class="form-control" formControlName="batch_name" placeholder="Batch_name">
+      <input type="text" class="form-control" formControlName="batch_name" placeholder="batch name">
     </div>
-
-    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+<div align="right">
+    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>&nbsp;&nbsp;
     <button type="submit" class="btn bg-gradient-primary">Save changes</button>
-  </form>
+</div> 
+</form>
 </div>
 <div class="modal-footer">
   
@@ -58,12 +59,12 @@
                 <thead>
                     
                     <tr>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                              Start Date</th>
                        
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Start Time</th>
                        
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             End Time</th>
                       
                         <th class="text-secondary opacity-7">Batch Name</th>
