@@ -15,7 +15,7 @@ export class ProgramFeesListComponent implements OnInit {
   editData: any
   constructor(private service: CounterService, private formBuilder: FormBuilder) {
     this.ProgramFeesFormData = this.formBuilder.group({
-      pro_max_id:3,
+      pro_max_id:4,
       course_id:[''],
       sub_course_id:[''],
       job_assistance:'yes',

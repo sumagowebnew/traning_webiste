@@ -23,9 +23,10 @@
 
                       <div class="input-group input-group-outline my-3">
                         <!-- <label for="course">Course</label> -->
-                        <select id="course" formControlName="course_id" class="form-control" required>
-                          <option value="" disabled selected>select course</option>
-                          <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}</option>
+                        <select  class="form-control" formControlName="sub_course_id" >
+                            <option value="">select sub course</option>
+                            <option *ngFor="let subCourse of subcourses" [value]="subCourse.subcourses_id">{{
+                                subCourse.subcourses_name }}</option>
                         </select>
                         <div class="invalid-feedback">Course is required</div>
                       </div>

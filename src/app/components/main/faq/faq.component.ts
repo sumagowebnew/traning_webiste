@@ -14,6 +14,7 @@ export class FaqComponent implements OnInit {
   faqlist: any;
   editForm: any;
   courseDetails: any;
+  subcourses: any;
 
   constructor(private newweb:CounterService, private fb:FormBuilder){}
 
@@ -21,7 +22,8 @@ export class FaqComponent implements OnInit {
   ngOnInit(): void {
     this.createFaqForm();
     this.getfaqs();
-    this.getCourse();
+    this.getsubcoure();
+    
   }
 
   getCourse(){
@@ -50,7 +52,7 @@ export class FaqComponent implements OnInit {
     // Call your CourseService method to upload the course with the formData
     this.newweb.addfaq(formData).subscribe(
     (response: any)=>{
-      if(response.statusCode == '200') {
+      if(response.StatusCode == '200') {
         // this.router.navigate(['/main/banner'])
         alert("Data added successfully");
         location.reload();
@@ -69,7 +71,12 @@ export class FaqComponent implements OnInit {
         
       })
     }
-    
+    getsubcoure(){
+      this.newweb.getsubcourse().subscribe((res) => {
+        this.subcourses = res['data']
+    })
+  }
+   
     deletefaq(id: number) {
       const confirmation = confirm('Are you sure you want to delete this category?');
       if (confirmation) {

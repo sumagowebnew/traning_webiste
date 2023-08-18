@@ -78,7 +78,7 @@ export class AddSubcourseComponent {
   getSubCourse() {
     this.banner.getsubcourse().subscribe((res: any) => {
       console.log(res);
-      this.bannerlist = res;
+      this.bannerlist = res.data;
     })
   }
   deleteSubCourse(id: number) {
