@@ -22,8 +22,8 @@ export class HandsonProjectComponent implements OnInit {
   }
   getCategories() {
     this.service.getHandsonCategory().subscribe(
-      (response) => {
-        this.handsonCategoryDetails = response;
+      (response:any) => {
+        this.handsonCategoryDetails = response.data;
         console.log('Categories retrieved:', response);
       },
       (error) => {
@@ -80,7 +80,7 @@ export class HandsonProjectComponent implements OnInit {
         (response: any) => {
 
           this.handsonProject.reset();
-          if(response.statusCode == '200') {
+          if(response.StatusCode == '200') {
             // this.router.navigate(['/main/banner'])
             alert("Data added successfully");
             location.reload();

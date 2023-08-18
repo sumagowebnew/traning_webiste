@@ -15,22 +15,19 @@ export class ProgramFeesListComponent implements OnInit {
   editData: any
   constructor(private service: CounterService, private formBuilder: FormBuilder) {
     this.ProgramFeesFormData = this.formBuilder.group({
-      pro_max_id: ['1'], // Initialize with default values if needed
-      course_id: [''],
-      sub_course_id: [''],
-      sub_course_fee: ['', Validators.required], 
-      sub_course_duration: ['', Validators.required], 
-      job_assistance: ['Yes', Validators.required],
-      
-      live_class_subscription: ['Yes'],
-      lms_subscription: ['Yes'],
-      job_referrals: ['Yes'],
-      industry_projects: ['Yes'],
-      capstone_projects: ['Yes'],
-      domain_training: ['Yes'],
-      project_certification_from_companies: ['Yes'],
-      adv_ai_dsa: ['Yes'],
-      microsoft_certification: ['Yes']
+      pro_max_id:3,
+      course_id:[''],
+      sub_course_id:[''],
+      job_assistance:'yes',
+      live_class_subscription:'yes',
+      lms_subscription:'yes',
+      job_referrals:'yes',
+      industry_projects:'yes',
+      capstone_projects:'yes',
+      domain_training:'yes',
+      project_certification_from_companies:'yes',
+      adv_ai_dsa:'yes',
+      microsoft_certification:'yes',
     });
   }
 

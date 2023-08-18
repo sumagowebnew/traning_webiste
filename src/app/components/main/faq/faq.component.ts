@@ -37,6 +37,7 @@ export class FaqComponent implements OnInit {
       course_id:['',Validators.required],
       question: ['', Validators.required],
       answer: ['', Validators.required],
+    
     });
 
   }

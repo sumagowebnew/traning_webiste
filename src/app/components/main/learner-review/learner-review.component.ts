@@ -47,7 +47,7 @@ export class LearnerReviewComponent  implements OnInit{
     formData.append('title', this.bannerForm.value.title);
     formData.append('description', this.bannerForm.value.description);
     formData.append('link', this.bannerForm.value.link);
-    formData.append('images', this.base64Image);
+    formData.append('image', this.base64Image);
 
     this.banner.addlearner(formData).subscribe(
       (response: any) => {

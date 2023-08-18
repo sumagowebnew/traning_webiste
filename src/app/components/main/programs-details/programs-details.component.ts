@@ -25,6 +25,7 @@ export class ProgramsDetailsComponent implements OnInit{
     // this.getprogram();
     
   }
+  
   addprogramdetail(): void {
     this.programform = this.formBuilder.group({
       program_id:['', Validators.required],

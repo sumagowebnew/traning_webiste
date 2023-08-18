@@ -8,10 +8,13 @@ import { CounterService } from 'src/app/services/counter.service';
   styleUrls: ['./handson-category.component.css']
 })
 export class HandsonCategoryComponent implements OnInit {
+
   handsonCategory: FormGroup;
   handsonCategoryDetails: any[]
   handsonCategoryUpdateForm: FormGroup; // Add this form for update
   bannerlist: any;
+  handson: any;
+  certificate: any;
 
 
   ngOnInit(): void {
@@ -23,43 +26,31 @@ export class HandsonCategoryComponent implements OnInit {
 
   }
 
-  openUpdateModal(category: any): void {
-    this.handsonCategoryUpdateForm.patchValue({ title: category.title });
-  }
 
 
 
-  getCategories() {
-    this.service.getHandsonCategory().subscribe(
-      (response: any) => {
-        this.handsonCategoryDetails = response.data;
-      },
-      (error) => {
-        console.error('Error getting categories:', error);
-      }
-    );
-  }
+
+ 
   addcompany(): void {
-    this.handsonCategory = this.fb.group({
-
-      title: ['', Validators.required],
-
+    this.certificate = this.fb.group({
+     
+      title: ['', Validators.required]
+    
     });
   }
 
 
   onSubmit(): void {
-
+   
 
     const formData = new FormData();
-
-    formData.append('title', this.handsonCategory.value.title);
-
+    // formData.append('course_id',this.certificate.value.course_id);
+    formData.append('title', this.certificate.value.title);
+  
 
     this.service.addHandosnCategory(formData).subscribe(
       (response: any) => {
-        if(response.statusCode == '200') {
-
+        if(response.StatusCode == '200') {
           // this.router.navigate(['/main/banner'])
           alert("Data added successfully");
           location.reload();
@@ -70,13 +61,23 @@ export class HandsonCategoryComponent implements OnInit {
       },
     );
   }
-
   // getcompany() {
   //   this.service.getHandsonCategory().subscribe((res: any) => {
   //     console.log(res);
   //     this.bannerlist = res.data;
   //   })
   // }
+  getCategories() {
+    this.service.getHandsonCategory().subscribe(
+      (response: any) => {
+        this.bannerlist = response.data;
+        console.log(this.bannerlist)
+      },
+      (error) => {
+        console.error('Error getting categories:', error);
+      }
+    );
+  }
 
   deleteCategory(id: number) {
     const confirmation = confirm('Are you sure you want to delete this category?');

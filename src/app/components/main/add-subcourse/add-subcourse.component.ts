@@ -26,6 +26,7 @@ export class AddSubcourseComponent {
     this.bannerForm = this.formBuilder.group({
       course_id: ['', Validators.required],
       name: ['', Validators.required],
+      selectedFile: [null, Validators.required]
 
     });
   }
@@ -36,12 +37,27 @@ export class AddSubcourseComponent {
       console.log(this.courseDetails);
     });
 
+
+  }
+  
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    this.convertToBase64(file);
+  }
+
+  convertToBase64(file: File): void {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.base64Image = reader.result as string;
+    };
+    reader.readAsDataURL(file);
   }
 
   onSubmit(): void {
     const formData = new FormData();
     formData.append('course_id', this.bannerForm.value.course_id);
     formData.append('name', this.bannerForm.value.name);
+    formData.append('image', this.base64Image);
 
 
 
@@ -62,7 +78,7 @@ export class AddSubcourseComponent {
   getSubCourse() {
     this.banner.getsubcourse().subscribe((res: any) => {
       console.log(res);
-      this.bannerlist = res.data;
+      this.bannerlist = res;
     })
   }
   deleteSubCourse(id: number) {

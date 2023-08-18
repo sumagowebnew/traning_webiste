@@ -16,7 +16,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <form [formGroup]="ProgramFeesFormData">
+              <form [formGroup]="ProgramFeesFormData" >
                 <div class="input-group input-group-outline my-3">
                   <!-- <label class="form-label">Program ID</label> -->
                   <input type="text" class="form-control" formControlName="pro_max_id" placeholder="pro max id"
@@ -45,16 +45,7 @@
                 </div>
 
 
-                <div class="input-group input-group-outline my-3">
-                  <!-- <label class="form-label">Job Assistance</label> -->
-                  <input type="text" class="form-control" formControlName="sub_course_fee" placeholder="course fee">
-                </div>
-
-                <div class="input-group input-group-outline my-3">
-                  <!-- <label class="form-label">Job Assistance</label> -->
-                  <input type="text" class="form-control" formControlName="sub_course_duration"
-                    placeholder="course duration in month">
-                </div>
+              
 
                 <div class="input-group input-group-outline my-3">
                   <!-- <label class="form-label">Job Assistance</label> -->
@@ -113,7 +104,7 @@
 
                 <div align="right">
                   <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>&nbsp;&nbsp;
-                  <button type="submit" class="btn bg-gradient-primary" (click)="onSubmit()">Save changes</button>
+                  <button type="submit" class="btn bg-gradient-primary" (click)="onSubmit">Save changes</button>
 
                 </div>
               </form>
