@@ -34,7 +34,7 @@ export class SyllabusModuleComponent  implements OnInit{
   ngOnInit(): void {
     this.getProgramFeesData()
 
-    this.getSubCourse();
+    this.getsubcourse();
     this.getcounterdata();
    
   }
@@ -53,11 +53,11 @@ export class SyllabusModuleComponent  implements OnInit{
 
     
   // }
-  getSubCourse() {
+  getsubcourse(){
     this.service.getsubcourse().subscribe((res: any) => {
-      console.log(res);
-      this.subcourses = res;
-    })
+      this.subcourseDetails = res.data;
+      console.log(this.subcourseDetails);
+    });
   }
 
   onSubmit(){
@@ -70,7 +70,7 @@ export class SyllabusModuleComponent  implements OnInit{
 
   this.service.addsyllabus(formData).subscribe(
     (response: any) => {
-      if(response.statusCode == '200') {
+      if(response.StatusCode == '200') {
         // this.router.navigate(['/main/banner'])
         alert("Data added successfully");
         location.reload();
@@ -84,9 +84,9 @@ export class SyllabusModuleComponent  implements OnInit{
 
 
   getProgramFeesData(){
-    this.service.getsyllabus().subscribe((res:[])=>{
-      this.ProgramFeesData =res;
-      console.log(res);
+    this.service.getsyllabus().subscribe((res:any)=>{
+      this.ProgramFeesData =res.data;
+      console.log(res.data);
       
     })
   }
