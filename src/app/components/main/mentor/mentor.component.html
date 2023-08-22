@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container main-part">
     <div class="row">
         <div class="div">
             <a class="btn btn-info text-white font-weight-normal text-xs" data-bs-toggle="modal"
@@ -20,7 +20,7 @@
                      <form [formGroup]="mentorform" (ngSubmit)="onSubmit()"  >
                        
                         <div class="input-group input-group-outline my-3">
-                            <!-- <label class="form-label"> Course Name</label> -->
+                            <label class="form-label"> Select Course</label>
                             <select id="course" formControlName="course_id" placeholder="course name" class="form-control" required>
                                 <option value="" disabled selected>Select Course</option>
                                 <option *ngFor="let course of courseDetails" [value]="course.id" style="color: black;">

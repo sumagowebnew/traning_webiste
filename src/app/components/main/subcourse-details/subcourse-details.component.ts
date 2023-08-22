@@ -32,8 +32,8 @@ ngOnInit(): void {
   }
   
 getSubcoursesdetail(){
-  this.service.getSubcoursesdetail().subscribe((res)=>{
-    this.subcourses = res;
+  this.service.getSubcoursesdetail().subscribe((res:any)=>{
+    this.subcourses = res.data;
   })
 }
 

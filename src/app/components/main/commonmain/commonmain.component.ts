@@ -9,6 +9,9 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./commonmain.component.css']
 })
 export class CommonmainComponent implements OnInit {
+  public show:boolean = false;
+  public buttonName:any = 'Show';
+  
 constructor(private auth:AuthService,private router:Router){}
   ngOnInit(): void {
     if(this.auth.isLoggedIn()){

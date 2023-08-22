@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container main-part">
     <div class="row">
         <div class="div">
             <a class="btn btn-info text-white font-weight-normal text-xs" data-bs-toggle="modal"
@@ -23,7 +23,7 @@
                             <!-- <label for="designation" >select course</label> -->
                             <select id="course_id" formControlName="course_id" placeholder="Coures name"
                             class="form-control" required>
-                            <option value="" disabled selected>select Course</option>
+                            <option value="" disabled selected>select course</option>
                             <option [value]="course.id" *ngFor="let course of courseDetails"
                                 style="color: black;">{{ course.name }} </option>
                         </select>    
