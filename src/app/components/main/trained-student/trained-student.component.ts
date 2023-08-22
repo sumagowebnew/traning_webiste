@@ -35,13 +35,13 @@ export class TrainedStudentComponent implements OnInit {
    
 
     const formData = new FormData();
-    formData.append('name', this.studentform.value.title);
+    formData.append('name', this.studentform.value.name);
     formData.append('count', this.studentform.value.count);
     // formData.append('image', this.base64Image);
 
     this.about.addstudent(formData).subscribe(
       (response: any) => {
-        if(response.statusCode == '200') {
+        if(response.StatusCode == '200') {
           // this.router.navigate(['/main/banner'])
           alert("Data added successfully");
           location.reload();

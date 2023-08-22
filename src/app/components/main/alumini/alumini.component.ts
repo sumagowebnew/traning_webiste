@@ -30,7 +30,7 @@ export class AluminiComponent implements OnInit {
   getCourse() {
     this.newweb.getcourse().subscribe((res: any) => {
       this.courseDetails = res.data; // Assign directly, assuming the data is an array
-      console.log(this.courseDetails);
+      console.log(this.courseDetails.name);
     });
 
   }
@@ -68,7 +68,7 @@ export class AluminiComponent implements OnInit {
 
     this.newweb.addalumini(formData).subscribe(
       (response: any) => {
-        if(response.statusCode == '200') {
+        if(response.StatusCode == '200') {
           // this.router.navigate(['/main/banner'])
           alert("Data added successfully");
           location.reload();

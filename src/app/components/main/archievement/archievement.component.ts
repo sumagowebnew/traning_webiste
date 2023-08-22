@@ -33,7 +33,7 @@ export class ArchievementComponent implements OnInit {
     // Submit the form data to add a new counter
     this.counter.addcounter(this.counterForm.value).subscribe(
       (response: any) => {
-        if(response.statusCode == '200') {
+        if(response.StatusCode == '200') {
           // this.router.navigate(['/main/banner'])
           alert("Data added successfully");
           location.reload();

@@ -23,18 +23,19 @@
 
                       <div class="input-group input-group-outline my-3">
                         <!-- <label for="course">Course</label> -->
-                        <select id="course" formControlName="course_id" class="form-control" required>
-                          <option value="" disabled selected>select course</option>
-                          <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}</option>
-                        </select>
+                        <select id="course" formControlName="sub_course_id" class="form-control" required>
+                            <option value="" disabled selected>select subcourse</option>
+                            <option [value]="sub.sub_course_id" *ngFor="let sub of subcourseDetails" style="color: black;">{{ sub.name }}
+                            </option>
+                          </select>
                         <div class="invalid-feedback">Course is required</div>
                       </div>
 
                       <div class="input-group input-group-outline my-3">
                         <!-- <label for="course">Module</label> -->
-                        <select id="course" name="sub_course_id" class="form-control" required>
+                        <select id="module" formControlName="module_id" class="form-control" required>
                           <option value="" disabled selected>select module</option>
-                          <option [value]="sub.id" *ngFor="let sub of subcourseDetails" style="color: black;">{{ sub.title }}</option>
+                          <option [value]="sub.id" *ngFor="let sub of counterlist" style="color: black;">{{ sub.title }}</option>
                         </select>
                         
                       </div>
@@ -92,7 +93,7 @@
                            
                         </td>
                         <td>
-                            <p class="text-xs font-weight-bold mb-0 align-middle">{{item.sub_course_title}}</p>
+                            <p class="text-xs font-weight-bold mb-0 align-middle">{{item.module_title}}</p>
                            
                         </td>
                         <td>

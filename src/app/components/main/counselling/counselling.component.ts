@@ -47,7 +47,7 @@ export class CounsellingComponent implements OnInit {
 
     this.banner.addcouns(formData).subscribe(
       (response: any) => {
-        if(response.statusCode == '200') {
+        if(response.StatusCode == '200') {
           // this.router.navigate(['/main/banner'])
           alert("Data added successfully");
           location.reload();
@@ -70,8 +70,8 @@ export class CounsellingComponent implements OnInit {
     if (confirmation) {
       this.banner.deletecouns(id).subscribe(
         (response) => {
-          console.log('Counselling deleted:', response);
-          alert(`Counselling Deleted:${response}`)
+          console.log('Counselling deleted:');
+          alert(`Counselling Deleted`)
           // You might want to refresh the categories list after deletion
           this.getoffice();
         },

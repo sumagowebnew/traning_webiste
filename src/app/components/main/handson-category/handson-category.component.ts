@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CounterService } from 'src/app/services/counter.service';
 
 @Component({
@@ -8,59 +8,75 @@ import { CounterService } from 'src/app/services/counter.service';
   styleUrls: ['./handson-category.component.css']
 })
 export class HandsonCategoryComponent implements OnInit {
+
   handsonCategory: FormGroup;
   handsonCategoryDetails: any[]
   handsonCategoryUpdateForm: FormGroup; // Add this form for update
+  bannerlist: any;
+  handson: any;
+  certificate: any;
 
 
   ngOnInit(): void {
     this.getCategories()
+    this.addcompany();
   }
   constructor(private service: CounterService, private fb: FormBuilder) {
-    this.handsonCategory = this.fb.group({
-      title: [''],
-    });
-    // Initialize the update form
-    this.handsonCategoryUpdateForm = this.fb.group({
-      title: [''],
-    });
+  
 
   }
 
-  openUpdateModal(category: any): void {
-    this.handsonCategoryUpdateForm.patchValue({ title: category.title });
+
+
+
+
+ 
+  addcompany(): void {
+    this.certificate = this.fb.group({
+     
+      title: ['', Validators.required]
+    
+    });
   }
 
 
+  onSubmit(): void {
+   
 
+    const formData = new FormData();
+    // formData.append('course_id',this.certificate.value.course_id);
+    formData.append('title', this.certificate.value.title);
+  
+
+    this.service.addHandosnCategory(formData).subscribe(
+      (response: any) => {
+        if(response.StatusCode == '200') {
+          // this.router.navigate(['/main/banner'])
+          alert("Data added successfully");
+          location.reload();
+
+        } else {
+          alert("Something went wrong");
+        }
+      },
+    );
+  }
+  // getcompany() {
+  //   this.service.getHandsonCategory().subscribe((res: any) => {
+  //     console.log(res);
+  //     this.bannerlist = res.data;
+  //   })
+  // }
   getCategories() {
     this.service.getHandsonCategory().subscribe(
       (response: any) => {
-        this.handsonCategoryDetails = response;
+        this.bannerlist = response.data;
+        console.log(this.bannerlist)
       },
       (error) => {
         console.error('Error getting categories:', error);
       }
     );
-  }
-
-  addCategory() {
-    if (this.handsonCategory.valid) {
-      const data = { title: this.handsonCategory.value.title };
-      this.service.addHandosnCategory(data).subscribe(
-        (response:any) => {
-
-          if(response.statusCode == '200') {
-            // this.router.navigate(['/main/banner'])
-            alert("Data added successfully");
-            location.reload();
-  
-          } else {
-            alert("Something went wrong");
-          }
-        },
-      );
-    }
   }
 
   deleteCategory(id: number) {

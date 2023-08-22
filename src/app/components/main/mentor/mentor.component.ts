@@ -15,6 +15,7 @@ export class MentorComponent implements OnInit{
   mentorlist: any;
   editForm: any;
   courseDetails: any;
+  subcourses: any;
   
   constructor(private newweb:CounterService,private formBuilder:FormBuilder){}
   hireform: any;
@@ -24,7 +25,7 @@ export class MentorComponent implements OnInit{
   ngOnInit(): void {
     this.addmentors();
     this.getmentors();
-    this.getCourse();
+    this.getsubcoure();
     this.createEditForm();
     
   }
@@ -73,7 +74,7 @@ export class MentorComponent implements OnInit{
   
     this.newweb.addmentor(formData).subscribe(
       (response: any) => {
-        if(response.statusCode == '200') {
+        if(response.StatusCode == '200') {
           // this.router.navigate(['/main/banner'])
           alert("Data added successfully");
           location.reload();
@@ -160,4 +161,9 @@ export class MentorComponent implements OnInit{
       }
     );
   }
+  getsubcoure(){
+    this.newweb.getsubcourse().subscribe((res) => {
+      this.subcourses = res['data']
+  })
+}
 }

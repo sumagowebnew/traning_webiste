@@ -12,6 +12,7 @@ export class CourseComponent {
   base64Image: string;
   ban: any;
   bannerlist: any;
+  editForm: any;
   constructor(private company: CounterService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -29,18 +30,6 @@ export class CourseComponent {
     });
   }
 
-  onFileSelected(event: any): void {
-    const file = event.target.files[0];
-    this.convertToBase64(file);
-  }
-
-  convertToBase64(file: File): void {
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.base64Image = reader.result as string;
-    };
-    reader.readAsDataURL(file);
-  }
 
   onSubmit(): void {
 
@@ -52,7 +41,7 @@ export class CourseComponent {
 
     this.company.addcourse(formData).subscribe(
       (response: any) => {
-        if(response.statusCode == '200') {
+        if(response.StatusCode == '200') {
           // this.router.navigate(['/main/banner'])
           alert("Data added successfully");
           location.reload();
@@ -86,6 +75,38 @@ export class CourseComponent {
       );
     }
   }
+  createEditForm() {
+    this.editForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      
+    });
+  }
+  // Function to open the edit modal and populate form fields with the selected counter data
+  openEditModal(consult: any) {
+    this.editForm.setValue({
+      name: consult.name,
+    
+     
+    });
+  }
+
+  // Function to handle the update operation in the edit modal
+  updatecounter(about: any): void {
+    const updateData = new FormData();
+    updateData.append('name', about.name);
+    this.company.updatecourse(about.id, updateData).subscribe(
+      (res: any) => {
+        console.log('Data updated successfully:', res);
+        // Optionally, update the local list with the updated counter or fetch the updated list again
+        this.getcompany();
+      },
+      (error) => {
+        console.error('Failed to update archivement data:', error);
+      }
+    );
+  }
+
+
 
 
 }

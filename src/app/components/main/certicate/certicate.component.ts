@@ -33,6 +33,7 @@ export class CerticateComponent implements OnInit{
 
   addcerticate(): void {
     this.certificate = this.formBuilder.group({
+      course_id:['',Validators.required],
       title: ['', Validators.required],
       description: ['', Validators.required],
       selectedFile: [null, Validators.required]
@@ -56,13 +57,14 @@ export class CerticateComponent implements OnInit{
    
 
     const formData = new FormData();
+    formData.append('course_id',this.certificate.value.course_id);
     formData.append('title', this.certificate.value.title);
     formData.append('description',this.certificate.value.description),
     formData.append('image', this.base64Image);
 
     this.counter.addcertificate(formData).subscribe(
       (response: any) => {
-        if(response.statusCode == '200') {
+        if(response.StatusCode == '200') {
           // this.router.navigate(['/main/banner'])
           alert("Data added successfully");
           location.reload();
@@ -86,8 +88,8 @@ export class CerticateComponent implements OnInit{
     if (confirmation) {
       this.counter.deletecertificate(id).subscribe(
         (response) => {
-          console.log('Certificate deleted:', response);
-          alert(`Certificate Deleted:${response}`)
+          console.log('Certificate deleted:');
+          alert(`Certificate Deleted`)
           // You might want to refresh the categories list after deletion
           this.getcertificate();
         },

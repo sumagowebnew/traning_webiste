@@ -37,8 +37,8 @@
                                         <!-- <label for="subCourse">Sub Course:</label> -->
                                         <select  class="form-control" formControlName="sub_course_id" >
                                             <option value="">select sub course</option>
-                                            <option *ngFor="let subCourse of subcourses" [value]="subCourse.id">{{
-                                                subCourse.name }}</option>
+                                            <option *ngFor="let subCourse of subcourses" [value]="subCourse.subcourses_id">{{
+                                                subCourse.subcourses_name }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -78,8 +78,9 @@
                 <thead>
 
                     <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Course name</th>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Title</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
                         <th class="text-secondary opacity-7">Action</th>
 
                     </tr>
@@ -88,11 +89,16 @@
 
                     <tr *ngFor="let item of handsonProjectDetails">
                         <td>
-                            <p class="text-xs font-weight-bold mb-0">{{item.id}}</p>
+                            <p class="text-xs font-weight-bold mb-0">{{item.subcourses_name}}</p>
                             <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
                         </td>
                         <td>
                             <p class="text-xs font-weight-bold mb-0">{{item.title}}</p>
+                            <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
+                        </td>
+
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">{{item.desc}}</p>
                             <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
                         </td>
 

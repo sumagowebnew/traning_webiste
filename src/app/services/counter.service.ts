@@ -189,10 +189,10 @@ export class CounterService {
     return this.http.post(`${this.apiUrl}add_subcourse`, logo, { headers })
   }
   getsubcourse() {
-    // const headers = new HttpHeaders({
-    //   'Authorization': `Bearer ${this.auth.getToken()}`
-    // });
-    return this.http.get(`${this.apiUrl}get_all_subcourses`)
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.get(`${this.apiUrl}get_all_subcourses`,{headers})
   }
   updatesubcourse(id: number, logo: any) {
 
@@ -218,7 +218,10 @@ export class CounterService {
     return this.http.post(`${this.apiUrl}add_subcourse_details`, subcourses, { headers })
   }
   getSubcoursesdetail() {
-    return this.http.get(`${this.apiUrl}get_subcourse_details`)
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.get(`${this.apiUrl}get_subcourse_details_list`, {headers})
   }
 
   getSubcoursesbyId(Id: number) {
@@ -233,6 +236,17 @@ export class CounterService {
     });
     return this.http.delete(url, { headers });
   }
+
+  updatesubcoursedetail(id: number, logo: any) {
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+
+    const url = `${this.apiUrl}update_subcourse_details/${id}`;
+    return this.http.post(url, logo, { headers });
+  }
+  
   //Popular details
 
   deletepopular(id: number) {
@@ -274,7 +288,10 @@ export class CounterService {
     return this.http.post(`${this.apiUrl}add_certificate`, certificate, { headers })
   }
   getcertificate() {
-    return this.http.get(`${this.apiUrl}get_certificate`)
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.get(`${this.apiUrl}get_all_certificate`,{headers})
   }
   deletecertificate(id: number) {
     const url = `${this.apiUrl}delete_certificate/${id}`;
@@ -622,6 +639,9 @@ export class CounterService {
   }
   getteacher() {
     return this.http.get(`${this.apiUrl}get_teacher`)
+  }
+   deleteteacher() {
+    return this.http.get(`${this.apiUrl}delete_teacher`)
   }
 
   addgooglereview(review: any) {
@@ -1084,6 +1104,13 @@ export class CounterService {
     });
     return this.http.get<any[]>(`${this.apiUrl}get_category`, { headers });
   }
+  getHandsonCategorybyid(): Observable<any[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.get<any[]>(`${this.apiUrl}get_course_fee_details_by_course_id`, { headers });
+  }
+  
 
   deleteHandsonCategory(id: number): Observable<any> {
     const headers = new HttpHeaders({

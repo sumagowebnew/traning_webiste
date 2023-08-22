@@ -20,13 +20,12 @@
                      <form [formGroup]="mentorform" (ngSubmit)="onSubmit()"  >
                        
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label"> Select Course</label>
-                            <select id="course" formControlName="course_id" placeholder="course name" class="form-control" required>
-                                <option value="" disabled selected>Select Course</option>
-                                <option *ngFor="let course of courseDetails" [value]="course.id" style="color: black;">
-                                  {{ course.name }}
-                                </option>
-                              </select>
+                            <!-- <label class="form-label"> Course Name</label> -->
+                            <select  class="form-control" formControlName="sub_course_id" >
+                                <option value="">select sub course</option>
+                                <option *ngFor="let subCourse of subcourses" [value]="subCourse.subcourses_id">{{
+                                    subCourse.subcourses_name }}</option>
+                            </select>
                             <div class="invalid-feedback">Course is required</div>
                      </div>
                         <div class="input-group input-group-outline my-3">
@@ -95,7 +94,7 @@
                                         class="avatar avatar-sm me-3">
                                 </div>
                                 <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="mb-0 text-xs" >{{item.course_name}}</h6>
+                                    <h6 class="mb-0 text-xs" >{{item.subcourses_name}}</h6>
                                     <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
                                 </div>
                                
