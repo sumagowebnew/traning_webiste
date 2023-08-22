@@ -65,7 +65,7 @@ export class SubcourseDetailsComponent implements OnInit {
 
     this.service.addSubscoursesdetail(formData).subscribe(
       (response: any) => {
-        if (response.statusCode == '200') {
+        if (response.StatusCode == '200') {
           alert("Data added successfully");
           location.reload();
         } else {

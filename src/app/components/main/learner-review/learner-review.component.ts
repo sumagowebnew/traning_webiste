@@ -51,7 +51,7 @@ export class LearnerReviewComponent  implements OnInit{
 
     this.banner.addlearner(formData).subscribe(
       (response: any) => {
-        if(response.statusCode == '200') {
+        if(response.StatusCode == '200') {
           // this.router.navigate(['/main/banner'])
           alert("Data added successfully");
           location.reload();
