@@ -970,7 +970,10 @@ export class CounterService {
     return this.http.post(`${this.apiUrl}add_faq`, faq, { headers })
   }
   getfaq() {
-    return this.http.get(`${this.apiUrl}get_all_faq`)
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.get(`${this.apiUrl}get_all_faq`,{headers})
   }
   getfaq1() {
     return this.http.get(`${this.apiUrl}get_faq`)

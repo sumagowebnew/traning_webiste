@@ -30,13 +30,13 @@ export class MentorComponent implements OnInit{
     
   }
 
-  getCourse(){
-    this.newweb.getcourse().subscribe((res: any) => {
-      this.courseDetails = res.data; // Assign directly, assuming the data is an array
-      console.log(this.courseDetails);
-    });
+  // getCourse(){
+  //   this.newweb.getcourse().subscribe((res: any) => {
+  //     this.courseDetails = res.data; // Assign directly, assuming the data is an array
+  //     console.log(this.courseDetails);
+  //   });
 
-  }
+  // }
   
 
 

@@ -14,22 +14,23 @@ export class SubcourseDetailsComponent implements OnInit {
 
   base64Image: string;
   courseDetails: any;
+  subcourseDetails: any;
+  subcourses: any;
 
   constructor(private service: CounterService, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    this.getCourse();
+    this.getsubcourse();
     this.addhired();
     this.gethired();
 
     this.createEditForm();
   }
 
-  getCourse() {
-    this.service.getcourse().subscribe((res: any) => {
-      this.courseDetails = res.data;
-      console.log(this.courseDetails);
-    });
+  getsubcourse(){
+    this.service.getsubcourse().subscribe((res) => {
+      this.subcourses = res['data']
+    })
   }
 
   addhired(): void {
