@@ -1,3 +1,14 @@
 .sidenav{
     position: fixed;
 }
+@media (min-width: 1400px) { 
+
+    .main-part{
+        width: 80%;
+        margin-left: 300px;
+      
+    }
+    .main-part ul{
+        float: right;
+    }
+ }

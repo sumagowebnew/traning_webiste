@@ -1,7 +1,10 @@
-.container{
-    width:80%;
-    margin-left: 300px;
-}
+@media (min-width: 1400px) { 
+
+    .main-part{
+        width: 80%;
+        margin-left: 300px;
+    }
+ }
 .left{
     margin-left:5%;
 }
