@@ -20,8 +20,8 @@
                      <form [formGroup]="mentorform" (ngSubmit)="onSubmit()"  >
                        
                         <div class="input-group input-group-outline my-3">
-                            <!-- <label class="form-label"> Course Name</label> -->
-                            <select  class="form-control" formControlName="sub_course_id" >
+                            <label class="form-label"> select sub course</label>
+                            <select  class="form-control" formControlName="sub_course_id">
                                 <option value="">select sub course</option>
                                 <option *ngFor="let subCourse of subcourses" [value]="subCourse.subcourses_id">{{
                                     subCourse.subcourses_name }}</option>

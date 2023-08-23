@@ -8,8 +8,8 @@
                 Add Faq
             </a>
             <!-- Modal -->
-            <div class="modal fade" id="addfaq" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="addfaq" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -21,25 +21,28 @@
                         </div>
                         <div class="modal-body">
                             <form [formGroup]="FaqForm">
-                                
+
                                 <div class="input-group input-group-outline my-3">
-                            
-                                    <select  class="form-control" formControlName="sub_course_id" >
+                                    <label class="form-label">select sub course</label>
+                                    <select class="form-control" formControlName="sub_course_id">
                                         <option value="">select sub course</option>
-                                        <option *ngFor="let subCourse of subcourses" [value]="subCourse.subcourses_id">{{
+                                        <option *ngFor="let subCourse of subcourses" [value]="subCourse.subcourses_id">
+                                            {{
                                             subCourse.subcourses_name }}</option>
                                     </select>
                                     <div class="invalid-feedback">Course is required</div>
-                                  </div>
+                                </div>
                                 <div class="input-group input-group-outline my-3">
                                     <!-- <label class="form-label">Question</label> -->
-                                    <input type="text" id="question" class="form-control" formControlName="question" placeholder="question">
+                                    <input type="text" id="question" class="form-control" formControlName="question"
+                                        placeholder="question">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
                                     <!-- <label class="form-label">Answer</label> -->
-                                    <input type="text" id="answer" class="form-control" formControlName="answer" placeholder="answer">
+                                    <input type="text" id="answer" class="form-control" formControlName="answer"
+                                        placeholder="answer">
                                 </div>
-                                
+
 
                             </form>
 
@@ -48,7 +51,8 @@
                         <div class="modal-footer">
                             <button type="button" class="btn bg-gradient-secondary"
                                 data-bs-dismiss="modal">Close</button>
-                            <button type="submit" (click)="onSubmit()" class="btn bg-gradient-primary">Save changes</button>
+                            <button type="submit" (click)="onSubmit()" class="btn bg-gradient-primary">Save
+                                changes</button>
                         </div>
                     </div>
                 </div>
@@ -65,13 +69,14 @@
 
                     <tr>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Question</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Course Name</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Course Name
+                        </th>
                         <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Counter</th> -->
                         <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Answer</th>
-                            <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                Action</th>
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            Action</th>
 
                     </tr>
                 </thead>
@@ -80,7 +85,7 @@
                     <tr *ngFor="let counter of faqlist">
                         <td>
                             <div class="d-flex px-2 py-1">
-                                
+
                                 <div class="d-flex flex-column justify-content-center">
                                     <p class="text-xs font-weight-bold mb-0">{{counter.question}}</p>
                                     <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
@@ -93,73 +98,80 @@
                         </div>
                         <td>
                             <p class="text-xs font-weight-bold mb-0">{{counter.answer}}</p>
-                           
+
                         </td>
                         <td class="align-middle">
-                           
-                           
+
+
 
                             <a class="btn btn-warning ms-2 text-white font-weight-normal text-xs" data-bs-toggle="modal"
-                            data-bs-target="#editfaq" (click)="openEditModal(counter)">
-                            Edit
-                        </a>
+                                data-bs-target="#editfaq" (click)="openEditModal(counter)">
+                                Edit
+                            </a>
 
-                          <!-- Modal -->
-                          <div class="modal fade" id="editfaq" tabindex="-1" role="dialog"
-                          aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered" role="document">
-                              <div class="modal-content">
-                                  <div class="modal-header">
-                                      <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Edit Course</h5>
-                                      <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
-                                          aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                      </button>
-                                  </div>
-                                  <div class="modal-body">
-                                    <form [formGroup]="editForm">
-                                        <div class="input-group input-group-outline my-3">
-                            
-                                            <select id="course" formControlName="course_id" placeholder="course name" class="form-control" required>
-                                                <option value="" disabled selected>Select Course</option>
-                                                <option *ngFor="let course of courseDetails" [value]="course.id" style="color: black;">
-                                                  {{ course.name }}
-                                                </option>
-                                              </select>
-                                            <div class="invalid-feedback">Course is required</div>
-                                          </div>
-                                        <div class="input-group input-group-outline my-3">
-                                            <!-- <label class="form-label">Question</label> -->
-                                            <input type="text" id="question" class="form-control" formControlName="question" placeholder="question">
+                            <!-- Modal -->
+                            <div class="modal fade" id="editfaq" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title 
+                                      font-weight-normal" id="exampleModalLabel">Edit Course</h5>
+                                            <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
                                         </div>
-                                        <div class="input-group input-group-outline my-3">
-                                            <!-- <label class="form-label">Answer</label> -->
-                                            <input type="text" id="answer" class="form-control" formControlName="answer" placeholder="answer">
+                                        <div class="modal-body">
+                                            <form [formGroup]="editForm">
+                                                <div class="input-group input-group-outline my-3">
+                                                    <label class="form-label">select course</label>
+                                                    <select id="course" formControlName="course_id"
+                                                        placeholder="course name" class="form-control" required>
+                                                        <option value="" disabled selected>Select Course</option>
+                                                        <option *ngFor="let course of courseDetails" [value]="course.id"
+                                                            style="color: black;">
+                                                            {{ course.name }}
+                                                        </option>
+                                                    </select>
+                                                    <div class="invalid-feedback">Course is required</div>
+                                                </div>
+                                                <div class="input-group input-group-outline my-3">
+                                                    <!-- <label class="form-label">Question</label> -->
+                                                    <input type="text" id="question" class="form-control"
+                                                        formControlName="question" placeholder="question">
+                                                </div>
+                                                <div class="input-group input-group-outline my-3">
+                                                    <!-- <label class="form-label">Answer</label> -->
+                                                    <input type="text" id="answer" class="form-control"
+                                                        formControlName="answer" placeholder="answer">
+                                                </div>
+
+
+
+                                            </form>
+
+
                                         </div>
-                                        
-                                        
-        
-                                    </form>
-
-
-                                  </div>
-                                  <div class="modal-footer">
-                                    <div align="right">
-                                      <button type="button" class="btn bg-gradient-secondary"
-                                          data-bs-dismiss="modal">Close</button>&nbsp;&nbsp;
-                                      <button type="submit"(click)="updatefaq(counter)" class="btn bg-gradient-primary">Save changes</button>
+                                        <div class="modal-footer">
+                                            <div align="right">
+                                                <button type="button" class="btn bg-gradient-secondary"
+                                                    data-bs-dismiss="modal">Close</button>&nbsp;&nbsp;
+                                                <button type="submit" (click)="updatefaq(counter)"
+                                                    class="btn bg-gradient-primary">Save changes</button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    </div>
-                              </div>
-                          </div>
-                      </div>
-                      <!-- Modal End -->
-                       
+                                </div>
+                            </div>
+                            <!-- Modal End -->
+
 
                         <td>
 
 
-                            <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs" (click)="deletefaq(counter.id)">
+                            <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs"
+                                (click)="deletefaq(counter.id)">
                                 delete
                             </a>
 

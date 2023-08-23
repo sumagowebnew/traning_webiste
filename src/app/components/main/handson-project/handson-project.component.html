@@ -23,7 +23,7 @@
 
                                 <div class="input-group input-group-outline mb-3">
                                     <div class="input-group input-group-outline my-3">
-                                        <!-- <label for="handsonCategory">Handson Category:</label> -->
+                                        <label  class="form-label" for="handsonCategory">select handson category</label>
                                         <select formControlName="handsonCategory" class="form-control" formControlName="handson_category_id" >
                                             <option value="">select category</option>
                                             <option *ngFor="let category of handsonCategoryDetails"
@@ -34,7 +34,7 @@
 
                                 <div class="input-group input-group-outline mb-3">
                                     <div class="input-group input-group-outline my-3">
-                                        <!-- <label for="subCourse">Sub Course:</label> -->
+                                        <label  class="form-label" for="subCourse">select sub course</label>
                                         <select  class="form-control" formControlName="sub_course_id" >
                                             <option value="">select sub course</option>
                                             <option *ngFor="let subCourse of subcourses" [value]="subCourse.subcourses_id">{{
