@@ -42,8 +42,8 @@ export class CohortsComponent {
 
   getBatches(): void {
     this.service.getBatches().subscribe(
-      (batches: any[]) => {
-        this.batches = batches;
+      (batches: any) => {
+        this.batches = batches.data;
         console.log(this.batches);
         
       },

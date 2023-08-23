@@ -30,12 +30,11 @@
                                 </div>
                                 <div class="input-group input-group-outline mb-3">
 
-                                    <select name="name" class="nav-link dropdown-toggle form-control"
-                                        style="margin-top:5px" (change)="getBySort($event)">
-                                        <option value=""> course name</option>
-                                        <option *ngFor="let course_Name of programlist" [value]="course_Name.name">{{
-                                            course_Name.name }}</option>
-                                    </select>
+                                    <select id="course" formControlName="sub_course_id" class="form-control" required>
+                                        <option value="" disabled selected>select subcourse</option>
+                                        <option [value]="sub.sub_course_id" *ngFor="let sub of subcourseDetails" style="color: black;">{{ sub.name }}
+                                        </option>
+                                      </select>
                                 </div>
                                 <div class="input-group input-group-outline my-3">
                                     <label class="form-label">duration</label>

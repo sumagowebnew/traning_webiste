@@ -18,7 +18,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form [formGroup]="bannerForm" >
+                            <form [formGroup]="bannerForm">
                                 <div class="input-group input-group-outline my-3">
                                     <!-- <label for="course">Course</label> -->
                         <select id="course" formControlName="course_id" class="form-control" required>
@@ -153,7 +153,7 @@
                         <td>
 
 
-                            <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs"(click)="deleteSubCourse(item.id)">
+                            <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs"(click)="deleteSubCourse(item.subcourses_id)">
                                 delete
                             </a>
 

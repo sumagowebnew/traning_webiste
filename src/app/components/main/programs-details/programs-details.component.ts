@@ -15,6 +15,7 @@ export class ProgramsDetailsComponent implements OnInit{
   programlist: any;
   name: string;
   editForm1: any;
+  subcourseDetails: any;
 
   constructor(private program:CounterService,private formBuilder:FormBuilder){}
 
@@ -22,6 +23,7 @@ export class ProgramsDetailsComponent implements OnInit{
     this.addprogramdetail();
     this.getprogramdetail();
     this.createEditForm();
+    this.getsubcourse();
     // this.getprogram();
     
   }
@@ -94,6 +96,12 @@ export class ProgramsDetailsComponent implements OnInit{
         }
       },
     );
+  }
+  getsubcourse(){
+    this.program.getsubcourse().subscribe((res: any) => {
+      this.subcourseDetails = res.data;
+      console.log(this.subcourseDetails);
+    });
   }
   getprogramdetail(){
     this.program.getprogramdetail().subscribe((res:any)=>{

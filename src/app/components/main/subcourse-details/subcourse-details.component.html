@@ -21,11 +21,10 @@
                      <form [formGroup]="subCourseDetails">
                         <div class="input-group input-group-outline mb-3">
 
-                            <select name="name" class="nav-link dropdown-toggle form-control"
-                                style="margin-top:5px" >
-                                <option value=""> course name</option>
-                                <option *ngFor="let course_Name of courseDetails" [value]="course_Name.id">{{
-                                    course_Name.name }}</option>
+                            <select  class="form-control" formControlName="sub_course_id" >
+                                <option value="">select sub course</option>
+                                <option *ngFor="let subCourse of subcourses" [value]="subCourse.subcourses_id">{{
+                                    subCourse.subcourses_name }}</option>
                             </select>
                         </div>
           
@@ -94,7 +93,7 @@
                                         class="avatar avatar-sm me-3">
                                 </div>
                                 <td>
-                                    <p class="text-xs font-weight-bold mb-0">{{item.course_name}}</p>
+                                    <p class="text-xs font-weight-bold mb-0">{{item.subcourses_name}}</p>
                                     <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
                                 </td>
                                 <div class="d-flex flex-column justify-content-center">
