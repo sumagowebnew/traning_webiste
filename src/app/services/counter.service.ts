@@ -1005,7 +1005,11 @@ export class CounterService {
     return this.http.post(`${this.apiUrl}add_alumini`, alumini, { headers })
   }
   getalumini() {
-    return this.http.get(`${this.apiUrl}get_alumini`)
+    const headers = new HttpHeaders({
+
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.get(`${this.apiUrl}get_all_alumini`,{headers})
   }
   updateAlumni(id: number, alumniData: any) {
 

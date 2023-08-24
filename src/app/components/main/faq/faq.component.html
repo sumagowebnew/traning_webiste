@@ -24,10 +24,9 @@
 
                                 <div class="input-group input-group-outline my-3">
                                     <label class="form-label">select sub course</label>
-                                    <select class="form-control" formControlName="sub_course_id">
+                                    <select  class="form-control" formControlName="course_id">
                                         <option value="">select sub course</option>
-                                        <option *ngFor="let subCourse of subcourses" [value]="subCourse.subcourses_id">
-                                            {{
+                                        <option *ngFor="let subCourse of subcourses" [value]="subCourse.subcourses_id">{{
                                             subCourse.subcourses_name }}</option>
                                     </select>
                                     <div class="invalid-feedback">Course is required</div>
@@ -82,7 +81,7 @@
                 </thead>
                 <tbody>
 
-                    <tr *ngFor="let counter of faqlist">
+                    <tr *ngFor="let counter of joinedFaqs">
                         <td>
                             <div class="d-flex px-2 py-1">
 

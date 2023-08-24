@@ -14,6 +14,8 @@ export class AddSubcourseComponent {
   bannerlist: any;
   editForm: any;
   courseDetails: any;
+  joinedFaqs: any;
+  joinedsubcourse: any;
 
   constructor(private banner: CounterService, private formBuilder: FormBuilder) { }
 
@@ -35,9 +37,28 @@ export class AddSubcourseComponent {
     this.banner.getcourse().subscribe((res: any) => {
       this.courseDetails = res.data; // Assign directly, assuming the data is an array
       console.log(this.courseDetails);
+      this.joinTables()
     });
 
 
+  }
+  getSubCourse() {
+    this.banner.getsubcourse().subscribe((res: any) => {
+      console.log(res);
+      this.bannerlist = res.data;
+      this.joinTables();
+    })
+  }
+  joinTables() {
+    if (this.courseDetails.length > 0 && this.bannerlist.length > 0) {
+      this.joinedsubcourse = this.bannerlist.map((banner) => {
+        const matchingCourse = this.courseDetails.find(course => course.id === banner.course_id);
+        return {
+          ...banner,
+          name: matchingCourse ? matchingCourse.name : 'Unknown Course'
+        };
+      });
+    }
   }
   
   onFileSelected(event: any): void {
@@ -75,12 +96,7 @@ export class AddSubcourseComponent {
     );
   }
 
-  getSubCourse() {
-    this.banner.getsubcourse().subscribe((res: any) => {
-      console.log(res);
-      this.bannerlist = res.data;
-    })
-  }
+
   deleteSubCourse(id: number) {
     const confirmation = confirm('Are you sure you want to delete this category?');
     if (confirmation) {

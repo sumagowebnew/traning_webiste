@@ -21,11 +21,25 @@
                      <form [formGroup]="subCourseDetails">
                         <div class="input-group input-group-outline mb-3">
 
-                            <select  class="form-control" formControlName="sub_course_id" >
-                                <option value="">select sub course</option>
-                                <option *ngFor="let subCourse of subcourses" [value]="subCourse.subcourses_id">{{
-                                    subCourse.subcourses_name }}</option>
+                         
+                            <select id="course" formControlName="course_id" class="form-control" required>
+                    
+                    <option value="" disabled selected>select course</option>
+                    <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{
+                      course.name }}</option>
+                  </select>
+                            
+                        </div>
+                        <div class="input-group input-group-outline mb-3">
+
+                            <select class="form-control" formControlName="sub_course_id">
+                                <option value="">Select sub course</option>
+                                <option *ngFor="let subCourse of subcourses" [value]="subCourse.subcourses_id">
+                                    {{ subCourse.subcourses_name }}
+                                </option>
                             </select>
+                           
+                            
                         </div>
           
                          <div class="input-group input-group-outline my-3">
@@ -85,7 +99,7 @@
                 </thead>
                 <tbody>
 
-                    <tr *ngFor="let item of hirelist ">
+                    <tr *ngFor="let item of joinedHirelist ">
                         <td>
                             <div class="d-flex px-2 py-1">
                                 <div>
@@ -134,12 +148,11 @@
                                   <div class="modal-body">
                                     <form [formGroup]="editForm">
                                         <div class="input-group input-group-outline my-3">
-                                            <select id="course_id" formControlName="course_id" placeholder="Coures name"
-                                            class="form-control" required>
-                                            <option value="" disabled selected>select Course</option>
-                                            <option [value]="course.id" *ngFor="let course of courseDetails"
-                                                style="color: black;">{{ course.name }} </option>
-                                        </select>
+                                            <select  class="form-control" formControlName="sub_course_id" >
+                                                <option value="">select sub course</option>
+                                                <option *ngFor="let subCourse of subcourses" [value]="subCourse.subcourses_id">{{
+                                                    subCourse.subcourses_name }}</option>
+                                            </select>
                                             <!-- t type="text" id="title" class="form-control" formControlName="title" placeholder="title"> -->
                                         </div>
                                         <div class="input-group input-group-outline my-3">

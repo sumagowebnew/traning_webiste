@@ -16,6 +16,7 @@ export class SubcourseDetailsComponent implements OnInit {
   courseDetails: any;
   subcourseDetails: any;
   subcourses: any;
+  joinedHirelist: any;
 
   constructor(private service: CounterService, private formBuilder: FormBuilder) {}
 
@@ -23,19 +24,16 @@ export class SubcourseDetailsComponent implements OnInit {
     this.getsubcourse();
     this.addhired();
     this.gethired();
-
+    this.getCourse();
     this.createEditForm();
   }
 
-  getsubcourse(){
-    this.service.getsubcourse().subscribe((res) => {
-      this.subcourses = res['data']
-    })
-  }
+ 
 
   addhired(): void {
     this.subCourseDetails = this.formBuilder.group({
       course_id: ['', Validators.required],
+      sub_course_id:['',Validators.required],
       title: ['', Validators.required],
       description: ['', Validators.required],
       custome_text: ['', Validators.required],
@@ -59,6 +57,7 @@ export class SubcourseDetailsComponent implements OnInit {
   onSubmit(): void {
     const formData = new FormData();
     formData.append('course_id', this.subCourseDetails.value.course_id);
+    formData.append('sub_course_id', this.subCourseDetails.value.sub_course_id);
     formData.append('title', this.subCourseDetails.value.title);
     formData.append('description', this.subCourseDetails.value.description);
     formData.append('custome_text', this.subCourseDetails.value.custome_text);
@@ -66,6 +65,8 @@ export class SubcourseDetailsComponent implements OnInit {
 
     this.service.addSubscoursesdetail(formData).subscribe(
       (response: any) => {
+        console.log(response);
+        
         if (response.StatusCode == '200') {
           alert("Data added successfully");
           location.reload();
@@ -81,9 +82,33 @@ export class SubcourseDetailsComponent implements OnInit {
 
   gethired() {
     this.service.getSubcoursesdetail().subscribe((res: any) => {
-      console.log(res);
       this.hirelist = res;
+      this.joinTables();
     });
+  }
+  getCourse() {
+    this.service.getcourse().subscribe((res: any) => {
+      this.courseDetails = res.data;
+      this.joinTables();
+    });
+  }
+  getsubcourse() {
+    this.service.getsubcourse().subscribe((res: any) => {
+      this.subcourses = res.data;
+      this.joinTables();
+    });
+  }
+
+  joinTables() {
+    if (this.hirelist.length > 0 && this.subcourses.length > 0) {
+      this.joinedHirelist = this.hirelist.map((hire) => {
+        const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourses_id === hire.sub_course_id);
+        return {
+          ...hire,
+          subcourses_name: matchingSubcourse ? matchingSubcourse.subcourses_name : 'Unknown Course'
+        };
+      });
+    }
   }
 
   deletehired(id: number) {

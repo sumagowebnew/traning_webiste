@@ -23,11 +23,12 @@
 
                       <div class="input-group input-group-outline my-3">
                         <label class="form-label">select subcourse</label>
-                        <select id="course" formControlName="sub_course_id" class="form-control" required>
-                            <option value="" disabled selected>select subcourse</option>
-                            <option [value]="sub.sub_course_id" *ngFor="let sub of subcourseDetails" style="color: black;">{{ sub.name }}
+                        <select class="form-control" formControlName="course_id">
+                            <option value="">Select sub course</option>
+                            <option *ngFor="let subCourse of subcourses" [value]="subCourse.subcourses_id">
+                                {{ subCourse.subcourses_name }}
                             </option>
-                          </select>
+                        </select>
                         <div class="invalid-feedback">Course is required</div>
                       </div>
 
@@ -76,6 +77,10 @@
                     
                     <tr>
                         <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            Course Name</th>
+                            <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                Module</th>
+                        <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                            Title</th>
                         <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Description</th>      
@@ -89,7 +94,7 @@
 
                     <tr *ngFor="let item of ProgramFeesData ">
                         <td>
-                            <p class="text-xs font-weight-bold mb-0 align-middle">{{item.course_name}}</p>
+                            <p class="text-xs font-weight-bold mb-0 align-middle">{{item.subcourses_name}}</p>
                            
                         </td>
                         <td>

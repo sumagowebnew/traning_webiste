@@ -15,6 +15,7 @@ export class FaqComponent implements OnInit {
   editForm: any;
   courseDetails: any;
   subcourses: any;
+  joinedFaqs: any;
 
   constructor(private newweb:CounterService, private fb:FormBuilder){}
 
@@ -22,7 +23,7 @@ export class FaqComponent implements OnInit {
   ngOnInit(): void {
     this.createFaqForm();
     this.getfaqs();
-    this.getsubcoure();
+    this.getsubcourse();
     
   }
 
@@ -64,18 +65,33 @@ export class FaqComponent implements OnInit {
   );
 }
 
-    getfaqs(){
-      this.newweb.getfaq().subscribe((res:any)=>{
-        this.faqlist=res.data;
-        console.log(this.faqlist);
-        
-      })
+getsubcourse() {
+  this.newweb.getsubcourse().subscribe((res) => {
+    this.subcourses = res['data'];
+    this.joinTables();
+  });
+}
+
+getfaqs() {
+  this.newweb.getfaq().subscribe((res: any) => {
+    this.faqlist = res.data;
+    this.joinTables();
+  });
+}
+
+  joinTables() {
+    if (this.subcourses.length > 0 && this.faqlist.length > 0) {
+      this.joinedFaqs = this.faqlist.map((faq) => {
+        const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourses_id === faq.course_id);
+        return {
+          ...faq,
+          subcourses_name: matchingSubcourse ? matchingSubcourse.subcourses_name : 'Unknown Course'
+        };
+      });
     }
-    getsubcoure(){
-      this.newweb.getsubcourse().subscribe((res) => {
-        this.subcourses = res['data']
-    })
   }
+
+
    
     deletefaq(id: number) {
       const confirmation = confirm('Are you sure you want to delete this category?');
@@ -83,7 +99,7 @@ export class FaqComponent implements OnInit {
         this.newweb.deletebfaq(id).subscribe(
           (response) => {
             console.log('Faq  deleted:', response);
-            alert(`Faq Deleted:${response}`)
+            alert(`Faq Deleted`)
             // You might want to refresh the categories list after deletion
             this.getfaqs();
           },

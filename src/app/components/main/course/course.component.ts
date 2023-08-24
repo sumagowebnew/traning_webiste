@@ -65,7 +65,7 @@ export class CourseComponent {
       this.company.deletecourse(id).subscribe(
         (response) => {
           console.log('Course deleted:', response);
-          alert(`Course Deleted:${response}`)
+          alert(`Course Deleted`)
           // You might want to refresh the categories list after deletion
           this.getcompany();
         },
