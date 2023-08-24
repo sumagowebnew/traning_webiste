@@ -29,7 +29,7 @@
                                     <input type="file" class="form-control" (change)="onFileSelected($event)">
                                 </div>
                                 <div class="input-group input-group-outline mb-3">
-
+                                    <label class="form-label">select subcourse</label>
                                     <select id="course" formControlName="sub_course_id" class="form-control" required>
                                         <option value="" disabled selected>select subcourse</option>
                                         <option [value]="sub.sub_course_id" *ngFor="let sub of subcourseDetails" style="color: black;">{{ sub.name }}
