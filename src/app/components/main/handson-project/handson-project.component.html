@@ -87,7 +87,7 @@
 
                     </tr>
                 </thead>
-                <tbody>
+                <tbody >
 
                     <tr *ngFor="let item of handsonProjectDetails">
                         <td>
@@ -133,8 +133,9 @@
 
                                                 <div class="input-group input-group-outline mb-3">
                                                     <div class="input-group input-group-outline my-3">
-                                                        <label for="handsonCategory">Handson Category:</label>
-                                                        <select formControlName="handsonCategory">
+                                                        <label class="form-label">handson category</label>
+                                                        <select class="form-control" formControlName="handsonCategory">
+                                                            <option value="">handson category</option>
                                                             <option *ngFor="let category of handsonCategoryDetails"
                                                                 [value]="category.id">{{ category.title }}</option>
                                                         </select>
@@ -142,14 +143,17 @@
                                                 </div>
 
                                                 <div class="input-group input-group-outline mb-3">
-                                                    <div class="input-group input-group-outline my-3">
-                                                        <label for="subCourse">Sub Course:</label>
-                                                        <select formControlName="sub_course_id">
+                                                    <div class="input-group input-group-outline mb-3">
+
+                                                        <select class="form-control" formControlName="sub_course_id">
+                                                            <option value="">sub course</option>
                                                             <option *ngFor="let subCourse of subcourses"
-                                                                [value]="subCourse.id">{{
-                                                                subCourse.title }}</option>
+                                                            [value]="subCourse.id">{{
+                                                            subCourse.title }}</option>
                                                         </select>
                                                     </div>
+
+                                                    
                                                 </div>
                                                 <div class="input-group input-group-outline mb-3">
                                                     <div class="input-group input-group-outline my-3">
@@ -161,7 +165,7 @@
                                                 <div class="input-group input-group-outline mb-3">
                                                     <div class="input-group input-group-outline my-3">
                                                         <!-- <label for="description">Description:</label> -->
-                                                        <textarea formControlName="description"
+                                                        <textarea class="form-control" formControlName="description"
                                                             placeholder="Description"></textarea>
                                                     </div>
                                                 </div>

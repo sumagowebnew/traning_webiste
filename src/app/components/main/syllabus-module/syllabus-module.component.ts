@@ -12,7 +12,7 @@ export class SyllabusModuleComponent  implements OnInit{
   ProgramFeesFormData:FormGroup
   ProgramFeesData:any[]
   courseDetails: any[] = [];
-  subcourseDetails
+  subcourseDetails: any;
   editData:any
   counterlist: any;
   bannerlist: any;

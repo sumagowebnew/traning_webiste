@@ -8,3 +8,6 @@
 .left{
     margin-left:5%;
 }
+tbody{
+    text-align: center !important;
+}

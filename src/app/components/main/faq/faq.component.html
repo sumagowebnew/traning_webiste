@@ -23,7 +23,7 @@
                             <form [formGroup]="FaqForm">
 
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">select sub course</label>
+                                    <!-- <label class="form-label">select sub course</label> -->
                                     <select  class="form-control" formControlName="course_id">
                                         <option value="">select sub course</option>
                                         <option *ngFor="let subCourse of subcourses" [value]="subCourse.subcourses_id">{{
@@ -92,7 +92,7 @@
                             </div>
                         </td>
                         <div class="d-flex flex-column justify-content-center">
-                            <p class="text-xs font-weight-bold mb-0">{{counter.subcourses_name}}</p>
+                            <p class="text-xs font-weight-bold mb-0 mt-3">{{counter.subcourses_name}}</p>
                             <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
                         </div>
                         <td>

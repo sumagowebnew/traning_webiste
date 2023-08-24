@@ -55,7 +55,7 @@
         <div class="div"></div>
         <div class="table-responsive">
             
-            <table class="table align-items-center mb-0">
+            <table  >
                 <thead>
                     
                     <tr>
@@ -75,15 +75,11 @@
                        
                     </tr>
                 </thead>
-                <tbody>
+                <tbody >
 
                     <tr *ngFor="let item of batches ">
                         <td>
-                            
-                                <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="mb-0 text-xs">{{item.start_date}}</h6>
-                                </div>
-                           
+                            <p class="text-xs font-weight-bold mb-0">{{item.start_date}}</p>
                         </td>
                        
                         <td>
