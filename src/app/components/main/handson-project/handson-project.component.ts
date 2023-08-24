@@ -59,7 +59,7 @@ export class HandsonProjectComponent implements OnInit {
       this.handsonProjectDetails.length > 0
     ) {
       this.joinedHandsonProjects = this.handsonProjectDetails.map((project) => {
-        const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourses_id === project.subcourses_id);
+        const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourses_id === project.sub_course_id);
         const matchingCategory = this.handsonCategoryDetails.find(category => category.category_id === project.category_id);
         return {
           ...project,

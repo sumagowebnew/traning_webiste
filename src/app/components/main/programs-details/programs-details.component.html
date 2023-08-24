@@ -21,10 +21,18 @@
                         <div class="modal-body">
                             <form [formGroup]="programform">
                                 <div class="input-group input-group-outline my-3">
-                                    <select id="course" formControlName="course_id" class="form-control" required>
+                                    <select id="course" formControlName="program_id" class="form-control" required>
                                         <option value="" disabled selected>select course</option>
                                         <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}</option>
                                       </select>
+                                </div>
+                                <div class="input-group input-group-outline my-3">
+                                    <label class="form-label">introduction</label>
+                                    <input type="text" class="form-control" formControlName="introduction">
+                                </div>
+                                <div class="input-group input-group-outline my-3">
+                                    <label class="form-label">course overview</label>
+                                    <input type="text" class="form-control" formControlName="course_overview">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
 
@@ -37,6 +45,14 @@
                                         <option [value]="sub.sub_course_id" *ngFor="let sub of subcourseDetails" style="color: black;">{{ sub.name }}
                                         </option>
                                       </select>
+                                </div>
+                                <div class="input-group input-group-outline my-3">
+                                    <label class="form-label">learning outcome</label>
+                                    <input type="text" class="form-control" formControlName="learning_outcome">
+                                </div>
+                                <div class="input-group input-group-outline my-3">
+                                    <label class="form-label">pre requisite</label>
+                                    <input type="text" class="form-control" formControlName="prerequisite">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
                                     <label class="form-label">duration</label>
@@ -62,22 +78,8 @@
                                     <label class="form-label">average salary</label>
                                     <input type="text" class="form-control" formControlName="average_salary">
                                 </div>
-                                <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">introduction</label>
-                                    <input type="text" class="form-control" formControlName="introduction">
-                                </div>
-                                <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">course overview</label>
-                                    <input type="text" class="form-control" formControlName="course_overview">
-                                </div>
-                                <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">learning outcome</label>
-                                    <input type="text" class="form-control" formControlName="learning_outcome">
-                                </div>
-                                <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">pre requisite</label>
-                                    <input type="text" class="form-control" formControlName="prerequisite">
-                                </div>
+                              
+                               
                                 <div class="input-group input-group-outline my-3">
                                     <label class="form-label">career opportunities</label>
                                     <input type="text" class="form-control" formControlName="career_opportunity">
