@@ -12,6 +12,7 @@ export class CerticateComponent implements OnInit{
   base64Image: string;
   certificatelist: any;
   courseDetails: any;
+  subcourses: any;
 
 
   constructor( private counter:CounterService,private formBuilder:FormBuilder){}
@@ -20,6 +21,7 @@ export class CerticateComponent implements OnInit{
     this.addcerticate();
     this.getcertificate();
     this.getCourse();
+    this.getsubcoure()
     
   }
 
@@ -30,6 +32,12 @@ export class CerticateComponent implements OnInit{
     });
 
   }
+  getsubcoure(){
+    this.counter.getsubcourse().subscribe((res) => {
+      this.subcourses = res['data']
+      // this.joinTables()
+  })
+}
 
   addcerticate(): void {
     this.certificate = this.formBuilder.group({

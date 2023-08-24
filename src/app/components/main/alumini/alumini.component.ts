@@ -15,6 +15,8 @@ export class AluminiComponent implements OnInit {
   aluminilist: any;
   courseDetails: any;
   editForm:any;
+  joinedAlumni: any;
+  subcourses: any;
 
   constructor(private newweb: CounterService, private formBuilder: FormBuilder) { }
 
@@ -25,6 +27,7 @@ export class AluminiComponent implements OnInit {
     this.addalumini();
     this.getalumini();
     this.getCourse();
+    this.getsubcoure();
 
   }
   getCourse() {
@@ -34,6 +37,30 @@ export class AluminiComponent implements OnInit {
     });
 
   }
+  getsubcoure(){
+    this.newweb.getsubcourse().subscribe((res) => {
+      this.subcourses = res['data']
+      this.joinTables()
+  })
+}
+  getalumini() {
+    this.newweb.getalumini().subscribe((res: any) => {
+      console.log(res);
+      this.aluminilist = res.data;
+    })
+  }
+  joinTables() {
+    if (this.subcourses.length > 0 && this.aluminilist.length > 0) {
+      this.joinedAlumni = this.aluminilist.map((alumni) => {
+        const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourse_id === alumni.alumni_subcourse_id);
+        return {
+          ...alumni,
+          subcourses_name: matchingSubcourse ? matchingSubcourse.subcourses_name : 'Unknown Subcourse'
+        };
+      });
+    }
+  }
+
   addalumini(): void {
     this.aluminiform = this.formBuilder.group({
 
@@ -83,12 +110,6 @@ export class AluminiComponent implements OnInit {
     );
   }
 
-  getalumini() {
-    this.newweb.getalumini().subscribe((res: any) => {
-      console.log(res);
-      this.aluminilist = res.data;
-    })
-  }
 
   createEditForm() {
     this.editForm = this.formBuilder.group({

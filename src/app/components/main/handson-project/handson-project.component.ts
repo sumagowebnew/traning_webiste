@@ -13,23 +13,61 @@ export class HandsonProjectComponent implements OnInit {
   handsonProjectUpdateForm: FormGroup;
   subcourses: any
   handsonCategoryDetails: any[]
+  joinedHandsonProjects: any[];
   ngOnInit(): void {
     this.getHandsonProject()
     this.getCategories()
-    this.service.getsubcourse().subscribe((res) => {
-      this.subcourses = res['data']
-    })
+    this.getsubcourse()
+    
   }
+  
+  getsubcourse() {
+    this.service.getsubcourse().subscribe((res) => {
+      this.subcourses = res['data'];
+      this.joinTables();
+    });
+  }
+
   getCategories() {
     this.service.getHandsonCategory().subscribe(
-      (response:any) => {
+      (response: any) => {
         this.handsonCategoryDetails = response.data;
-        console.log('Categories retrieved:', response);
+        this.joinTables();
       },
       (error) => {
         console.error('Error getting categories:', error);
       }
     );
+  }
+
+  getHandsonProject() {
+    this.service.getHandsonProject().subscribe(
+      (response) => {
+        this.handsonProjectDetails = response;
+        this.joinTables();
+      },
+      (error) => {
+        console.error('Error getting projects:', error);
+      }
+    );
+  }
+
+  joinTables() {
+    if (
+      this.subcourses.length > 0 &&
+      this.handsonCategoryDetails.length > 0 &&
+      this.handsonProjectDetails.length > 0
+    ) {
+      this.joinedHandsonProjects = this.handsonProjectDetails.map((project) => {
+        const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourses_id === project.subcourses_id);
+        const matchingCategory = this.handsonCategoryDetails.find(category => category.category_id === project.category_id);
+        return {
+          ...project,
+          subcourses_name: matchingSubcourse ? matchingSubcourse.subcourses_name : 'Unknown Course',
+          title: matchingCategory ? matchingCategory.title : 'Unknown Category'
+        };
+      });
+    }
   }
   constructor(private service: CounterService, private fb: FormBuilder) {
     this.handsonProject = this.fb.group({
@@ -49,17 +87,7 @@ export class HandsonProjectComponent implements OnInit {
     });
   }
 
-  getHandsonProject() {
-    this.service.getHandsonProject().subscribe(
-      (response) => {
-        this.handsonProjectDetails = response;
-        console.log('Projects retrieved:', response);
-      },
-      (error) => {
-        console.error('Error getting projects:', error);
-      }
-    );
-  }
+ 
 
   // getCourse() {
   //   this.service.getsubcourse().subscribe((allsubcourse: any) => {

@@ -21,8 +21,10 @@
                         <div class="modal-body">
                             <form [formGroup]="programform">
                                 <div class="input-group input-group-outline my-3">
-                                    <label class="form-label">id</label>
-                                    <input type="text" class="form-control" formControlName="program_id">
+                                    <select id="course" formControlName="course_id" class="form-control" required>
+                                        <option value="" disabled selected>select course</option>
+                                        <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}</option>
+                                      </select>
                                 </div>
                                 <div class="input-group input-group-outline my-3">
 

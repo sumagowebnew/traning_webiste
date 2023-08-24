@@ -79,6 +79,8 @@
 
                     <tr>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Course name</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> Category</th>
+                        
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Title</th>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
                         <th class="text-secondary opacity-7">Action</th>
@@ -90,6 +92,10 @@
                     <tr *ngFor="let item of handsonProjectDetails">
                         <td>
                             <p class="text-xs font-weight-bold mb-0">{{item.subcourses_name}}</p>
+                            <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">{{item.title}}</p>
                             <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
                         </td>
                         <td>

@@ -20,8 +20,8 @@
                      <form [formGroup]="mentorform"   >
                        
                         <div class="input-group input-group-outline my-3">
-                            <label class="form-label"> select sub course</label>
-                            <select  class="form-control" formControlName="sub_course_id">
+                            <!-- <label class="form-label"> select sub course</label> -->
+                            <select  class="form-control" formControlName="course_id">
                                 <option value="">select sub course</option>
                                 <option *ngFor="let subCourse of subcourses" [value]="subCourse.subcourses_id">{{
                                     subCourse.subcourses_name }}</option>
@@ -86,22 +86,22 @@
                 </thead>
                 <tbody>
 
-                    <tr *ngFor="let item of mentorlist ">
+                    <tr *ngFor="let item of joinedMentors ">
                         <td>
                             <div class="d-flex px-2 py-1">
                                 <div>
                                     <img [src]="item.image"
                                         class="avatar avatar-sm me-3">
                                 </div>
-                                <div class="d-flex flex-column justify-content-center">
+                                <td class="d-flex flex-column justify-content-center">
                                     <h6 class="mb-0 text-xs" >{{item.subcourses_name}}</h6>
                                     <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
-                                </div>
+                                </td>
                                
-                                <div class="d-flex flex-column justify-content-center">
+                                <td class="d-flex flex-column justify-content-center">
                                     <h6 class="mb-0 text-xs">{{item.name}}</h6>
                                     <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
-                                </div>
+                                </td>
                             </div>
                         </td>
                         <td>

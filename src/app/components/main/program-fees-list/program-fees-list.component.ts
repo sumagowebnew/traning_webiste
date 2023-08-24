@@ -13,23 +13,31 @@ export class ProgramFeesListComponent implements OnInit {
   courseDetails: any[] = [];
   subcourseDetails
   editData: any
+  joinedProgramFees: any[];
+  subcourses: any;
+  
   constructor(private service: CounterService, private formBuilder: FormBuilder) {
     this.ProgramFeesFormData = this.formBuilder.group({
-      pro_max_id:5,
-      course_id:[''],
-      sub_course_id:[''],
-      job_assistance:'yes',
-      live_class_subscription:'yes',
-      lms_subscription:'yes',
-      job_referrals:'yes',
-      industry_projects:'yes',
-      capstone_projects:'yes',
-      domain_training:'yes',
-      project_certification_from_companies:'yes',
-      adv_ai_dsa:'yes',
-      microsoft_certification:'yes',
+      pro_max_id:8,
+      course_id:['', Validators.required],
+      sub_course_id:['', Validators.required],
+      job_assistance:['', Validators.required],
+      live_class_subscription:['', Validators.required],
+      lms_subscription:['', Validators.required],
+      job_referrals:['', Validators.required],
+      industry_projects:['', Validators.required],
+      capstone_projects:['', Validators.required],
+      domain_training:['', Validators.required],
+      project_certification_from_companies:['', Validators.required],
+      adv_ai_dsa:['', Validators.required],
+      microsoft_certification:['', Validators.required],
+      sub_course_fee:100,
+      sub_course_duration:3
+      // sub_course_duration:
     });
   }
+
+
 
 
   ngOnInit(): void {
@@ -38,27 +46,69 @@ export class ProgramFeesListComponent implements OnInit {
     this.getsubcourse();
     
   }
-
   getCourse() {
     this.service.getcourse().subscribe((res: any) => {
-      this.courseDetails = res.data; // Assign directly, assuming the data is an array
-      console.log(this.courseDetails);
+      this.courseDetails = res.data;
+      this.joinTables();
     });
   }
-  getsubcourse(){
+
+  getsubcourse() {
     this.service.getsubcourse().subscribe((res: any) => {
-      this.subcourseDetails = res.data;
-      console.log(this.subcourseDetails);
+      this.subcourses = res.data;
+      this.joinTables();
     });
+  }
+
+  getProgramFeesData() {
+    this.service.getProgramFees().subscribe((res: any) => {
+      this.ProgramFeesData = res;
+      console.log(res);
+      
+      this.joinTables();
+    });
+  }
+
+  joinTables() {
+    if (
+      this.courseDetails.length > 0 &&
+      this.subcourseDetails.length > 0 &&
+      this.ProgramFeesData.length > 0
+    ) {
+      this.joinedProgramFees = this.ProgramFeesData.map((programFee) => {
+        const matchingCourse = this.courseDetails.find(course => course.course_id === programFee.course_id);
+        const matchingSubcourse = this.subcourseDetails.find(subcourse => subcourse.subcourse_id === programFee.sub_course_id);
+        return {
+          ...programFee,
+          name: matchingCourse ? matchingCourse.name : 'Unknown Course',
+          subcourses_name: matchingSubcourse ? matchingSubcourse.subcourses_name : 'Unknown Subcourse'
+        };
+      });
+    }
   }
 
   onSubmit() {
     const formData = new FormData();
-    const formValue = this.ProgramFeesFormData.value;
+    formData.append('pro_max_id', this.ProgramFeesFormData.value.pro_max_id);
+    formData.append('course_id', this.ProgramFeesFormData.value.course_id);
+    formData.append('sub_course_id', this.ProgramFeesFormData.value.sub_course_id);
+    formData.append('job_assistance', this.ProgramFeesFormData.value.job_assistance);
+    formData.append('live_class_subscription', this.ProgramFeesFormData.value.live_class_subscription);
+    formData.append('lms_subscription', this.ProgramFeesFormData.value.lms_subscription);
+    formData.append('job_referrals', this.ProgramFeesFormData.value.job_referrals);
+    formData.append('industry_projects', this.ProgramFeesFormData.value.industry_projects);
+    formData.append('capstone_projects', this.ProgramFeesFormData.value.capstone_projects);
+    formData.append('domain_training', this.ProgramFeesFormData.value.domain_training);
+    formData.append('project_certification_from_companies', this.ProgramFeesFormData.value.project_certification_from_companies);
+    formData.append('adv_ai_dsa', this.ProgramFeesFormData.value.adv_ai_dsa);
+    formData.append('microsoft_certification', this.ProgramFeesFormData.value.microsoft_certification);
+    
+    formData.append('sub_course_fee', this.ProgramFeesFormData.value.sub_course_fee);
+    formData.append('sub_course_duration', this.ProgramFeesFormData.value.sub_course_duration);// const formValue = this.ProgramFeesFormData.value;
 
-    Object.keys(formValue).forEach(key => {
-      formData.append(key, formValue[key]);
-    });
+    // Object.keys(formValue).forEach(key => {
+    //   formData.append(key, formValue[key]);
+    // });
 
   
 
@@ -77,13 +127,7 @@ export class ProgramFeesListComponent implements OnInit {
   }
 
 
-  getProgramFeesData() {
-    this.service.getProgramFees().subscribe((res: []) => {
-      this.ProgramFeesData = res
-      console.log(res);
 
-    })
-  }
   deleteProgramFeesData(id: number) {
     alert(id);
     const confirmDelete = confirm('Are you sure you want to delete this record?');

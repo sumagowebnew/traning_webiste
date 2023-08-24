@@ -80,7 +80,7 @@ export class CompanyDetailsComponent {
       this.company.deleteCompany(id).subscribe(
         (response) => {
           console.log('Company deleted:', response);
-          alert(`Company Deleted:${response}`)
+          alert(`Company Deleted`)
           // You might want to refresh the categories list after deletion
           this.getcompany();
         },

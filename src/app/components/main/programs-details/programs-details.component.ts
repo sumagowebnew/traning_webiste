@@ -16,6 +16,7 @@ export class ProgramsDetailsComponent implements OnInit{
   name: string;
   editForm1: any;
   subcourseDetails: any;
+  courseDetails: any;
 
   constructor(private program:CounterService,private formBuilder:FormBuilder){}
 
@@ -24,6 +25,7 @@ export class ProgramsDetailsComponent implements OnInit{
     this.getprogramdetail();
     this.createEditForm();
     this.getsubcourse();
+    this.getCourse();
     // this.getprogram();
     
   }
@@ -127,6 +129,14 @@ export class ProgramsDetailsComponent implements OnInit{
       console.log(this.programlist);
       
     })
+  }
+  getCourse() {
+    this.program.getcourse().subscribe((res: any) => {
+      this.courseDetails = res.data; // Assign directly, assuming the data is an array
+      console.log(this.courseDetails);
+    });
+
+
   }
   deleteprogramdetail(id:number){
 

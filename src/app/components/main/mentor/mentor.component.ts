@@ -16,6 +16,7 @@ export class MentorComponent implements OnInit{
   editForm: any;
   courseDetails: any;
   subcourses: any;
+  joinedMentors: any;
   
   constructor(private newweb:CounterService,private formBuilder:FormBuilder){}
   hireform: any;
@@ -86,13 +87,30 @@ export class MentorComponent implements OnInit{
     );
   }
   
-
+  getsubcoure(){
+    this.newweb.getsubcourse().subscribe((res) => {
+      this.subcourses = res['data']
+      this.joinTables()
+  })
+}
   getmentors(){
     this.newweb.getmentor().subscribe((res:any)=>{
       
       this.mentorlist=res.data;
       console.log(this.mentorlist);
+      this.joinTables()
     })
+  }
+  joinTables() {
+    if (this.subcourses.length > 0 && this.mentorlist.length > 0) {
+      this.joinedMentors = this.mentorlist.map((mentor) => {
+        const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourse_id === mentor.mentor_subcourse_id);
+        return {
+          ...mentor,
+          subcourses_name: matchingSubcourse ? matchingSubcourse.subcourses_name : 'Unknown Subcourse'
+        };
+      });
+    }
   }
   deletementor(id: number) {
     const confirmation = confirm('Are you sure you want to delete this category?');
@@ -161,9 +179,5 @@ export class MentorComponent implements OnInit{
       }
     );
   }
-  getsubcoure(){
-    this.newweb.getsubcourse().subscribe((res) => {
-      this.subcourses = res['data']
-  })
-}
+
 }

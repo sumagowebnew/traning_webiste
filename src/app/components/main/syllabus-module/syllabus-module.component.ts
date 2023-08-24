@@ -17,6 +17,7 @@ export class SyllabusModuleComponent  implements OnInit{
   counterlist: any;
   bannerlist: any;
   subcourses: any;
+  joinedCounterData: any;
   constructor(private service:CounterService,private formBuilder:FormBuilder){
 
     this.ProgramFeesFormData = this.formBuilder.group({
@@ -38,28 +39,44 @@ export class SyllabusModuleComponent  implements OnInit{
     this.getcounterdata();
    
   }
-  getcounterdata(){
-    this.service.getmodule().subscribe((res:any)=>{
-      this.counterlist=res.data;
-      console.log(this.counterlist);
-      
-    })
-  }
-  // getCourse(){
-  //   this.service.getcourse().subscribe((res: any) => {
-  //     this.courseDetails = res.data; // Assign directly, assuming the data is an array
-  //     console.log(this.courseDetails);
-  //   });
-
-    
-  // }
-  getsubcourse(){
-    this.service.getsubcourse().subscribe((res: any) => {
-      this.subcourseDetails = res.data;
-      console.log(this.subcourseDetails);
+  getcounterdata() {
+    this.service.getmodule().subscribe((res: any) => {
+      this.counterlist = res.data;
+      this.joinTables();
     });
   }
 
+  getsubcourse() {
+    this.service.getsubcourse().subscribe((res: any) => {
+      this.subcourses = res.data;
+      this.joinTables();
+    });
+  }
+
+  getProgramFeesData() {
+    this.service.getsyllabus().subscribe((res: any) => {
+      this.ProgramFeesData = res.data;
+      this.joinTables();
+    });
+  }
+
+  joinTables() {
+    if (
+      this.counterlist.length > 0 &&
+      this.subcourses.length > 0 &&
+      this.ProgramFeesData.length > 0
+    ) {
+      this.joinedCounterData = this.counterlist.map((counter) => {
+        const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourse_id === counter.module_subcourse_id);
+        const matchingProgramFees = this.ProgramFeesData.find(fees => fees.syllabus_subcourse_id === counter.module_subcourse_id);
+        return {
+          ...counter,
+          subcourses_name: matchingSubcourse ? matchingSubcourse.subcourses_name : 'Unknown Subcourse',
+          fees_amount: matchingProgramFees ? matchingProgramFees.fees : 0
+        };
+      });
+    }
+  }
   onSubmit(){
     const formData = new FormData();
   const formValue = this.ProgramFeesFormData.value;
@@ -83,13 +100,7 @@ export class SyllabusModuleComponent  implements OnInit{
 }
 
 
-  getProgramFeesData(){
-    this.service.getsyllabus().subscribe((res:any)=>{
-      this.ProgramFeesData =res.data;
-      console.log(res.data);
-      
-    })
-  }
+
   deleteProgramFeesData(id:number){
     const confirmDelete = confirm('Are you sure you want to delete this record?');
     
