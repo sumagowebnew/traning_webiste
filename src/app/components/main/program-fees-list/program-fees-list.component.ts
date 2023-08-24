@@ -13,6 +13,7 @@ export class ProgramFeesListComponent implements OnInit {
   courseDetails: any[] = [];
   subcourseDetails
   editData: any
+  
   constructor(private service: CounterService, private formBuilder: FormBuilder) {
     this.ProgramFeesFormData = this.formBuilder.group({
       pro_max_id:5,
