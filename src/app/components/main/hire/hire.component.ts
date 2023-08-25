@@ -125,6 +125,7 @@
       this.newweb.updatehire(hire.id, formData).subscribe(
         (res: any) => {
           console.log('Data updated successfully:', res);
+          alert("Data Updated")
           // Optionally, update the local list with the updated hire data or fetch the updated list again
           this.gethired();
           location.reload();

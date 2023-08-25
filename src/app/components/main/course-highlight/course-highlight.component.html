@@ -21,12 +21,11 @@
                      <form [formGroup]="subCourseDetails">
                         <div class="form-group input-group input-group-outline my-3">
                             <!-- <label for="designation" >select course</label> -->
-                            <select id="course_id" formControlName="course_id" placeholder="Coures name"
-                            class="form-control" required>
-                            <option value="" disabled selected>select course</option>
-                            <option [value]="course.id" *ngFor="let course of courseDetails"
-                                style="color: black;">{{ course.name }} </option>
-                        </select>    
+                            <select  class="form-control" formControlName="course_id">
+                                <option value="">select sub course</option>
+                                <option *ngFor="let subCourse of subcourses" [value]="subCourse.subcourses_id">{{
+                                    subCourse.subcourses_name }}</option>
+                            </select>   
                             <div class="invalid-feedback">Course is required</div>
                           </div>   
                         <div class="input-group input-group-outline my-3">
@@ -63,11 +62,11 @@
                 </thead>
                 <tbody>
 
-                    <tr *ngFor="let item of subcourses">
+                    <tr *ngFor="let item of joinedFaqs">
                         <td>
                             <div class="d-flex px-2 py-1">
                                 <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="mb-0 text-xs">{{item.course_id}}</h6>
+                                    <h6 class="mb-0 text-xs">{{item.subcourses_name}}</h6>
                                     <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
                                 </div>
                             </div>

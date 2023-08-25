@@ -72,12 +72,13 @@ export class ProgramFeesListComponent implements OnInit {
   joinTables() {
     if (
       this.courseDetails.length > 0 &&
-      this.subcourseDetails.length > 0 &&
+      this.subcourses.length > 0 &&
       this.ProgramFeesData.length > 0
     ) {
       this.joinedProgramFees = this.ProgramFeesData.map((programFee) => {
+        
         const matchingCourse = this.courseDetails.find(course => course.course_id === programFee.course_id);
-        const matchingSubcourse = this.subcourseDetails.find(subcourse => subcourse.subcourse_id === programFee.sub_course_id);
+        const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourses_id === programFee.sub_course_id);
         return {
           ...programFee,
           name: matchingCourse ? matchingCourse.name : 'Unknown Course',

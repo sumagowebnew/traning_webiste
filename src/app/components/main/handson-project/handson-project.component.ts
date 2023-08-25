@@ -60,7 +60,7 @@ export class HandsonProjectComponent implements OnInit {
     ) {
       this.joinedHandsonProjects = this.handsonProjectDetails.map((project) => {
         const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourses_id === project.sub_course_id);
-        const matchingCategory = this.handsonCategoryDetails.find(category => category.category_id === project.category_id);
+        const matchingCategory = this.handsonCategoryDetails.find(category => category.category_id === project.handson_category_id);
         return {
           ...project,
           subcourses_name: matchingSubcourse ? matchingSubcourse.subcourses_name : 'Unknown Course',
@@ -72,7 +72,7 @@ export class HandsonProjectComponent implements OnInit {
   constructor(private service: CounterService, private fb: FormBuilder) {
     this.handsonProject = this.fb.group({
       handson_category_id: [],
-      sub_course_id: [1],
+      sub_course_id: [],
       title: [''],
       desc: [''],
     });

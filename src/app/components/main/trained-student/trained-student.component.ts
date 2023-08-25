@@ -92,6 +92,7 @@ export class TrainedStudentComponent implements OnInit {
       this.about.updatestudent(about.id, updatedData).subscribe(
         (res: any) => {
           console.log('Data updated successfully:', res);
+          alert("Data Updated")
           // Optionally, update the local list with the updated counter or fetch the updated list again
           this.getcounterdata();
         },

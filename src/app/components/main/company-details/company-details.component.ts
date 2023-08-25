@@ -126,6 +126,7 @@ export class CompanyDetailsComponent {
     this.company.updateCompany(archive.id, updatedData).subscribe(
       (res: any) => {
         console.log('Data updated successfully:', res);
+        alert("Data Updated")
         // Optionally, update the local list with the updated counter or fetch the updated list again
         this.getcompany();
       },

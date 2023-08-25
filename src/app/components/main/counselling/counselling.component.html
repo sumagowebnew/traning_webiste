@@ -21,7 +21,7 @@
                             <form [formGroup]="bannerForm" >
                                 <div class="input-group input-group-outline my-3">
                                     <!-- <label class="form-label">Name</label> -->
-                                    <input type="text" class="form-control" id="title" formControlName="title" placeholder="title">
+                                    <input type="text" class="form-control" id="fullname" formControlName="fullname" placeholder="fullname">
                                 </div>
                                 <div class="input-group input-group-outline my-3">
                                     <!-- <label class="form-label">Price</label> -->
@@ -73,7 +73,7 @@
                 <thead>
 
                     <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Full name</th>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email
                         </th>
                         <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -97,7 +97,7 @@
                             <div class="d-flex px-2 py-1">
                                
                                 <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="mb-0 text-xs">{{item.title}}</h6>
+                                    <h6 class="mb-0 text-xs">{{item.fullname}}</h6>
                                     <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
                                 </div>
                             </div>

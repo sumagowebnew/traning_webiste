@@ -14,12 +14,13 @@ export class CourseHighlightComponent implements OnInit {
   courseDetails: any;
   aluminilist: any;
   editForm: FormGroup<{ course_id: FormControl<string>; name: FormControl<string>; designation: FormControl<string>; company: FormControl<string>; selectedFile: FormControl<null>; }>;
+  joinedFaqs: any;
 
   constructor(private service: CounterService, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
    
-    this.getCourse();
+    this.getsubcourse();
     this.addalumini();
     this.getalumini();
 
@@ -69,9 +70,27 @@ export class CourseHighlightComponent implements OnInit {
       this.service.getcoursehigh().subscribe((res: any) => {
         console.log(res);
         this.aluminilist = res.data;
+        this.joinTables()
       })
     }
-  
+    getsubcourse() {
+      this.service.getsubcourse().subscribe((res) => {
+        this.subcourses = res['data'];
+        this.joinTables()
+       
+      });
+    }
+    joinTables(): void {
+      if (this.subcourses.length > 0 && this.aluminilist.length > 0) {
+        this.joinedFaqs = this.aluminilist.map((faq) => {
+          const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourses_id === faq.course_id);
+          return {
+            ...faq,
+            subcourses_name: matchingSubcourse ? matchingSubcourse.subcourses_name : 'Unknown Course'
+          };
+        });
+      }
+    }
     // createEditForm() {
     //   this.editForm = this.formBuilder.group({
     //     course_id: ['', Validators.required],
@@ -110,7 +129,7 @@ export class CourseHighlightComponent implements OnInit {
       if (confirmation) {
         this.service.deletecoursehigh(id).subscribe(
           (response) => {
-            console.log('logo deleted:', response);
+            console.log('Data deleted:', response);
             // You might want to refresh the categories list after deletion
             this.getalumini();
           },

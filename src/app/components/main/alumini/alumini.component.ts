@@ -47,12 +47,13 @@ export class AluminiComponent implements OnInit {
     this.newweb.getalumini().subscribe((res: any) => {
       console.log(res);
       this.aluminilist = res.data;
+      this.joinTables()
     })
   }
   joinTables() {
     if (this.subcourses.length > 0 && this.aluminilist.length > 0) {
       this.joinedAlumni = this.aluminilist.map((alumni) => {
-        const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourse_id === alumni.alumni_subcourse_id);
+        const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourse_id === alumni.course_id);
         return {
           ...alumni,
           subcourses_name: matchingSubcourse ? matchingSubcourse.subcourses_name : 'Unknown Subcourse'
@@ -72,7 +73,7 @@ export class AluminiComponent implements OnInit {
     });
   }
 
-  onFileSelected(event: any): void {
+ onFileSelected(event: any): void {
     const file = event.target.files[0];
     this.convertToBase64(file);
   }
@@ -84,7 +85,6 @@ export class AluminiComponent implements OnInit {
     };
     reader.readAsDataURL(file);
   }
-
   onSubmit(): void {
     const formData = new FormData();
     formData.append('course_id', this.aluminiform.value.course_id);

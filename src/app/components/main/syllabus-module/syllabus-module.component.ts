@@ -18,6 +18,7 @@ export class SyllabusModuleComponent  implements OnInit{
   bannerlist: any;
   subcourses: any;
   joinedCounterData: any;
+  joinedData: any;
   constructor(private service:CounterService,private formBuilder:FormBuilder){
 
     this.ProgramFeesFormData = this.formBuilder.group({
@@ -59,20 +60,16 @@ export class SyllabusModuleComponent  implements OnInit{
       this.joinTables();
     });
   }
-
-  joinTables() {
-    if (
-      this.counterlist.length > 0 &&
-      this.subcourses.length > 0 &&
-      this.ProgramFeesData.length > 0
-    ) {
-      this.joinedCounterData = this.counterlist.map((counter) => {
-        const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourse_id === counter.module_subcourse_id);
-        const matchingProgramFees = this.ProgramFeesData.find(fees => fees.syllabus_subcourse_id === counter.module_subcourse_id);
+  joinTables(): void {
+    if (this.counterlist.length > 0 && this.subcourses.length > 0 && this.ProgramFeesData.length > 0) {
+      this.joinedData = this.counterlist.map((counter) => {
+        const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourse_id === counter.module_id);
+        const matchingProgramFees = this.ProgramFeesData.find(programFees => programFees.course_id === counter.course_id);
+        
         return {
           ...counter,
-          subcourses_name: matchingSubcourse ? matchingSubcourse.subcourses_name : 'Unknown Subcourse',
-          fees_amount: matchingProgramFees ? matchingProgramFees.fees : 0
+          subcourses_name: matchingSubcourse ? matchingSubcourse.subcourses_name : 'Unknown Course',
+          course_id: matchingProgramFees ? matchingProgramFees.course_id : 'Unknown Fees'
         };
       });
     }

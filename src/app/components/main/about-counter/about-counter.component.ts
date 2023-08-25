@@ -110,8 +110,10 @@ export class AboutCounterComponent implements OnInit {
     this.about.updateabout(about.id, updatedData).subscribe(
       (res: any) => {
         console.log('Data updated successfully:', res);
+        alert("Data updated successfully");
         // Optionally, update the local list with the updated counter or fetch the updated list again
         this.getcounterdata();
+
       },
       (error) => {
         console.error('Failed to update archivement data:', error);

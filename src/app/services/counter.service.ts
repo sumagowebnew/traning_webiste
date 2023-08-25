@@ -553,7 +553,10 @@ export class CounterService {
   }
 
   getcoursehigh() {
-    return this.http.get(`${this.apiUrl}get_all_highlightDetails`)
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.get(`${this.apiUrl}get_all_highlightDetails`,{headers})
   }
 
   deletecoursehigh(id: number) {
