@@ -12,9 +12,11 @@
         float: right;
     }
  }
- .dropdown-menu{
-    position:absolute;
-    top: 10px;
-
+ 
+.dropdown-menu{
+ width: 100px;
+ margin-top: 0px;
     margin-left: 20px;
 }
+
+
