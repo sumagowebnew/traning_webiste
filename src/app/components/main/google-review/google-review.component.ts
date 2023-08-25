@@ -79,7 +79,7 @@ export class GoogleReviewComponent implements OnInit {
       this.about.deletebgooglereview(id).subscribe(
         (response) => {
           console.log('Google Review deleted:', response);
-          alert(`Google Review Deleted:${response}`)
+          alert(`Google Review Deleted`)
           // You might want to refresh the categories list after deletion
           this.getgoogle();
         },
@@ -97,19 +97,29 @@ export class GoogleReviewComponent implements OnInit {
   }
 
   // Function to open the edit modal and populate form fields with the selected expert review data
-  openEditModal(expert: any) {
+  openEditModal(google: any) {
     this.editForm1.setValue({
 
-      selectedFile: expert.base64Image
+      selectedFile: null
     });
   }
 
   // Function to handle the update operation in the edit modal
   updategooglereview(google: any): void {
     const updatedData = this.editForm1.value;
+    const formData = new FormData();
+  
+
+    // formData.append('image', updatedData.selectedFile);
+    if (updatedData.selectedFile) {
+      formData.append('image', updatedData.selectedFile);
+    } else {
+      formData.append('image', this.base64Image);
+    }
     this.about.updategooglereview(google.id, updatedData).subscribe(
       (res: any) => {
         console.log('Data updated successfully:', res);
+        alert("Data Updated")
         // Optionally, update the local list with the updated expert review or fetch the updated list again
         this.getgoogle();
       },

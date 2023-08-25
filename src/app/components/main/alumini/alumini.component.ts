@@ -28,6 +28,7 @@ export class AluminiComponent implements OnInit {
     this.getalumini();
     this.getCourse();
     this.getsubcoure();
+    this.createEditForm()
 
   }
   getCourse() {
@@ -123,23 +124,34 @@ export class AluminiComponent implements OnInit {
   // Function to open the edit modal and populate form fields with the selected counter data
   openEditModal(consult: any) {
     this.editForm.setValue({
+      course_id:consult.course_id,
       name: consult.name,
       designation: consult.designation,
-      company:consult.company
+      company:consult.company,
+      selectedFile:null
+      
       
     });
   }
   updateAlumini(alumini: any): void {
 
-    const updateData = new FormData();
-    updateData.append('name', alumini.name);
-    updateData.append('designation', alumini.designation);
-    updateData.append('company', alumini.company);
-    updateData.append('image', this.base64Image);
-
-    this.newweb.updateAlumni(alumini.id, updateData).subscribe(
+    const updatedData = this.editForm.value;
+    
+    const formData = new FormData();
+    formData.append('course_id', updatedData.course_id);
+    formData.append('name', updatedData.name);
+    formData.append('designation', updatedData.designation);
+    formData.append('company', updatedData.company);
+    // formData.append('image', updatedData.selectedFile);
+    if (updatedData.selectedFile) {
+      formData.append('image', updatedData.selectedFile);
+    } else {
+      formData.append('image', this.base64Image);
+    }
+    this.newweb.updateAlumni(alumini.id, updatedData).subscribe(
       (res: any) => {
         console.log('Data updated successfully:', res);
+        alert("data updated")
         // Optionally, update the alumini in the local list or fetch the updated list again
         this.getalumini();
       },

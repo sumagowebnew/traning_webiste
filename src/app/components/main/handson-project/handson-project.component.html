@@ -89,7 +89,7 @@
                 </thead>
                 <tbody >
 
-                    <tr *ngFor="let item of handsonProjectDetails">
+                    <tr *ngFor="let item of joinedHandsonProjects">
                         <td>
                             <p class="text-xs font-weight-bold mb-0">{{item.subcourses_name}}</p>
                             <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
@@ -111,7 +111,7 @@
 
                         <td class="align-middle">
                             <a class="btn btn-warning ms-2 text-white font-weight-normal text-xs" data-bs-toggle="modal"
-                                data-bs-target="#editeventdata2">
+                                data-bs-target="#editeventdata2" (click)="openEditModal(item)">
                                 Edit
                             </a>
 
@@ -129,12 +129,12 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form [formGroup]="handsonProjectUpdateForm">
+                                            <form [formGroup]="editForm">
 
                                                 <div class="input-group input-group-outline mb-3">
                                                     <div class="input-group input-group-outline my-3">
                                                         <label class="form-label">handson category</label>
-                                                        <select class="form-control" formControlName="handsonCategory">
+                                                        <select class="form-control" formControlName="handson_category_id">
                                                             <option value="">handson category</option>
                                                             <option *ngFor="let category of handsonCategoryDetails"
                                                                 [value]="category.id">{{ category.title }}</option>
@@ -148,8 +148,8 @@
                                                         <select class="form-control" formControlName="sub_course_id">
                                                             <option value="">sub course</option>
                                                             <option *ngFor="let subCourse of subcourses"
-                                                            [value]="subCourse.id">{{
-                                                            subCourse.title }}</option>
+                                                            [value]="subCourse.subcourses_id">{{
+                                                            subCourse.subcourses_name }}</option>
                                                         </select>
                                                     </div>
 
@@ -165,7 +165,7 @@
                                                 <div class="input-group input-group-outline mb-3">
                                                     <div class="input-group input-group-outline my-3">
                                                         <!-- <label for="description">Description:</label> -->
-                                                        <textarea class="form-control" formControlName="description"
+                                                        <textarea class="form-control" formControlName="desc"
                                                             placeholder="Description"></textarea>
                                                     </div>
                                                 </div>
@@ -178,7 +178,7 @@
                                             <button type="button" class="btn bg-gradient-secondary"
                                                 data-bs-dismiss="modal">Close</button>
                                             <button type="button" class="btn bg-gradient-primary"
-                                                (click)="updateProject(item.id) ">Save changes</button>
+                                                (click)="updateHired(item) ">Save changes</button>
                                         </div>
                                     </div>
                                 </div>

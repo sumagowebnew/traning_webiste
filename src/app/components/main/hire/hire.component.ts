@@ -80,6 +80,7 @@
         this.newweb.deletehire(id).subscribe(
           (response) => {
             console.log('Project deleted:', response);
+            alert("Data Deleted")
             // You might want to refresh the categories list after deletion
             this.gethired();
             location.reload();

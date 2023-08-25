@@ -18,7 +18,7 @@ export class ProgramFeesListComponent implements OnInit {
   
   constructor(private service: CounterService, private formBuilder: FormBuilder) {
     this.ProgramFeesFormData = this.formBuilder.group({
-      pro_max_id:8,
+      pro_max_id:9,
       course_id:['', Validators.required],
       sub_course_id:['', Validators.required],
       job_assistance:['', Validators.required],
@@ -77,7 +77,7 @@ export class ProgramFeesListComponent implements OnInit {
     ) {
       this.joinedProgramFees = this.ProgramFeesData.map((programFee) => {
         
-        const matchingCourse = this.courseDetails.find(course => course.course_id === programFee.course_id);
+        const matchingCourse =this.courseDetails.find(course=> course.id===programFee.course_id);
         const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourses_id === programFee.sub_course_id);
         return {
           ...programFee,
@@ -130,13 +130,14 @@ export class ProgramFeesListComponent implements OnInit {
 
 
   deleteProgramFeesData(id: number) {
-    alert(id);
+    
     const confirmDelete = confirm('Are you sure you want to delete this record?');
 
     if (confirmDelete) {
       this.service.deleteProgramFees(id).subscribe(
         () => {
           console.log('Data deleted successfully');
+          alert('Data Deleted')
           // You can also refresh the data or perform other actions here
           this.getProgramFeesData()
         },

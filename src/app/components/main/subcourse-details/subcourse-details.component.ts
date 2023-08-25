@@ -100,12 +100,14 @@ export class SubcourseDetailsComponent implements OnInit {
   }
 
   joinTables() {
-    if (this.hirelist.length > 0 && this.subcourses.length > 0) {
+    if (this.hirelist.length > 0 && this.subcourses.length > 0 &&this.courseDetails.length >0) {
       this.joinedHirelist = this.hirelist.map((hire) => {
         const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourses_id === hire.sub_course_id);
+       const matchingCourse =this.courseDetails.find(course=> course.id===hire.course_id);
         return {
           ...hire,
-          subcourses_name: matchingSubcourse ? matchingSubcourse.subcourses_name : 'Unknown Course'
+          subcourses_name: matchingSubcourse ? matchingSubcourse.subcourses_name : 'Unknown Subcourse',
+          name:matchingCourse ? matchingCourse.name:'Unknown name'
         };
       });
     }
@@ -117,6 +119,7 @@ export class SubcourseDetailsComponent implements OnInit {
       this.service.deleteSubcoursedetail(id).subscribe(
         (response) => {
           console.log('Project deleted:', response);
+          alert('Data Deleted')
           this.gethired();
           location.reload();
         },

@@ -59,7 +59,7 @@ export class CohortsComponent {
       this.service.deleteBatch(id).subscribe(
         (response) => {
           console.log('Batch deleted:', response);
-          alert(`Batch Deleted:${response}`)
+          alert(`Batch Deleted`)
           // You might want to refresh the categories list after deletion
           this.getBatches();
         },

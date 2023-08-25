@@ -20,6 +20,14 @@
                         <div class="modal-body">
                             <form [formGroup]="subCourseDetails">
                                 <div class="input-group input-group-outline mb-3">
+                                    <select id="course" formControlName="course_id" class="form-control" required>
+                                        <option value="" disabled selected>select course</option>
+                                        <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}</option>
+                                      </select>
+                                </div>
+                                
+                                
+                                <div class="input-group input-group-outline mb-3">
 
                                     <select class="form-control" formControlName="sub_course_id">
                                         <option value="">select sub course</option>
@@ -75,6 +83,8 @@
 
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Course name</th>
 
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Subcourse name</th>
+                        
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
 
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -93,11 +103,18 @@
                         <td>
                             <div class="d-flex flex-row mb-0justify-content-center">
                                 <div class="p-2">  <img [src]="item.banner" class="avatar avatar-sm me-3"></div>
-                                <div class="p-2"><p class="  mt-2 text-xs font-weight-bold mb-0">{{item.subcourses_name}}</p></div>
+                                <div class="p-2"><p class="  mt-2 text-xs font-weight-bold mb-0">{{item.name}}</p></div>
                                 
                               </div>
                            
                         </td>
+                        <td>
+                            <div class="d-flex flex-column justify-content-center">
+                                <p class="text-xs font-weight-bold mb-0">{{item.subcourses_name}}</p>
+                                <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
+                            </div>
+                        </td>
+                       
                         <td>
                             <div class="d-flex flex-column justify-content-center">
                                 <p class="text-xs font-weight-bold mb-0">{{item.title}}</p>
@@ -127,7 +144,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Edit
-                                                Course</h5>
+                                                 Subcourse</h5>
                                             <button type="button" class="btn-close text-dark" data-bs-dismiss="modal"
                                                 aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
@@ -135,37 +152,41 @@
                                         </div>
                                         <div class="modal-body">
                                             <form [formGroup]="editForm">
-                                                <div class="input-group input-group-outline my-3">
-                                                    <select id="course_id" formControlName="course_id"
-                                                        placeholder="Coures name" class="form-control" required>
-                                                        <option value="" disabled selected>select Course</option>
-                                                        <option [value]="course.id" *ngFor="let course of courseDetails"
-                                                            style="color: black;">{{ course.name }} </option>
-                                                    </select>
-                                                    <!-- t type="text" id="title" class="form-control" formControlName="title" placeholder="title"> -->
+                                                <div class="input-group input-group-outline mb-3">
+                                                    <select id="course" formControlName="course_id" class="form-control" required>
+                                                        <option value="" disabled selected>select course</option>
+                                                        <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}</option>
+                                                      </select>
                                                 </div>
-                                                <div class="input-group input-group-outline my-3">
-                                                    <!-- <label class="form-label">Title</label> -->
-                                                    <input type="text" id="title" class="form-control"
-                                                        formControlName="title" placeholder="title">
-                                                </div>
+                                                
+                                                
+                                                    <div class="input-group input-group-outline mb-3">
 
-                                                <div class="input-group input-group-outline my-3">
-                                                    <!-- <label class="form-label">description</label> -->
-                                                    <input type="text" id="designation" class="form-control"
-                                                        formControlName="description" placeholder="description">
-                                                </div>
-                                                <div class="input-group input-group-outline my-3">
-                                                    <!-- <label class="form-label">description</label> -->
-                                                    <input type="text" id="custome_text" class="form-control"
-                                                        formControlName="custome_text" placeholder="custome text">
-                                                </div>
-
-
-                                                <div class="input-group input-group-outline my-3">
-                                                    <label class="form-label">Name</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
+                                                        <select class="form-control" formControlName="sub_course_id">
+                                                            <option value="">select sub course</option>
+                                                            <option *ngFor="let subCourse of subcourses" [value]="subCourse.subcourses_id">
+                                                                {{subCourse.subcourses_name }}</option>
+                                                        </select>
+                                                    </div>
+                    
+                                                    <div class="input-group input-group-outline my-3">
+                                                        <!-- <label class="form-label">duration</label> -->
+                                                        <input type="text" class="form-control" formControlName="title" placeholder="title">
+                                                    </div>
+                                                    <div class="input-group input-group-outline my-3">
+                                                        <!-- <label class="form-label">training period</label> -->
+                                                        <input type="text" class="form-control" formControlName="description"
+                                                            placeholder="description">
+                                                    </div>
+                                                    <div class="input-group input-group-outline my-3">
+                                                        <!-- <label class="form-label">batch</label> -->
+                                                        <input type="text" class="form-control" formControlName="custome_text"
+                                                            placeholder="custome text">
+                                                    </div>
+                                                    <div class="input-group input-group-outline my-3">
+                    
+                                                        <input type="file" class="form-control" (change)="onFileSelected($event)">
+                                                    </div>
 
                                             </form>
 

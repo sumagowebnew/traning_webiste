@@ -13,6 +13,7 @@ export class ExpertReviewComponent implements OnInit {
   expert: any;
   expertlist: any;
   editForm1: any;
+  editForm: any;
 
   constructor(private count: CounterService, private formBuilder: FormBuilder) {}
 
@@ -52,16 +53,17 @@ export class ExpertReviewComponent implements OnInit {
     formData.append('image', this.base64Image);
 
     this.count.addexpertreview(formData).subscribe(
-      (response: any) => {
-        if(response.StatusCode == '200') {
-          // this.router.navigate(['/main/banner'])
-          alert("Data added successfully");
-          location.reload();
-
-        } else {
-          alert("Something went wrong");
-        }
-      },
+      
+        (response: any) => {
+          if(response.StatusCode == '200') {
+            // this.router.navigate(['/main/banner'])
+            alert("Data added successfully");
+            location.reload();
+  
+          } else {
+            alert("Something went wrong");
+          }
+        },
     );
   }
 
@@ -71,37 +73,49 @@ export class ExpertReviewComponent implements OnInit {
       this.expertlist = res;
     });
   }
-
+  openEditModal(hire: any) {
+    this.editForm.setValue({
+      review: hire.review,
+      name: hire.name,
+      company_position:hire.company_position,
+      selectedFile: null // Use the 'image' property from the hire object
+    });
+  }
+  
   createEditForm() {
-    this.editForm1 = this.formBuilder.group({
+    this.editForm = this.formBuilder.group({
       review: ['', Validators.required],
       name: ['', Validators.required],
       company_position: ['', Validators.required],
       selectedFile: [null, Validators.required]
     });
   }
-
-  // Function to open the edit modal and populate form fields with the selected expert review data
-  openEditModal(expert: any) {
-    this.editForm1.setValue({
-      review: expert.review,
-      name: expert.name,
-      company_position: expert.company_position,
-      selectedFile: expert.selectedFile
-    });
-  }
-
   // Function to handle the update operation in the edit modal
-  updateexpert(expert: any): void {
-    const updatedData = this.editForm1.value;
-    this.count.updateExpert(expert.id, updatedData).subscribe(
+  updateHired(hire: any): void {
+    const updatedData = this.editForm.value;
+  
+    const formData = new FormData();
+    formData.append('review', updatedData.review);
+    formData.append('name', updatedData.name);
+    formData.append('company_position', updatedData.company_position);
+
+    // formData.append('image', updatedData.selectedFile);
+    if (updatedData.selectedFile) {
+      formData.append('image', updatedData.selectedFile);
+    } else {
+      formData.append('image', this.base64Image);
+    }
+  
+    this.count.updateExpert(hire.id, formData).subscribe(
       (res: any) => {
-        console.log('Expert review successfully:', res);
-        // Optionally, update the local list with the updated expert review or fetch the updated list again
+        console.log('Data updated successfully:', res);
+        alert("Data Updated")
+        // Optionally, update the local list with the updated hire data or fetch the updated list again
         this.getExpertReviews();
+        location.reload();
       },
       (error) => {
-        console.error('Failed to update expert review data:', error);
+        console.error('Failed to update hire data:', error);
       }
     );
   }
@@ -112,7 +126,7 @@ export class ExpertReviewComponent implements OnInit {
       this.count.deleteexpert(id).subscribe(
         (response) => {
           console.log('Expert Review deleted:', response);
-          alert(`Expert Review Deleted:${response}`)
+          alert('Expert Review Deleted')
           // You might want to refresh the categories list after deletion
           this.getExpertReviews();
         },
@@ -124,8 +138,5 @@ export class ExpertReviewComponent implements OnInit {
   }
 
   // Function to reset the form after successful submission
-  reset() {
-    this.expertform.reset();
-    this.base64Image = '';
-  }
+ 
 }

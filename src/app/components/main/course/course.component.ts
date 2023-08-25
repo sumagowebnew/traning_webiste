@@ -18,6 +18,7 @@ export class CourseComponent {
   ngOnInit(): void {
     this.addcompany();
     this.getcompany();
+    this.createEditForm();
 
 
   }
@@ -92,11 +93,14 @@ export class CourseComponent {
 
   // Function to handle the update operation in the edit modal
   updatecounter(about: any): void {
-    const updateData = new FormData();
-    updateData.append('name', about.name);
-    this.company.updatecourse(about.id, updateData).subscribe(
+    const updatedData = this.editForm.value;
+    
+      const formData = new FormData();
+      formData.append('name', updatedData.name);
+    this.company.updatecourse(about.id, updatedData).subscribe(
       (res: any) => {
         console.log('Data updated successfully:', res);
+        alert("Data Updated")
         // Optionally, update the local list with the updated counter or fetch the updated list again
         this.getcompany();
       },

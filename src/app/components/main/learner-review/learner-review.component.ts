@@ -19,6 +19,7 @@ export class LearnerReviewComponent  implements OnInit{
   ngOnInit(){
     this.addOffice();
     this.getoffice();
+    this.createEditForm();
   }
   addOffice(): void {
     this.bannerForm = this.formBuilder.group({
@@ -88,8 +89,8 @@ export class LearnerReviewComponent  implements OnInit{
     this.editForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      link:['',Validators.required],
-      selectedFile: [null, Validators.required]
+      link: ['', Validators.required],
+      selectedFile: [null]
     });
   }
   
@@ -106,14 +107,25 @@ export class LearnerReviewComponent  implements OnInit{
   // Function to handle the update operation in the edit modal
   updateoffice(archive: any): void {
     const updatedData = this.editForm.value;
+    
+    const formData = new FormData();
+    formData.append('title', updatedData.title);
+    formData.append('description', updatedData.description);
+    formData.append('link', updatedData.link);
+    if (updatedData.selectedFile) {
+      formData.append('image', updatedData.selectedFile);
+    } else if (this.base64Image) {
+      formData.append('image', this.base64Image);
+    }
     this.banner.updatelearner(archive.id, updatedData).subscribe(
       (res: any) => {
         console.log('Data updated successfully:', res);
-        // Optionally, update the local list with the updated counter or fetch the updated list again
+        alert("Data updated");
         this.getoffice();
       },
       (error) => {
         console.error('Failed to update archivement data:', error);
+        alert("Failed to update data. Please check the console for details.");
       }
     );
   }

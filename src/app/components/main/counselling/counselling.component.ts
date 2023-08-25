@@ -19,6 +19,7 @@ export class CounsellingComponent implements OnInit {
   ngOnInit(){
     this.addOffice();
     this.getoffice();
+    this.createEditForm();
   }
   addOffice(): void {
     this.bannerForm = this.formBuilder.group({
@@ -110,6 +111,7 @@ export class CounsellingComponent implements OnInit {
     this.banner.updatecouns(archive.id, updatedData).subscribe(
       (res: any) => {
         console.log('Data updated successfully:', res);
+        alert('Data updated')
         // Optionally, update the local list with the updated counter or fetch the updated list again
         this.getoffice();
       },

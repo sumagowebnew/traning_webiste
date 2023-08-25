@@ -83,13 +83,24 @@ export class HighlightsComponent implements OnInit {
     this.editForm1.setValue({
      
       title: expert.company_position,
-      selectedFile: expert.base64Image
+      selectedFile: null
     });
   }
 
   // Function to handle the update operation in the edit modal
   updateexpert(expert: any): void {
     const updatedData = this.editForm1.value;
+    
+      const formData = new FormData();
+      formData.append('title', updatedData.title);
+      // formData.append('description', updatedData.description);
+      // formData.append('image', updatedData.selectedFile);
+      if (updatedData.selectedFile) {
+        formData.append('icon', updatedData.selectedFile);
+      } else {
+        formData.append('icon', this.base64Image);
+      }
+    
     this.count.updatehigh(expert.id, updatedData).subscribe(
       (res: any) => {
         console.log('Data updated successfully:', res);

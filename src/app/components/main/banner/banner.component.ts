@@ -88,6 +88,7 @@ export class BannerComponent implements OnInit {
       this.banner.deletebanner(id).subscribe(
         (response) => {
           console.log('Banner deleted:', response);
+          alert("Banner Deleted")
           // You might want to refresh the categories list after deletion
           this.getbanner();
         },

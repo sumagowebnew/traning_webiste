@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CounterService } from 'src/app/services/counter.service';
 
 @Component({
@@ -14,10 +14,12 @@ export class HandsonProjectComponent implements OnInit {
   subcourses: any
   handsonCategoryDetails: any[]
   joinedHandsonProjects: any[];
+  editForm: any;
   ngOnInit(): void {
     this.getHandsonProject()
     this.getCategories()
     this.getsubcourse()
+    this.createEditForm()
     
   }
   
@@ -60,7 +62,7 @@ export class HandsonProjectComponent implements OnInit {
     ) {
       this.joinedHandsonProjects = this.handsonProjectDetails.map((project) => {
         const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourses_id === project.sub_course_id);
-        const matchingCategory = this.handsonCategoryDetails.find(category => category.category_id === project.handson_category_id);
+        const matchingCategory = this.handsonCategoryDetails.find(handsonCategoryDetails => handsonCategoryDetails.id === project.handson_category_id);
         return {
           ...project,
           subcourses_name: matchingSubcourse ? matchingSubcourse.subcourses_name : 'Unknown Course',
@@ -136,18 +138,39 @@ export class HandsonProjectComponent implements OnInit {
       );
     }
   }
+  openEditModal(hire: any) {
+    this.editForm.setValue({
+      handson_category_id: hire.handson_category_id,
+      sub_course_id: hire.sub_course_id,
+      title:hire.title,
+      desc: hire.desc // Use the 'image' property from the hire object
+    });
+  }
+  
+  createEditForm() {
+    this.editForm = this.fb.group({
+      handson_category_id:['',Validators.required],
+      sub_course_id:['',Validators.required],
+      title: ['', Validators.required],
+      desc: ['', Validators.required],
+      
+    });
+  }
+  // Function to handle the update operation in the edit modal
+  updateHired(hire: any): void {
+    const updatedData = this.editForm.value;
+  
+    const formData = new FormData();
+    formData.append('handson_category_id', updatedData.handson_category_id);
+    formData.append('sub_course_id', updatedData.sub_course_id);
+    formData.append('title', updatedData.title);
+    formData.append('desc', updatedData.desc);
+  
+  
 
-  updateProject(id: number) {
-    if (this.handsonProjectUpdateForm.valid) {
-      const updatedTitle = this.handsonProjectUpdateForm.value.title;
-      const updateData = {
-        handson_category_id: this.handsonProject.value.handson_category_id,
-        sub_course_id: this.handsonProject.value.sub_course_id,
-        title: this.handsonProject.value.title,
-        desc: this.handsonProject.value.desc,
-      }; // Construct the data object for update
 
-      this.service.updateHandsonProject(id, updateData).subscribe(
+
+      this.service.updateHandsonProject(hire.id, updatedData).subscribe(
         (response) => {
           console.log('Project updated:', response);
           this.getHandsonProject(); // Refresh the category list after successful update
@@ -160,4 +183,4 @@ export class HandsonProjectComponent implements OnInit {
   }
 
 
-}
+

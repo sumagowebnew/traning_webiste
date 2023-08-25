@@ -15,11 +15,13 @@ export class HandsonCategoryComponent implements OnInit {
   bannerlist: any;
   handson: any;
   certificate: any;
+  editForm: any;
 
 
   ngOnInit(): void {
     this.getCategories()
     this.addcompany();
+    this.createEditForm()
   }
   constructor(private service: CounterService, private fb: FormBuilder) {
   
@@ -85,6 +87,7 @@ export class HandsonCategoryComponent implements OnInit {
       this.service.deleteHandsonCategory(id).subscribe(
         (response) => {
           console.log('Category deleted:', response);
+          alert('Data Deleted')
           // You might want to refresh the categories list after deletion
           this.getCategories();
         },
@@ -94,14 +97,31 @@ export class HandsonCategoryComponent implements OnInit {
       );
     }
   }
-  updateCategory(id: number) {
-    if (this.handsonCategoryUpdateForm.valid) {
-      const updatedTitle = this.handsonCategoryUpdateForm.value.title;
-      const updateData = { title: updatedTitle }; // Construct the data object for update
+  createEditForm() {
+    this.editForm = this.fb.group({
+      title: ['', Validators.required],
+      
+    });
+  }
+  // Function to open the edit modal and populate form fields with the selected counter data
+  openEditModal(about: any) {
+    this.editForm.setValue({
+      title: about.title,
+    
+     
+    });
+  }
 
-      this.service.updateHandsonCategory(id, updateData).subscribe(
+  // Function to handle the update operation in the edit modal
+  updatecounter(about: any): void {
+    const updatedData = this.editForm.value;
+    
+      const formData = new FormData();
+      formData.append('title', updatedData.title);
+      this.service.updateHandsonCategory(about.id, updatedData).subscribe(
         (response) => {
           console.log('Category updated:', response);
+          alert("Data Updated")
           this.getCategories(); // Refresh the category list after successful update
         },
         (error) => {
@@ -111,4 +131,4 @@ export class HandsonCategoryComponent implements OnInit {
     }
   }
 
-}
+

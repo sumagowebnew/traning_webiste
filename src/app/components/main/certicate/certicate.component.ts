@@ -13,6 +13,8 @@ export class CerticateComponent implements OnInit{
   certificatelist: any;
   courseDetails: any;
   subcourses: any;
+  joinedFaqs: any;
+  joinedAlumni: any;
 
 
   constructor( private counter:CounterService,private formBuilder:FormBuilder){}
@@ -35,8 +37,28 @@ export class CerticateComponent implements OnInit{
   getsubcoure(){
     this.counter.getsubcourse().subscribe((res) => {
       this.subcourses = res['data']
-      // this.joinTables()
+      this.joinTables()
   })
+}
+getcertificate(){
+  this.counter.getcertificate().subscribe((res:any)=>{
+    console.log(res);
+    
+    this.certificatelist=res;
+    this.joinTables()
+
+  })
+}
+joinTables() {
+  if (this.subcourses.length > 0 && this.certificatelist.length > 0) {
+    this.joinedAlumni = this.certificatelist.map((alumni) => {
+      const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourse_id === alumni.course_id);
+      return {
+        ...alumni,
+        subcourses_name: matchingSubcourse ? matchingSubcourse.subcourses_name : 'Unknown Subcourse'
+      };
+    });
+  }
 }
 
   addcerticate(): void {
@@ -83,14 +105,7 @@ export class CerticateComponent implements OnInit{
       },
     );
   }
-  getcertificate(){
-    this.counter.getcertificate().subscribe((res:any)=>{
-      console.log(res);
-      
-      this.certificatelist=res;
-
-    })
-  }
+ 
   deletecertificate(id: number) {
     const confirmation = confirm('Are you sure you want to delete this category?');
     if (confirmation) {

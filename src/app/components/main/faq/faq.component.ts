@@ -24,6 +24,7 @@ export class FaqComponent implements OnInit {
     this.createFaqForm();
     this.getfaqs();
     this.getsubcourse();
+    this.createEditForm();
     
   }
 
@@ -52,16 +53,16 @@ export class FaqComponent implements OnInit {
    
     // Call your CourseService method to upload the course with the formData
     this.newweb.addfaq(formData).subscribe(
-    (response: any)=>{
-      if(response.StatusCode == '200') {
-        // this.router.navigate(['/main/banner'])
-        alert("Data added successfully");
-        location.reload();
+      (response: any) => {
+        if(response.StatusCode == '200') {
+          // this.router.navigate(['/main/banner'])
+          alert("Data added successfully");
+          location.reload();
 
-      } else {
-        alert("Something went wrong");
-      }
-    },
+        } else {
+          alert("Something went wrong");
+        }
+      },
   );
 }
 
