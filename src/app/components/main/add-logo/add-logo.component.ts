@@ -77,6 +77,7 @@ export class AddLogoComponent {
       this.banner.deletelogo(id).subscribe(
         (response) => {
           console.log('logo deleted:', response);
+          alert("Logo Deleted")
           // You might want to refresh the categories list after deletion
           this.getLogo();
         },

@@ -12,7 +12,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { AddEventComponent } from './Event/add-event/add-event.component';
 import { EventDataComponent } from './Event/event-data/event-data.component';
 import { ProgramFeesListComponent } from './components/main/program-fees-list/program-fees-list.component';
-
+// import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,8 @@ import { ProgramFeesListComponent } from './components/main/program-fees-list/pr
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

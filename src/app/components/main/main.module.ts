@@ -44,7 +44,7 @@ import { CourseHighlightComponent } from './course-highlight/course-highlight.co
 import { CounsellingComponent } from './counselling/counselling.component';
 import { SyllabusModuleComponent } from './syllabus-module/syllabus-module.component';
 import { ProgramCityComponent } from './program-city/program-city.component';
-
+// import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -96,6 +96,7 @@ import { ProgramCityComponent } from './program-city/program-city.component';
     MainRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+   
    
     
 

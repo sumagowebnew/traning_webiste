@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CounterService } from 'src/app/services/counter.service';
 
+
 @Component({
   selector: 'app-syllabus-module',
   templateUrl: './syllabus-module.component.html',
   styleUrls: ['./syllabus-module.component.css']
 })
 export class SyllabusModuleComponent  implements OnInit{
+
 
   ProgramFeesFormData:FormGroup
   ProgramFeesData:any[]
@@ -31,7 +33,18 @@ export class SyllabusModuleComponent  implements OnInit{
     
     });
   }
+  // editorConfig: EditorConfig = {
+  //   toolbar: 'Basic',
+  //   height: 300
+  // };
+  // Editor = ClassicEditor;
 
+  // editorContent = '';
+  // editorConfig = {
+  //   // CKEditor 5 configuration options
+  //   // For example, toolbar, height, etc.
+  // };
+ 
 
   ngOnInit(): void {
     this.getProgramFeesData()

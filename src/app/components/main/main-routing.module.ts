@@ -85,7 +85,7 @@ const routes: Routes = [
     {path:'certificate',component:CerticateComponent},
     {path:'contact',component:ContactComponent},
     {path:'Company_detail',component:CompanyDetailsComponent},
-    {path:'Office',component:AddOurofficeComponent},
+    {path:'Our_Office',component:AddOurofficeComponent},
 
     {path:'banner',component:BannerComponent},
     {path:'alumini',component:AluminiComponent},
