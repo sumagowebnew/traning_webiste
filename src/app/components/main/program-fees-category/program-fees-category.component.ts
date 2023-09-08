@@ -28,7 +28,7 @@ export class ProgramFeesCategoryComponent {
   onSubmit(): void {
     if (this.programform.valid) {
       const formData = new FormData();
-      formData.append('categoryname', this.programform.value.categoryname);
+      formData.append('title', this.programform.value.categoryname);
 
       this.company.addprogramdetailcategory(formData).subscribe(
         (response: any) => {
@@ -77,7 +77,7 @@ export class ProgramFeesCategoryComponent {
       const updatedData = this.editForm.value;
 
       const formData = new FormData();
-      formData.append('categoryname', updatedData.categoryname);
+      formData.append('title', updatedData.categoryname);
 
       this.company.updateprogramdetailscategory(id, formData).subscribe(
         (res: any) => {
