@@ -850,6 +850,36 @@ export class CounterService {
     return this.http.post(url, program, { headers });
   }
 
+  
+  //program category
+
+  addprogramdetailcategory(eventdata: any) {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.post(`${this.apiUrl}add_feecategory`, eventdata, { headers })
+  }
+  getprogramdetailcategory() {
+
+    return this.http.get(`${this.apiUrl}get_feecategory`)
+  }
+  deletepgmdetailcategory(id: number) {
+    const url = `${this.apiUrl}delete_feecategory/${id}`;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.delete(`${url}`, { headers });
+  }
+  updateprogramdetailscategory(id: number, program: any) {
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+
+    const url = `${this.apiUrl}update_feecategory/${id}`;
+    return this.http.post(url, program, { headers });
+  }
+
   //Broucher
 
   addbroucher(data: any) {

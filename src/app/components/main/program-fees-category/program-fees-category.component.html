@@ -16,16 +16,16 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form [formGroup]="" >
+                <form [formGroup]="programform" >
                   <div class="input-group input-group-outline my-3">
                     <!-- <label class="form-label">Program ID</label> -->
-                    <input type="text" class="form-control" formControlName="category_name" placeholder="Enter category name"
+                    <input type="text" class="form-control" formControlName="categoryname" placeholder="Enter category name"
                       >
                   </div>
 
                   <div align="right">
                     <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>&nbsp;&nbsp;
-                    <button type="submit" class="btn bg-gradient-primary">Save changes</button>
+                    <button type="submit" class="btn bg-gradient-primary" (click)="onSubmit()">Save changes</button>
   
                   </div>
                 </form>
@@ -51,10 +51,10 @@
           </thead>
           <tbody >
   
-            <tr >
+            <tr *ngFor="let item of programlist">
   
               <td>
-                <p class="ms-5 text-xs font-weight-bold mb-0 align-middle">Pro</p>
+                <p class="ms-5 text-xs font-weight-bold mb-0 align-middle">{{item.categoryname}}</p>
   
               </td>
   
@@ -75,12 +75,12 @@
                         </button>
                       </div>
                       <div class="modal-body">
-                        <form [formGroup]="">
+                        <form [formGroup]="programform">
   
   
                           <div class="input-group input-group-outline my-3">
                             <!-- <label class="form-label">Program ID</label> -->
-                            <input type="text" class="form-control" formControlName="category_name" placeholder="category name"
+                            <input type="text" class="form-control" formControlName="categoryname" placeholder="category name"
                               >
                           </div>
                         </form>
@@ -89,7 +89,7 @@
                       <div class="modal-footer">
                         <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit"
-                          class="btn bg-gradient-primary">Save changes</button>
+                          class="btn bg-gradient-primary"  (click)="onSubmit()">Save changes</button>
                       </div>
                     </div>
                   </div>
