@@ -860,8 +860,10 @@ export class CounterService {
     return this.http.post(`${this.apiUrl}add_feecategory`, eventdata, { headers })
   }
   getprogramdetailcategory() {
-
-    return this.http.get(`${this.apiUrl}get_feecategory`)
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.get(`${this.apiUrl}get_feecategory`, { headers })
   }
   deletepgmdetailcategory(id: number) {
     const url = `${this.apiUrl}delete_feecategory/${id}`;

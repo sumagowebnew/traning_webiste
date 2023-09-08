@@ -17,22 +17,22 @@ export class ProgramFeesCategoryComponent {
   }
   createForms(): void {
     this.programform = this.formBuilder.group({
-      categoryname: ['', Validators.required],
+      title: ['', Validators.required],
     });
 
     this.editForm = this.formBuilder.group({
-      categoryname: ['', Validators.required],
+      title: ['', Validators.required],
     });
   }
 
   onSubmit(): void {
     if (this.programform.valid) {
       const formData = new FormData();
-      formData.append('categoryname', this.programform.value.categoryname);
+      formData.append('title', this.programform.value.title);
 
       this.company.addprogramdetailcategory(formData).subscribe(
         (response: any) => {
-          if (response.StatusCode === '200') {
+          if (response.statusCode === '200') {
             alert('Data added successfully');
             this.getCategories();
           } else {
@@ -68,7 +68,7 @@ export class ProgramFeesCategoryComponent {
 
   openEditModal(category: any): void {
     this.editForm.setValue({
-      categoryname: category.categoryname,
+      title: category.title,
     });
   }
 
@@ -77,7 +77,7 @@ export class ProgramFeesCategoryComponent {
       const updatedData = this.editForm.value;
 
       const formData = new FormData();
-      formData.append('categoryname', updatedData.categoryname);
+      formData.append('title', updatedData.title);
 
       this.company.updateprogramdetailscategory(id, formData).subscribe(
         (res: any) => {
