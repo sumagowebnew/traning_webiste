@@ -11,10 +11,11 @@ export class ProgramFeesListComponent implements OnInit {
   ProgramFeesFormData: FormGroup
   ProgramFeesData: any[]
   courseDetails: any[] = [];
+  pro_max_id: any[] = [];
   subcourseDetails
   editData: any
   joinedProgramFees: any[];
-  subcourses: any;
+  subcourses: any[] = [];
   
   constructor(private service: CounterService, private formBuilder: FormBuilder) {
     this.ProgramFeesFormData = this.formBuilder.group({
@@ -43,50 +44,62 @@ export class ProgramFeesListComponent implements OnInit {
   ngOnInit(): void {
     this.getProgramFeesData()
     this.getCourse();
-    this.getsubcourse();
+    // this.getSubcoursesbyId();
+    this.getProMaxCategories();
     
   }
-  getCourse() {
-    this.service.getcourse().subscribe((res: any) => {
-      this.courseDetails = res.data;
-      this.joinTables();
+
+  
+  getProMaxCategories() {
+    this.service.getProMaxCategories().subscribe((res: any) => {
+      this.pro_max_id = res.data;
+      console.log("this.pro_max_id ",this.pro_max_id)
+      //this.joinTables();
     });
   }
 
-  getsubcourse() {
-    this.service.getsubcourse().subscribe((res: any) => {
+  getCourse() {
+    this.service.getcourse().subscribe((res: any) => {
+      this.courseDetails = res.data;
+    });
+  }
+
+  getSubcoursesbyId(event) {
+    console.log("event  is event  ");
+    this.service.getSubcoursesbyId(event.target.value).subscribe((res: any) => {
+      this.subcourses = null;
       this.subcourses = res.data;
-      this.joinTables();
+      console.log("this.subcourses ",this.subcourses);
     });
   }
 
   getProgramFeesData() {
     this.service.getProgramFees().subscribe((res: any) => {
       this.ProgramFeesData = res;
-      console.log(res);
-      
-      this.joinTables();
     });
   }
 
-  joinTables() {
-    if (
-      this.courseDetails.length > 0 &&
-      this.subcourses.length > 0 &&
-      this.ProgramFeesData.length > 0
-    ) {
-      this.joinedProgramFees = this.ProgramFeesData.map((programFee) => {
+  // joinTables() {
+  //   if (
+  //     this.courseDetails.length > 0 &&
+  //     // this.pro_max_id.length > 0 &&
+  //     this.subcourses.length > 0 &&
+  //     this.ProgramFeesData.length > 0
+  //   ) {
+  //     this.joinedProgramFees = this.ProgramFeesData.map((programFee) => {
         
-        const matchingCourse =this.courseDetails.find(course=> course.id===programFee.course_id);
-        const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourses_id === programFee.sub_course_id);
-        return {
-          ...programFee,
-          name: matchingCourse ? matchingCourse.name : 'Unknown Course',
-          subcourses_name: matchingSubcourse ? matchingSubcourse.subcourses_name : 'Unknown Subcourse'
-        };
-      });
-    }
-  }
+  //       // const matchingCourse =this.courseDetails.find(course=> course.id===programFee.course_id);
+  //       // const pro_max_id = this.pro_max_id;
+  //       const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourses_id === programFee.sub_course_id);
+  //       return {
+  //         ...programFee,
+  //         // name: matchingCourse ? matchingCourse.name : 'Unknown Course',
+  //         subcourses_name: matchingSubcourse ? matchingSubcourse.subcourses_name : 'Unknown Subcourse'
+  //         // this.pro_max_id: pro_max_id
+  //       };
+  //     });
+  //   }
+  // }
 
   onSubmit() {
     const formData = new FormData();
@@ -150,12 +163,13 @@ export class ProgramFeesListComponent implements OnInit {
   updateProgramFeesData(id: number) { }
 
   getSubCourseFromCourse(event) {
+    console.log(event);
     var obj = {
       course_id: event.target.value
     };
 
     this.service.getSubCourse(obj).subscribe(alldist => {
-      this.subcourseDetails = alldist['data'];
+      this.subcourses = alldist['data'];
     });
   }
 

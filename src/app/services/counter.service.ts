@@ -1080,6 +1080,14 @@ export class CounterService {
     });
     return this.http.get(`${this.apiUrl}get_course_fee_details_list`, { headers })
   }
+
+  getProMaxCategories() {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.get(`${this.apiUrl}get_feecategory`, { headers })
+  }
+
   updateProgramFees(id: number, alumniData: any) {
 
     const url = `${this.apiUrl}update_course_fee_details/${id}`;
