@@ -45,6 +45,7 @@ import { CounsellingComponent } from './counselling/counselling.component';
 import { SyllabusModuleComponent } from './syllabus-module/syllabus-module.component';
 import { ProgramCityComponent } from './program-city/program-city.component';
 import { ProgramFeesCategoryComponent } from './program-fees-category/program-fees-category.component';
+import { SyllabusPdfComponent } from './syllabus-pdf/syllabus-pdf.component';
 // import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
@@ -90,6 +91,7 @@ import { ProgramFeesCategoryComponent } from './program-fees-category/program-fe
     SyllabusModuleComponent,
     ProgramCityComponent,
     ProgramFeesCategoryComponent,
+    SyllabusPdfComponent,
     
     
   ],

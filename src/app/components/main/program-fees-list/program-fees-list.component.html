@@ -146,6 +146,8 @@
 
           <tr>
             <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+              Prgram Fees Category</th>
+            <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
               Course Name</th>
             <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
               Sub Course Name</th>
@@ -179,7 +181,10 @@
         <tbody style="text-align: center;">
 
           <tr *ngFor="let item of joinedProgramFees ">
+            <td>
+              <p class="text-center text-xs font-weight-bold mb-0 align-middle">{{item.title}}</p>
 
+            </td>
             <td>
               <p class="text-center text-xs font-weight-bold mb-0 align-middle">{{item.name}}</p>
 

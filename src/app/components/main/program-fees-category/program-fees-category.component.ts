@@ -10,6 +10,7 @@ export class ProgramFeesCategoryComponent {
   programform: FormGroup;
   programlist: any[];
   editForm: FormGroup;
+  counter:any;
   constructor(private company: CounterService, private formBuilder: FormBuilder) {}
   ngOnInit(): void {
     this.createForms();
@@ -28,7 +29,7 @@ export class ProgramFeesCategoryComponent {
   onSubmit(): void {
     if (this.programform.valid) {
       const formData = new FormData();
-      formData.append('title', this.programform.value.categoryname);
+      formData.append('title', this.programform.value.title);
 
       this.company.addprogramdetailcategory(formData).subscribe(
         (response: any) => {
@@ -67,17 +68,17 @@ export class ProgramFeesCategoryComponent {
   }
 
   openEditModal(category: any): void {
-    this.editForm.setValue({
+    this.programform.setValue({
       title: category.title,
     });
   }
 
   updateCategory(id: number): void {
-    if (this.editForm.valid) {
-      const updatedData = this.editForm.value;
+    if (this.programform.valid) {
+      const updatedData = this.programform.value;
 
       const formData = new FormData();
-      formData.append('title', updatedData.categoryname);
+      formData.append('title', updatedData.title);
 
       this.company.updateprogramdetailscategory(id, formData).subscribe(
         (res: any) => {

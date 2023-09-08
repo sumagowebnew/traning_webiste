@@ -1,117 +1,117 @@
 <div class="container main-part">
-    <div class="row">
-      <div class="div">
-        <a class="btn btn-info text-white font-weight-normal text-xs" data-bs-toggle="modal" data-bs-target="#addconsult">
-          Add Program Fees Category 
-        </a>
-        <!-- Modal -->
-        <div class="modal fade" id="addconsult" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-          aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Add Details</h5>
-                <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form [formGroup]="programform" >
-                  <div class="input-group input-group-outline my-3">
-                    <!-- <label class="form-label">Program ID</label> -->
-                    <input type="text" class="form-control" formControlName="title" placeholder="Enter category name"
-                      >
-                  </div>
-
-                  <div align="right">
-                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>&nbsp;&nbsp;
-                    <button type="submit" class="btn bg-gradient-primary" (click)="onSubmit()">Save changes</button>
-  
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer"></div>
+  <div class="row">
+    <div class="div">
+      <a class="btn btn-info text-white font-weight-normal text-xs" data-bs-toggle="modal" data-bs-target="#addconsult">
+        Add Program Fees Category 
+      </a>
+      <!-- Modal -->
+      <div class="modal fade" id="addconsult" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Add Details</h5>
+              <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
+            <div class="modal-body">
+              <form [formGroup]="programform" >
+                <div class="input-group input-group-outline my-3">
+                  <!-- <label class="form-label">Program ID</label> -->
+                  <input type="text" class="form-control" formControlName="title" placeholder="Enter category name"
+                    >
+                </div>
+
+                <div align="right">
+                  <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>&nbsp;&nbsp;
+                  <button type="submit" class="btn bg-gradient-primary" (click)="onSubmit()">Save changes</button>
+
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer"></div>
           </div>
         </div>
-        <!-- Modal End -->
       </div>
+      <!-- Modal End -->
     </div>
-    <div class="card">
-      <div class="div"></div>
-      <div class="table-responsive">
-  
-        <table class="table align-items-center mb-0">
-          <thead>
-  
-            <tr>
-              <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                Program Fees Category Name</th>
-            </tr>
-          </thead>
-          <tbody >
-  
-            <tr *ngFor="let item of programlist">
-  
-              <td>
-                <p class="ms-5 text-xs font-weight-bold mb-0 align-middle">{{item.title}}</p>
-  
-              </td>
-  
-              <td class="align-middle">
-                <a class="btn btn-warning ms-2 text-white font-weight-normal text-xs" data-bs-toggle="modal"
-                  data-bs-target="#editconsult">
-                  Edit
-                </a>
-  
-                <div class="modal fade" id="editconsult" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Edit Program Fees Category </h5>
-                        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <form [formGroup]="programform">
-  
-  
-                          <div class="input-group input-group-outline my-3">
-                            <!-- <label class="form-label">Program ID</label> -->
-                            <input type="text" class="form-control" formControlName="title" placeholder="category name"
-                              >
-                          </div>
-                        </form>
-  
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit"
-                          class="btn bg-gradient-primary"  (click)="onSubmit()">Save changes</button>
-                      </div>
+  </div>
+  <div class="card">
+    <div class="div"></div>
+    <div class="table-responsive">
+
+      <table class="table align-items-center mb-0">
+        <thead>
+
+          <tr>
+            <th class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+              Program Fees Category Name</th>
+          </tr>
+        </thead>
+        <tbody >
+
+          <tr *ngFor="let item of programlist">
+
+            <td>
+              <p class="ms-5 text-xs font-weight-bold mb-0 align-middle">{{item.title}}</p>
+
+            </td>
+
+            <td class="align-middle">
+              <a class="btn btn-warning ms-2 text-white font-weight-normal text-xs" data-bs-toggle="modal"
+                data-bs-target="#editconsult" (click)="openEditModal(counter.id)">
+                Edit
+              </a>
+
+              <div class="modal fade" id="editconsult" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Edit Program Fees Category </h5>
+                      <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form [formGroup]="programform">
+
+
+                        <div class="input-group input-group-outline my-3">
+                          <!-- <label class="form-label">Program ID</label> -->
+                          <input type="text" class="form-control" formControlName="title" placeholder="category name"
+                            >
+                        </div>
+                      </form>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="submit"
+                        class="btn bg-gradient-primary"  (click)="openEditModal(counter)">Save changes</button>
                     </div>
                   </div>
                 </div>
-  
-  
-  
-              <td>
-  
-  
-                  <!-- (click)="deleteProgramFeesData(item.fee_details_id)">
-                  delete
-                </a> -->
-  
-              </td>
-  
-  
-            </tr>
-          </tbody>
-        </table>
-      </div>
+              </div>
+
+
+
+            <td>
+
+
+                <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs" (click)="deleteCategory(item.id)">
+                delete
+              </a>
+
+            </td>
+
+
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  <br>
-  <br>
+</div>
+<br>
+<br>
