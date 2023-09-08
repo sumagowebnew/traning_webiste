@@ -24,14 +24,12 @@
                                     <!-- <label class="form-label">Price</label> -->
                                     <input type="text" class="form-control"  formControlName="name" placeholder="name">
                                 </div>
+                                <div class="input-group input-group-outline my-3">
+                                    <!-- <label class="form-label">Price</label> -->
+                                    <input type="file" class="form-control" (change)="onFileSelected($event)" placeholder="image" >
+                                </div>
                                
-
-           
-              
-
                             </form>
-
-
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn bg-gradient-secondary"
@@ -64,12 +62,17 @@
                     <tr *ngFor="let item of bannerlist">
                         <td>
                             <div class="d-flex px-2 py-1">
+                                <div>
+                                    <img [src]="item.image" class="avatar avatar-sm me-3">
+                                   
+                                </div>
                                 <div class="d-flex flex-column justify-content-center">
                                     <h6 class="mb-0 text-xs">{{item.name}}</h6>
                                     <!-- <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p> -->
                                 </div>
                             </div>
                         </td>
+                         
                         <td class="align-middle">
                            
                            
@@ -97,7 +100,10 @@
                                             <!-- <label class="form-label">Name</label> -->
                                             <input type="text" id="name" class="form-control" formControlName="name" placeholder="name">
                                         </div>
-                                      
+                                        <div class="input-group input-group-outline my-3">
+                                            <!-- <label class="form-label">Price</label> -->
+                                            <input type="file" class="form-control"  (change)="onFileSelected($event)" placeholder="image" >
+                                        </div>
                                         
         
                                     </form>
@@ -107,7 +113,7 @@
                                   <div class="modal-footer">
                                       <button type="button" class="btn bg-gradient-secondary"
                                           data-bs-dismiss="modal">Close</button>
-                                      <button type="submit" class="btn bg-gradient-primary" (click)="updatecounter(item)">Save changes</button>
+                                      <button type="submit" class="btn bg-gradient-primary" (click)="updatecounter(64)">Save changes</button>
                                   </div>
                               </div>
                           </div>

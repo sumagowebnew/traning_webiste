@@ -17,6 +17,8 @@ export class SubcourseDetailsComponent implements OnInit {
   subcourseDetails: any;
   subcourses: any;
   joinedHirelist: any;
+  base64Model: string;
+  modelFile: any;
 
   constructor(private service: CounterService, private formBuilder: FormBuilder) {}
 
@@ -41,18 +43,42 @@ export class SubcourseDetailsComponent implements OnInit {
     });
   }
 
-  onFileSelected(event: any): void {
-    const file = event.target.files[0];
-    this.convertToBase64(file);
-  }
+  // onFileSelected(event: any): void {
+  //   const file = event.target.files[0];
+  //   this.convertToBase64(file);
+  // }
 
-  convertToBase64(file: File): void {
+  // convertToBase64(file: File): void {
+  //   const reader = new FileReader();
+  //   reader.onload = () => {
+  //     this.base64Image = reader.result as string;
+  //   };
+  //   reader.readAsDataURL(file);
+  // }
+  convertToBase64(file: File, fileType: string): void {
     const reader = new FileReader();
     reader.onload = () => {
-      this.base64Image = reader.result as string;
+      if (fileType === 'image') {
+        this.base64Image = reader.result as string;
+        console.log('Image base64:', this.base64Image);
+      } else if (fileType === 'model') {
+        this.base64Model = reader.result as string;
+      }
     };
     reader.readAsDataURL(file);
   }
+  onFileSelected(event: any, fileType: string): void {
+    const file = event.target.files[0];
+  
+    if (fileType === 'banner') {
+      this.base64Image = file;
+      this.convertToBase64(file, 'banner');
+    } else if (fileType === 'back_image') {
+      this.modelFile = file;
+      this.convertToBase64(file, 'back_image');
+    }
+  }
+  
 
   onSubmit(): void {
     const formData = new FormData();
@@ -62,6 +88,8 @@ export class SubcourseDetailsComponent implements OnInit {
     formData.append('description', this.subCourseDetails.value.description);
     formData.append('custome_text', this.subCourseDetails.value.custome_text);
     formData.append('banner', this.base64Image);
+formData.append('back_image', this.modelFile); // Use this.modelFile for back_image
+
 
     this.service.addSubscoursesdetail(formData).subscribe(
       (response: any) => {
@@ -100,7 +128,8 @@ export class SubcourseDetailsComponent implements OnInit {
   }
 
   joinTables() {
-    if (this.hirelist.length > 0 && this.subcourses.length > 0 &&this.courseDetails.length >0) {
+    if (this.hirelist.length > 0 && this.subcourses.length > 0 && this.courseDetails.length > 0) {
+
       this.joinedHirelist = this.hirelist.map((hire) => {
         const matchingSubcourse = this.subcourses.find(subcourse => subcourse.subcourses_id === hire.sub_course_id);
        const matchingCourse =this.courseDetails.find(course=> course.id===hire.course_id);
@@ -131,14 +160,15 @@ export class SubcourseDetailsComponent implements OnInit {
   }
 
   openEditModal(hire: any) {
-    this.editForm.setValue({
-      course_id: hire.course_id,
-      title: hire.title,
-      description: hire.description,
-      custome_text: hire.custome_text,
-      selectedFile: null
+    this.editForm = this.formBuilder.group({
+      course_id: [hire.course_id, Validators.required],
+      title: [hire.title, Validators.required],
+      description: [hire.description, Validators.required],
+      custome_text: [hire.custome_text, Validators.required],
+      selectedFile: [null]
     });
   }
+  
 
   createEditForm() {
     this.editForm = this.formBuilder.group({
@@ -162,8 +192,9 @@ export class SubcourseDetailsComponent implements OnInit {
     if (updatedData.selectedFile) {
       formData.append('banner', updatedData.selectedFile);
     } else {
-      formData.append('banner', this.base64Image);
+      formData.append('banner', this.modelFile);
     }
+    
 
     this.service.updatesubcoursedetail(hire.id, formData).subscribe(
       (res: any) => {

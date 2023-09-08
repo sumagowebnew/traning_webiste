@@ -42,6 +42,7 @@ import { ProgramCityComponent } from './program-city/program-city.component';
 import { HighlightsComponent } from './highlights/highlights.component';
 import { CounsellingComponent } from './counselling/counselling.component';
 import { CourseHighlightComponent } from './course-highlight/course-highlight.component';
+import { ProgramFeesCategoryComponent } from './program-fees-category/program-fees-category.component';
 
 const routes: Routes = [
   {path:'',component:CommonmainComponent,children:[
@@ -96,8 +97,10 @@ const routes: Routes = [
     {path:'cohorts',component:CohortsComponent},
     {path:'handsonCategory',component:HandsonCategoryComponent},
     {path:'handsonProject',component:HandsonProjectComponent},
+    {path:'program-fees-category',component:ProgramFeesCategoryComponent},
 
     {path:'',redirectTo:'/main/dashboard',pathMatch:'full'},
+    
 
 
   ]}

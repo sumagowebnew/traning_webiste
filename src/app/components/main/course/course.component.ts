@@ -11,6 +11,7 @@ export class CourseComponent {
   bannerForm: any;
   base64Image: string;
   ban: any;
+  selectedImage: any;  
   bannerlist: any;
   editForm: any;
   constructor(private company: CounterService, private formBuilder: FormBuilder) { }
@@ -27,10 +28,22 @@ export class CourseComponent {
     this.bannerForm = this.formBuilder.group({
 
       name: ['', Validators.required],
-
+      image: [null, Validators.required]
     });
+  } 
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    this.convertToBase64(file);
   }
 
+  convertToBase64(file: File): void {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.base64Image = reader.result as string;
+      console.log(this.base64Image);
+    };
+    reader.readAsDataURL(file);
+  }
 
   onSubmit(): void {
 
@@ -38,6 +51,7 @@ export class CourseComponent {
     const formData = new FormData();
 
     formData.append('name', this.bannerForm.value.name);
+    formData.append('image', this.base64Image);
 
 
     this.company.addcourse(formData).subscribe(
@@ -92,12 +106,13 @@ export class CourseComponent {
   }
 
   // Function to handle the update operation in the edit modal
-  updatecounter(about: any): void {
+  updatecounter(about:number): void {
     const updatedData = this.editForm.value;
     
       const formData = new FormData();
       formData.append('name', updatedData.name);
-    this.company.updatecourse(about.id, updatedData).subscribe(
+      formData.append('image', this.base64Image);
+    this.company.updatecourse(about, updatedData).subscribe(
       (res: any) => {
         console.log('Data updated successfully:', res);
         alert("Data Updated")

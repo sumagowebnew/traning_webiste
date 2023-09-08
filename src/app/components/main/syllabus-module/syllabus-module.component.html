@@ -48,9 +48,9 @@
                       </div>
                   
                       <div class="input-group input-group-outline my-3">
-
-                        <input type="text" class="form-control" formControlName="description" placeholder="description">
-                        <!-- <ckeditor formControlName="description" [config]="editorConfig"></ckeditor> -->
+                        <!-- <textarea class="form-control" name="post_content" id="editor" cols="30" rows="10"></textarea> -->
+                        <!-- <input type="text" class="form-control" formControlName="description" placeholder="description"> -->
+                        <!-- <ckeditor formControlName="description" [config]="ClassicEditor"></ckeditor> -->
                         
                        
                       </div>
@@ -178,5 +178,15 @@
 </div>
 <br>
 <br>
+<script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>
+<script>
+
+  ClassicEditor
+    .create( document.querySelector( '#editor' ) )
+    .catch( error => {
+        console.error( error );
+    } );
+
+</script>
 
 

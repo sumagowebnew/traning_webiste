@@ -44,6 +44,7 @@ import { CourseHighlightComponent } from './course-highlight/course-highlight.co
 import { CounsellingComponent } from './counselling/counselling.component';
 import { SyllabusModuleComponent } from './syllabus-module/syllabus-module.component';
 import { ProgramCityComponent } from './program-city/program-city.component';
+import { ProgramFeesCategoryComponent } from './program-fees-category/program-fees-category.component';
 // import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
@@ -88,6 +89,7 @@ import { ProgramCityComponent } from './program-city/program-city.component';
     CounsellingComponent,
     SyllabusModuleComponent,
     ProgramCityComponent,
+    ProgramFeesCategoryComponent,
     
     
   ],

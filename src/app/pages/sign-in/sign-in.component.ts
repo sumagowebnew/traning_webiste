@@ -32,7 +32,7 @@ onSubmit():void{
   if(this.SignInForm.valid){
 
     this.auth.login(email,password).subscribe((result)=>{
-        console.log("Success")
+    alert("Success")
         // console.log(result.access_token);
         console.log(result);   
         
