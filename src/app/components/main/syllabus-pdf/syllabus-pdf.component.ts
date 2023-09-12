@@ -17,7 +17,7 @@ export class SyllabusPdfComponent {
   ngOnInit(): void {
     this.addcompany();
     this.getcompany();
-    this.createEditForm();
+    // this.createEditForm();
 
 
   }

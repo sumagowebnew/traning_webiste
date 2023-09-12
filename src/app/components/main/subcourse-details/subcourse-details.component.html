@@ -3,7 +3,7 @@
         <div class="div">
             <a class="btn btn-info text-white font-weight-normal text-xs" data-bs-toggle="modal"
                 data-bs-target="#adddetail">
-                Subcourse Details</a>
+                Subcourse Details Satish</a>
             <!-- Modal -->
             <!-- Modal -->
             <div class="modal fade" id="adddetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -20,14 +20,14 @@
                         <div class="modal-body">
                             <form [formGroup]="subCourseDetails">
                                 <div class="input-group input-group-outline mb-3">
-                                    <select id="course" formControlName="course_id" class="form-control" required>
+                                    <select id="course" formControlName="course_id" class="form-control" required (change)="getSubCourseFromCourse($event)">
                                         <option value="" disabled selected>select course</option>
                                         <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}</option>
                                       </select>
                                 </div>
                                 
                                 
-                                <div class="input-group input-group-outline mb-3">
+                                <!-- <div class="input-group input-group-outline mb-3">
 
                                     <select class="form-control" formControlName="sub_course_id">
                                         <option value="">select sub course</option>
@@ -35,7 +35,19 @@
                                             {{
                                             subCourse.subcourses_name }}</option>
                                     </select>
-                                </div>
+                                </div> -->
+
+
+                                <div class="input-group input-group-outline my-3">
+                                    <select class="form-control" formControlName="sub_course_id">
+                                      <option value="">Select sub course</option>
+                                      <option *ngFor="let subCourse of subcourses" [value]="subCourse.id">
+                                          {{ subCourse.name }}
+                                      </option>
+                                  </select>
+                                    <div class="invalid-feedback">Sub Course is required</div>
+                                  </div>
+                  
 
                                 <div class="input-group input-group-outline my-3">
                                     <!-- <label class="form-label">duration</label> -->
@@ -53,11 +65,11 @@
                                 </div>
                                 <div class="input-group input-group-outline my-3">
 
-                                    <input type="file" class="form-control" formControlName="banner">
+                                    <input type="file" class="form-control" formControlName="banner" (change) = "onFileSelectedBanner($event)" >
                                 </div>
                                 <div class="input-group input-group-outline my-3">
 
-                                    <input type="file" class="form-control" formControlName="back_image">
+                                    <input type="file" class="form-control" formControlName="back_image"  (change) = "onFileSelectedBackImage($event)">
                                 </div>
 
                             </form>
@@ -103,7 +115,7 @@
                 </thead>
                 <tbody style="text-align: center;">
 
-                    <tr *ngFor="let item of joinedHirelist ">
+                    <tr *ngFor="let item of allSubCourcesDetails ">
                         <td>
                             <div class="d-flex flex-row mb-0justify-content-center">
                                 <div class="p-2">  <img [src]="item.banner" class="avatar avatar-sm me-3"></div>
@@ -157,7 +169,7 @@
                                         <div class="modal-body">
                                             <form [formGroup]="editForm">
                                                 <div class="input-group input-group-outline mb-3">
-                                                    <select id="course" formControlName="course_id" class="form-control" required>
+                                                    <select id="course" formControlName="course_id" class="form-control" required (change)="getSubCourseFromCourse($event)">
                                                         <option value="" disabled selected>select course</option>
                                                         <option [value]="course.id" *ngFor="let course of courseDetails" style="color: black;">{{ course.name }}</option>
                                                       </select>
@@ -168,8 +180,8 @@
 
                                                         <select class="form-control" formControlName="sub_course_id">
                                                             <option value="">select sub course</option>
-                                                            <option *ngFor="let subCourse of subcourses" [value]="subCourse.subcourses_id">
-                                                                {{subCourse.subcourses_name }}</option>
+                                                            <option *ngFor="let subCourse of subcourses" [value]="subCourse.id">
+                                                                {{subCourse.nmae }}</option>
                                                         </select>
                                                     </div>
                     
@@ -189,11 +201,11 @@
                                                     </div>
                                                     <div class="input-group input-group-outline my-3">
                     
-                                                        <input type="file" class="form-control" formControlName="banner">
+                                                        <input type="file" class="form-control" formControlName="banner" (change) = "onFileSelectedBanner($event)">
                                                     </div>
                                                     <div class="input-group input-group-outline my-3">
                     
-                                                        <input type="file" class="form-control" formControlName="back_image">
+                                                        <input type="file" class="form-control" formControlName="back_image"  (change) = "onFileSelectedBackImage($event)">
                                                     </div>
 
 

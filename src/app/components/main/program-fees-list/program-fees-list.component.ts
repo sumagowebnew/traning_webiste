@@ -19,7 +19,7 @@ export class ProgramFeesListComponent implements OnInit {
   
   constructor(private service: CounterService, private formBuilder: FormBuilder) {
     this.ProgramFeesFormData = this.formBuilder.group({
-      pro_max_id:9,
+      pro_max_id:['', Validators.required],
       course_id:['', Validators.required],
       sub_course_id:['', Validators.required],
       job_assistance:['', Validators.required],
@@ -161,12 +161,13 @@ export class ProgramFeesListComponent implements OnInit {
     }
   }
   updateProgramFeesData(id: number) { }
-
+  
   getSubCourseFromCourse(event) {
     console.log(event);
     var obj = {
       course_id: event.target.value
     };
+
 
     this.service.getSubCourse(obj).subscribe(alldist => {
       this.subcourses = alldist['data'];
