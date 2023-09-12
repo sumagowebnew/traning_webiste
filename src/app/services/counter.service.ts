@@ -217,6 +217,7 @@ export class CounterService {
     });
     return this.http.post(`${this.apiUrl}add_subcourse_details`, subcourses, { headers })
   }
+
   getSubcoursesdetail() {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.auth.getToken()}`
@@ -1210,6 +1211,43 @@ export class CounterService {
       'Authorization': `Bearer ${this.auth.getToken()}`
     });
     return this.http.post(`${url}`, data, { headers });
+  }
+
+
+  // syllabus pdf
+  
+  addsyllabuspdf(review: any) {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.post(`${this.apiUrl}add_syllabus_pdf`, review, { headers })
+  }
+
+  getsyllabuspdf() {
+    const url = `${this.apiUrl}getAllDataList`;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.post(`${url}`, { headers });
+  }
+
+  deletebsyllabuspdf(id: number) {
+    const url = `${this.apiUrl}delete_syllabus_pdf/${id}`;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+    return this.http.delete(`${url}`, { headers });
+  }
+
+
+  updatesyllabuspdf(id: number, google: any) {
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.auth.getToken()}`
+    });
+
+    const url = `${this.apiUrl}update_syllabus_pdf/${id}`;
+    return this.http.post(url, google, { headers });
   }
 }
 

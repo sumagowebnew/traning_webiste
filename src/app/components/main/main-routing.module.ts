@@ -43,6 +43,7 @@ import { HighlightsComponent } from './highlights/highlights.component';
 import { CounsellingComponent } from './counselling/counselling.component';
 import { CourseHighlightComponent } from './course-highlight/course-highlight.component';
 import { ProgramFeesCategoryComponent } from './program-fees-category/program-fees-category.component';
+import { SyllabusPdfComponent } from './syllabus-pdf/syllabus-pdf.component';
 
 const routes: Routes = [
   {path:'',component:CommonmainComponent,children:[
@@ -58,7 +59,7 @@ const routes: Routes = [
     {path:'add_course',component:CourseComponent},
     {path:'add_subcourse',component:AddSubcourseComponent},
     {path:'subcourse_detail',component:SubcourseDetailsComponent},
-
+    {path:'syllabus-pdf',component:SyllabusPdfComponent},
     {path:'about',component:AboutComponent},
     {path:'about_counter',component:AboutCounterComponent},
     {path:'google_review',component:GoogleReviewComponent},
