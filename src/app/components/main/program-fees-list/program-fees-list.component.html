@@ -41,7 +41,7 @@
                   <!-- <label for="course">Subcourse</label> -->
                   <select class="form-control" formControlName="sub_course_id">
                     <option value="">Select sub course</option>
-                    <option *ngFor="let subCourse of subcourses" [value]="subCourse.subcourses_id">
+                    <option *ngFor="let subCourse of subcourses" [value]="subCourse.id">
                         {{ subCourse.name }}
                     </option>
                 </select>

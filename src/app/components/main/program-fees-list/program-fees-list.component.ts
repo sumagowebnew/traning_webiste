@@ -32,8 +32,8 @@ export class ProgramFeesListComponent implements OnInit {
       project_certification_from_companies:['', Validators.required],
       adv_ai_dsa:['', Validators.required],
       microsoft_certification:['', Validators.required],
-      sub_course_fee:100,
-      sub_course_duration:3
+      sub_course_fee:'',
+      sub_course_duration:''
       // sub_course_duration:
     });
   }
