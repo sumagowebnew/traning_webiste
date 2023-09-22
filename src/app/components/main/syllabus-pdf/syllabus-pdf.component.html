@@ -59,6 +59,7 @@
                     <tr *ngFor="let item of alluploadeddata">
                         <td>
                             <div class="d-flex flex-row mb-0justify-content-center">
+                                <div class="p-2"><p class="  mt-2 text-xs font-weight-bold mb-0">{{item.file}}</p></div>
                                 <div class="p-2"><p class="  mt-2 text-xs font-weight-bold mb-0">{{item.name}}</p></div>
                                 
                               </div>
@@ -66,15 +67,11 @@
                         </td>
                        
                         <td class="align-middle">
-
-
-
-
-                        <td>
-
-
-                        
-
+                            <a class="btn btn-danger ms-2 text-white font-weight-normal text-xs"
+                            (click)="deletepdf(item.id)">
+                            delete
+                        </a>
+                        <td>          
                         </td>
 
 

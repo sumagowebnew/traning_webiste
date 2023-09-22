@@ -21,29 +21,51 @@ export class SyllabusPdfComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSubcoursesbyId()
-    this.getsyllabuspdf()
+    this.getsyllabuspdfs()
   }
   
 
-  onFileSelected(event: any): void {
-    const file = event.target.files[0];
-    this.convertToBase64(file);
-  }
+  // onFileSelected(event: any): void {
+  //   const file = event.target.files[0];
+  //   this.convertToBase64(file);
+  // }
 
-  convertToBase64(file: File): void {
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.file = reader.result as string;
-    };
-    reader.readAsDataURL(file);
+  // convertToBase64(file: File): void {
+  //   const reader = new FileReader();
+  //   reader.onload = () => {
+  //     this.file = reader.result as string;
+  //   };
+  //   reader.readAsDataURL(file);
+  // }
+  onFileSelected(event: any): void {
+  const file = event.target.files[0];
+  const maxSizeInBytes = 10 * 1024 * 1024; 
+
+  if (file && file.size <= maxSizeInBytes) {
+    this.convertToBase64(file);
+  } else {
+    // Handle the case where the file is too large
+    alert('File is too large. Please select a less than 10 mb file.');
+    // You can also reset the file input to clear the selected file if needed
+    event.target.value = null;
   }
+}
+
+convertToBase64(file: File): void {
+  const reader = new FileReader();
+  reader.onload = () => {
+    this.file = reader.result as string;
+  };
+  reader.readAsDataURL(file);
+}
+
 
   getCourse() {
     this.service.getcourse().subscribe((res: any) => {
       this.courseDetails = res.data;
     });
   }
-  getsyllabuspdf() {
+  getsyllabuspdfs() {
     this.service.getsyllabuspdf().subscribe((res: any) => {
       this.alluploadeddata = res.data;
     });
@@ -82,7 +104,7 @@ export class SyllabusPdfComponent implements OnInit {
     });
   }
    
-  deleteGoogle(id: number): void {
+  deletepdf(id: number): void {
     const confirmation = confirm('Are you sure you want to delete this category?');
     if (confirmation) {
       this.service.deletebsyllabuspdf(id).subscribe(
@@ -90,9 +112,10 @@ export class SyllabusPdfComponent implements OnInit {
           console.log('Data deleted:', response);
           alert(`Data Deleted`);
           // this.getsyllabus();
+          location.reload();
         },
         (error) => {
-          console.error('Error deleting data:', error);
+          console.error('Failed to delete data:', error);
         }
       );
     }

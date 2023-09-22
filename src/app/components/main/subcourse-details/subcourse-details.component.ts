@@ -174,7 +174,7 @@ export class SubcourseDetailsComponent implements OnInit {
     });
   }
 
-  updateHired(hire: any): void {
+  updateSubcourseDetail(subcourse: any): void {
     const updatedData = this.editForm.value;
 
     const formData = new FormData();
@@ -182,18 +182,13 @@ export class SubcourseDetailsComponent implements OnInit {
     formData.append('title', updatedData.title);
     formData.append('description', updatedData.description);
     formData.append('custome_text', updatedData.custome_text);
+    formData.append('banner', updatedData.base64ImageBanner);
 
-    if (updatedData.selectedFile) {
-      formData.append('banner', updatedData.base64ImageBanner);
-    } else {
-      formData.append('banner', updatedData.base64ImageBackImage);
-    }
-
-    this.service.updatesubcoursedetail(hire.id, formData).subscribe(
+    this.service.updatesubcoursedetail(subcourse.id, formData).subscribe(
       (res: any) => {
         console.log('Data updated successfully:', res);
         this.getSubcoursesdetail();
-        location.reload();
+
       },
       (error) => {
         console.error('Failed to update hire data:', error);
