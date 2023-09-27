@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 })
 export class CounterService {
 
-  private apiUrl = 'http://api.sumagotraining.in/public/api/';
+  private apiUrl = 'https://api.sumagotraining.in/public/api/';
   // private apiUrl = 'https://trainingapi.sumagotest.in/public/api/';
   // private apiUrl = 'https://admin.sumagotraining.in/public/api/';
 
