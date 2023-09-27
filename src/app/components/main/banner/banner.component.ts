@@ -24,8 +24,8 @@ export class BannerComponent implements OnInit {
 
   addbanner(): void {
     this.bannerForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
+      // title: ['', Validators.required],
+      // description: ['', Validators.required],
       selectedFiles: [null, Validators.required] // Use selectedFiles for multiple files
     });
   }
